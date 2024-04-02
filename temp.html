@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <img  src="https://res.cloudinary.com/dkfaglomz/image/upload/v1712038934/public/snucbs5916vwdiksyfwx.png" alt="Logo" class="logo-img">
+        </div>
+        <nav class="menu">
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Nosotros</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Productos</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <style>
+/* header */
+body{
+margin: 0;
+background-color: #ffffff;
+
+}
+@import url(https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@100;200;300;400;500;600;800;900&display=swap);
+
+
+.header {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    backdrop-filter: blur(10px);
+    background-color: transparent; /* Fondo blanco */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+.logo {
+    flex: 1; /* Toma el espacio disponible */
+}
+
+.logo-img {
+    width: 50px; /* Tamaño del logo */
+}
+
+.menu ul {
+    list-style-type: none; /* Elimina los puntos de la lista */
+    margin: 0;
+    padding: 0;
+}
+
+.menu ul li {
+    display: inline-block; /* Mostrar los elementos de menú en línea */
+    margin-right: 20px; /* Espacio entre elementos de menú */
+}
+
+.menu ul li:last-child {
+    margin-right: 0; /* Elimina el margen del último elemento de menú */
+}
+
+@import url(https://fonts.googleapis.com/css2?family=Varela+Round&display=swap);
+
+
+.menu ul li a {
+  font-family: 'Varela Round', sans-serif;
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    color: #8bb33a; /* Color del texto del menú */
+    font-weight: bold; /* Texto en negrita */
+    transition: color 0.3s ease; /* Transición suave del color */
+}
+
+.menu ul li a:hover {
+    color: #666666; /* Color del texto del menú al pasar el ratón */
+}
+
+
+        /* texto  */
+        @-webkit-keyframes showTopText {
+            0% {
+                -webkit-transform: translate3d(0, 100%, 0);
+                transform: translate3d(0, 100%, 0);
+            }
+
+            40%,
+            60% {
+                -webkit-transform: translate3d(0, 50%, 0);
+                transform: translate3d(0, 50%, 0);
+            }
+
+            100% {
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        @keyframes showTopText {
+            0% {
+                -webkit-transform: translate3d(0, 100%, 0);
+                transform: translate3d(0, 100%, 0);
+            }
+
+            40%,
+            60% {
+                -webkit-transform: translate3d(0, 50%, 0);
+                transform: translate3d(0, 50%, 0);
+            }
+
+            100% {
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        @-webkit-keyframes showBottomText {
+            0% {
+                -webkit-transform: translate3d(0, -100%, 0);
+                transform: translate3d(0, -100%, 0);
+            }
+
+            100% {
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        @keyframes showBottomText {
+            0% {
+                -webkit-transform: translate3d(0, -100%, 0);
+                transform: translate3d(0, -100%, 0);
+            }
+
+            100% {
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        .animated-title {
+            color: rgb(38, 118, 73);
+            font-family: 'Montserrat', sans-serif;
+            height: 100vmin;
+            font-weight: bold;
+            left: 30%;
+            
+            position: absolute;
+            top: 70%;
+            -webkit-transform: translate(-25%, -50%);
+            transform: translate(-25%, -50%);
+            width: 100vmin;
+        }
+
+        .animated-title>div {
+            height: 50%;
+
+            overflow: hidden;
+            position: absolute;
+            width: 100%;
+        }
+
+        .animated-title>div div {
+            font-size: 12vmin;
+            padding: 2vmin 0;
+            position: absolute;
+        }
+
+        .animated-title>div div span {
+            display: block;
+        }
+
+        .animated-title>div.text-top {
+            border-bottom: 1vmin solid #21556a;
+            top: 0;
+            width: 500px;
+        }
+
+        .animated-title>div.text-top div {
+            -webkit-animation: showTopText 1s;
+            animation: showTopText 1s;
+            -webkit-animation-delay: 0.5s;
+            animation-delay: 0.5s;
+            -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+            bottom: 0;
+            -webkit-transform: translate(0, 100%);
+            transform: translate(0, 100%);
+        }
+
+        .animated-title>div.text-top div span:first-child {
+            color: #8bb33a;
+        }
+
+        .animated-title>div.text-bottom {
+            bottom: 0;
+        }
+
+        .animated-title>div.text-bottom div {
+            -webkit-animation: showBottomText 0.5s;
+            animation: showBottomText 0.5s;
+            -webkit-animation-delay: 1.75s;
+            animation-delay: 1.75s;
+            -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+            top: 0;
+            -webkit-transform: translate(0, -100%);
+            transform: translate(0, -100%);
+        }
+    </style>
+    <div class="animated-title">
+        <div class="text-top">
+            <div>
+                <span>Vienvenido</span>
+                <span>a Zapateria huejutla</span>
+            </div>
+        </div>
+        <div class="text-bottom">
+            <div>
+                <img style="width: 100px; height: 100px;"
+                    src="https://res.cloudinary.com/dkfaglomz/image/upload/v1712038934/public/snucbs5916vwdiksyfwx.png"
+                    alt="" srcset="">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

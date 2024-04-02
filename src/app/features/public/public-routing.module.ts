@@ -2,11 +2,12 @@ import { PublicComponent } from './public.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeView } from './view/home/home.view';
+import { DetaillProductComponent } from './view/detaill-product/detaill-product.component';
 const routes: Routes = [
   {
     path:'',redirectTo:'home' ,pathMatch:'full'
-  },
-  {
+  }
+  ,{
     path: '',
     component: PublicComponent,
     children: [
@@ -14,10 +15,10 @@ const routes: Routes = [
         path: 'home',
         component: HomeView,
       },
-      // {
-      //   path: 'detail',
-      //   component: DetailViews,
-      // },
+  {
+    path: 'detailsP',
+    component: DetaillProductComponent,
+  }
       // {
       //   path: 'detail/:id',
       //   component: DetailViews,

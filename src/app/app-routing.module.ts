@@ -8,6 +8,16 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'detailsP',
+    loadChildren: () =>
+      import('./features/public/public.module').then((m) => m.PublicModule),
+  },
+  // {
+  //   path: '',
+  //   redirectTo: 'public',
+  //   pathMatch: 'full',
+  // },
+  {
     path: 'public',
     loadChildren: () =>
       import('./features/public/public.module').then((m) => m.PublicModule),
