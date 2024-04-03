@@ -1,144 +1,36 @@
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sneaker Details</title>
-    <style>
-      .sneaker-details {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px;
-        background-color: #ffffff;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
+<body>
 
-      .thumbnails {
-        /* margin-top: -20vh; */
-        display: flex;
-        gap: 10px;
-        flex-direction: column;
-      }
 
-      .thumbnails img {
-        width: 100px;
-        display: flex;
-        border: 1px solid #dddddd79;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        cursor: pointer;
-      }
+  <div class="sneaker-details">
+    <div class="thumbnails">
+      <!-- Imágenes en miniatura aquí -->
+      <img src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712073242/images/pngegg_3_hgb2cw.png"
+        alt="SNEAKER BLANCO 2669229">
+      <img src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712073242/images/pngegg_3_hgb2cw.png"
+        alt="SNEAKER BLANCO 2669229">
+      <img src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712073242/images/pngegg_3_hgb2cw.png"
+        alt="SNEAKER BLANCO 2669229">
 
-      .thumbnails img:hover {
-        border-color: #b2b1b1;
-      }
 
-      .main-image {
-        flex: 1;
-        padding: 20px;
-      }
-
-      .main-image img {
-        max-width: 50%;
-        height: auto;
-        border: 1px solid #dddddd79;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
-
-      .slogan {
-        font-size: 18px;
-        color: #ff0000;
-        margin-top: 10px;
-      }
-
-      .price {
-        font-size: 24px;
-        font-weight: bold;
-        color: #333;
-        margin-top: 10px;
-      }
-
-      .size-options select {
-        padding: 8px;
-        font-size: 14px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        margin-top: 20px;
-      }
-
-      .quantity input {
-        width: 40px;
-        padding: 8px;
-        font-size: 14px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        margin-top: 10px;
-      }
-
-      .buy-button,
-      .add-to-bag-button {
-        margin-top: 20px;
-        padding: 10px 20px;
-        font-size: 16px;
-        font-weight: bold;
-        color: #ffffff;
-        background-color: #ff0000;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-
-      .buy-button:hover,
-      .add-to-bag-button:hover {
-        background-color: #cc0000;
-      }
-
-      .payment-options img {
-        width: 30px;
-        height: 30px;
-      }
-    </style>
-  </head>
-
-  <body>
-    <div class="sneaker-details">
-      <div class="thumbnails">
-        <!-- Imágenes en miniatura aquí -->
-        <img
-          src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712073242/images/pngegg_3_hgb2cw.png"
-          alt="SNEAKER BLANCO 2669229"
-        />
-        <img
-          src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712073242/images/pngegg_3_hgb2cw.png"
-          alt="SNEAKER BLANCO 2669229"
-        />
-        <img
-          src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712073242/images/pngegg_3_hgb2cw.png"
-          alt="SNEAKER BLANCO 2669229"
-        />
-      </div>
-
-      <div class="main-image">
-        <!-- Imagen principal del sneaker -->
-        <img
-          src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712073242/images/pngegg_3_hgb2cw.png"
-          alt="SNEAKER BLANCO 2669229"
-        />
-        <p class="slogan">imparable</p>
-        <p class="price">$549.90</p>
-        <!-- Opciones de selección de talla y cantidad -->
-        <select class="size-options">
-          <option value="22">22</option>
-          <!-- Otras opciones de tallas -->
-        </select>
-        <input type="number" class="quantity" value="1" />
-        <button class="buy-button">COMPRAR</button>
-        <button class="add-to-bag-button">AGREGAR A LA BOLSA</button>
-      </div>
-      <div class="payment-options">
-        <!-- Iconos de opciones de pago -->
-      </div>
     </div>
-  </body>
-</html>
+    <div class="main-image">
+      <!-- Imagen principal del sneaker -->
+      <img src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712073242/images/pngegg_3_hgb2cw.png"
+        alt="SNEAKER BLANCO 2669229">
+      <p class="slogan">imparable</p>
+      <p class="price">$549.90</p>
+      <!-- Opciones de selección de talla y cantidad -->
+      <select class="size-options">
+        <option value="22">22</option>
+        <!-- Otras opciones de tallas -->
+      </select>
+      <input type="number" class="quantity" value="1">
+      <button class="buy-button">COMPRAR</button>
+      <button class="add-to-bag-button">AGREGAR A LA BOLSA</button>
+    </div>
+    <div class="payment-options">
+      <!-- Iconos de opciones de pago -->
+    </div>
+  </div>
+
+</body>

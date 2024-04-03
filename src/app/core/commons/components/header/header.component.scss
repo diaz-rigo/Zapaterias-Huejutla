@@ -1,15 +1,21 @@
 .header {
-
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
+    position: fixed;
+    /* Fijar el encabezado */
+    top: 0;
+    /* Fijar en la parte superior */
+    left: 0;
+    /* Alinear a la izquierda */
+    width: 100%;
+    /* Ancho completo */
+    z-index: 1000;
+    /* Asegurar que esté por encima de otros elementos */
     backdrop-filter: blur(10px);
     background-color: transparent;
-    /* Fondo blanco */
-
-    // poner el fondo cuando haga scroll para abajo
-    // background-color: #ffff; /* Fondo blanco */
+    /* Fondo transparente */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     /* Sombra ligera */
 }
