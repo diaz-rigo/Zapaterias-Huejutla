@@ -1,0 +1,53 @@
+
+.search-container {
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  width: 360px;
+  background-color: rgba(255, 255, 255, 0.5); /* Fondo semi-transparente */
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+  overflow: hidden; /* Oculta el contenido que exceda el ancho */
+  transition: width 0.6s ease, padding 0.6s ease; /* Transición suave */
+  /* Estilos para el input de búsqueda dentro del contenedor */
+  input {
+    padding: 10px; /* Espaciado interno para una apariencia más agradable */
+    border: none; /* Quita el borde del input */
+    border-radius: 20px; /* Agrega bordes redondeados */
+    background-color: transparent; /* Fondo transparente del input */
+    color: #333; /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    width: 100%; /* Ancho del input del 100% del contenedor */
+    outline: none; /* Quita el contorno al hacer clic en el input */
+  }
+
+  /* Estilos para el botón de búsqueda dentro del contenedor */
+  button {
+    background-color: transparent; /* Color de fondo del botón */
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Estilo al pasar el mouse sobre el contenedor de búsqueda */
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.7); /* Cambio de color al pasar el mouse */
+  }
+}
+
+
+/* Clase para el contenedor de búsqueda cuando el input está oculto */
+.hidden-input {
+  width: 0; /* Ancho inicial 0 */
+  padding: 0; /* Padding 0 */
+  transition: width 0.3s ease, padding 0.3s ease; /* Transición suave */
+}
+
+
+// @media (max-width: 768px) {
+//   .p-inputgroup {
+//     width: 100; /* Ancho inicial 0 */
+//     padding: 0; /* Padding 0 */
+//   }
+// }
