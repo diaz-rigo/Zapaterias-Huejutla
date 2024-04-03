@@ -12,7 +12,10 @@
   background-color: rgba(255, 255, 255, 0.489);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-
+.pi{
+  font-size: 1.2rem;
+  margin-right: 8px;
+}
 .logo {
   flex: 1;
   display: flex;
@@ -60,9 +63,9 @@
 }
 
 @media screen and (max-width: 768px) {
-  .pi{
-    font-size: 18px;
-    margin-right: 5px;
+
+  .pi-shopping-cart{
+    margin-right: 20px;
   }
   .menu{
     display: none;
@@ -74,9 +77,10 @@
 
 
   .logo-img2 {
-    width: 10%;
+    width: 16%;
     height: auto;
     display: inline-block;
     margin-right: 0;
   }
+
 }

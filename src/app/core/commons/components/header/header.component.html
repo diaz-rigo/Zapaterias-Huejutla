@@ -1,35 +1,46 @@
 <header class="header" [ngClass]="{ scrolled: isScrolled }">
   <div class="logo">
-    <img class="logo-img big-logo"
+    <img
+      class="logo-img big-logo"
       [src]="
-          'https://0201.nccdn.net/1_2/000/000/16d/0af/5c82807a5ad7e.png#RDAMDAID19391744'
+        'https://0201.nccdn.net/1_2/000/000/16d/0af/5c82807a5ad7e.png#RDAMDAID19391744'
       "
       alt="Logo"
     />
-    <img class="logo-img2 small-logo"
+    <img
+      class="logo-img2 small-logo"
       [src]="
         'https://res.cloudinary.com/dkfaglomz/image/upload/v1712038934/public/snucbs5916vwdiksyfwx.png'
       "
       alt="Logo"
     />
   </div>
-<!--
+  <!--
   <i class="pi pi-search" (click)="toggleSearchInput()"></i>
   <div class="p-inputgroup search-container" [ngClass]="{ 'hidden-input': !showSearchInput }">
     <input *ngIf="showSearchInput" placeholder="Buscar..." />
   </div> -->
-  <i *ngIf="!showSearchInput" (click)="toggleSearchInput()" class="pi pi-search"></i>
-  <div class="p-inputgroup search-container" [ngClass]="{'hidden-input': !showSearchInput}">
-    <i *ngIf="showSearchInput"  (click)="toggleSearchInput()" class="pi pi-search"></i>
+  <i
+    *ngIf="!showSearchInput"
+    (click)="toggleSearchInput()"
+    class="pi pi-search"
+  ></i>
+  <div
+    class="p-inputgroup search-container"
+    [ngClass]="{ 'hidden-input': !showSearchInput }"
+  >
+    <i
+      *ngIf="showSearchInput"
+      (click)="toggleSearchInput()"
+      class="pi pi-search"
+    ></i>
     <input *ngIf="showSearchInput" placeholder="Buscar..." />
   </div>
 
+  <!-- <i class="pi pi-bell mr-4 p-text-secondary" pBadge style="font-size: 2rem" value="2"></i> -->
 
-  <i class="pi pi-shopping-cart" *ngIf="isMobile || showCart" ></i>
-  <i class="pi pi-bars" *ngIf="isMobile && !showCart" (click)="toggleMenu()"></i>
-
-  <!-- <nav class="menu" [ngClass]="{ 'show-menu': isMobile && showMenu }"> -->
-  <nav class="menu" >
+  <!-- <i class="pi pi-shopping-cart p-text-warning" pBadge  value="2" ></i> -->
+  <nav class="menu">
     <ul>
       <li><a href="#">Inicio</a></li>
       <li><a href="#">Nosotros</a></li>
@@ -38,4 +49,18 @@
       <li><a href="#">Contacto</a></li>
     </ul>
   </nav>
+  <span
+    class="pi pi-shopping-cart "
+    pBadge
+    value="2"
+    severity="warning"
+  ></span>
+  
+  <i
+    class="pi pi-bars"
+    *ngIf="isMobile && !showCart"
+    (click)="toggleMenu()"
+  ></i>
+
+  <!-- <nav class="menu" [ngClass]="{ 'show-menu': isMobile && showMenu }"> -->
 </header>
