@@ -163,6 +163,8 @@
 // cards categorias
 
 .container {
+color: cadetblue;
+    font-family: Alata, Helvetica, sans-serif;
     max-width: 1300px;
     margin: 20px auto;
     padding: 0 20px;
@@ -236,3 +238,133 @@ div.card>img:hover {
         margin-right: 10px;
     }
 }
+
+// @layer primeng {
+.p-carousel-indicators {
+    display: none;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+// }
+
+@layer primeng {
+    .p-carousel-items-content {
+        overflow: hidden;
+        width: 50%;
+        margin-left: 8%;
+    }
+}
+
+
+
+
+// btn carurces ñ
+@layer primeng {
+
+    .p-carousel-prev,
+    .p-carousel-next {
+        align-self: center;
+        flex-grow: 0;
+        flex-shrink: 0;
+        display: flex;
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        position: relative;
+        border: none;
+        padding: 20px;
+        margin: 20px 60px;
+        box-shadow: azure;
+        background: transparent;
+    }
+}
+
+// icon btn carrucel .
+.p-element .p-icon-wrapper {
+    color: #21556a;
+
+}
+
+// primeng
+// .carousel {
+//     /* Adjust overall carousel width as needed */
+//     width: 80%;
+//     margin: 0 auto;
+
+//     @media (max-width: 768px) {
+//         /* Adjust carousel width for smaller screens */
+//         width: 100%;
+//     }
+// }
+
+// .p-carousel {
+//     overflow: hidden;
+//     display: flex;
+//     scroll-behavior: smooth;
+// }
+
+// .p-carousel .p-carousel-item {
+//     flex: 0 0 calc(100% / var(--numVisible));
+//     margin-right: calc(var(--carousel-gutter) / 2);
+
+//     &:last-child {
+//         margin-right: 0;
+//     }
+
+//     @media (max-width: 768px) {
+//         flex: 1 0 100%;
+//         /* Make items stack on small screens */
+//         margin-right: 0;
+//     }
+// }
+
+// /* Adjust carousel item styles (card styles) */
+// .p-carousel .p-carousel-item .card {
+//     /* Remove default PrimeNG padding */
+//     padding: 0;
+// }
+
+// .p-carousel .p-carousel-item .card .image {
+//     /* Adjust image size and styling */
+//     width: 100%;
+//     object-fit: cover;
+//     height: 150px;
+//     /* Adjust image height as needed */
+// }
+
+/* 
+  Define additional styles for other elements within the carousel item template 
+  like title, price, buttons, etc. based on your design preferences.
+*/
+
+// :root {
+//     --numVisible: 3;
+//     /* Adjust based on your `[numVisible]` setting */
+//     --carousel-gutter: 20px;
+//     /* Adjust spacing between carousel items */
+// }
+
+
+// carrucel marcas 
+// .p-carousel {
+//     width: 60%;
+//     /* Adjust width as needed */
+//     margin: 0 auto;
+//     /* Center the carousel horizontally */
+// }
+
+// .p-carousel .p-carousel-item {
+//     flex: 0 0 calc(10% / var(--numVisible));
+// }
+
+// .carousel-image {
+//     width: 50px;
+//     /* Ensure image covers entire item */
+//     height: 50px;
+//     /* Adjust image height as desired */
+//     object-fit: cover;
+//     /* Resize image to fit while maintaining aspect ratio */
+// }

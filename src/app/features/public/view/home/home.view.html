@@ -35,35 +35,52 @@
 
 <!-- <body> -->
 <div class="container">
-  <h2>Categorías</h2>
-  <a (click)="redirectTo('detail')">Preguntas Frecuentes</a>
+  <h2 style="color: #167274;">Categorías</h2>
+  <a>Novedades</a>
   <div class="carousel">
-    <!-- Tarjeta de Producto 4 -->
     <div class="card" (click)="redirectTo('/detail')">
       <img (click)="redirectTo('detail')"
         src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712073242/images/pngegg_3_hgb2cw.png"
         alt="Producto 4" />
-      <div class="category">Categoría C</div>
+      <h2 style="font-size: 14px; color: black; margin-left: 5px;">Zapato X</h2>
+      <h2 style="color: red; font-size: 15px; margin-left: 5px;">$1,300</h2>
     </div>
-    <div class="card">
+    <div class="card" (click)="redirectTo('/detail')">
       <img (click)="redirectTo('detail')"
-        src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712073242/images/pngegg_3_hgb2cw.png"
+        src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712178819/productMeanZapateriaHuejutla/tenisDwaYn.png"
         alt="Producto 4" />
-      <div class="category">Categoría C</div>
+      <h2 style="font-size: 14px; color: black; margin-left: 5px;">Zapato Y</h2>
+      <h2 style="color: red; font-size: 15px; margin-left: 5px;">$1,300</h2>
     </div>
-    <div class="card">
-      <img src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712073242/images/pngegg_3_hgb2cw.png"
+    <div class="card" (click)="redirectTo('/detail')">
+      <img
+        src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712178969/productMeanZapateriaHuejutla/kzk983odej3gjownguo0.png"
         alt="Producto 4" />
-      <div class="category">Categoría C</div>
+      <h2 style="font-size: 14px; color: black; margin-left: 5px;">Zapato Z</h2>
+      <h2 style="color: red; font-size: 15px; margin-left: 5px;">$1,300</h2>
     </div>
-    <div class="card">
-      <img src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712073242/images/pngegg_3_hgb2cw.png"
+    <div class="card" (click)="redirectTo('/detail')">
+      <img
+        src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712179623/productMeanZapateriaHuejutla/wn5yz9hlyrqrnkqitgaz.png"
         alt="Producto 4" />
-      <div class="category">Categoría C</div>
+      <h2 style="font-size: 14px; color: black; margin-left: 5px;">Zapato W</h2>
+      <h2 style="color: red; font-size: 15px; margin-left: 5px;">$1,300</h2>
     </div>
-    <!-- Añadir más tarjetas según sea necesario -->
   </div>
 </div>
+
+<div class="container">
+  <a>Marcas</a>
+</div>
+
+
 <!-- </body> -->
+
+<p-carousel [value]="images" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="3000">
+  <ng-template  [style.marginLeft]="'50px'" let-image pTemplate="item">
+  <!-- <ng-template  [style.marginLeft]="'50px'" let-image pTemplate="item"> -->
+    <img src="{{image}}" style="height: 150px; width: 150px;" alt="Image">
+  </ng-template>
+</p-carousel>
 
 <!-- </html> -->

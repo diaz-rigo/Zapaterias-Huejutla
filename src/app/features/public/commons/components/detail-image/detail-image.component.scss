@@ -1,94 +1,53 @@
-  .sneaker-details {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px;
-      background-color: #ffffff;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
+.sneaker-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-  .thumbnails {
-      /* margin-top: -20vh; */
-      display: flex;
-      gap: 10px;
-      flex-direction: column;
+.thumbnails {
+    display: none;
+    /* Ocultar miniaturas por defecto */
+}
 
-  }
+@media (min-width: 768px) {
+    .sneaker-details {
+        width: 100%;
+        /* Establecer el ancho del contenedor al 50% en pantallas grandes */
+    }
 
-  .thumbnails img {
-      width: 100px;
-      display: flex;
-      border: 1px solid #dddddd79;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      cursor: pointer;
-  }
+    .thumbnails {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
 
-  .thumbnails img:hover {
-      border-color: #b2b1b1;
-  }
+.thumbnails img {
+    width: 100px;
+    border: 1px solid #dddddd79;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
 
-  .main-image {
-      flex: 1;
-      padding: 20px;
-  }
+.thumbnails img:hover {
+    border-color: #b2b1b1;
+}
 
-  .main-image img {
-      max-width: 50%;
-      height: auto;
-      border: 1px solid #dddddd79;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
+.main-image {
+    flex: 1;
+    padding: 20px;
+}
 
-  .slogan {
-      font-size: 18px;
-      color: #ff0000;
-      margin-top: 10px;
-  }
+.main-image img {
+    max-width: 80%;
+    height: auto;
+    filter: drop-shadow(30px 10px 15px #a8a8a8);
+    // border: 1px solid #dddddd79;dr
 
-  .price {
-      font-size: 24px;
-      font-weight: bold;
-      color: #333;
-      margin-top: 10px;
-  }
-
-  .size-options select {
-      padding: 8px;
-      font-size: 14px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      margin-top: 20px;
-  }
-
-  .quantity input {
-      width: 40px;
-      padding: 8px;
-      font-size: 14px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      margin-top: 10px;
-  }
-
-  .buy-button,
-  .add-to-bag-button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 16px;
-      font-weight: bold;
-      color: #ffffff;
-      background-color: #ff0000;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-  }
-
-  .buy-button:hover,
-  .add-to-bag-button:hover {
-      background-color: #cc0000;
-  }
-
-  .payment-options img {
-      width: 30px;
-      height: 30px;
-  }
+    // dro-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
