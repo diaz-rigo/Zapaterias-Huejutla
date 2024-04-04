@@ -1,0 +1,27 @@
+<header class="header">
+  <div class="logo">
+    <img
+      src="https://0201.nccdn.net/1_2/000/000/16d/0af/5c82807a5ad7e.png#RDAMDAID19391744"
+      alt="Logo"
+      class="logo-img"
+    />
+  </div>
+
+  <i *ngIf="!showSearchInput" (click)="toggleSearchInput()" class="pi pi-search"></i>
+  <div class="p-inputgroup search-container" [ngClass]="{'hidden-input': !showSearchInput}">
+    <i *ngIf="showSearchInput"  (click)="toggleSearchInput()" class="pi pi-search"></i>
+    <input *ngIf="showSearchInput" placeholder="Buscar..." />
+  </div>
+
+
+
+  <nav class="menu">
+    <ul>
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Nosotros</a></li>
+      <li><a href="#">Servicios</a></li>
+      <li><a href="#">Productos</a></li>
+      <li><a href="#">Contacto</a></li>
+    </ul>
+  </nav>
+</header>

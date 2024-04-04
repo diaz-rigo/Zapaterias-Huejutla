@@ -18,6 +18,10 @@
     "@angular/platform-browser": "^17.2.0",
     "@angular/platform-browser-dynamic": "^17.2.0",
     "@angular/router": "^17.2.0",
+<<<<<<< HEAD
+=======
+    "primeicons": "^7.0.0",
+>>>>>>> 0e34128f5746dbd8a2002c999261850d0dbcb202
     "primeng": "^17.12.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

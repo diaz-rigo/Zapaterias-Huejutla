@@ -1,0 +1,76 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  position: fixed;
+  /* Fijar el encabezado */
+  top: 0;
+  /* Fijar en la parte superior */
+  left: 0;
+  /* Alinear a la izquierda */
+  width: 100%;
+  /* Ancho completo */
+  z-index: 1000;
+  /* Asegurar que esté por encima de otros elementos */
+  backdrop-filter: blur(10px);
+  background-color: transparent;
+  /* Fondo transparente */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  /* Sombra ligera */
+}
+
+.logo {
+  flex: 1;
+  /* Toma el espacio disponible */
+}
+
+.logo-img {
+
+  width: 200px;
+  /* Tamaño del logo */
+}
+
+.menu ul {
+  list-style-type: none;
+  /* Elimina los puntos de la lista */
+  margin: 0;
+  padding: 0;
+}
+
+.menu ul li {
+  display: inline-block;
+  /* Mostrar los elementos de menú en línea */
+  margin-right: 20px;
+  /* Espacio entre elementos de menú */
+}
+
+.menu ul li:last-child {
+  margin-right: 0;
+  /* Elimina el margen del último elemento de menú */
+}
+
+@import url(https://fonts.googleapis.com/css2?family=Varela+Round&display=swap);
+
+
+.menu ul li a {
+  font-family: 'Varela Round', sans-serif;
+  text-decoration: none;
+  /* Elimina el subrayado del enlace */
+  color: #8bb33a;
+  padding: 10px;
+  // background: #000000;
+  /* Color del texto del menú */
+  // font-weight: bold;
+  /* Texto en negrita */
+  border-radius: 10px;
+  transition: color 0.3s ease;
+  /* Transición suave del color */
+}
+
+.menu ul li a:hover {
+  color: #21556a;
+  background: #c8c8c8b2;
+  // border: 0 0 solid #232222;
+  /* Color del texto del menú al pasar el ratón */
+}
