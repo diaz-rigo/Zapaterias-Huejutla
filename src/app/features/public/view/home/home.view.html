@@ -35,28 +35,28 @@ srcset="" />
   <h2 style="color: #167274;">Categorías</h2>
   <a>Novedades</a>
   <div class="carousel">
-    <div class="card" (click)="redirectTo('/detail')">
+    <div class="card" (click)="redirectTo('detail')">
       <img (click)="redirectTo('detail')"
         src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712073242/images/pngegg_3_hgb2cw.png"
         alt="Producto 4" />
       <h2 style="font-size: 14px; color: black; margin-left: 5px;">Zapato X</h2>
       <h2 style="color: red; font-size: 15px; margin-left: 5px;">$1,300</h2>
     </div>
-    <div class="card" (click)="redirectTo('/detail')">
+    <div class="card" (click)="redirectTo('detail')">
       <img (click)="redirectTo('detail')"
         src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712178819/productMeanZapateriaHuejutla/tenisDwaYn.png"
         alt="Producto 4" />
       <h2 style="font-size: 14px; color: black; margin-left: 5px;">Zapato Y</h2>
       <h2 style="color: red; font-size: 15px; margin-left: 5px;">$1,300</h2>
     </div>
-    <div class="card" (click)="redirectTo('/detail')">
+    <div class="card" (click)="redirectTo('detail')">
       <img
         src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712178969/productMeanZapateriaHuejutla/kzk983odej3gjownguo0.png"
         alt="Producto 4" />
       <h2 style="font-size: 14px; color: black; margin-left: 5px;">Zapato Z</h2>
       <h2 style="color: red; font-size: 15px; margin-left: 5px;">$1,300</h2>
     </div>
-    <div class="card" (click)="redirectTo('/detail')">
+    <div class="card" (click)="redirectTo('detail')">
       <img
         src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712179623/productMeanZapateriaHuejutla/wn5yz9hlyrqrnkqitgaz.png"
         alt="Producto 4" />
@@ -71,11 +71,15 @@ srcset="" />
 
 
 <!-- </body> -->
-
-<p-carousel [value]="images" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="3000">
-  <ng-template  [style.marginLeft]="'50px'" let-image pTemplate="item">
+<!-- <button (click)="redirectTo('detail-categia')">
+  <img
+    src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712179623/productMeanZapateriaHuejutla/wn5yz9hlyrqrnkqitgaz.png"
+    alt="Producto 4" />
+</button> -->
+<p-carousel  [value]="images" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="3000">
+  <ng-template   [style.marginLeft]="'50px'" let-image pTemplate="item">
   <!-- <ng-template  [style.marginLeft]="'50px'" let-image pTemplate="item"> -->
-    <img src="{{image}}" style="height: 150px; width: 150px;" alt="Image">
+    <img (click)="redirectTo('detail-categoria')"  src="{{image}}" style="height: 150px; width: 150px;" alt="Image">
   </ng-template>
 </p-carousel>
 

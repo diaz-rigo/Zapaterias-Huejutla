@@ -1,0 +1,153 @@
+<script>
+    AOS.init({
+        duration: 1200,
+    })
+
+</script>
+
+<body>
+    <div data-aos="zoom-out" class="contenedor-todo">
+        <div class="contenedor-descripcion">
+            <h1>Nike</h1>
+            <p>Descubre la amplia variedad de productos de Nike, incluyendo zapatillas, ropa deportiva y accesorios para
+                todas tus necesidades atléticas.</p>
+            <a href="enlace-a-la-pagina-de-la-categoria">Explorar Nike</a>
+        </div>
+        <div class="contenedor-imagen">
+            <img src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712073242/images/pngegg_3_hgb2cw.png"
+                alt="SNEAKER BLANCO 2669229" />
+        </div>
+        <div class="contenedor-otros-datos">
+        </div>
+    </div>
+</body>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .contenedor-todo {
+        background: -webkit-linear-gradient(0deg, #e3f5de 0%, #000000 100%);
+        background: linear-gradient(0deg, #e3e8e2 0%, #ffffff 100%);
+        padding: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 40px;
+        margin-left: auto;
+        margin-right: auto;
+        
+  border-radius: 0 0 50px 50px;
+        border-bottom: solid #ebeae8;
+        margin-bottom: 10px;
+    }
+
+    .contenedor-descripcion {
+        flex: 1;
+    }
+
+
+
+
+
+    .contenedor-imagen {
+        flex: 1;
+        text-align: right;
+    }
+
+    h1 {
+        margin-top: 0;
+        font-size: 36px;
+        font-weight: bold;
+    }
+
+    img {
+        width: 200px;
+        height: auto;
+    }
+
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+
+    .contenedor-descripcion h1 {
+        margin: 0;
+        font-size: 36px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .contenedor-descripcion p {
+        margin: 10px 0;
+        font-size: 16px;
+        color: #333;
+    }
+
+    .contenedor-descripcion a {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #333;
+        color: #fff;
+        text-decoration: none;
+    }
+
+
+    /* Estilos para dispositivos móviles */
+    @media only screen and (max-width: 768px) {
+
+ .contenedor-descripcion a {
+        background-color: #333;
+        color: #fff;
+        width: 100px;
+border-radius:50px ;    
+  display: inline-block;
+        padding: 10px;   
+        text-align: center;
+        font-size: 10px;
+    }
+
+
+        .contenedor-todo {
+
+            background: -webkit-linear-gradient(0deg, #c7cfc4 0%, #000000 100%);
+            background: linear-gradient(0deg, #e3e8e2 0%, #ececec 100%);
+            /* border: solid #ebeae8; */
+            border-radius: 30px;
+
+
+            margin-top: 5px;
+            height: 200px;
+            /* margin-left: 0px; */
+            width: 345px;
+            margin-left: -3px;
+            /* padding: 0; */
+            box-sizing: border-box;
+        }
+
+        .contenedor-descripcion p {
+            display: none;
+        }
+
+        .contenedor-descripcion {
+            margin-top: -5px;
+            /* padding: 100px; */
+
+        }
+
+        .contenedor-imagen img {
+        margin-top: 20px;
+        /* width: 0px; */
+            text-align: center;
+        }
+
+        /* img {
+        max-width: 10%;
+        height: auto;
+    } */
+    }
+</style>

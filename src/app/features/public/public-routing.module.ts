@@ -3,6 +3,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeView } from './view/home/home.view';
 import { DetailView } from './view/detail/detail.view';
+import { CategoriaView } from './view/categoria/categoria.view';
+import { RegistroUsuarioView } from './view/registro-usuario/registro-usuario.view';
+import { AcercaEmpresaView } from './view/acerca-empresa/acerca-empresa.view';
+import { AccesoUsuarioView } from './view/acceso-usuario/acceso-usuario.view';
 // import { DetaillProductComponent } from './view/detaill-product/detaill-product.component';
 const routes: Routes = [
   {
@@ -22,6 +26,31 @@ const routes: Routes = [
         // path: 'detail/:id',
         path: 'detail',
         component: DetailView,
+      },
+      {
+        // path: 'detail/:id',
+        path: 'detail-categoria',
+        component: CategoriaView,
+      },
+      {
+        // path: 'detail/:id',
+        path: 'detail-categoria',
+        component: CategoriaView,
+      },
+      {
+        // path: 'detail/:id',
+        path: 'registrarme',
+        component: RegistroUsuarioView,
+      },
+      {
+        // path: 'detail/:id',
+        path: 'acerca-empresa',
+        component: AcercaEmpresaView,
+      },
+      {
+        // path: 'detail/:id',
+        path: 'login',
+        component: AccesoUsuarioView,
       },
       // {
       //   title:"Politica |",

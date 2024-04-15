@@ -27,6 +27,10 @@ export class HomeView {
       // 'https://via.placeholder.com/600x300',
       // 'https://via.placeholder.com/600x300'
     ];
+
+
+
+    
     this.responsiveOptions = [
       {
         breakpoint: '1199px',
@@ -58,4 +62,6 @@ export class HomeView {
     console.log(route);
     this.router.navigate(['/public', route]); // Utiliza la navegación de Angular
   }
+
+  
 }

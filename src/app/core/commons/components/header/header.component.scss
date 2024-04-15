@@ -12,10 +12,12 @@
   background-color: rgba(255, 255, 255, 0.489);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-.pi{
+
+.pi {
   font-size: 1.2rem;
   margin-right: 8px;
 }
+
 .logo {
   flex: 1;
   display: flex;
@@ -23,14 +25,13 @@
 }
 
 .logo-img {
-
   width: 200px;
-  margin-right: 10px; /* Espacio entre los logos */
+  margin-right: 10px;
 }
 
 .logo-img2 {
   display: none;
-  margin-right: 0; /* Eliminar el margen entre los logos en dispositivos móviles */
+  margin-right: 0;
 }
 
 .menu ul {
@@ -60,21 +61,40 @@
 .menu ul li a:hover {
   color: #21556a;
   background: #c8c8c8b2;
+  cursor: pointer;
 }
 
-@media screen and (max-width: 768px) {
+// .menu ul ul {
+//   display: none;
+//   position: absolute;
+//   background-color: #333;
+//   top: 100%;
+//   left: 0;
+//   padding: 10px 0;
+// }
 
-  .pi-shopping-cart{
+// .menu ul li:hover ul {
+//   display: block;
+// }
+
+// .menu ul ul li {
+//   margin-right: 0;
+//   // width: 100%;
+// }
+
+@media screen and (max-width: 768px) {
+  .pi-shopping-cart {
     margin-right: 20px;
   }
-  .menu{
+
+  .menu {
     display: none;
-  }
-  .logo-img {
-    display: none;
-    margin-right: 0; /* Eliminar el margen entre los logos en dispositivos móviles */
   }
 
+  .logo-img {
+    display: none;
+    margin-right: 0;
+  }
 
   .logo-img2 {
     width: 16%;
@@ -82,5 +102,41 @@
     display: inline-block;
     margin-right: 0;
   }
+}
+
+
+
+/* Agregamos estilos para el submenú */
+.menu ul li ul {
+  display: none;
+  position: absolute;
+  top: 50px;
+  width: 150px;
+
+  right: 10px;
+  // left: 0;
+  background-color: #fff;
+  // padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.menu ul li:hover ul {
+  display: block;
+}
+
+.menu ul li ul li {
+  margin-right: 0;
+
+}
+
+.menu ul li ul li .aSubm {
+  color: #333;
+  // width: 100px;
+  cursor: pointer;
+  // padding: 5px;
+  text-align: center;
+  // margin-left: 10px;
+  // width: 150px;
 
 }

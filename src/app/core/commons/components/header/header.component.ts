@@ -1,5 +1,6 @@
 import { Component, HostListener, ViewEncapsulation } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -25,7 +26,19 @@ export class HeaderComponent {
   showMenu: boolean = false;
   showCart: boolean = false;
 
-  constructor() {
+
+  mostrarSubmenu: boolean = false;
+
+  toggleSubmenu() {
+    this.mostrarSubmenu = !this.mostrarSubmenu;
+  }
+
+  // redirectTo(ruta: string) {
+  //   // redirige a la ruta especificada
+  // }
+
+
+  constructor(private router :Router) {
     this.checkIsMobile();
     window.addEventListener('scroll', () => {
       this.isScrolled = window.scrollY > 0;
@@ -51,4 +64,21 @@ export class HeaderComponent {
   checkIsMobile(): void {
     this.isMobile = window.innerWidth <= 768;
   }
+
+
+
+  redirectTo(route: string): void {
+    // this.sidebarVisible = false;
+    console.log(route);
+    this.router.navigate(['/public', route]); // Utiliza la navegación de Angular
+  }
+
+
+
+  
+
+
+
+
+
 }
