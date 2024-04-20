@@ -14,16 +14,29 @@
     /* Ocultar miniaturas por defecto */
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
     .sneaker-details {
-        width: 100%;
+        width: 150%;
         /* Establecer el ancho del contenedor al 50% en pantallas grandes */
+        // flex-direction: column;
     }
 
     .thumbnails {
-        display: flex;
-        flex-direction: column;
+        display:flex;
+        background-color: dodgerblue;
+       margin-top: 10%;
+        flex-direction: row;
         gap: 10px;
+    }
+
+    .main-image {
+        background-color: rgb(31, 6, 6);
+    }
+
+    .main-image img {
+        height: 500%;
+
+
     }
 }
 
