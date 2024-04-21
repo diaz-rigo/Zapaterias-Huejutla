@@ -1,1 +1,22 @@
-<p>categoria-marca-carrucel works!</p>
+
+<div class="container">
+  <a>Marcas</a>
+</div>
+
+<p-carousel
+  [value]="images"
+  [numVisible]="3"
+  [numScroll]="1"
+  [circular]="true"
+  [autoplayInterval]="3000"
+>
+  <ng-template [style.marginLeft]="'50px'" let-image pTemplate="item">
+
+    <img
+      (click)="redirectTo('detail-categoria')"
+      src="{{image}}"
+      style="height: 150px; width: 150px"
+      alt="Image"
+    />
+  </ng-template>
+</p-carousel>

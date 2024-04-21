@@ -6,12 +6,24 @@ import { CategoriaListaComponent } from './categoria-lista/categoria-lista.compo
 import { CategoriaDetalleComponent } from './categoria-detalle/categoria-detalle.component';
 import { CategoriaMarcaCarrucelComponent } from './categoria-marca-carrucel/categoria-marca-carrucel.component';
 import { CategoriaMarcaListProductsComponent } from './categoria-marca-list-products/categoria-marca-list-products.component';
+import { CategoriaMarcaComponent } from './categoria-marca/categoria-marca.component';
+import { MaterialModule } from '../material/material.module';
 
-const COMPONENTS___ = [CategoriaDetalleComponent,CategoriaListaComponent,DetailImageComponent, DetailInfoComponent]; // Agrega los componentes
+const COMPONENTES = [
+
+  DetailImageComponent,
+  CategoriaMarcaComponent,
+  CategoriaMarcaListProductsComponent,
+  CategoriaMarcaCarrucelComponent,
+  CategoriaDetalleComponent,
+  CategoriaListaComponent,
+
+  DetailInfoComponent,
+];
 
 @NgModule({
-  declarations: [ COMPONENTS___, CategoriaMarcaCarrucelComponent, CategoriaMarcaListProductsComponent],
-  exports: [COMPONENTS___],
-  imports: [CommonModule],
+  declarations: [...COMPONENTES],
+  exports: [...COMPONENTES],
+  imports: [CommonModule,MaterialModule],
 })
 export class PublicComponentsModule {}

@@ -7,7 +7,7 @@ import { PublicComponentsModule } from './components/components.module';
 @NgModule({
   declarations: [],
   exports:[
-    CommonModule,
+
     PublicComponentsModule,
   ]
 })

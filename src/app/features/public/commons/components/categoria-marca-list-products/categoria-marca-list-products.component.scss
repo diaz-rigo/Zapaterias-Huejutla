@@ -1,0 +1,121 @@
+// cards categorias
+
+.container {
+
+  color: cadetblue;
+      font-family: Alata, Helvetica, sans-serif;
+      max-width: 1300px;
+      margin: 20px auto;
+      padding: 0 20px;
+
+    max-width: 1300px;
+    margin: 20px auto;
+    padding: 0 20px;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+  }
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+  /* Safari and Chrome */
+}
+
+.card {
+  flex: 0 0 auto;
+  width: 260px;
+  margin-right: 40px;
+  margin-top: 10px;
+  border: 1px solid #dddddd00;
+  border-radius: 5px;
+  overflow: hidden;
+  // transition: transform 0.3s ease;
+}
+
+div.card>img:hover {
+  width: 100%;
+  transform: scale(1.15);
+  height: auto;
+}
+
+div.card>img {
+  width: 100%;
+
+  height: auto;
+  margin-top: 20px;
+}
+
+div.card>img:hover {
+  transition: transform 0.3s ease;
+  transform: scale(1.15);
+}
+
+
+@media (max-width: 768px) {
+
+
+    .card {
+        margin-right: 10px;
+    }
+}
+
+// @layer primeng {
+.p-carousel-indicators {
+    display: none;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+// }
+
+@layer primeng {
+    .p-carousel-items-content {
+        overflow: hidden;
+        width: 50%;
+        margin-left: 8%;
+    }
+}
+
+
+
+
+// btn carurces ñ
+@layer primeng {
+
+    .p-carousel-prev,
+    .p-carousel-next {
+        align-self: center;
+        flex-grow: 0;
+        flex-shrink: 0;
+        display: flex;
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        position: relative;
+        border: none;
+        padding: 20px;
+        margin: 20px 60px;
+        box-shadow: azure;
+        background: transparent;
+    }
+}
+
+// icon btn carrucel .
+.p-element .p-icon-wrapper {
+    color: #21556a;
+
+}

@@ -1,19 +1,19 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { ButtonModule } from 'primeng/button'
+import { CardModule } from 'primeng/card'
+import { CarouselModule } from 'primeng/carousel'
+import { TimelineModule } from 'primeng/timeline'
 
-
-
-
-
-// const COMPONENTS___ = [DetailImageComponent, DetailInfoComponent]; // Agrega los componentes
-
-// @NgModule({
-//   declarations: [...COMPONENTS___],
+const PRIME_COMPONENTS = [
+  CarouselModule,
+  TimelineModule,
+  ButtonModule,
+  CardModule,
+]
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
+  imports: [...PRIME_COMPONENTS],
+  exports: [...PRIME_COMPONENTS],
 })
-export class MaterialModule { }
+export class MaterialModule {}

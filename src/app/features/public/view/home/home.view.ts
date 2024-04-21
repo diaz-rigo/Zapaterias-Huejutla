@@ -4,7 +4,10 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.view.html',
-  styleUrl: './home.view.scss',
+  styleUrls: [
+    './home.view.scss',
+    './figura.scss',
+  ],
   encapsulation: ViewEncapsulation.None
 })
 export class HomeView {
@@ -30,7 +33,7 @@ export class HomeView {
 
 
 
-    
+
     this.responsiveOptions = [
       {
         breakpoint: '1199px',
@@ -63,5 +66,5 @@ export class HomeView {
     this.router.navigate(['/public', route]); // Utiliza la navegación de Angular
   }
 
-  
+
 }

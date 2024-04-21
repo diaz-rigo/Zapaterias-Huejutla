@@ -1,85 +1,32 @@
+<div class="container">
+  <div class="contiene-Imagen">
+    <img
+      src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712073242/images/pngegg_3_hgb2cw.png"
+      alt=""
+    />
+  </div>
 
-  <div class="contiene-Imagen" style="
-  width: 400px;
-  margin-top: 10%;
-  margin-right: 20px;
-  margin-left: 60%;
-  height: 400px;
-  border-radius: 67% 33% 43% 51% / 60% 31% 54% 38%; background: linear-gradient(270deg, #003761 0%, #167274 100%);" >
-<img style="
-  width: 400px;
-  margin-top: 10%;
-  margin-right: 40px;
-  margin-left: 10%;
-  height: 400px;
-" src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712073242/images/pngegg_3_hgb2cw.png" alt=""
-srcset="" />
-</div>
   <div class="animated-title">
-  <div class="text-top">
-    <div>
-      <span>Bienvenido</span>
-      <span>a Zapaterias Huejutla_</span>
+    <div class="text-top">
+      <div>
+        <span>Bienvenido</span>
+        <span>a Zapaterias Huejutla</span>
+      </div>
     </div>
-  </div>
-  <div class="text-bottom">
-    <div >
-      <img style="width: 100px; height: 100px"
-        src="https://res.cloudinary.com/dkfaglomz/image/upload/v1712038934/public/snucbs5916vwdiksyfwx.png" alt=""
-        srcset="" />
+    <div class="text-bottom">
+      <div>
+        <img
+          style="width: 100px; height: 100px"
+    src="https://res.cloudinary.com/dkfaglomz/image/upload/v1712038934/public/snucbs5916vwdiksyfwx.png"
+          alt=""
+          srcset=""
+        />
+      </div>
     </div>
   </div>
 </div>
 
-<div class="container">
-  <h2 style="color: #167274;">Categorías</h2>
-  <a>Novedades</a>
-  <div class="carousel">
-    <div class="card" (click)="redirectTo('detail')">
-      <img (click)="redirectTo('detail')"
-        src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712073242/images/pngegg_3_hgb2cw.png"
-        alt="Producto 4" />
-      <h2 style="font-size: 14px; color: black; margin-left: 5px;">Zapato X</h2>
-      <h2 style="color: red; font-size: 15px; margin-left: 5px;">$1,300</h2>
-    </div>
-    <div class="card" (click)="redirectTo('detail')">
-      <img (click)="redirectTo('detail')"
-        src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712178819/productMeanZapateriaHuejutla/tenisDwaYn.png"
-        alt="Producto 4" />
-      <h2 style="font-size: 14px; color: black; margin-left: 5px;">Zapato Y</h2>
-      <h2 style="color: red; font-size: 15px; margin-left: 5px;">$1,300</h2>
-    </div>
-    <div class="card" (click)="redirectTo('detail')">
-      <img
-        src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712178969/productMeanZapateriaHuejutla/kzk983odej3gjownguo0.png"
-        alt="Producto 4" />
-      <h2 style="font-size: 14px; color: black; margin-left: 5px;">Zapato Z</h2>
-      <h2 style="color: red; font-size: 15px; margin-left: 5px;">$1,300</h2>
-    </div>
-    <div class="card" (click)="redirectTo('detail')">
-      <img
-        src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712179623/productMeanZapateriaHuejutla/wn5yz9hlyrqrnkqitgaz.png"
-        alt="Producto 4" />
-      <h2 style="font-size: 14px; color: black; margin-left: 5px;">Zapato W</h2>
-      <h2 style="color: red; font-size: 15px; margin-left: 5px;">$1,300</h2>
-    </div>
-  </div>
-</div>
-<div class="container">
-  <a>Marcas</a>
-</div>
 
-
-<!-- </body> -->
-<!-- <button (click)="redirectTo('detail-categia')">
-  <img
-    src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712179623/productMeanZapateriaHuejutla/wn5yz9hlyrqrnkqitgaz.png"
-    alt="Producto 4" />
-</button> -->
-<p-carousel  [value]="images" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="3000">
-  <ng-template   [style.marginLeft]="'50px'" let-image pTemplate="item">
-  <!-- <ng-template  [style.marginLeft]="'50px'" let-image pTemplate="item"> -->
-    <img (click)="redirectTo('detail-categoria')"  src="{{image}}" style="height: 150px; width: 150px;" alt="Image">
-  </ng-template>
-</p-carousel>
+<app-categoria-marca-list-products></app-categoria-marca-list-products>
+<app-categoria-marca-carrucel></app-categoria-marca-carrucel>
 
