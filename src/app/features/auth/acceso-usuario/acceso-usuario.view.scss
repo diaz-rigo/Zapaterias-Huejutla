@@ -1,0 +1,142 @@
+/* Estilos base */
+.cuerpo-login {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    border-radius: 50px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.card {
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow: 5px 0 10px #7d7d7d;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.card-title {
+    color: #4d9f67;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    margin-bottom: 5%;
+    color: #4d9f67;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #6e8d72;
+    border-radius: 4px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #3f51b5;
+    box-shadow: 0 0 0 0.2rem rgba(63, 81, 181, 0.25);
+}
+
+.btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+}
+
+.divider {
+    border-top: 1px solid #ccc;
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+.text-muted {
+    color: hsl(208, 7%, 46%);
+}
+
+.btn-block {
+    border: solid #4d679f 1px;
+    display: block;
+    background-color: #fff;
+    width: 100%;
+}
+
+.btn-block:hover {
+    border: solid #4d679f 1px;
+    display: block;
+    color: aliceblue;
+    background-color: #82a5d5;
+    width: 100%;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-3 {
+    margin-top: 1rem;
+}
+
+#facebook {
+    background-color: #4d679f;
+    color: #fff;
+    border: none;
+}
+
+#google {
+    background-color: #d85949;
+    color: #fff;
+    border: none;
+}
+
+#facebook:hover,
+#google:hover {
+    opacity: 0.9;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+    .container {
+        max-width: 300px;
+    }
+
+    .card-body {
+        padding: 1rem;
+       width: 300px;
+
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+    }
+
+    .form-control {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
+
+    .btn-lg {
+        padding: 0.8rem 1.6rem;
+        font-size: 0.9rem;
+    }
+}

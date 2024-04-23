@@ -1,10 +1,11 @@
+import { AuthModule } from './../auth/auth.module';
+import { AccesoUsuarioView } from './../auth/acceso-usuario/acceso-usuario.view';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { PublicRoutingModule } from './public-routing.module';
 import { PublicComponent } from './public.component';
-import { AccesoUsuarioView } from './view/acceso-usuario/acceso-usuario.view';
 import { AcercaEmpresaView } from './view/acerca-empresa/acerca-empresa.view';
 import { CategoriaView } from './view/categoria/categoria.view';
 import { DetailView } from './view/detail/detail.view';

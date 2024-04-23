@@ -6,7 +6,7 @@ import { DetailView } from './view/detail/detail.view';
 import { CategoriaView } from './view/categoria/categoria.view';
 import { RegistroUsuarioView } from './view/registro-usuario/registro-usuario.view';
 import { AcercaEmpresaView } from './view/acerca-empresa/acerca-empresa.view';
-import { AccesoUsuarioView } from './view/acceso-usuario/acceso-usuario.view';
+import { AccesoUsuarioView } from '../auth/acceso-usuario/acceso-usuario.view';
 // import { DetaillProductComponent } from './view/detaill-product/detaill-product.component';
 const routes: Routes = [
   {

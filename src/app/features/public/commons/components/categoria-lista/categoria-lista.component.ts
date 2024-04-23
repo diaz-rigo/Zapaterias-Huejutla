@@ -8,7 +8,17 @@ import { Router } from '@angular/router';
 })
 export class CategoriaListaComponent {
   // 4
-  
+  categories = [
+    { name: 'Zapatos', selected: false },
+    { name: 'Tenis', selected: false },
+    { name: 'Sandalias', selected: false },
+    { name: 'Botas', selected: false }
+  ];
+
+  selectCategory(category: any) {
+    this.categories.forEach(cat => cat.selected = false); // Deseleccionar todas las categorías
+    category.selected = true; // Seleccionar la categoría clicada
+  }
 
   constructor(private router:Router) {
     

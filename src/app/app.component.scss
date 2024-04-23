@@ -8,16 +8,6 @@
   // Estilos para el encabezado si es necesario
 }
 
-.content {
-  flex: 1;
-  padding: 20px;
-
-  @media screen and (max-width: 768px) {
-    width: 10%;
-    margin-top: 50px;
-    padding: 10px; // Ajusta el padding para dispositivos móviles
-  }
-}
 
 .app-footer {
   // Estilos para el pie de página si es necesario
