@@ -10,7 +10,8 @@
 }
 
 .thumbnails {
-    display: none;
+    display: flex;
+    flex-direction: column;
     /* Ocultar miniaturas por defecto */
 }
 
@@ -22,9 +23,9 @@
     }
 
     .thumbnails {
-        display:flex;
+        display: flex;
         background-color: dodgerblue;
-       margin-top: 10%;
+        margin-top: 10%;
         flex-direction: row;
         gap: 10px;
     }
@@ -41,14 +42,18 @@
 }
 
 .thumbnails img {
+    gap: 10px;
     width: 100px;
     border: 1px solid #dddddd79;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.301);
     cursor: pointer;
 }
 
+
+
 .thumbnails img:hover {
     border-color: #b2b1b1;
+    transform: scale(2px);
 }
 
 .main-image {

@@ -3,11 +3,46 @@ $secondary-color: #6c757d;
 $gray-color: #d3d3d3;
 $white-color: #fff;
 
+// body {
+//     margin: 0;
+//     padding: 0;
+//     // background-color: $gray-color;
+// }
+
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    // background-color: $gray-color;
+    background-image: url('https://res.cloudinary.com/dvvhnrvav/image/upload/v1713995742/productMeanZapateriaHuejutla/imagenes/cqtibe2gpqa0oeo8c1hu.jpg');
+    background-size: cover;
+    /* Cubrir todo el área del body */
+    background-position: center;
+    /* Centrar la imagen */
+    color: #fff;
+    /* Color del texto */
+    backdrop-filter: grayscale(50%);
+    /* Filtro para el fondo */
+}
+
+
+// Aplicar el filtro a la imagen de fondo */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    // background-color: rgba(0, 0, 0, 0.5);
+    /* Fondo semitransparente */
+    backdrop-filter: grayscale(50%);
+    /* Aplicar el filtro */
+    z-index: -1;
+    /* Colocarlo detrás del contenido */
+}
+
+.search-container {
+    color: rgb(0, 0, 0);
 }
 
 .container {
@@ -16,30 +51,63 @@ body {
     align-items: center;
     /* Alinear verticalmente el contenido */
     height: 100vh;
+    margin-left: 60%;
+    // margin-right: 50px;
+
+
+    margin-bottom: 0px;
     /* Ocupar toda la altura del viewport */
+}
+
+// .container {
+//     display: flex;
+//     justify-content: center;
+// }
+
+.header {
+        z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.932);
+    color: black;
+    position: fixed;
+    
 }
 
 .formulario {
     width: 400px;
     /* Ajustar el ancho del formulario */
-    // background-color: $white-color;
+    background-color: rgba(243, 241, 240, 0.788);
     padding: 30px;
     border-radius: 10px;
-    // box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-right: 50px;
+    backdrop-filter: blur(2px);
+    box-shadow: 0 10px 10px rgba(44, 44, 44, 0.915);
     /* Mover el formulario a la izquierda */
 }
 
-.logo {
-    text-align: center;
-    margin-bottom: 20px;
+// .logo-reg {
+//     // text-align: center;
+//     // margin-bottom: 50px;
+//     margin-top: 50%;
+//     position: relative;
+// }
+
+// .logo-reg img {
+//     width: 100%;
+//     /* Ajustar el ancho del logo */
+//     height: auto;
+//     margin-left: 100%;
+//     margin-right: 0px;
+//     /* Mantener la proporción de aspecto */
+// }
+
+
+.logo-reg {
+    display: grid;
+    place-items: center;
 }
 
-.logo img {
-    width: 100px;
-    /* Ajustar el ancho del logo */
+.logo-imagen-radiu {
+    max-width: 10%;
     height: auto;
-    /* Mantener la proporción de aspecto */
 }
 
 h1 {

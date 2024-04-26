@@ -21,7 +21,7 @@
       <!-- Colocar en caso de que haya sido logeado <li><a href="#">Productos</a></li> -->
       <li><a (click)="redirectTo('acerca-empresa')">Nosotros</a></li>
       <li class="usuario">
-        <img style="margin-right: 10px; width: 20px; height: 20px;"
+        <img
           src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1713033578/productMeanZapateriaHuejutla/imagenes/usuario_b6nr6o.png"
           alt="">
         <ul>
@@ -31,7 +31,7 @@
       </li>
     </ul>
   </nav>
-  <span class="pi pi-shopping-cart " pBadge value="2" severity="warning"></span>
+  <span class="pi pi-shopping-cart" pBadge value="2" severity="warning"></span>
 
   <i class="pi pi-bars" *ngIf="isMobile && !showCart" (click)="toggleMenu()"></i>
 

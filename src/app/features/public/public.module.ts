@@ -13,9 +13,11 @@ import { HomeView } from './view/home/home.view';
 import { NotFoundView } from './view/not-found/not-found.view';
 import { PoliticasView } from './view/politicas/politicas.view';
 import { RegistroUsuarioView } from './view/registro-usuario/registro-usuario.view';
-
+import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 import { PublicCommonsModule } from './commons/commons.module';
 import { MaterialModule } from './commons/material/material.module';
+import { PasswordRecoveryComponent } from './view/password-recovery/password-recovery.component';
+import { CartComponent } from './view/cart/cart.component';
 
 const VIEW_COMPONENTS = [
   RegistroUsuarioView,
@@ -25,15 +27,17 @@ const VIEW_COMPONENTS = [
   HomeView,
   PoliticasView,
   AcercaEmpresaView,
-  AccesoUsuarioView
+  AccesoUsuarioView,AccesoUsuarioView
 ];
 
 @NgModule({
   declarations: [
     PublicComponent,
     ...VIEW_COMPONENTS,
+    PasswordRecoveryComponent,
+    CartComponent,
   ],
-  imports: [
+  imports: [FormsModule, ReactiveFormsModule  ,
     CommonModule,
     RouterModule,
     MaterialModule,

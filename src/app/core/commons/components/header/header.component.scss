@@ -64,24 +64,6 @@
   cursor: pointer;
 }
 
-// .menu ul ul {
-//   display: none;
-//   position: absolute;
-//   background-color: #333;
-//   top: 100%;
-//   left: 0;
-//   padding: 10px 0;
-// }
-
-// .menu ul li:hover ul {
-//   display: block;
-// }
-
-// .menu ul ul li {
-//   margin-right: 0;
-//   // width: 100%;
-// }
-
 @media screen and (max-width: 768px) {
   .pi-shopping-cart {
     margin-right: 20px;
@@ -103,9 +85,6 @@
     margin-right: 0;
   }
 }
-
-
-
 /* Agregamos estilos para el submenú */
 .menu ul li ul {
   display: none;
@@ -138,5 +117,16 @@
   text-align: center;
   // margin-left: 10px;
   // width: 150px;
+
+}
+
+.p-inputgroup {
+color: black;
+}
+
+.menu ul li img {
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
 
 }
