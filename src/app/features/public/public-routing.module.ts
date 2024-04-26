@@ -7,6 +7,7 @@ import { CategoriaView } from './view/categoria/categoria.view';
 import { RegistroUsuarioView } from './view/registro-usuario/registro-usuario.view';
 import { AcercaEmpresaView } from './view/acerca-empresa/acerca-empresa.view';
 import { AccesoUsuarioView } from '../auth/acceso-usuario/acceso-usuario.view';
+import { AdminHomeView } from '../admin/admin-home/admin-home.view';
 // import { DetaillProductComponent } from './view/detaill-product/detaill-product.component';
 const routes: Routes = [
   {
@@ -93,6 +94,11 @@ const routes: Routes = [
       //   component: NotFondViews,
       // },
     ],
+  },
+
+  {
+    path: 'admin-home',
+    component: AdminHomeView,
   },
 ];
 @NgModule({

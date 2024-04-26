@@ -1,7 +1,8 @@
 :host {
-  outline: 1px solid rgb(10, 145, 255);
+  outline: 1px solid rgb(0, 1, 2);
 
 }
+
 .carousel {
 
 
@@ -51,27 +52,42 @@ div.card>img:hover {
 @media (max-width: 768px) {
 
 
-    .card {
-        margin-right: 10px;
-    }
+  .card {
+
+    margin-right: 10px;
+  }
+
+  // @layer primeng {
+
+  //   .p-component,
+  //   .p-component {
+  //     border: dashed 3px #ff9500;
+  //     overflow: hidden;
+  //     width: 500px;
+  //   }
+  // }
+
 }
 
 // @layer primeng {
 .p-carousel-indicators {
-    display: none;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
+
+  display: none;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 // }
 
 @layer primeng {
-    .p-carousel-items-content {
-        overflow: hidden;
-        width: 50%;
-        margin-left: 8%;
-    }
+  .p-carousel-items-content {
+    margin-bottom: 20px;
+
+    overflow: hidden;
+    width: 50%;
+    margin-left: 8%;
+  }
 }
 
 
@@ -80,27 +96,27 @@ div.card>img:hover {
 // btn carurces ñ
 @layer primeng {
 
-    .p-carousel-prev,
-    .p-carousel-next {
-        align-self: center;
-        flex-grow: 0;
-        flex-shrink: 0;
-        display: flex;
-        cursor: pointer;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-        position: relative;
-        border: none;
-        padding: 20px;
-        margin: 20px 60px;
-        box-shadow: azure;
-        background: transparent;
-    }
+  .p-carousel-prev,
+  .p-carousel-next {
+    align-self: center;
+    flex-grow: 0;
+    flex-shrink: 0;
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    border: none;
+    padding: 20px;
+    margin: 20px 60px;
+    box-shadow: azure;
+    background: transparent;
+  }
 }
 
 // icon btn carrucel .
 .p-element .p-icon-wrapper {
-    color: #21556a;
+  color: #21556a;
 
 }

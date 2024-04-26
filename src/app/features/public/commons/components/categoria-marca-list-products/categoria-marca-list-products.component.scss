@@ -1,23 +1,23 @@
 // cards categorias
 
 .container {
-  outline: 1px solid red;
+  outline: 1px solid rgb(255, 222, 222);
   color: cadetblue;
-      font-family: Alata, Helvetica, sans-serif;
-      max-width: 1300px;
-      margin: 20px auto;
-      padding: 0 20px;
+  font-family: Alata, Helvetica, sans-serif;
+  max-width: 1300px;
+  margin: 20px auto;
+  padding: 0 20px;
 
-    max-width: 1300px;
-    margin: 20px auto;
-    padding: 0 20px;
-  }
+  max-width: 1300px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
 
-  h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #333;
-  }
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
 
 .carousel {
   display: flex;
@@ -66,27 +66,78 @@ div.card>img:hover {
 @media (max-width: 768px) {
 
 
-    .card {
-        margin-right: 10px;
+  .card {
+    border: dashed 3px #40ff00;
+    margin-right: 10px;
+    height: 3%;
+    width: 50%;
+
+  }
+
+  .card img {
+    border: dashed 3px #000000;
+    height: 50px;
+
+  }
+
+
+  @layer primeng {
+    .p-carousel-items-content {
+      border: dashed 3px #ff9500;
+      overflow: hidden;
+   width: 500px;
     }
+  }
+
+
+
+
+  // btn carurces ñ
+  @layer primeng {
+
+    .p-carousel-prev,
+    .p-carousel-next {
+      border: dashed 3px #000000;
+      align-self: center;
+      flex-grow: 0;
+      flex-shrink: 0;
+      display: flex;
+      cursor: pointer;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      border: none;
+      padding: 0px;
+      margin: 10px 10px;
+      box-shadow: azure;
+      background: transparent;
+    }
+  }
+
+
+
+
+
+
 }
 
 // @layer primeng {
 .p-carousel-indicators {
-    display: none;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
+  display: none;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 // }
 
 @layer primeng {
-    .p-carousel-items-content {
-        overflow: hidden;
-        width: 50%;
-        margin-left: 8%;
-    }
+  .p-carousel-items-content {
+    overflow: hidden;
+    width: 50%;
+    margin-left: 8%;
+  }
 }
 
 
@@ -95,27 +146,38 @@ div.card>img:hover {
 // btn carurces ñ
 @layer primeng {
 
-    .p-carousel-prev,
-    .p-carousel-next {
-        align-self: center;
-        flex-grow: 0;
-        flex-shrink: 0;
-        display: flex;
-        cursor: pointer;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-        position: relative;
-        border: none;
-        padding: 20px;
-        margin: 20px 60px;
-        box-shadow: azure;
-        background: transparent;
-    }
+  .p-carousel-prev,
+  .p-carousel-next {
+    align-self: center;
+    flex-grow: 0;
+    flex-shrink: 0;
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    border: none;
+    padding: 20px;
+    margin: 20px 60px;
+    box-shadow: azure;
+    background: transparent;
+  }
 }
 
 // icon btn carrucel .
 .p-element .p-icon-wrapper {
-    color: #21556a;
+  color: #21556a;
+}
 
+
+
+.precio {
+  color: red;
+  font-size: 15px;
+  margin-left: 5px;
+}
+
+.title-categorias {
+  color: #167274
 }

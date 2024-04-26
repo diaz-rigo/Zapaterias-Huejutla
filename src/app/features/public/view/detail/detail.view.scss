@@ -1,19 +1,27 @@
 .container {
     display: flex;
-    justify-content: space-between;
+    // border: dashed 3px #6d9bff;
+    position: relative;
+
+    // justify-content: space-between;
     margin-top: 100px;
 
 }
 
 .detail-img {
-// background: #00c28e;
-margin-left:   50px;  
-margin-right:   auto;  
+    // border: dashed 3px #121826;
+
+    // background: #00c28e;
+    // margin-left:   0px;  
+    // margin-right:   auto;  
 }
+
 .detail-info {
-// display: ruby;
-margin-right: 300px;
+
+    // display: ruby;
+    margin-right: 100px;
 }
+
 @media (max-width: 768px) {
     .container {
         flex-direction: column;

@@ -1,45 +1,94 @@
 .sneaker-details {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 20px;
-    margin-left: auto;
+    // justify-content: space-between;
+    // align-items: center;
+    width: 150%;
+    // padding: 10px;
+    margin-left: 100px;
+    // margin-left: auto;
     margin-right: auto;
 }
 
 .thumbnails {
+    justify-content: center;
+    gap: 20px;
     display: flex;
     flex-direction: column;
     /* Ocultar miniaturas por defecto */
 }
 
+
+
+
+
 @media (max-width: 768px) {
     .sneaker-details {
-        width: 150%;
+        width: 370px;
+        // padding: auto;
+        // padding: 20px;
+        position: relative;
+        // position: absolute;
+        justify-content: center;
+        border: dashed 3px #ca57be;
+        // margin-left: 50px;
+        height: 450px;
+        margin: 10px;
+        // margin-left: -10px;
         /* Establecer el ancho del contenedor al 50% en pantallas grandes */
         // flex-direction: column;
     }
 
     .thumbnails {
+
+
+        border: dashed 3px #40ff00;
         display: flex;
-        background-color: dodgerblue;
-        margin-top: 10%;
+        // background-color: dodgerblue;
+        margin-top: 90%;
+        margin-left: 0;
         flex-direction: row;
-        gap: 10px;
-    }
-
-    .main-image {
-        background-color: rgb(31, 6, 6);
-    }
-
-    .main-image img {
-        height: 500%;
-
+        // margin-left: 40px;
+        gap: 0px;
+        // order: 1;
 
     }
+
+    div .thumbnails img {
+        // order: 1;
+        // justify-content: center;
+        // z-index: 1;
+        width: 120px;
+       
+        border: dashed 3px #000000;
+
+
+    }
+
+
+    div .main-image img {
+        // order: 1;
+        // justify-content: center;
+        // z-index: 1;
+        width: 300px;
+        // margin-top: 10%;
+        // margin-bottom: -100%;
+        // margin-left: -350px;
+        margin-left: -280px;
+        // position: relative;
+        // justify-items: center;
+        background-color: rgba(30, 143, 255, 0);
+        border: dashed 3px #000000;
+
+
+    }
+
+
 }
+
+
+
+
 
 .thumbnails img {
     gap: 10px;
@@ -56,13 +105,10 @@
     transform: scale(2px);
 }
 
-.main-image {
-    flex: 1;
-    padding: 20px;
-}
-
 .main-image img {
-    max-width: 80%;
+
+    width: 70%;
+
     height: auto;
     filter: drop-shadow(30px 10px 15px #a8a8a8);
     // border: 1px solid #dddddd79;dr

@@ -12,11 +12,6 @@ import { Router } from '@angular/router';
 export class AccesoUsuarioView {
 
   formLogin: FormGroup;
-  
-  // email!: string;
-  // password!: string;
-
-
   constructor(private router:Router,private authService: AuthService, private fb :FormBuilder) {
     this.formLogin = this.fb.group({
       email: ['', Validators.required],

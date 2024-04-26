@@ -84,32 +84,41 @@
   }
 }
 
-.contiene-Imagen > img {
+.contiene-Imagen>img {
   animation: float 3s infinite ease-in-out;
 }
 
-.contiene-Imagen > img {
+.contiene-Imagen>img {
   animation: float 3s infinite ease-in-out;
 }
+
 /* Media query for mobile devices */
 @media (max-width: 600px) {
   .contiene-Imagen {
     // outline: 5px solid rgb(221, 255, 0);
-    margin-top: 30%;
+
+    margin-top: 100px;
+
     margin-left: auto;
     margin-right: auto;
-    width: 400px;
-    height: 400px;
+    width: 350px;
+    // height: 350px;
+    height: auto;
+    border: dashed 3px #ffdd00;
     border-radius: 67% 33% 43% 51% / 60% 31% 54% 38%;
     background: linear-gradient(270deg, #003761 0%, #167274 100%);
+
   }
 
   .contiene-Imagen img {
     // outline: 1px solid red;
+    border: dashed 3px #0004ff;
+    padding: 0;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 400px;
-    // width: 300px;
+    width: 340px;
+    height: auto;
+    // -webkit-box-reflect: below 1px linear-gradient(transparent,#0008);
   }
 }

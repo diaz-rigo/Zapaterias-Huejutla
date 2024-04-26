@@ -98,6 +98,9 @@ main {
     color: #333;
 }
 
+
+
+
 .product-card p {
     margin-bottom: 5px;
     color: #666;
@@ -106,7 +109,7 @@ main {
 
 .product-card a {
     display: inline-block;
-    background-color: #ffefda;
+    background-color: #ffe2bc;
     color: #565656;
     padding: 6px 12px;
 
@@ -117,7 +120,7 @@ main {
 }
 
 .product-card a:hover {
-    background-color: #ffdd8e;
+    background-color: #f4d07b;
 }
 
 
@@ -164,9 +167,7 @@ main {
     .product-card h2 {
         font-size: 10px;
     }
-    .precio{
-    color: red;
-    }
+
 
     .product-card p {
         margin-bottom: 5px;
@@ -179,13 +180,17 @@ main {
     }
 }
 
+.precio {
+    color: red;
+}
 
 .catFilter {
     /* display: inline-flexbox; */
     padding: 5px 10px;
-    background-color: #d9d9d9;
+    background-color: #ffffff;
     color: #101010ef;
     margin-top: 10px;
+    border: solid 1px rgba(108, 142, 145, 0.696);
     /* Añade espacio en la parte superior */
     text-decoration: none;
     border-radius: 50px;
@@ -225,6 +230,7 @@ main {
 // }
 
 .catFilter.selected {
+    color: aliceblue;
     background-color: rgb(69, 166, 199);
     /* Color de fondo cuando esté seleccionado */
 }

@@ -10,12 +10,12 @@
   [circular]="true"
   [autoplayInterval]="3000"
 >
-  <ng-template [style.marginLeft]="'50px'" let-image pTemplate="item">
+  <ng-template [style.marginLeft]="'40px'" let-image pTemplate="item">
 
     <img
       (click)="redirectTo('detail-categoria')"
       src="{{image}}"
-      style="height: 150px; width: 150px"
+      style="height: 150px; width: 150px;border: dashed 3px rgb(82, 168, 29);"
       alt="Image"
     />
   </ng-template>
