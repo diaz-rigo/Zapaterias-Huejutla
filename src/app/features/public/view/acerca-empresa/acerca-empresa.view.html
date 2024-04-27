@@ -139,8 +139,8 @@ filter: blur(3px);
                 style=" border-radius: 30px; padding: 20px; background: #d1cfcf53; backdrop-filter: blur(5px);"> Lo
                 mejores amigos de tus pies</h1>
             <p style="z-index:1" class="lead font-weight-normal">ofrecemos las mejores marcas para toda la familia, FLEXI, PIRMA, REYME, COQUETA, dentro de una amplia gama de marcas.</p>
-            <a class="btn btn-outline-secondary" href="#">Coming soon</a>
-        <i class="pi pi-angle-down fadeout animation-duration-1000 animation-iteration-infinite" style="fontsize: 2rem"></i>
+           
+        <i class="pi pi-angle-down fadeout" style="font-size: 2rem"></i>
         <p-scrollTop></p-scrollTop>
         </div>
         <div class="product-device shadow-sm d-none d-md-block"></div>
@@ -150,8 +150,8 @@ filter: blur(3px);
 
 
     <!-- <body> -->
-
-
+<div class="container">
+    <h2>Información</h2>
     <p-timeline [value]="events" align="alternate" styleClass="customized-timeline">
         <ng-template pTemplate="marker" let-event>
             <span class="custom-marker shadow-2" [style.backgroundColor]="event.color">
@@ -173,7 +173,9 @@ filter: blur(3px);
             </p-card>
         </ng-template>
     </p-timeline>
+    </div>
     <!-- </body> -->
+
 
 
 

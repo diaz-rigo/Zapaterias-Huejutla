@@ -1,13 +1,14 @@
 .slogan {
     font-size: 18px;
-    color: #ff0000;
+    color: #ff8c00;
     margin-top: auto;
 }
 
 .price {
     font-size: 24px;
     font-weight: bold;
-    color: #333;
+    color: #ff0000;
+
     margin-top: 10px;
 }
 
@@ -92,15 +93,53 @@
     /* Cambia el color del borde al enfocar */
 }
 
+.product-info {
+    display: flex;
+    flex-direction: row;
+    /* Por defecto, los elementos están en fila */
+    // flex-wrap: wrap;
+    /* Permite que los elementos se envuelvan si no caben en una sola fila */
+    // justify-content: space-between;
+    gap: 50px;
+}
+
 
 
 @media (max-width: 768px) {
+
+
+    .product-info {
+        display: flex;
+        // flex-direction: row;
+        /* Por defecto, los elementos están en fila */
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+
+    }
+
+    // @media (max-width: 767px) {
+    /* Cambiar a columnas en tamaños de pantalla de celular */
+    // }
+
+    /* Estilos para el eslogan */
+    .slogan {
+        margin-right: 10px;
+        /* Espacio entre el eslogan y el precio */
+    }
+
+    /* Estilos para el precio */
+    .price {
+        font-weight: bold;
+        /* Texto en negrita */
+    }
+
 
     .details-info {
         // border: dashed 3px #000000;
         width: 0px;
         padding: 20px;
-
 
 
     }

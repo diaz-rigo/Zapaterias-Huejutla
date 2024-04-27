@@ -1,7 +1,7 @@
 <p-sidebar [(visible)]="sidebarVisible2" position="right">
   <h3>Menú</h3>
   <ul>
-    <li><a routerLink="/">Inicio</a></li>
+    <li><a (click)="redirectTo('/')">Inicio</a></li>
     <li><a routerLink="/perfil">Perfil</a></li>
     <li><a routerLink="/cuenta">Cuenta</a></li>
     <li><a routerLink="/carrito">Carrito</a></li>
@@ -34,9 +34,9 @@
   </div>
 
   <nav class="menu">
-    <ul>
-      <li><a class="a" >Inicio</a></li>
-      <li><a class="a" >Nosotros</a></li>
+    <ul> 
+      <li><a (click)="redirectTo('/')" class="a">Inicio</a></li>
+      <!-- <li><a class="a" >Nosotros</a></li> -->
       <li><a class="a" >Servicios</a></li>
       <!-- Colocar en caso de que haya sido logeado <li><a href="#">Productos</a></li> -->
       <li><a class="a"    (click)="redirectTo('acerca-empresa')">Nosotros</a></li>
