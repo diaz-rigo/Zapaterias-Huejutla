@@ -25,7 +25,7 @@ export class HeaderComponent {
   isMobile: boolean = false;
   showMenu: boolean = false;
   showCart: boolean = false;
-
+  sidebarVisible2: boolean = false;
 
   mostrarSubmenu: boolean = false;
 
@@ -58,6 +58,8 @@ export class HeaderComponent {
   }
 
   toggleMenu(): void {
+    console.log("presionado")
+    this.sidebarVisible2 = !this.sidebarVisible2;
     this.showMenu = !this.showMenu;
   }
 

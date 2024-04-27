@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+import { ScrollTopModule } from 'primeng/scrolltop';
 import { PublicRoutingModule } from './public-routing.module';
 import { PublicComponent } from './public.component';
 import { AcercaEmpresaView } from './view/acerca-empresa/acerca-empresa.view';
@@ -39,7 +40,7 @@ const VIEW_COMPONENTS = [
   ],
   imports: [FormsModule, ReactiveFormsModule  ,
     CommonModule,
-    RouterModule,
+    RouterModule, ScrollTopModule,
     MaterialModule,
     PublicCommonsModule,
     PublicRoutingModule,

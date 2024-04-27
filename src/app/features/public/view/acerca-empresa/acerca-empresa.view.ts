@@ -7,6 +7,7 @@ interface EventItem {
   icon?: string;
   color?: string;
   image?: string;
+  
 }
 
 @Component({
@@ -21,8 +22,9 @@ export class AcercaEmpresaView {
 
   constructor() {
     this.events = [
-      { status: 'Ordered',  icon: 'pi pi-shopping-cart', color: '#9C27B0', image: 'game-controller.jpg' },
-      { status: 'Processing',icon: 'pi pi-cog', color: '#673AB7' },
+      { status: 'Direccion',  icon: 'pi pi-shopping-cart', color: '#9C27B0', image: 'game-controller.jpg' },
+   
+      { status: 'Processing', icon: 'pi pi-cog', color: '#673AB7' },
       // { status: 'Shipped', date: '15/10/2020 16:15', icon: 'pi pi-shopping-cart', color: '#FF9800' },
       // { status: 'Delivered', date: '16/10/2020 10:00', icon: 'pi pi-check', color: '#607D8B' }
     ];
