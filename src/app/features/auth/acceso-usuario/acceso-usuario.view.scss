@@ -1,142 +1,152 @@
-/* Estilos base */
-.cuerpo-login {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
 .container {
-    border-radius: 50px;
-    width: 100%;
+    margin-top: 100px;
     max-width: 400px;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.card {
-    border-radius: 20px;
+
+.login-container {
+    width: 50%;
     background-color: #fff;
-    box-shadow: 5px 0 10px #7d7d7d;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.card-body {
-    padding: 2rem;
-}
 
-.card-title {
-    color: #4d9f67;
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 1.5rem;
+
+h2 {
+    text-align: center;
 }
 
 .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 15px;
 }
 
-.form-label {
-    margin-bottom: 5%;
-    color: #4d9f67;
+label {
+    display: block;
+    color: rgb(23, 145, 104);
+    font-weight: bold;
 }
 
-.form-control {
+input {
     width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #6e8d72;
-    border-radius: 4px;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-.form-control:focus {
-    outline: none;
-    border-color: #3f51b5;
-    box-shadow: 0 0 0 0.2rem rgba(63, 81, 181, 0.25);
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #168b6f;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.btn-lg {
-    padding: 1rem 2rem;
-    font-size: 1rem;
+button:hover {
+    background-color: #a8b3bd;
 }
 
-.divider {
-    border-top: 1px solid #ccc;
-    margin: 1.5rem 0;
+.separator {
     text-align: center;
+    margin: 15px 0;
 }
 
-.text-muted {
-    color: hsl(208, 7%, 46%);
-}
-
-.btn-block {
-    border: solid #4d679f 1px;
-    display: block;
-    background-color: #fff;
-    width: 100%;
-}
-
-.btn-block:hover {
-    border: solid #4d679f 1px;
-    display: block;
-    color: aliceblue;
-    background-color: #82a5d5;
-    width: 100%;
-}
-
-.button-container {
+.social-buttons {
     display: flex;
     justify-content: space-between;
-    align-items: center;
 }
 
-.text-center {
+.facebook,
+.google {
+    width: 48%;
+    background-color: #3b5998;
+}
+
+.google {
+    background-color: #db4437;
+}
+
+.social-buttons button {
+    padding: 10px;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.social-buttons button:hover {
+    filter: brightness(0.8);
+}
+
+p {
     text-align: center;
+    margin-top: 15px;
 }
 
-.mt-3 {
-    margin-top: 1rem;
+a {
+    color: #007bff;
+    text-decoration: none;
 }
 
-#facebook {
-    background-color: #4d679f;
-    color: #fff;
-    border: none;
+a:hover {
+    text-decoration: underline;
 }
 
-#google {
-    background-color: #d85949;
-    color: #fff;
-    border: none;
-}
 
-#facebook:hover,
-#google:hover {
-    opacity: 0.9;
-}
 
-/* Estilos para dispositivos móviles */
-@media (max-width: 768px) {
-    .container {
-        max-width: 300px;
-    }
 
-    .card-body {
-        padding: 1rem;
-       width: 300px;
+/* Media query para pantallas más pequeñas */
+@media screen and (max-width: 768px) {
+   /* Reducir aún más el ancho del contenedor en pantallas pequeñas */
 
-    }
 
-    .card-title {
-        font-size: 1.2rem;
-    }
+    div.container {
+        >div.login-container {
+            width: 90%;
 
-    .form-control {
-        padding: 0.6rem;
-        font-size: 0.9rem;
-    }
+            >h2 {}
 
-    .btn-lg {
-        padding: 0.8rem 1.6rem;
-        font-size: 0.9rem;
+            >form {
+                >div.form-group:nth-of-type(1) {
+                    >label {}
+
+                    >input#email {}
+                }
+
+                >div.form-group:nth-of-type(2) {
+                    >label {}
+
+                    >input#password {}
+                }
+
+                >button {}
+            }
+
+            >div.separator {}
+
+            >div.social-buttons {
+                >button.facebook {
+                    >i.fab.fa-facebook-f {}
+                }
+
+                >button.google {
+                    >i.fab.fa-google {}
+                }
+            }
+
+            >p:nth-of-type(1) {
+                >a {}
+            }
+
+            >p:nth-of-type(2) {
+                >a {}
+            }
+        }
     }
 }

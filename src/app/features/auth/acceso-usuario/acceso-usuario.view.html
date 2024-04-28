@@ -1,41 +1,26 @@
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-<link rel="canonical" href="https://v5.getbootstrap.com/docs/5.0/examples/product/">
 
-<body class="cuerpo-login">
+<body>
     <div class="container">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <h2 class="card-title text-center">Login</h2>
-                    <form [formGroup]="formLogin" (ngSubmit)="login()">
-                        <div class="form-group">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" formControlName="email"
-                                placeholder="Enter your email">
-                        </div>
-                        <div class="form-group">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password" formControlName="password"
-                                placeholder="Enter your password">
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-lg btn-block" id="login">Login</button>
-                    </form> <!-- Aquí se cierra el formulario -->
-                    <div class="divider align-items-center">
-                        <p class="text-center text-muted">O</p>
-                    </div>
-                    <div class="button-container">
-                        <button class="btn btn-primary btn-lg" id="facebook">
-                            <i class="fab fa-facebook-f"></i> Facebook
-                        </button>
-                        <button class="btn btn-danger btn-lg" id="google">
-                            <i class="fab fa-google"></i> Google
-                        </button>
-                    </div>
-                    <p class="text-center mt-3">
-                        Don't have an account? <a href="/public/templates/registro.html">Register</a>
-                    </p>
+        <div class="login-container">
+            <h2>Login</h2>
+            <form   [formGroup]="formLogin" (ngSubmit)="login()">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input  formControlName="email" type="email" id="email" placeholder="Enter your email">
                 </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input  formControlName="password" type="password" id="password" placeholder="Enter your password">
+                </div>
+                <button  type="submit">Login</button>
+            </form>
+            <div class="separator">or</div>
+            <div class="social-buttons">
+                <button class="facebook"><i class="fab fa-facebook-f"></i> Facebook</button>
+                <button class="google"><i class="fab fa-google"></i> Google</button>
             </div>
+            <p>Don't have an account? <a href="#">Register</a></p>
+            <p>Forgot password? <a href="#">Reset it here</a></p>
         </div>
     </div>
 </body>
