@@ -1,27 +1,84 @@
-<header class="header">
+<p-sidebar [(visible)]="sidebarVisible2" position="right">
+  <h3>Menú</h3>
+  <ul>
+    <li><a routerLink="/#">Inicio</a></li>
+    <li><a routerLink="/perfil">Perfil</a></li>
+    <li><a routerLink="/cuenta">Cuenta</a></li>
+    <li><a routerLink="/carrito">Carrito</a></li>
+    <li><a routerLink="/notificaciones">Notificaciones</a></li>
+    <!-- Puedes agregar más elementos de menú según sea necesario -->
+  </ul>
+  <hr />
+  <h3>Opciones</h3>
+  <ul>
+    <li><a routerLink="/ajustes">Ajustes</a></li>
+    <li><a routerLink="/ayuda">Ayuda</a></li>
+    <li><a routerLink="/salir">Salir</a></li>
+  </ul>
+</p-sidebar>
+
+<header class="header" [ngClass]="{ scrolled: isScrolled }">
   <div class="logo">
     <img
-      src="https://0201.nccdn.net/1_2/000/000/16d/0af/5c82807a5ad7e.png#RDAMDAID19391744"
+      class="logo-img big-logo"
+      [src]="
+        'https://0201.nccdn.net/1_2/000/000/16d/0af/5c82807a5ad7e.png#RDAMDAID19391744'
+      "
       alt="Logo"
-      class="logo-img"
+    />
+    <img
+      class="logo-img2 small-logo"
+      [src]="
+        'https://res.cloudinary.com/dkfaglomz/image/upload/v1712038934/public/snucbs5916vwdiksyfwx.png'
+      "
+      alt="Logo"
     />
   </div>
-
-  <i *ngIf="!showSearchInput" (click)="toggleSearchInput()" class="pi pi-search"></i>
-  <div class="p-inputgroup search-container" [ngClass]="{'hidden-input': !showSearchInput}">
-    <i *ngIf="showSearchInput"  (click)="toggleSearchInput()" class="pi pi-search"></i>
+  <i
+    *ngIf="!showSearchInput"
+    (click)="toggleSearchInput()"
+    class="pi pi-search"
+  ></i>
+  <div
+    class="p-inputgroup search-container"
+    [ngClass]="{ 'hidden-input': !showSearchInput }"
+  >
+    <i
+      *ngIf="showSearchInput"
+      (click)="toggleSearchInput()"
+      class="pi pi-search"
+    ></i>
     <input *ngIf="showSearchInput" placeholder="Buscar..." />
   </div>
 
-
-
   <nav class="menu">
     <ul>
-      <li><a href="#">Inicio</a></li>
-      <li><a href="#">Nosotros</a></li>
-      <li><a href="#">Servicios</a></li>
-      <li><a href="#">Productos</a></li>
-      <li><a href="#">Contacto</a></li>
+      <li><a href="#" class="a">Inicio</a></li>
+      <!-- <li><a class="a" >Nosotros</a></li> -->
+      <li><a class="a">Servicios</a></li>
+      <!-- Colocar en caso de que haya sido logeado <li><a href="#">Productos</a></li> -->
+      <li><a class="a" (click)="redirectTo('acerca-empresa')">Nosotros</a></li>
+      <li class="usuario">
+        <img
+          src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1713033578/productMeanZapateriaHuejutla/imagenes/usuario_b6nr6o.png"
+          alt=""
+        />
+        <ul>
+          <li>
+            <p class="aSubm" (click)="redirectTo('registrarme')">Registrarme</p>
+          </li>
+          <li>
+            <p class="aSubm" (click)="redirectTo('login')">Iniciar sesión</p>
+          </li>
+        </ul>
+      </li>
     </ul>
   </nav>
+  <span class="pi pi-shopping-cart" pBadge value="2" severity="warning"></span>
+
+  <i
+    class="pi pi-bars"
+    *ngIf="isMobile && !showCart"
+    (click)="toggleMenu()"
+  ></i>
 </header>
