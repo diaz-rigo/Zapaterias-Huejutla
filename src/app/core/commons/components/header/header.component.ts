@@ -68,14 +68,15 @@ export class HeaderComponent {
     this.isMobile = window.innerWidth <= 768;
   }
 
-
-
   redirectTo(route: string): void {
-    // this.sidebarVisible = false;
     console.log(route);
-    this.router.navigate(['/public', route]); // Utiliza la navegación de Angular
+    if (route === 'login') {
+      this.router.navigate(['/auth/login']); // Navegación hacia la página de inicio de sesión
+    } else {
+      this.router.navigate(['/public', route]); // Navegación hacia otras páginas públicas
+    }
   }
-
+  
 
 
   

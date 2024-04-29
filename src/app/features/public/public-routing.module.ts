@@ -52,11 +52,7 @@ const routes: Routes = [
         path: 'acerca-empresa',
         component: AcercaEmpresaView,
       },
-      {
-        // path: 'detail/:id',
-        path: 'login',
-        component: AccesoUsuarioView,
-      },
+     
       // {
       //   title:"Politica |",
       //   path: 'politica',

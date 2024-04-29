@@ -1,26 +1,4 @@
 
-<body>
-    <div class="container">
-        <div class="login-container">
-            <h2>Login</h2>
-            <form   (ngSubmit)="login()">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input  formControlName="email" type="email" id="email" placeholder="Enter your email">
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input  formControlName="password" type="password" id="password" placeholder="Enter your password">
-                </div>
-                <button  type="submit">Login</button>
-            </form>
-            <div class="separator">or</div>
-            <div class="social-buttons">
-                <button class="facebook"><i class="fab fa-facebook-f"></i> Facebook</button>
-                <button class="google"><i class="fab fa-google"></i> Google</button>
-            </div>
-            <p>Don't have an account? <a href="#">Register</a></p>
-            <p>Forgot password? <a href="#">Reset it here</a></p>
-        </div>
-    </div>
-</body>
+<app-sign-in-form>
+  
+</app-sign-in-form>

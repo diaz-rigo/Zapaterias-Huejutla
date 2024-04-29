@@ -1,0 +1,152 @@
+.container {
+  margin-top: 100px;
+  max-width: 400px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.login-container {
+  width: 50%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+h2 {
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  color: rgb(23, 145, 104);
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #168b6f;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #a8b3bd;
+}
+
+.separator {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.facebook,
+.google {
+  width: 48%;
+  background-color: #3b5998;
+}
+
+.google {
+  background-color: #db4437;
+}
+
+.social-buttons button {
+  padding: 10px;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.social-buttons button:hover {
+  filter: brightness(0.8);
+}
+
+p {
+  text-align: center;
+  margin-top: 15px;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+/* Media query para pantallas más pequeñas */
+@media screen and (max-width: 768px) {
+ /* Reducir aún más el ancho del contenedor en pantallas pequeñas */
+
+
+  div.container {
+      >div.login-container {
+          width: 90%;
+
+          >h2 {}
+
+          >form {
+              >div.form-group:nth-of-type(1) {
+                  >label {}
+
+                  >input#email {}
+              }
+
+              >div.form-group:nth-of-type(2) {
+                  >label {}
+
+                  >input#password {}
+              }
+
+              >button {}
+          }
+
+          >div.separator {}
+
+          >div.social-buttons {
+              >button.facebook {
+                  >i.fab.fa-facebook-f {}
+              }
+
+              >button.google {
+                  >i.fab.fa-google {}
+              }
+          }
+
+          >p:nth-of-type(1) {
+              >a {}
+          }
+
+          >p:nth-of-type(2) {
+              >a {}
+          }
+      }
+  }
+}

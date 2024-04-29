@@ -11,6 +11,7 @@ import { CarouselModule } from 'primeng/carousel';
 import { RouterModule } from '@angular/router';
 import { DetailInfoComponent } from './features/public/commons/components/detail-info/detail-info.component';
 import { AdminComponent } from './features/admin/admin.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 const IMPORTS_COMPONENTS = [CoreComponentsModule]; // Agrega los componentes
@@ -24,8 +25,8 @@ const IMPORTS_COMPONENTS = [CoreComponentsModule]; // Agrega los componentes
   ],
   imports: [
     ...IMPORTS_COMPONENTS,
-    BrowserModule, RouterModule.forRoot([]),
-    AppRoutingModule, CarouselModule
+    BrowserModule,
+    AppRoutingModule, CarouselModule,HttpClientModule
   ],
   providers: [
     provideClientHydration()
