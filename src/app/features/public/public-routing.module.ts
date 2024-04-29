@@ -6,7 +6,11 @@ import { DetailView } from './view/detail/detail.view';
 import { CategoriaView } from './view/categoria/categoria.view';
 import { RegistroUsuarioView } from './view/registro-usuario/registro-usuario.view';
 import { AcercaEmpresaView } from './view/acerca-empresa/acerca-empresa.view';
-import { AccesoUsuarioView } from '../auth/acceso-usuario/acceso-usuario.view';
+import { AccesoUsuarioView } from '../auth/view/acceso-usuario/acceso-usuario.view';
+// import { AccesoUsuarioView } from '../auth/view/acceso-usuario/acceso-usuario.view';
+// import { AccesoUsuarioView } from '../auth copy/views/acceso-usuario/acceso-usuario.view';
+// import { AccesoUsuarioView } from '../auth/view/acceso-usuario/acceso-usuario.view';
+// import { AccesoUsuarioView } from '../auth/acceso-usuario___/acceso-usuario.view';
 // import { AdminHomeView } from '../admin/admin-home/admin-home.view';
 // import { DetaillProductComponent } from './view/detaill-product/detaill-product.component';
 const routes: Routes = [

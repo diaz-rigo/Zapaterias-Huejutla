@@ -3,7 +3,7 @@
     <div class="container">
         <div class="login-container">
             <h2>Login</h2>
-            <form   [formGroup]="formLogin" (ngSubmit)="login()">
+            <form   (ngSubmit)="login()">
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input  formControlName="email" type="email" id="email" placeholder="Enter your email">

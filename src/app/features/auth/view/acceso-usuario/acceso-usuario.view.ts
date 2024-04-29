@@ -1,8 +1,9 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { AuthService } from '../../../core/service/auth.service';
+// import { AuthService } from '../../../core/service/auth.service';
 
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../../core/service/auth.service';
 @Component({
   selector: 'app-acceso-usuario',
   templateUrl: './acceso-usuario.view.html',
@@ -18,7 +19,7 @@ export class AccesoUsuarioView {
       password: ['', Validators.required]
     });
   }
-  
+
   login(): void {
     const email = this.formLogin.value.email;
     const password = this.formLogin.value.password;
@@ -26,5 +27,5 @@ export class AccesoUsuarioView {
     this.router.navigate(['/admin/admin-home']);
   }
 
-  
+
 }

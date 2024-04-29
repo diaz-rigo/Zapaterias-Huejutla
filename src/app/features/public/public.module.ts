@@ -1,5 +1,5 @@
-import { AuthModule } from './../auth/auth.module';
-import { AccesoUsuarioView } from './../auth/acceso-usuario/acceso-usuario.view';
+// import { AuthModule } from './../auth/auth.module';
+// import { AccesoUsuarioView } from '../auth/acceso-usuario___/acceso-usuario.view';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -28,7 +28,6 @@ const VIEW_COMPONENTS = [
   HomeView,
   PoliticasView,
   AcercaEmpresaView,
-  AccesoUsuarioView,AccesoUsuarioView
 ];
 
 @NgModule({
