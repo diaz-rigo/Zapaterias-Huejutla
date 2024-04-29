@@ -12,6 +12,7 @@ import { ProductFormComponent } from './commons/components/product-form/product-
 import { VentasComponent } from './commons/components/ventas/ventas.component';
 import { PedidosComponent } from './commons/components/pedidos/pedidos.component';
 import { MaterialModule } from './commons/material/material.module';
+import { AdminComponent } from './admin.component';
 // import { AdmDashboardView } from './adm-dashboard/adm-dashboard.view';
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { MaterialModule } from './commons/material/material.module';
     ProductFormComponent,
     VentasComponent,
     PedidosComponent,
-
+    AdminComponent
   ],
   imports: [
     CommonModule,

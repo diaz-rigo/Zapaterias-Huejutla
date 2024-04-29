@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdmHomeView } from './view/adm-home/adm-home.view';
+import { AdminComponent } from './admin.component';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: 'admin',
-  //   pathMatch: 'full',
-  // },
-  // {
-  //   path: '',
-  //   // component: AdminComponent,
-  //   children: [
+  {
+    path: '',
+    redirectTo: 'admin-home',
+    pathMatch: 'full',
+  },
+  {
+    path: '',
+    component: AdminComponent,
+    children: [
 
       {
         path: 'admin-home',
@@ -87,8 +88,8 @@ const routes: Routes = [
       //   path: '**',
       //   component: NotFondViews,
       // },
-    // ],
-  // },
+    ],
+  },
 ];
 
 @NgModule({

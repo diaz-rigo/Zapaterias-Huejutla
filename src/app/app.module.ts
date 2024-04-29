@@ -19,8 +19,7 @@ const IMPORTS_COMPONENTS = [CoreComponentsModule]; // Agrega los componentes
 
 @NgModule({
   declarations: [
-    AdminComponent,
-    AppComponent,
+      AppComponent,
     
   ],
   imports: [
