@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
@@ -8,4 +9,10 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 export class DetailView {
 
+
+  constructor(private location: Location) { }
+
+  goBack(): void {
+    this.location.back();
+  }
 }

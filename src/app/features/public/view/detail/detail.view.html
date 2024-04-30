@@ -1,14 +1,32 @@
 
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+   #back {
+          position: absolute;
+          top: 20px; /* Ajusta la posición vertical según sea necesario */
+          left: 20px; /* Ajusta la posición horizontal según sea necesario */
+          z-index: 999; /* Asegura que esté por encima de otros elementos */
+          background-color:transparent;
+          color: rgb(0, 0, 0);
+          border: none;
+          border-radius: 50%;
+          padding: 10px;
+          cursor: pointer;
+      }
+</style>
+  <button  (click)="goBack" class="back" id="back">
+    <i   class="fas fa-arrow-left"></i>
+  </button>
+  
 <div class="container">
-  <div class="detail-img">
-    <app-detail-image></app-detail-image>
-    <!-- <app-detail-img [images]="(productDetail.images || [])"></app-detail-img> -->
-  </div>
-  <div class="detail-info">
-    <app-detail-info></app-detail-info>
+<div class="detail-img" >
+  <app-detail-image></app-detail-image>
+  <!-- <app-detail-img [images]="(productDetail.images || [])"></app-detail-img> -->
+</div>
+<div class="detail-info">
+  <app-detail-info></app-detail-info>
 
-    <!-- <app-detail-info [productDetail]="productDetail"></app-detail-info> -->
-  </div>
+  <!-- <app-detail-info [productDetail]="productDetail"></app-detail-info> -->
+</div>
 </div>
 

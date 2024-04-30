@@ -1,8 +1,6 @@
 .animated-title {
   width: 150vmin;
-
-  // outline: 1px solid red;
-
+  border: dashed #ff1500;
   color: rgb(38, 118, 73);
   font-family: "Montserrat", sans-serif;
   height: 100vmin;
@@ -10,13 +8,14 @@
   left: 30%;
 
   position: absolute;
-  top: 60%;
+  top: 70%;
   -webkit-transform: translate(-25%, -50%);
   transform: translate(-25%, -50%);
 }
 
 .animated-title>div {
   height: 50%;
+    // border: dashed #fb00ff;
 
   overflow: hidden;
   position: absolute;
@@ -34,9 +33,11 @@
 }
 
 .animated-title>div.text-top {
+    // border: dashed #fb00ff;
+ 
   border-bottom: 1vmin solid #21556a;
   top: 0;
-  width: 500px;
+  width: 550px;
 }
 
 .animated-title>div.text-top div {
@@ -52,19 +53,16 @@
 }
 
 .animated-title>div.text-top div span:first-child {
-  color: #8bb33a;
+  color: #6cb33a;
 }
 
 .animated-title>div.text-bottom {
-  border: #008ac1 dashed 3px;
-  // background: black;
-  // width: 100px;
-  // height: 100px;
+  // border: #c10000 dashed 3px;
   bottom: 0;
 }
 
 .animated-title>div.text-bottom div {
-  
+
   -webkit-animation: showBottomText 0.5s;
   animation: showBottomText 0.5s;
   -webkit-animation-delay: 1.75s;
@@ -72,9 +70,13 @@
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
   top: 0;
+  
 
   -webkit-transform: translate(0, -100%);
   transform: translate(0, -100%);
+}
+.animated-title>div.text-bottom div>img.img-float {
+  width: 100px; height: 100px;
 }
 
 .text {
@@ -96,36 +98,80 @@
 
   100% {
     transform: translateY(0px);
-  }
+  }  
+}  
+
+
+.pi-angle-down {
+  margin-top: 50px;
+display: flex;
+justify-content: center;
+align-items: center;
+  animation: flotante 2s infinite;
 }
 
 
 
 
 @media (max-width: 768px) {
+  
+  
+  
+  .animated-title>div div span {
+    // gap: 3px;
+    // display: inline;
+  }  
+  
+.animated-title>div.text-top div span:first-child{
+  // color: #8bb33a;
+  // padding-right: 10px;
+}
+
+
+  
+.animated-title>div.text-bottom {
+  border: #fff700 dashed 3px;
+  // height: 100px;
+  bottom: 0;
+}  
+.animated-title>div.text-bottom div>img.img-float {
+  width: 80px; height: 80px;
+}
+
+
+.pi-angle-down {
+  display: flex;
+justify-content: center;
+align-items: center;
+  margin-top:-170px;
+
+}  
+
+
   .animated-title {
     transform: translate(-30%, -20%);
 
 
-    outline: 3px dashed rgb(165, 0, 177);
+    // outline: 3px dashed rgb(0, 145, 177);
 
     align-items: center;
     display: flex;
     justify-content: center;
     // margin-right: 30;
     width: 85vw;
+
     /* Cambia el ancho para que se ajuste al ancho de la pantalla en dispositivos móviles */
-    max-width: none;
+    // max-width: none;
     /* Elimina el límite de ancho máximo */
     margin: 0 auto;
     /* Centra horizontalmente en la pantalla */
     position: relative;
-  }
+  }  
 
   .animated-title>div div {
     font-size: 8vw;
     /* Ajusta el tamaño de fuente para que sea proporcional al tamaño de la pantalla */
-  }
+  }  
 
   .animated-title>div.text-top {
     width: 90%;
@@ -134,135 +180,27 @@
     /* Limita el ancho máximo */
     margin: 0 auto;
     /* Centra horizontalmente en la pantalla */
+  }  
+}  
+
+
+
+
+
+@keyframes flotante {
+  0% {
+      transform: translateY(0px);
+  }
+
+  50% {
+      transform: translateY(-10px);
+      filter: blur(0.4px);
+
+      drop-shadow: 0px 0px 5px rgba(173, 213, 219, 0.932);
+      /* Agrega la sombra al contenedor */
+  }
+
+  100% {
+      transform: translateY(0px);
   }
 }
-
-// // @layer primeng {
-// .p-carousel-indicators {
-//     display: none;
-//     flex-direction: row;
-//     justify-content: center;
-//     flex-wrap: wrap;
-// }
-
-// }
-
-// @layer primeng {
-//     .p-carousel-items-content {
-//         overflow: hidden;
-//         width: 50%;
-//         margin-left: 8%;
-//     }
-// }
-
-
-
-
-// // btn carurces ñ
-// @layer primeng {
-
-//     .p-carousel-prev,
-//     .p-carousel-next {
-//         align-self: center;
-//         flex-grow: 0;
-//         flex-shrink: 0;
-//         display: flex;
-//         cursor: pointer;
-//         justify-content: center;
-//         align-items: center;
-//         overflow: hidden;
-//         position: relative;
-//         border: none;
-//         padding: 20px;
-//         margin: 20px 60px;
-//         box-shadow: azure;
-//         background: transparent;
-//     }
-// }
-
-// // icon btn carrucel .
-// .p-element .p-icon-wrapper {
-//     color: #21556a;
-
-// }
-
-// primeng
-// .carousel {
-//     /* Adjust overall carousel width as needed */
-//     width: 80%;
-//     margin: 0 auto;
-
-//     @media (max-width: 768px) {
-//         /* Adjust carousel width for smaller screens */
-//         width: 100%;
-//     }
-// }
-
-// .p-carousel {
-//     overflow: hidden;
-//     display: flex;
-//     scroll-behavior: smooth;
-// }
-
-// .p-carousel .p-carousel-item {
-//     flex: 0 0 calc(100% / var(--numVisible));
-//     margin-right: calc(var(--carousel-gutter) / 2);
-
-//     &:last-child {
-//         margin-right: 0;
-//     }
-
-//     @media (max-width: 768px) {
-//         flex: 1 0 100%;
-//         /* Make items stack on small screens */
-//         margin-right: 0;
-//     }
-// }
-
-// /* Adjust carousel item styles (card styles) */
-// .p-carousel .p-carousel-item .card {
-//     /* Remove default PrimeNG padding */
-//     padding: 0;
-// }
-
-// .p-carousel .p-carousel-item .card .image {
-//     /* Adjust image size and styling */
-//     width: 100%;
-//     object-fit: cover;
-//     height: 150px;
-//     /* Adjust image height as needed */
-// }
-
-/*
-  Define additional styles for other elements within the carousel item template
-  like title, price, buttons, etc. based on your design preferences.
-*/
-
-// :root {
-//     --numVisible: 3;
-//     /* Adjust based on your `[numVisible]` setting */
-//     --carousel-gutter: 20px;
-//     /* Adjust spacing between carousel items */
-// }
-
-
-// carrucel marcas
-// .p-carousel {
-//     width: 60%;
-//     /* Adjust width as needed */
-//     margin: 0 auto;
-//     /* Center the carousel horizontally */
-// }
-
-// .p-carousel .p-carousel-item {
-//     flex: 0 0 calc(10% / var(--numVisible));
-// }
-
-// .carousel-image {
-//     width: 50px;
-//     /* Ensure image covers entire item */
-//     height: 50px;
-//     /* Adjust image height as desired */
-//     object-fit: cover;
-//     /* Resize image to fit while maintaining aspect ratio */
-// }

@@ -97,14 +97,14 @@
   .contiene-Imagen {
     // outline: 5px solid rgb(221, 255, 0);
 
-    margin-top: 100px;
+    margin-top: 50px;
 
     margin-left: auto;
     margin-right: auto;
     width: 350px;
     // height: 350px;
     height: auto;
-    border: dashed 3px #ffdd00;
+    // border: dashed 3px #ffdd00;
     border-radius: 67% 33% 43% 51% / 60% 31% 54% 38%;
     background: linear-gradient(270deg, #003761 0%, #167274 100%);
 
@@ -112,7 +112,7 @@
 
   .contiene-Imagen img {
     // outline: 1px solid red;
-    border: dashed 3px #0004ff;
+    // border: dashed 3px #0004ff;
     padding: 0;
     display: block;
     margin-left: auto;
