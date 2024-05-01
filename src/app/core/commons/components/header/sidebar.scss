@@ -1,0 +1,57 @@
+/* Estilos para el p-sidebar */
+p-sidebar {
+  width: 250px; /* Ancho del sidebar */
+  background-color: #ffffff; /* Color de fondo */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+  padding: 20px; /* Espaciado interno */
+  font-family: Arial, sans-serif; /* Fuente */
+}
+
+/* Estilos para el encabezado */
+p-sidebar h3 {
+  margin-bottom: 20px; /* Espaciado inferior */
+  font-size: 1.2em; /* Tamaño de fuente */
+  color: #333333; /* Color del texto */
+}
+
+/* Estilos para las listas */
+p-sidebar ul {
+  list-style-type: none; /* Eliminar viñetas */
+  padding: 0; /* Eliminar espaciado interno */
+}
+
+/* Estilos para los elementos de la lista */
+p-sidebar li {
+  margin-bottom: 10px; /* Espaciado inferior */
+}
+
+/* Estilos para los enlaces */
+p-sidebar a {
+  display: block; /* Convertir en bloque para ocupar todo el ancho */
+  // padding: 10px; /* Espaciado interno */
+  text-decoration: none; /* Sin subrayado */
+  color: #555555; /* Color del texto */
+  transition: color 0.3s ease; /* Transición suave del color */
+}
+
+/* Estilos para los enlaces al pasar el ratón */
+p-sidebar a:hover {
+  color: #05a484; /* Cambio de color al pasar el ratón */
+}
+
+/* Estilos específicos para el submenú */
+p-sidebar ul ul {
+  display: none; /* Ocultar submenú por defecto */
+  position: absolute; /* Posición absoluta */
+  top: 0; /* Posicionamiento en la parte superior */
+  left: 100%; /* Al lado derecho del elemento padre */
+  background-color: #ffffff; /* Color de fondo */
+  // padding: 10px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+/* Mostrar submenú al pasar el ratón */
+p-sidebar li:hover > ul {
+  display: block;
+}

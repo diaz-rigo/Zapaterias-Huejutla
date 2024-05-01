@@ -1,19 +1,29 @@
 <p-sidebar [(visible)]="sidebarVisible2" position="right">
+  <div class="user-section">
+    <!-- Mostrar mensaje de bienvenida y nombre de usuario si está disponible -->
+    <ng-container *ngIf="showUserName">
+      <p>Bienvenido, {{ userName }}</p>
+    </ng-container>
+  </div>
+  <hr />
   <h3>Menú</h3>
   <ul>
-    <li><a routerLink="/#">Inicio</a></li>
-    <li><a routerLink="/perfil">Perfil</a></li>
-    <li><a routerLink="/cuenta">Cuenta</a></li>
-    <li><a routerLink="/carrito">Carrito</a></li>
-    <li><a routerLink="/notificaciones">Notificaciones</a></li>
+    <li><a class="a" (click)="redirectToMobil('home')">Inicio</a></li>
+    <li><a class="a" (click)="redirectToMobil('login')">Iniciar sesión</a></li>
+   <li><a   class="a" (click)="redirectToMobil('registrarme')">Registrarme</a></li>
+   <li *ngIf="showUserName">
+    <p class="aSubm" (click)="logout()">Cerrar sesión</p>
+  </li>
+    <!--  <li><a [disabled]="true" routerLink="/carrito">Carrito</a></li>
+    <li><a [disabled]="true" routerLink="/notificaciones">Notificaciones</a></li> -->
     <!-- Puedes agregar más elementos de menú según sea necesario -->
   </ul>
   <hr />
   <h3>Opciones</h3>
   <ul>
-    <li><a routerLink="/ajustes">Ajustes</a></li>
-    <li><a routerLink="/ayuda">Ayuda</a></li>
-    <li><a routerLink="/salir">Salir</a></li>
+    <!-- <li><a routerLink="/ajustes">Ajustes</a></li> -->
+    <!-- <li><a routerLink="/ayuda">Ayuda</a></li> -->
+    <!-- <li><a routerLink="/salir">Salir</a></li> -->
   </ul>
 </p-sidebar>
 
@@ -53,25 +63,33 @@
 
   <nav class="menu">
     <ul>
-      <li><a href="#" class="a">Inicio</a></li>
+      <li><a class="a" (click)="redirectTo('home')">Inicio</a></li>
       <!-- <li><a class="a" >Nosotros</a></li> -->
       <li><a class="a">Servicios</a></li>
       <!-- Colocar en caso de que haya sido logeado <li><a href="#">Productos</a></li> -->
       <li><a class="a" (click)="redirectTo('acerca-empresa')">Nosotros</a></li>
       <li class="usuario">
-        <img
-          src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1713033578/productMeanZapateriaHuejutla/imagenes/usuario_b6nr6o.png"
-          alt=""
-        />
+        <img src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1713033578/productMeanZapateriaHuejutla/imagenes/usuario_b6nr6o.png" alt="" />
         <ul>
-          <li>
+          <!-- Mostrar enlace de cerrar sesión si hay datos de usuario -->
+          <li *ngIf="showUserName">
+            <p class="aSubm" (click)="logout()">Cerrar sesión</p>
+          </li>
+          <!-- Mostrar enlace de registro e inicio de sesión si no hay datos de usuario -->
+          <li *ngIf="!showUserName">
             <p class="aSubm" (click)="redirectTo('registrarme')">Registrarme</p>
           </li>
-          <li>
+          <li *ngIf="!showUserName">
             <p class="aSubm" (click)="redirectTo('login')">Iniciar sesión</p>
+          </li>
+          <!-- Mostrar nombre de usuario si está disponible -->
+          <li *ngIf="showUserName">
+            <p>{{ userName }}</p>
           </li>
         </ul>
       </li>
+
+
     </ul>
   </nav>
   <span class="pi pi-shopping-cart" pBadge value="2" severity="warning"></span>

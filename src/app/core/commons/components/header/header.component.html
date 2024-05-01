@@ -1,19 +1,31 @@
 <p-sidebar [(visible)]="sidebarVisible2" position="right">
-  <h3>Menú</h3>
-  <ul>
-    <li><a class="a" (click)="redirectTo('home')">Inicio</a></li>
-    <li><a class="a" (click)="redirectTo('login')">Iniciar sesión</a></li>
-   <li><a   class="a" (click)="redirectTo('registrarme')">Registrarme</a></li>
-    <!--  <li><a [disabled]="true" routerLink="/carrito">Carrito</a></li>
-    <li><a [disabled]="true" routerLink="/notificaciones">Notificaciones</a></li> -->
-    <!-- Puedes agregar más elementos de menú según sea necesario -->
-  </ul>
+  <div class="user-section" *ngIf="showUserName">
+    <!-- Mostrar mensaje de bienvenida y nombre de usuario si está disponible -->
+    <p>Bienvenido, {{ userName }}</p>
+    <hr />
+    <ul>
+      <li><a class="a" (click)="redirectToMobil('home')">Inicio <i class="pi pi-home"></i></a></li>
+      <li><a class="a" (click)="logout()">Cerrar sesión <i class="pi pi-sign-out"></i></a></li>
+    </ul>
+  </div>
+  <div *ngIf="!showUserName">
+    <h3>Menú</h3>
+    <ul>
+      <li><a class="a" (click)="redirectToMobil('home')">Inicio <i class="pi pi-home"></i></a></li>
+      <li>
+        <a class="a" (click)="redirectToMobil('login')"><i class="pi pi-user"></i> Iniciar sesión</a>
+      </li>
+      <li>
+        <a class="a" (click)="redirectToMobil('registrarme')"><i class="pi pi-user-plus"></i> Registrarme</a>
+      </li>
+    </ul>
+  </div>
   <hr />
   <h3>Opciones</h3>
   <ul>
-    <!-- <li><a routerLink="/ajustes">Ajustes</a></li> -->
-    <!-- <li><a routerLink="/ayuda">Ayuda</a></li> -->
-    <!-- <li><a routerLink="/salir">Salir</a></li> -->
+    <li><a routerLink="/ajustes"><i class="pi pi-cog"></i> Ajustes</a></li>
+    <li><a routerLink="/ayuda"><i class="pi pi-question-circle"></i> Ayuda</a></li>
+    <li><a routerLink="/salir"><i class="pi pi-power-off"></i> Salir</a></li>
   </ul>
 </p-sidebar>
 
@@ -59,7 +71,10 @@
       <!-- Colocar en caso de que haya sido logeado <li><a href="#">Productos</a></li> -->
       <li><a class="a" (click)="redirectTo('acerca-empresa')">Nosotros</a></li>
       <li class="usuario">
-        <img src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1713033578/productMeanZapateriaHuejutla/imagenes/usuario_b6nr6o.png" alt="" />
+        <img
+          src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1713033578/productMeanZapateriaHuejutla/imagenes/usuario_b6nr6o.png"
+          alt=""
+        />
         <ul>
           <!-- Mostrar enlace de cerrar sesión si hay datos de usuario -->
           <li *ngIf="showUserName">
@@ -78,8 +93,6 @@
           </li>
         </ul>
       </li>
-      
-      
     </ul>
   </nav>
   <span class="pi pi-shopping-cart" pBadge value="2" severity="warning"></span>

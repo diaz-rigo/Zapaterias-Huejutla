@@ -1,76 +1,191 @@
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  position: fixed;
-  /* Fijar el encabezado */
-  top: 0;
-  /* Fijar en la parte superior */
-  left: 0;
-  /* Alinear a la izquierda */
-  width: 100%;
-  /* Ancho completo */
-  z-index: 1000;
-  /* Asegurar que esté por encima de otros elementos */
-  backdrop-filter: blur(10px);
-  background-color: transparent;
-  /* Fondo transparente */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  /* Sombra ligera */
-}
+// .header {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   padding: 10px;
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   z-index: 1000;
+//   backdrop-filter: blur(10px);
+//   background-color: rgba(255, 255, 255, 0.489);
+//   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+// }
 
-.logo {
-  flex: 1;
-  /* Toma el espacio disponible */
-}
+// .pi {
+//   font-size: 1.2rem;
+//   margin-right: 8px;
+// }
 
-.logo-img {
+// .logo {
+//   flex: 1;
+//   display: flex;
+//   align-items: center;
+// }
 
-  width: 200px;
-  /* Tamaño del logo */
-}
+// .logo-img {
+//   width: 200px;
+//   margin-right: 10px;
+// }
 
-.menu ul {
-  list-style-type: none;
-  /* Elimina los puntos de la lista */
-  margin: 0;
-  padding: 0;
-}
+// .logo-img2 {
+//   display: none;
+//   margin-right: 0;
+// }
 
-.menu ul li {
-  display: inline-block;
-  /* Mostrar los elementos de menú en línea */
-  margin-right: 20px;
-  /* Espacio entre elementos de menú */
-}
+// .menu ul {
+//   list-style-type: none;
+//   margin: 0;
+//   padding: 0;
+//   display: flex;
+// }
 
-.menu ul li:last-child {
-  margin-right: 0;
-  /* Elimina el margen del último elemento de menú */
-}
+// .menu ul li {
+//   margin-right: 20px;
+// }
 
-@import url(https://fonts.googleapis.com/css2?family=Varela+Round&display=swap);
+// .menu ul li:last-child {
+//   margin-right: 0;
+// }
+
+// .menu ul li .a {
+//   font-family: 'Varela Round', sans-serif;
+//   text-decoration: none;
+//   color: #8bb33a;
+//   padding: 10px;
+//   border-radius: 10px;
+//   transition: color 0.3s ease;
+// }
+
+// .menu ul li a:hover {
+//   color: #21556a;
+//   background: #c8c8c8b2;
+//   cursor: pointer;
+// }
+
+// @media screen and (max-width: 768px) {
+//   .pi-shopping-cart {
+//     margin-right: 20px;
+//   }
+
+//   .menu {
+//     display: none;
+//   }
+
+//   .logo-img {
+//     display: none;
+//     margin-right: 0;
+//   }
+
+//   .logo-img2 {
+//     width: 16%;
+//     height: auto;
+//     display: inline-block;
+//     margin-right: 0;
+//   }
+// }
+
+// /* Agregamos estilos para el submenú */
+// .menu ul li ul {
+//   display: none;
+//   position: absolute;
+//   top: 50px;
+//   width: 150px;
+
+//   right: 10px;
+//   // left: 0;
+//   background-color: #fff;
+//   // padding: 10px;
+//   border-radius: 5px;
+//   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+// }
+
+// .menu ul li:hover ul {
+//   display: block;
+// }
+
+// .menu ul li ul li {
+//   margin-right: 0;
+
+// }
+
+// .menu ul li ul li .aSubm {
+//   color: #333;
+//   // width: 100px;
+//   cursor: pointer;
+//   // padding: 5px;
+//   text-align: center;
+//   // margin-left: 10px;
+//   // width: 150px;
+
+// }
+
+// .p-inputgroup {
+//   color: black;
+// }
+
+// .menu ul li img {
+//   margin-right: 10px;
+//   width: 20px;
+//   height: 20px;
+
+// }
 
 
-.menu ul li a {
-  font-family: 'Varela Round', sans-serif;
-  text-decoration: none;
-  /* Elimina el subrayado del enlace */
-  color: #8bb33a;
-  padding: 10px;
-  // background: #000000;
-  /* Color del texto del menú */
-  // font-weight: bold;
-  /* Texto en negrita */
-  border-radius: 10px;
-  transition: color 0.3s ease;
-  /* Transición suave del color */
-}
 
-.menu ul li a:hover {
-  color: #21556a;
-  background: #c8c8c8b2;
-  // border: 0 0 solid #232222;
-  /* Color del texto del menú al pasar el ratón */
-}
+// // menu de amburguesa
+// /* Estilos para el p-sidebar */
+// p-sidebar {
+//   width: 250px;
+//   /* Ancho del sidebar */
+//   background-color: #ffffff;
+//   /* Color de fondo */
+//   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+//   /* Sombra */
+//   padding: 20px;
+//   /* Espaciado interno */
+//   font-family: Arial, sans-serif;
+//   /* Fuente */
+
+//   /* Estilos para el encabezado */
+//   h3 {
+//     margin-bottom: 20px;
+//     /* Espaciado inferior */
+//     font-size: 1.2em;
+//     /* Tamaño de fuente */
+//     color: #333333;
+//     /* Color del texto */
+//   }
+
+//   /* Estilos para la lista de elementos */
+//   ul {
+//     list-style-type: none;
+//     /* Eliminar viñetas */
+//     padding: 0;
+//     /* Eliminar espaciado interno */
+//   }
+
+//   /* Estilos para los elementos de la lista */
+//   li {
+//     margin-bottom: 10px;
+//     /* Espaciado inferior */
+//   }
+
+//   /* Estilos para los enlaces */
+//   a {
+//     text-decoration: none;
+//     /* Sin subrayado */
+//     color: #555555;
+
+//     /* Color del texto */
+//     transition: color 0.3s ease;
+//     /* Transición suave del color */
+//   }
+
+//   /* Estilos para los enlaces al pasar el ratón */
+//   a:hover {
+//     color: #007bff;
+//     /* Cambio de color al pasar el ratón */
+//   }
+// }

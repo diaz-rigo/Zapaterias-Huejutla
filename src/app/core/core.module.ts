@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CoreCommonsModule } from './commons/commons.module';
 // import { DetaillProductComponent } from './features/public/view/detaill-product/detaill-product.component';
 
 
@@ -9,7 +10,7 @@ import { CommonModule } from '@angular/common';
     // DetaillProductComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,CoreCommonsModule
   ]
 })
 export class CoreModule { }

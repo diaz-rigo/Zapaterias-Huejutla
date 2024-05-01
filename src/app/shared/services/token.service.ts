@@ -1,11 +1,12 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, forkJoin, map, tap } from 'rxjs';
-import { environment } from 'src/environments/environment';
+// import { environment } from 'src/environments/environment';
 import { HttpHeaders } from '@angular/common/http';
 // import { Token } from '@angular/compiler';
 import { ItokenResponse } from '../interfaces/apikey.interface';
 import { Token } from '../models/token.model';
+import { environment } from '../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'

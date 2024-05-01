@@ -6,7 +6,7 @@ import { SessionService } from '../../../service/session.service'
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss', './buscar.scss'],
+  styleUrls: ['./header.component.scss', './buscar.scss','./sidebar.scss'],
   encapsulation: ViewEncapsulation.None,
   animations: [
     trigger('scrollAnimation', [
@@ -55,14 +55,14 @@ export class HeaderComponent {
       this.checkIsMobile()
     })
   }
-  
+
   ngOnInit() {
     const userData = this.sessionService.getUserData()
-    
+
     if (userData && userData.name) {
       this.userName = userData.name;
       console.log(userData)
-    
+
       this.showUserName = true;
     } else {
       this.showUserName = false;
@@ -215,6 +215,19 @@ export class HeaderComponent {
   }
 
   redirectTo(route: string): void {
+
+    // this.sidebarVisible2 = !this.sidebarVisible2
+    console.log(route)
+    if (route === 'login') {
+      this.router.navigate(['/auth/login']) // Navegación hacia la página de inicio de sesión
+    } else {
+      this.router.navigate(['/public', route]) // Navegación hacia otras páginas públicas
+    }
+  }
+
+  redirectToMobil(route: string): void {
+
+    this.sidebarVisible2 = !this.sidebarVisible2
     console.log(route)
     if (route === 'login') {
       this.router.navigate(['/auth/login']) // Navegación hacia la página de inicio de sesión
