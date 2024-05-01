@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import Swal from 'sweetalert2'
 import {
   FormBuilder,
   FormGroup,
@@ -49,7 +50,12 @@ export class SignInFormComponent implements OnInit {
       .pipe(
         catchError((error: HttpErrorResponse) => {
           this.errorMessage = error.error.message || 'Error en la solicitud';
-          alert(this.errorMessage); // Mostrar el error en un alert
+          Swal.fire({
+            title: 'Error!',
+            text: this.errorMessage,
+            icon: 'error',
+            confirmButtonText: 'Ok'
+          });
           return throwError(this.errorMessage);
         }),
       )
