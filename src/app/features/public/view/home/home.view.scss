@@ -189,13 +189,14 @@ align-items: center;
 
 @keyframes flotante {
   0% {
-      transform: translateY(0px);
+      transform: translateY(0px) scale(1.05);
   }
 
   50% {
       transform: translateY(-10px);
       filter: blur(0.4px);
-
+      // transform: scale(1.05);
+  
       drop-shadow: 0px 0px 5px rgba(173, 213, 219, 0.932);
       /* Agrega la sombra al contenedor */
   }

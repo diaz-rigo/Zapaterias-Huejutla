@@ -48,9 +48,25 @@ div.card>img:hover {
   transform: scale(1.15);
 }
 
+.image-marcas {
+  height: 150px;
+  width: 150px;
+  border: dashed 3px rgb(82, 168, 29);
+  // margin-bottom: 50px;
+
+
+}
+
 
 @media (max-width: 768px) {
 
+
+  .image-marcas {
+    border-radius: 50px;
+    height: 50px;
+    width: 50px;
+    
+  }
 
   .card {
 
@@ -77,6 +93,7 @@ div.card>img:hover {
   justify-content: center;
   flex-wrap: wrap;
 }
+
 
 // }
 

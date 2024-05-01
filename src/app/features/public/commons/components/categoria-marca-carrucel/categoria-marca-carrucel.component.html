@@ -1,4 +1,4 @@
-<!-- 
+
 <div class="container">
   <a>Marcas</a>
 </div>
@@ -10,33 +10,12 @@
   [circular]="true"
   [autoplayInterval]="3000"
 >
-  <ng-template [style.marginLeft]="'40px'" let-image pTemplate="item">
+  <ng-template [style.marginLeft]="'40px'"  [style.padding]="'10px'"  [style.marginBottom]="'30px'" let-image pTemplate="item">
 
-    <img
+    <img class="image-marcas"
       (click)="redirectTo('detail-categoria')"
       src="{{image}}"
-      style="height: 150px; width: 150px;border: dashed 3px rgb(82, 168, 29);"
-      alt="Image"
-    />
-  </ng-template>
-</p-carousel> -->
-<div class="container">
-  <a>Marcas</a>
-</div>
-
-<p-carousel
-  [value]="images"
-  [numVisible]="3"
-  [numScroll]="1"
-  [circular]="true"
-  [autoplayInterval]="3000"
->
-  <ng-template let-image pTemplate="item">
-    <img
-      (click)="redirectTo('detail-categoria')"
-      src="{{image}}"
-      [ngStyle]="{'margin-left.px': 40}" 
-      style="height: 150px; width: 150px; border: dashed 3px rgb(82, 168, 29);"
+    
       alt="Image"
     />
   </ng-template>
