@@ -1,6 +1,9 @@
 import { Location } from '@angular/common';
 import { Component, ViewEncapsulation } from '@angular/core';
 
+
+
+
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.view.html',

@@ -1,18 +1,23 @@
 .container {
+
   margin-top: 100px;
   max-width: 400px;
   margin-bottom: 50px;
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+  /* Utiliza flexbox para manejar el diseño */
+  justify-content: center;
 }
 
 
+
+
+
 .login-container {
-  width: 50%;
+  width: 40%;
   background-color: #fff;
   padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 3px 10px rgba(69, 69, 69, 0.345);
 }
 
 
@@ -103,50 +108,55 @@ a:hover {
 
 /* Media query para pantallas más pequeñas */
 @media screen and (max-width: 768px) {
- /* Reducir aún más el ancho del contenedor en pantallas pequeñas */
 
+  /* Reducir aún más el ancho del contenedor en pantallas pequeñas */
+  .footer {
+    display: none;
+
+  }
 
   div.container {
-      >div.login-container {
-          width: 90%;
 
-          >h2 {}
+    >div.login-container {
+      width: 100%;
 
-          >form {
-              >div.form-group:nth-of-type(1) {
-                  >label {}
+      >h2 {}
 
-                  >input#email {}
-              }
+      >form {
+        >div.form-group:nth-of-type(1) {
+          >label {}
 
-              >div.form-group:nth-of-type(2) {
-                  >label {}
+          >input#email {}
+        }
 
-                  >input#password {}
-              }
+        >div.form-group:nth-of-type(2) {
+          >label {}
 
-              >button {}
-          }
+          >input#password {}
+        }
 
-          >div.separator {}
-
-          >div.social-buttons {
-              >button.facebook {
-                  >i.fab.fa-facebook-f {}
-              }
-
-              >button.google {
-                  >i.fab.fa-google {}
-              }
-          }
-
-          >p:nth-of-type(1) {
-              >a {}
-          }
-
-          >p:nth-of-type(2) {
-              >a {}
-          }
+        >button {}
       }
+
+      >div.separator {}
+
+      >div.social-buttons {
+        >button.facebook {
+          >i.fab.fa-facebook-f {}
+        }
+
+        >button.google {
+          >i.fab.fa-google {}
+        }
+      }
+
+      >p:nth-of-type(1) {
+        >a {}
+      }
+
+      >p:nth-of-type(2) {
+        >a {}
+      }
+    }
   }
 }
