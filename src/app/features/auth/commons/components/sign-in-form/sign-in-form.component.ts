@@ -9,10 +9,11 @@ import {
 import { Router } from '@angular/router';
 import { SignInService } from '../../services/sign-in.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { catchError, throwError } from 'rxjs';
+import { catchError, finalize, throwError } from 'rxjs';
 import { StorageService } from '../../../../../core/service/storage.service';
 import { SessionService } from '../../../../../core/service/session.service';
 import { ERol } from '../../../../../shared/constants/rol.enum';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-sign-in-form',
@@ -27,6 +28,7 @@ export class SignInFormComponent implements OnInit {
   formLogin: FormGroup;
 
   constructor(
+    private ngxService: NgxUiLoaderService,
     private router: Router,
     private signInService: SignInService,
     private fb: FormBuilder,
@@ -44,7 +46,7 @@ export class SignInFormComponent implements OnInit {
   login(): void {
     const email = this.formLogin.value.email;
     const password = this.formLogin.value.password;
-
+    this.ngxService.start();
     this.signInService
       .signIn({ email, password })
       .pipe(
@@ -58,6 +60,9 @@ export class SignInFormComponent implements OnInit {
           });
           return throwError(this.errorMessage);
         }),
+        finalize(() => {
+          this.ngxService.stop();
+        })
       )
       .subscribe((response) => {
         if (response) {

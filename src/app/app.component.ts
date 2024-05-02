@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 // import { ToastrService } from 'ngx-toastr'; // Importa el servicio ToastrService si estás usando Toastr para los toasts
-
+import * as AOS from 'aos'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,6 +11,18 @@ export class AppComponent {
 
   // constructor(private toastr: ToastrService) { } // Inyecta el servicio ToastrService
 
+
+
+  ngOnInit(): void {
+    AOS.init()
+    window.addEventListener('load', AOS.refresh)
+
+    // Realizar la primera recarga solo si no se ha hecho antes
+    // if (!this.initialReloadDone) {
+    //   this.reloadPage();
+    //   this.initialReloadDone = true;
+    // }
+  }
   // ngOnInit(): void {
   //   this.verificarConexion();
   // }

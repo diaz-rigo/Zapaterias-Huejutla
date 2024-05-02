@@ -15,17 +15,19 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 const IMPORTS_COMPONENTS = [CoreComponentsModule]; // Agrega los componentes
+import { NgxUiLoaderModule } from "ngx-ui-loader";
 
 
 @NgModule({
   declarations: [
       AppComponent,
-    
+
   ],
   imports: [
     ...IMPORTS_COMPONENTS,
     BrowserModule,
-    AppRoutingModule, CarouselModule,HttpClientModule
+    AppRoutingModule, CarouselModule,HttpClientModule,    NgxUiLoaderModule,
+
   ],
   providers: [
     provideClientHydration()
