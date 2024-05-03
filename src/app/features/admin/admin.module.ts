@@ -13,6 +13,7 @@ import { PedidosComponent } from './commons/components/pedidos/pedidos.component
 import { MaterialModule } from './commons/material/material.module';
 import { AdminComponent } from './admin.component';
 import { ProductoView } from './view/producto/producto.view';
+import { InicioView } from './view/inicio/inicio.view';
 // import { AdmDashboardView } from './adm-dashboard/adm-dashboard.view';
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ProductoView } from './view/producto/producto.view';
     VentasComponent,
     PedidosComponent,
     AdminComponent,
-    ProductoView
+    ProductoView,
+    InicioView
   ],
   imports: [
     CommonModule,

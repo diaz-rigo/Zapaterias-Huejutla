@@ -1,0 +1,60 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.btn-agregar {
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto 20px;
+    padding: 10px;
+    background-color: #d5d5d5;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.tabla-crud {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla-crud th,
+.tabla-crud td {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.tabla-crud th {
+    background-color: #f2f2f2;
+}
+
+.tabla-crud td {
+    text-align: center;
+}
+
+.btn-editar,
+.btn-eliminar {
+    padding: 5px 10px;
+    margin: 0 5px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.btn-eliminar {
+    background-color: #dc3545;
+}
+
+@media (max-width: 600px) {
+
+    .tabla-crud th,
+    .tabla-crud td {
+        font-size: 12px;
+    }
+}

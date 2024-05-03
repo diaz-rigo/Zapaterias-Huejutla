@@ -7,6 +7,7 @@ import { CategoriaView } from './view/categoria/categoria.view';
 import { RegistroUsuarioView } from './view/registro-usuario/registro-usuario.view';
 import { AcercaEmpresaView } from './view/acerca-empresa/acerca-empresa.view';
 import { AccesoUsuarioView } from '../auth/view/acceso-usuario/acceso-usuario.view';
+import { NotFoundView } from './view/not-found/not-found.view';
 // import { AccesoUsuarioView } from '../auth/view/acceso-usuario/acceso-usuario.view';
 // import { AccesoUsuarioView } from '../auth copy/views/acceso-usuario/acceso-usuario.view';
 // import { AccesoUsuarioView } from '../auth/view/acceso-usuario/acceso-usuario.view';
@@ -81,18 +82,18 @@ const routes: Routes = [
       // {
       //   title:"404",
       //   path: 'not-found',
-      //   component: NotFondViews,
+      //   component: NotFoundView,
       // },
       // {
       //   title:"500",
       //   path: 'unknown',
       //   component: UnknownView ,
       // },
-      // {
-      //   title:"404",
-      //   path: '**',
-      //   component: NotFondViews,
-      // },
+      {
+        title:"404",
+        path: '**',
+        component: NotFoundView,
+      },
     ],
   },
 ];

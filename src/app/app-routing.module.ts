@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NotFoundView } from './features/public/view/not-found/not-found.view';
 
 const routes: Routes = [
   
@@ -29,6 +30,11 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () =>
       import('./features/auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
+    title:"404",
+    path: 'not-found',
+    component: NotFoundView,
   },
 
 ];

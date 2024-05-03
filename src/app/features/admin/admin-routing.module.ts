@@ -3,18 +3,22 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdmHomeView } from './view/adm-home/adm-home.view';
 import { AdminComponent } from './admin.component';
 import { ProductoView } from './view/producto/producto.view';
+import { InicioView } from './view/inicio/inicio.view';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'admin-home',
+    redirectTo: 'inicio',
     pathMatch: 'full',
   },
   {
     path: '',
     component: AdminComponent,
     children: [
-
+      {
+        path: 'inicio',
+        component: InicioView,
+      },
       {
         path: 'admin-home',
         component: AdmHomeView,
