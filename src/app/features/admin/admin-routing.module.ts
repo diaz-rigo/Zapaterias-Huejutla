@@ -4,6 +4,8 @@ import { AdmHomeView } from './view/adm-home/adm-home.view';
 import { AdminComponent } from './admin.component';
 import { ProductoView } from './view/producto/producto.view';
 import { InicioView } from './view/inicio/inicio.view';
+import { UsuarioView } from './view/usuario/usuario.view';
+import { ComentariosView } from './view/comentarios/comentarios.view';
 
 const routes: Routes = [
   {
@@ -27,6 +29,16 @@ const routes: Routes = [
         // path: 'detail/:id',
         path: 'productos',
         component: ProductoView,
+      },
+      {
+        // path: 'detail/:id',
+        path: 'usuarios',
+        component: UsuarioView,
+      },
+      {
+        // path: 'detail/:id',
+        path: 'comentarios',
+        component: ComentariosView,
       },
       // {
       //   // path: 'detail/:id',

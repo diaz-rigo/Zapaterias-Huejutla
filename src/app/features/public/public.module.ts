@@ -21,6 +21,8 @@ import { PasswordRecoveryComponent } from './view/password-recovery/password-rec
 import { CartComponent } from './view/cart/cart.component';
 import { BackButtonDirective } from './view/detail/back-button.directive';
 
+
+
 const VIEW_COMPONENTS = [
   RegistroUsuarioView,
   DetailView,

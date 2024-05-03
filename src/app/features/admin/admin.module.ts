@@ -5,7 +5,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 
 import { AdmDashboardView } from './view/adm-dashboard/adm-dashboard.view';
 import { AdmHomeView } from './view/adm-home/adm-home.view';
-import { UsuarioCrudView } from './view/usuarios/usuario-crud/usuario-crud.view';
+// import { UsuarioCrudView } from './view/usuarios/usuario-crud/usuario-crud.view';
 import { NotificacionesView } from './view/notificaciones/notificaciones.view';
 import { ProductFormComponent } from './commons/components/product-form/product-form.component';
 import { VentasComponent } from './commons/components/ventas/ventas.component';
@@ -14,22 +14,36 @@ import { MaterialModule } from './commons/material/material.module';
 import { AdminComponent } from './admin.component';
 import { ProductoView } from './view/producto/producto.view';
 import { InicioView } from './view/inicio/inicio.view';
+import { TablaUsuarioComponent } from './commons/components/tabla-usuario/tabla-usuario.component';
+import { UsuarioView } from './view/usuario/usuario.view';
+
+import { AvatarModule } from 'primeng/avatar';
+import { AvatarGroupModule } from 'primeng/avatargroup';
+import { ComentariosView } from './view/comentarios/comentarios.view';
+
+
+const MATERIALS = [
+  AvatarModule, AvatarGroupModule
+]
 // import { AdmDashboardView } from './adm-dashboard/adm-dashboard.view';
 @NgModule({
   declarations: [
 
     AdmDashboardView,
     AdmHomeView,
-    UsuarioCrudView,
+    // UsuarioCrudView,
     NotificacionesView,
     ProductFormComponent,
     VentasComponent,
     PedidosComponent,
     AdminComponent,
     ProductoView,
-    InicioView
+    InicioView,
+    TablaUsuarioComponent,
+    UsuarioView,
+    ComentariosView
   ],
-  imports: [
+  imports: [MATERIALS,
     CommonModule,
     AdminRoutingModule, MaterialModule
   ]

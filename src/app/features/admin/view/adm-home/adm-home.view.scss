@@ -12,10 +12,17 @@
            font-size: 3.5rem;
        }
    }
+.nav-link{
+cursor: pointer;
+}
 
    body {
 
        font-size: .875rem;
+   }
+
+   footer{
+   display: none;
    }
 
    .feather {
@@ -37,6 +44,14 @@
        /* Height of navbar */
        box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
    }
+.card1{
+margin-top: 20px;
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+
 
    @media (max-width: 767.98px) {
        .sidebar {

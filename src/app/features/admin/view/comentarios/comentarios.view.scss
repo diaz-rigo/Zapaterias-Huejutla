@@ -1,0 +1,50 @@
+.admin-section {
+    padding: 20px;
+
+    .comment {
+        border: 1px solid #ccc;
+        margin-bottom: 20px;
+        padding: 10px;
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .username {
+            font-weight: bold;
+        }
+
+        .date {
+            color: #666;
+        }
+
+        .comment-content {
+            margin-bottom: 10px;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .reply-form {
+            margin-top: 10px;
+
+            textarea {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            button {
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 3px;
+                padding: 5px 10px;
+                cursor: pointer;
+            }
+        }
+    }
+}
