@@ -71,7 +71,10 @@ export class SignInFormComponent implements OnInit {
           if (userData) {
             this.userROL = userData.rol;
             if (this.userROL === ERol.ADMIN) {
-              this.router.navigateByUrl('/admin');
+              this.router.navigate(['/admin']).then(() => {
+                window.location.reload();
+              });
+              window.location.reload();
             } else if (this.userROL === ERol.CLIENT) {
               this.router.navigate(['/']).then(() => {
                 window.location.reload();
