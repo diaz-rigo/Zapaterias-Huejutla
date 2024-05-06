@@ -77,6 +77,9 @@ export class SignInFormComponent implements OnInit {
 
                 window.location.reload();
 
+
+
+                  
               });
 
               // window.location.reload();
