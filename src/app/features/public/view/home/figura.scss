@@ -68,7 +68,7 @@
 
 .contiene-Imagen {
   width: 400px;
-  margin-top: 10%;
+  margin-top: 8%;
   margin-right: 20px;
   margin-left: 60%;
   height: 400px;
@@ -113,6 +113,9 @@
   .contiene-Imagen img {
     // outline: 1px solid red;
     // border: dashed 3px #0004ff;
+
+
+
     padding: 0;
     display: block;
     margin-left: auto;
@@ -121,4 +124,7 @@
     height: auto;
     // -webkit-box-reflect: below 1px linear-gradient(transparent,#0008);
   }
+
+
+
 }

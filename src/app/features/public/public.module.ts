@@ -20,6 +20,7 @@ import { MaterialModule } from './commons/material/material.module';
 import { PasswordRecoveryComponent } from './view/password-recovery/password-recovery.component';
 import { CartComponent } from './view/cart/cart.component';
 import { BackButtonDirective } from './view/detail/back-button.directive';
+import { ProductosView } from './view/productos/productos.view';
 
 
 
@@ -40,6 +41,7 @@ const VIEW_COMPONENTS = [
     PasswordRecoveryComponent,
     CartComponent,
     BackButtonDirective,
+    ProductosView,
   ],
   imports: [FormsModule, ReactiveFormsModule  ,
     CommonModule,

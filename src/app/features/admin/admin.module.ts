@@ -20,6 +20,7 @@ import { UsuarioView } from './view/usuario/usuario.view';
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
 import { ComentariosView } from './view/comentarios/comentarios.view';
+import { PedidosView } from './view/pedidos/pedidos.view';
 
 
 const MATERIALS = [
@@ -41,7 +42,8 @@ const MATERIALS = [
     InicioView,
     TablaUsuarioComponent,
     UsuarioView,
-    ComentariosView
+    ComentariosView,
+    PedidosView
   ],
   imports: [MATERIALS,
     CommonModule,

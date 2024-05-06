@@ -8,6 +8,7 @@ import { RegistroUsuarioView } from './view/registro-usuario/registro-usuario.vi
 import { AcercaEmpresaView } from './view/acerca-empresa/acerca-empresa.view';
 import { AccesoUsuarioView } from '../auth/view/acceso-usuario/acceso-usuario.view';
 import { NotFoundView } from './view/not-found/not-found.view';
+import { ProductosView } from './view/productos/productos.view';
 // import { AccesoUsuarioView } from '../auth/view/acceso-usuario/acceso-usuario.view';
 // import { AccesoUsuarioView } from '../auth copy/views/acceso-usuario/acceso-usuario.view';
 // import { AccesoUsuarioView } from '../auth/view/acceso-usuario/acceso-usuario.view';
@@ -53,7 +54,11 @@ const routes: Routes = [
         path: 'acerca-empresa',
         component: AcercaEmpresaView,
       },
-     
+      {
+        title:"Productos",
+        path: 'productos',
+        component: ProductosView,
+      },
       // {
       //   title:"Politica |",
       //   path: 'politica',

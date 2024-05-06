@@ -139,7 +139,7 @@ input:focus {
     border-color: $primary-color;
 }
 
-button {
+button[type="Submit"]  {
     background-color: $primary-color;
     color: $white-color;
     padding: 10px 20px;

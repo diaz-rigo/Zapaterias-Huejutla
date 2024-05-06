@@ -1,6 +1,6 @@
 .animated-title {
   width: 150vmin;
-  border: dashed #ff1500;
+  // border: dashed #ff1500;
   color: rgb(38, 118, 73);
   font-family: "Montserrat", sans-serif;
   height: 100vmin;
@@ -8,7 +8,7 @@
   left: 30%;
 
   position: absolute;
-  top: 70%;
+  top: 68%;
   -webkit-transform: translate(-25%, -50%);
   transform: translate(-25%, -50%);
 }
@@ -117,20 +117,20 @@ align-items: center;
   
   
   
-  .animated-title>div div span {
-    // gap: 3px;
-    // display: inline;
-  }  
+//   .animated-title>div div span {
+//     // gap: 3px;
+//     // display: inline;
+//   }  
   
-.animated-title>div.text-top div span:first-child{
-  // color: #8bb33a;
-  // padding-right: 10px;
-}
+// .animated-title>div.text-top div span:first-child{
+//   // color: #8bb33a;
+//   // padding-right: 10px;
+// }
 
 
   
 .animated-title>div.text-bottom {
-  border: #fff700 dashed 3px;
+  // border: #fff700 dashed 3px;
   // height: 100px;
   bottom: 0;
 }  

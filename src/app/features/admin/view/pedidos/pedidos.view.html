@@ -1,0 +1,59 @@
+
+<main class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+    <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Pedidos</h1>
+    </div><label for="filtroEstado">Filtrar por:</label>
+<select id="filtroEstado">
+<!-- <select id="filtroEstado" (change)="filtrarPorEstado($event.target.value)"> -->
+
+    <option value="">Todos</option>
+    <option value="Pendiente">Pendiente</option>
+    <option value="Cancelado">Cancelado</option>
+    <option value="Reembolsado">Reembolsado</option>
+    <option value="Completado">Completado</option>
+</select>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Número de Pedido</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Total de Pago</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>001</td>
+            <td>2024-05-20</td>
+            <td class="pendiente">Pendiente</td>
+            <td>$50.00</td>
+        </tr>
+        <tr>
+            <td>002</td>
+            <td>2024-05-21</td>
+            <td class="cancelado">Cancelado</td>
+            <td>$30.00</td>
+        </tr>
+        <tr>
+            <td>003</td>
+            <td>2024-05-22</td>
+            <td  class="reembolsado">Reembolsado</td>
+            <td>$70.00</td>
+        </tr>
+        <tr >
+            <td>004</td>
+            <td>2024-05-23</td>
+            <td class="completado">Completado</td>
+            <td>$100.00</td>
+        </tr>
+    </tbody>
+</table>
+</main>
+
+
+
+
+
+

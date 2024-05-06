@@ -1,7 +1,7 @@
 // cards categorias
 
 .container {
-  outline: 1px solid rgb(255, 222, 222);
+  // outline: 1px solid rgb(255, 222, 222);
   color: cadetblue;
   font-family: Alata, Helvetica, sans-serif;
   max-width: 1300px;
@@ -67,25 +67,37 @@ div.card>img:hover {
 
 
   .card {
-    border: dashed 3px #40ff00;
+    // border: dashed 3px #40ff00;
     margin-right: 10px;
     height: 3%;
     width: 50%;
+    margin-top: 10px;
 
   }
 
+  // .carousel {
+  //   // height: 30%;
+ 
+  //   border: #167274 dashed;
+  // }
+
   .card img {
-    border: dashed 3px #000000;
+
+    // border: dashed 3px #000000;
     height: 50px;
 
   }
 
 
+
+
+
+
   @layer primeng {
     .p-carousel-items-content {
-      border: dashed 3px #ff9500;
+      // border: dashed 3px #ff9500;
       overflow: hidden;
-   width: 500px;
+      width: 500px;
     }
   }
 
@@ -97,7 +109,7 @@ div.card>img:hover {
 
     .p-carousel-prev,
     .p-carousel-next {
-      border: dashed 3px #000000;
+      // border: dashed 3px #000000;
       align-self: center;
       flex-grow: 0;
       flex-shrink: 0;
@@ -179,6 +191,6 @@ div.card>img:hover {
 }
 
 .title-categorias {
-margin-top: 80px;
+  margin-top: 80px;
   color: #167274
 }

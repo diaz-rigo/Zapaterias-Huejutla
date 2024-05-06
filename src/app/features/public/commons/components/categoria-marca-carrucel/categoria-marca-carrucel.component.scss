@@ -44,14 +44,14 @@ div.card>img {
 }
 
 div.card>img:hover {
-  transition: transform 0.3s ease;
+  transition: transform 0.3s linear;
   transform: scale(1.15);
 }
 
 .image-marcas {
   height: 150px;
   width: 150px;
-  border: dashed 3px rgb(82, 168, 29);
+  // border: dashed 3px rgb(82, 168, 29);
   // margin-bottom: 50px;
 
 
@@ -62,9 +62,11 @@ div.card>img:hover {
 
 
   .image-marcas {
-    border-radius: 50px;
-    height: 50px;
-    width: 50px;
+    // border-radius: 50px;
+    // padding: 5px;
+    height: 90px;
+    width: 90px;
+    margin-left: 40px;
     
   }
 

@@ -1,0 +1,36 @@
+.table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th,
+    td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        color: #4e4e4e;
+    }
+
+
+    td.pendiente {
+        color: #ffc107;
+        /* Amarillo */
+    }
+
+    td.cancelado {
+        color: #dc3545;
+        /* Rojo */
+    }
+
+    td.reembolsado {
+        color: #17a2b8;
+        /* Azul */
+    }
+
+    td.completado {
+        color: #28a745;
+        /* Verde */
+    }
+}

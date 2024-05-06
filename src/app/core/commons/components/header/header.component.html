@@ -62,12 +62,11 @@
     ></i>
     <input *ngIf="showSearchInput" placeholder="Buscar..." />
   </div>
-
   <nav class="menu">
     <ul>
       <li><a class="a" (click)="redirectTo('home')">Inicio</a></li>
       <!-- <li><a class="a" >Nosotros</a></li> -->
-      <li><a class="a">Servicios</a></li>
+      <!-- <li><a class="a" (click)="redirectTo('productos')">Más</a></li> -->
       <!-- Colocar en caso de que haya sido logeado <li><a href="#">Productos</a></li> -->
       <li><a class="a" (click)="redirectTo('acerca-empresa')">Nosotros</a></li>
       <li class="usuario">
@@ -97,9 +96,9 @@
   </nav>
   <span class="pi pi-shopping-cart" pBadge value="2" severity="warning"></span>
 
-  <i
-    class="pi pi-bars"
+  <i class="pi pi-bars"
     *ngIf="isMobile && !showCart"
     (click)="toggleMenu()"
-  ></i>
+  >
+  </i>
 </header>
