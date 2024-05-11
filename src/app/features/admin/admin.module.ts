@@ -21,6 +21,7 @@ import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
 import { ComentariosView } from './view/comentarios/comentarios.view';
 import { PedidosView } from './view/pedidos/pedidos.view';
+import { adminComponentsModule } from './commons/components/components.module';
 
 
 const MATERIALS = [
@@ -34,7 +35,6 @@ const MATERIALS = [
     AdmHomeView,
     // UsuarioCrudView,
     NotificacionesView,
-    ProductFormComponent,
     VentasComponent,
     PedidosComponent,
     AdminComponent,
@@ -47,7 +47,7 @@ const MATERIALS = [
   ],
   imports: [MATERIALS,
     CommonModule,
-    AdminRoutingModule, MaterialModule
+    AdminRoutingModule, MaterialModule,adminComponentsModule
   ]
 })
 export class AdminModule { }

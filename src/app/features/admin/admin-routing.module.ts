@@ -7,6 +7,7 @@ import { InicioView } from './view/inicio/inicio.view';
 import { UsuarioView } from './view/usuario/usuario.view';
 import { ComentariosView } from './view/comentarios/comentarios.view';
 import { PedidosView } from './view/pedidos/pedidos.view';
+import { ProductFormComponent } from './commons/components/product-form/product-form.component';
 
 const routes: Routes = [
   {
@@ -45,6 +46,11 @@ const routes: Routes = [
         // path: 'detail/:id',
         path: 'pedidos',
         component: PedidosView,
+      },
+      {
+        // path: 'detail/:id',
+        path: 'agregar',
+        component: ProductFormComponent,
       },
       // {
       //   // path: 'detail/:id',

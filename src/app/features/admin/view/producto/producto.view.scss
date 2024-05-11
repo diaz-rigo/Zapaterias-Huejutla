@@ -1,60 +1,82 @@
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+  margin-top: 20px;
+  padding: 0 10px; // Añade espacio a los lados para dispositivos móviles
+}
+
+table {
+  width: 100%;
+  // border-collapse: collapse;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  padding: 8px; // Reducir el tamaño de las celdas en dispositivos móviles
+  text-align: left;
+}
+
+th {
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #dee2e6;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+tr:hover {
+  background-color: #e9ecef;
 }
 
 .btn-agregar {
-    display: block;
-    width: 100%;
-    max-width: 200px;
-    margin: 0 auto 20px;
-    padding: 10px;
-    background-color: #d5d5d5;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
 }
 
-.tabla-crud {
-    width: 100%;
-    border-collapse: collapse;
+.btn {
+  padding: 8px 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.3s;
 }
 
-.tabla-crud th,
-.tabla-crud td {
-    padding: 10px;
-    border: 1px solid #ccc;
-}
-
-.tabla-crud th {
-    background-color: #f2f2f2;
-}
-
-.tabla-crud td {
-    text-align: center;
-}
-
-.btn-editar,
-.btn-eliminar {
-    padding: 5px 10px;
-    margin: 0 5px;
-    background-color: #28a745;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
+.btn-editar {
+  background-color: #28a745;
+  color: white;
 }
 
 .btn-eliminar {
-    background-color: #dc3545;
+  background-color: #dc3545;
+  color: white;
 }
 
-@media (max-width: 600px) {
+// Media query para dispositivos móviles
+@media only screen and (max-width: 600px) {
+  .btn-agregar {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
 
-    .tabla-crud th,
-    .tabla-crud td {
-        font-size: 12px;
-    }
+  th, td {
+    padding: 6px; // Reducir el espacio entre las celdas en dispositivos móviles
+  }
+}
+// Media query para dispositivos
+@media only screen and (min-width: 1024px) and (max-width: 1439px) {
+  .container {
+   
+    padding: 0 10px ;
+
+  }
+
+  th, td {
+    padding: 2px !important; // Aumentar el espacio entre las celdas en dispositivos medianos
+  }
 }

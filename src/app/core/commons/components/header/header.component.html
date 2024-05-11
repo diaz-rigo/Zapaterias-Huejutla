@@ -1,3 +1,4 @@
+<!--*++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 <p-sidebar [(visible)]="sidebarVisible2" position="right">
   <div class="user-section" *ngIf="showUserName">
     <!-- Mostrar mensaje de bienvenida y nombre de usuario si está disponible -->
@@ -28,6 +29,39 @@
     <li><a routerLink="/salir"><i class="pi pi-power-off"></i> Salir</a></li>
   </ul>
 </p-sidebar>
+
+<!--*++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<p-sidebar [(visible)]="admmenu" position="left">
+  <div class="user-section">
+
+    <!-- Mostrar mensaje de bienvenida y nombre de usuario si está disponible -->
+    <p>Bienvenido, {{ userName }}</p>
+    <p-tag value=" {{ userRol }}"/>
+
+    <hr />
+    <ul>
+      <li><a class="a"  (click)="redirectToAdmin('inicio')" ><i class="pi pi-home"></i>Inicio </a></li>
+      <li><a class="a" (click)="logout()"> <i class="pi pi-sign-out"></i>Cerrar sesión </a></li>
+    </ul>
+  </div>
+  <hr />
+  <h3>Administración</h3>
+  <ul>
+    <li><a (click)="redirectToAdmin('productos')"><i class="pi pi-list"></i> Administrar Productos</a></li>
+    <li><a (click)="redirectToAdmin('usuarios')" ><i class="pi pi-users"></i> Administrar Usuarios</a></li>
+    <li><a (click)="redirectToAdmin('productos')"><i class="pi pi-chart-bar"></i> Reportes</a></li>
+  </ul>
+  <hr />
+
+  <h3>Configuración</h3>
+  <ul>
+    <li><a routerLink="/ajustes"><i class="pi pi-cog"></i> Ajustes</a></li>
+    <li><a routerLink="/ayuda"><i class="pi pi-question-circle"></i> Ayuda</a></li>
+    <li><a routerLink="/salir"><i class="pi pi-power-off"></i> Salir</a></li>
+  </ul>
+</p-sidebar>
+
+
 
 <header class="header" [ngClass]="{ scrolled: isScrolled }">
   <div class="logo">
@@ -94,11 +128,17 @@
       </li>
     </ul>
   </nav>
-  <span class="pi pi-shopping-cart" pBadge value="2" severity="warning"></span>
-
+  <span *ngIf="userRol != 'ADMIN'" class="pi pi-shopping-cart" pBadge value="2" severity="warning"></span>
   <i class="pi pi-bars"
-    *ngIf="isMobile && !showCart"
-    (click)="toggleMenu()"
-  >
-  </i>
+  *ngIf="isMobile && !showCart && userRol === 'ADMIN'"
+  (click)="toggleMenuADMIN()"
+>
+</i>
+
+<i class="pi pi-bars"
+  *ngIf="isMobile && !showCart && userRol !== 'ADMIN'"
+  (click)="toggleMenu()"
+>
+</i>
+
 </header>

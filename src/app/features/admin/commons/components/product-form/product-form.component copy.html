@@ -1,0 +1,75 @@
+<!-- HTML del componente -->
+<div class="container">
+  <h2>Agregar Producto</h2>
+  <form (ngSubmit)="agregarProducto()">
+    <div class="form-group">
+      <label for="name">Nombre:</label>
+      <input type="text" class="form-control" id="name" [(ngModel)]="product.name" name="name" required>
+    </div>
+    <div class="form-group">
+      <label for="sku">SKU:</label>
+      <input type="text" class="form-control" id="sku" [(ngModel)]="product.sku" name="sku" required>
+    </div>
+    <div class="form-group">
+      <label for="description">Descripción:</label>
+      <textarea class="form-control" id="description" [(ngModel)]="product.description" name="description" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="brand">Marca:</label>
+      <input type="text" class="form-control" id="brand" [(ngModel)]="product.brand" name="brand">
+    </div>
+    <div class="form-group">
+      <label for="color">Color:</label>
+      <input type="text" class="form-control" id="color" [(ngModel)]="product.color" name="color">
+    </div>
+    <div class="form-group">
+      <label for="size">Tamaño:</label>
+      <input type="text" class="form-control" id="size" [(ngModel)]="product.size" name="size">
+    </div>
+    <div class="form-group">
+      <label for="material">Material:</label>
+      <input type="text" class="form-control" id="material" [(ngModel)]="product.material" name="material">
+    </div>
+    <div class="form-group">
+      <label for="gender">Género:</label>
+      <input type="text" class="form-control" id="gender" [(ngModel)]="product.gender" name="gender">
+    </div>
+    <div class="form-group">
+      <label for="ageGroup">Grupo de Edad:</label>
+      <input type="text" class="form-control" id="ageGroup" [(ngModel)]="product.ageGroup" name="ageGroup">
+    </div>
+    <div class="form-group">
+      <label for="quantity">Cantidad Disponible:</label>
+      <input type="number" class="form-control" id="quantity" [(ngModel)]="product.quantity" name="quantity">
+    </div>
+    <div class="form-group">
+      <label for="price">Precio:</label>
+      <input type="number" class="form-control" id="price" [(ngModel)]="product.price" name="price">
+    </div>
+    <div class="form-group">
+      <label for="category">Categoría:</label>
+      <input type="text" class="form-control" id="category" [(ngModel)]="product.category" name="category">
+    </div>
+    <div class="form-group">
+      <label for="status">Estado:</label>
+      <select class="form-control" id="status" [(ngModel)]="product.status" name="status">
+        <option value="active">Activo</option>
+        <option value="inactive">Inactivo</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="weight">Peso:</label>
+      <input type="number" class="form-control" id="weight" [(ngModel)]="product.weight" name="weight">
+    </div>
+    <div class="form-group" *ngIf="product.shoeAttributes">
+      <label for="soleType">Tipo de Suela:</label>
+      <input type="text" class="form-control" id="soleType" [(ngModel)]="product.shoeAttributes.soleType" name="soleType">
+    </div>
+    <div class="form-group" *ngIf="product.shoeAttributes">
+      <label for="heelHeight">Altura del Tacón:</label>
+      <input type="number" class="form-control" id="heelHeight" [(ngModel)]="product.shoeAttributes.heelHeight" name="heelHeight">
+    </div>
+    <!-- Puedes agregar más campos específicos de zapatos aquí si es necesario -->
+    <button type="submit" class="btn btn-primary">Agregar</button>
+  </form>
+</div>

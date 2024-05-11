@@ -4,14 +4,27 @@ import { ButtonModule } from 'primeng/button'
 import { CardModule } from 'primeng/card'
 import { CarouselModule } from 'primeng/carousel'
 import { TimelineModule } from 'primeng/timeline'
-
+import { InputTextModule } from 'primeng/inputtext';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputNumberModule } from 'primeng/inputnumber';
 import { ChartModule } from 'primeng/chart';
+import { DialogModule } from 'primeng/dialog';
+import { TagModule } from 'primeng/tag';
+import { TableModule } from 'primeng/table';
 const PRIME_COMPONENTS = [
+  TableModule,
+  InputTextModule,
+  InputTextareaModule,
+  DropdownModule,
+  InputNumberModule,
   CarouselModule,
   TimelineModule,
   ButtonModule,
   CardModule,
-  ChartModule
+  ChartModule,
+  DialogModule,
+  TagModule
 ]
 
 @NgModule({

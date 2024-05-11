@@ -3,6 +3,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { Router } from '@angular/router'
 import { MenuItem } from 'primeng/api'
 import { SessionService } from '../../../service/session.service'
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -25,18 +26,21 @@ import { SessionService } from '../../../service/session.service'
       transition('false => true', animate('300ms ease')),
     ]),
   ],
+
 })
 export class HeaderComponent {
   items: MenuItem[] | undefined
   showSearchInput: boolean = false
   isScrolled: boolean = false
   isMobile: boolean = false
-  showMenu: boolean = false
+  // showMenu: boolean = false
   showCart: boolean = false
   sidebarVisible2: boolean = false
+  admmenu: boolean = false
 
   mostrarSubmenu: boolean = false
   userName: string | undefined
+  userRol: string | undefined
   showUserName!: boolean
   toggleSubmenu() {
     this.mostrarSubmenu = !this.mostrarSubmenu
@@ -61,6 +65,7 @@ export class HeaderComponent {
 
     if (userData && userData.name) {
       this.userName = userData.name;
+      this.userRol = userData.rol;
       console.log(userData)
 
       this.showUserName = true;
@@ -207,7 +212,11 @@ export class HeaderComponent {
   toggleMenu(): void {
     console.log('presionado')
     this.sidebarVisible2 = !this.sidebarVisible2
-    this.showMenu = !this.showMenu
+    // this.showMenu = !this.showMenu
+  }
+  toggleMenuADMIN(): void {
+    this.admmenu = !this.admmenu
+
   }
 
   checkIsMobile(): void {
@@ -216,6 +225,8 @@ export class HeaderComponent {
 
   redirectTo(route: string): void {
 
+    this.sidebarVisible2 = false
+    this.admmenu = false
     // this.sidebarVisible2 = !this.sidebarVisible2
     console.log(route)
     if (route === 'login') {
@@ -236,10 +247,37 @@ export class HeaderComponent {
     }
   }
 
-  logout() {
-
+  logout(): void {
+    // Remover el token de sesión
     this.sessionService.removeToken();
+
+    // Ocultar el mensaje de bienvenida y el nombre de usuario
     this.showUserName = false;
+
+    // Reiniciar el estado del componente
+    this.ngOnInit();
+
+    // Ocultar los menús laterales
+    this.sidebarVisible2 = false;
+    this.admmenu = false;
+
+    // Limpiar el rol del usuario
+    this.userRol = undefined;
+
+    // Navegar a la página de inicio pública
+    this.router.navigate(['/public']);
   }
+
+  redirectToAdmin(route: string): void {
+
+    this.admmenu = !this.admmenu
+    console.log(route)
+    if (route === 'login') {
+      this.router.navigate(['/auth/login']) // Navegación hacia la página de inicio de sesión
+    } else {
+      this.router.navigate(['/admin', route]) // Navegación hacia otras páginas públicas
+    }
+  }
+
 
 }

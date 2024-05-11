@@ -4,8 +4,9 @@ import { BadgeModule } from 'primeng/badge';
 import { MenubarModule } from 'primeng/menubar';
 import { SidebarModule } from 'primeng/sidebar';
 import { AnimateOnScrollModule } from 'primeng/animateonscroll';
-
-const MATERIALS__ = [MenubarModule,SidebarModule,AnimateOnScrollModule,BadgeModule]; // Agrega los componentes
+import { TreeModule } from 'primeng/tree';
+import { TagModule } from 'primeng/tag';
+const MATERIALS__ = [TagModule,TreeModule,MenubarModule,SidebarModule,AnimateOnScrollModule,BadgeModule]; // Agrega los componentes
 
 @NgModule({
   declarations: [],
