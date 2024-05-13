@@ -1,5 +1,369 @@
-<p-card header="Simple Card">
-  <p class="m-0">
-      Lorem ipsum dolor sit amet...
-  </p>
-</p-card>
+<!-- <div class="form-container"> -->
+  <!-- <form class="form-container"[formGroup]="productForm" (ngSubmit)="agregarProducto()"  enctype="multipart/form-data"> -->
+    <form class="form-container" [formGroup]="productForm" (ngSubmit)="isEditing ? EDITAREProducto() : agregarProducto()" enctype="multipart/form-data">
+
+    <div class="row">
+      <div class="form-field">
+        <label for="sku">SKU:</label>
+        <input
+          pInputText
+          type="text"
+          id="sku"
+          placeholder="SKU"
+          formControlName="sku"
+          required
+        />
+        <div
+          *ngIf="
+            productForm.get('sku')?.invalid && productForm.get('sku')?.touched
+          "
+          class="error-message"
+        >
+          SKU es requerido
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="nombre">Nombre:</label>
+        <input
+          pInputText
+          type="text"
+          id="nombre"
+          placeholder="Nombre del producto"
+          formControlName="name"
+          required
+        />
+        <div
+          *ngIf="
+            productForm.get('name')?.invalid &&
+            productForm.get('name')?.touched
+          "
+          class="error-message"
+        >
+          Nombre es requerido
+        </div>
+      </div>
+    </div>
+
+    <div class="card flex justify-content-center">
+      <span class="p-float-label">
+        <textarea
+          class="textarea"
+          id="float-input"
+          rows="2"
+          style="width: 100%"
+          pInputTextarea
+          formControlName="description"
+          placeholder="Descripción del producto"
+        ></textarea>
+        <label for="float-input">Descripción del producto</label>
+      </span>
+    </div>
+
+    <div class="row">
+      <div class="form-field">
+        <label for="brand">Marca:</label>
+        <input
+          pInputText
+          type="text"
+          id="brand"
+          formControlName="brand"
+          placeholder="Marca del producto"
+          required
+        />
+        <div
+          *ngIf="
+            productForm.get('brand')?.invalid &&
+            productForm.get('brand')?.touched
+          "
+          class="error-message"
+        >
+          Marca es requerida
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="color">Color:</label>
+        <input
+          pInputText
+          type="text"
+          id="color"
+          formControlName="color"
+          placeholder="Color del producto"
+          required
+        />
+        <div
+          *ngIf="
+            productForm.get('color')?.invalid &&
+            productForm.get('color')?.touched
+          "
+          class="error-message"
+        >
+          Color es requerido
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-field">
+        <label for="size">Tamaño:</label>
+        <input
+          pInputText
+          type="text"
+          id="size"
+          formControlName="size"
+          placeholder="Tamaño del producto"
+          required
+        />
+        <div
+          *ngIf="
+            productForm.get('size')?.invalid &&
+            productForm.get('size')?.touched
+          "
+          class="error-message"
+        >
+          Tamaño es requerido
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="material">Material:</label>
+        <input
+          pInputText
+          type="text"
+          id="material"
+          formControlName="material"
+          placeholder="Material del producto"
+          required
+        />
+        <div
+          *ngIf="
+            productForm.get('material')?.invalid &&
+            productForm.get('material')?.touched
+          "
+          class="error-message"
+        >
+          Material es requerido
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-field">
+        <label for="gender">Género:</label>
+        <select pInputText id="gender" formControlName="gender" required>
+          <option value="" disabled selected>Seleccione el género</option>
+          <option value="Hombre">Hombre</option>
+          <option value="Mujer">Mujer</option>
+          <option value="Unisex">Unisex</option>
+          <!-- Agrega más opciones según sea necesario -->
+        </select>
+        <div
+          *ngIf="
+            productForm.get('gender')?.invalid &&
+            productForm.get('gender')?.touched
+          "
+          class="error-message"
+        >
+          Género es requerido
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="ageGroup">Grupo de edad:</label>
+        <input
+          pInputText
+          type="text"
+          id="ageGroup"
+          formControlName="ageGroup"
+          placeholder="Grupo de edad al que se dirige el producto"
+          required
+        />
+        <div
+          *ngIf="
+            productForm.get('ageGroup')?.invalid &&
+            productForm.get('ageGroup')?.touched
+          "
+          class="error-message"
+        >
+          Grupo de edad es requerido
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-field">
+        <label for="quantity">Cantidad:</label>
+        <input
+          pInputText
+          type="number"
+          formControlName="quantity"
+          id="quantity"
+          placeholder="Cantidad disponible en inventario"
+          required
+        />
+        <div
+          *ngIf="
+            productForm.get('quantity')?.invalid &&
+            productForm.get('quantity')?.touched
+          "
+          class="error-message"
+        >
+          Cantidad es requerida
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="price">Precio:</label>
+        <input
+          pInputText
+          type="number"
+          formControlName="price"
+          id="price"
+          placeholder="Precio del producto"
+          required
+        />
+        <div
+          *ngIf="
+            productForm.get('price')?.invalid &&
+            productForm.get('price')?.touched
+          "
+          class="error-message"
+        >
+          Precio es requerido
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-field">
+        <label for="category">Categoría:</label>
+        <input
+          pInputText
+          type="text"
+          id="category"
+          formControlName="category"
+          placeholder="Referencia a la categoría del producto"
+          required
+        />
+        <div
+          *ngIf="
+            productForm.get('category')?.invalid &&
+            productForm.get('category')?.touched
+          "
+          class="error-message"
+        >
+          Categoría es requerida
+        </div>
+      </div>
+
+      <!-- <div class="form-field">
+        <label for="images">Imágenes:</label>
+        <input
+          pInputText
+          type="text"
+          id="images"
+          formControlName="images"
+          placeholder="Lista de URLs de imágenes del producto"
+          required
+        />
+        <div
+          *ngIf="
+            productForm.get('images')?.invalid &&
+            productForm.get('images')?.touched
+          "
+          class="error-message"
+        >
+          Imágenes son requeridas
+        </div>
+      </div> -->
+
+      <div class="form-field">
+        <label for="status">Estado:</label>
+        <select pInputText id="status" formControlName="status" required>
+          <option value="" disabled selected>Seleccione el estado</option>
+          <option value="Disponible">Disponible</option>
+          <option value="Agotado">Agotado</option>
+          <option value="En oferta">En oferta</option>
+          <!-- Agrega más opciones según sea necesario -->
+        </select>
+        <div
+          *ngIf="
+            productForm.get('status')?.invalid &&
+            productForm.get('status')?.touched
+          "
+          class="error-message"
+        >
+          Estado es requerido
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label for="weight">Peso:</label>
+        <input
+          pInputText
+          type="number"
+          id="weight"
+          formControlName="weight"
+          placeholder="Peso del producto"
+          required
+        />
+        <div
+          *ngIf="
+            productForm.get('weight')?.invalid &&
+            productForm.get('weight')?.touched
+          "
+          class="error-message"
+        >
+          Peso es requerido
+        </div>
+      </div>
+    </div>
+   <!-- ****** {{{{{{{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}}}}}}} -->
+    <div class="form-field">
+      <label for="tags">Etiquetas:</label>
+      <input
+        pInputText
+        type="text"
+        id="tags"
+        formControlName="tags"
+        placeholder="Etiquetas adicionales separadas por comas"
+        required
+      />
+      <div
+        *ngIf="
+          productForm.get('tags')?.invalid &&
+          productForm.get('tags')?.touched
+        "
+        class="error-message"
+      >
+        Etiquetas son requeridas
+      </div>
+    </div>
+
+    <div class="row2">
+      <div class="form-field2">
+        <label for="images">Imágenes:</label>
+        <input
+          type="file"
+          id="images"
+          formControlName="images"
+          accept="image/*"
+          multiple
+          (change)="onFileSelected($event)"
+        />
+        <div class="image-preview-container">
+          <div class="image-preview" *ngFor="let image of fileNames; let i = index">
+            <img [src]="image.src" alt="Preview" />
+            <button class="remove-button" (click)="removeImage(i)">X</button>
+          </div>
+        </div>
+        <div *ngIf="productForm.get('images')?.invalid && productForm.get('images')?.touched" class="error-message">
+          Imágenes son requeridas
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <div class="btn">
+      <button class="btn-finish"  pButton type="submit">guardar</button>
+    </div>
+  </form>

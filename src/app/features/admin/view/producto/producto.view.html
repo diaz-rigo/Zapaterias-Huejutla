@@ -1,162 +1,55 @@
 <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-      <h1 class="h2">Productos</h1>
+  <div
+    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+  >
+    <h1 class="h2">Productos</h1>
   </div>
+  <button
+    pButton
+    type="button"
+    label="Agregar"
+    icon="pi pi-plus"
+    (click)="createprod()"
+    class="btn-agregar"
+  ></button>
+  <p-toast />
+  <p-confirmDialog />
   <div class="container">
-      <button class="btn-agregar" (click)="agregar=true">
-          <span class="pi pi-plus"></span> Agregar
-      </button>
-      <table class="tabla-crud">
-          <thead>
-              <tr>
-                  <th>ID</th>
-                  <th>Nombre</th>
-                  <th>Descripción</th>
-                  <th>Acciones</th>
-              </tr>
-          </thead>
-          <tbody>
-              <!-- Filas de datos se llenarían dinámicamente desde la base de datos -->
-              <tr>
-                  <td>1</td>
-                  <td>Producto 1</td>
-                  <td>Descripción del producto 1</td>
-                  <td>
-                      <button class="btn-editar">
-                          <span class="pi pi-pencil"></span>
-                      </button>
-                      <button class="btn-eliminar">
-                          <span class="pi pi-trash"></span> 
-                      </button>
-                  </td>
-              </tr>
-              <tr>
-                  <td>2</td>
-                  <td>Producto 2</td>
-                  <td>Descripción del producto 2</td>
-                  <td>
-                      <button class="btn-editar">
-                          <span class="pi pi-pencil"></span>
-                      </button>
-                      <button class="btn-eliminar">
-                          <span class="pi pi-trash"></span>
-                      </button>
-                  </td>
-              </tr>
-          </tbody>
-      </table>
+    <p-table [value]="productos" class="tabla-crud">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Acciones</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-producto>
+        <tr>
+          <td>{{ producto._id }}</td>
+          <td>{{ producto.name }}</td>
+          <td>{{ producto.description  }}</td>
+          <td>
+            <button
+              pButton
+              type="button"
+              icon="pi pi-pencil"
+              class="btn-editar"
+              (click)="editprod(producto)"
+            ></button>
+
+            <button
+              pButton
+              (click)="eliminar($event,producto._id)"
+              type="button"
+              icon="pi pi-trash"
+              class="btn-eliminar"
+              severity="danger" [outlined]="true"
+            ></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
 </main>
 
-
-
-<!-- **------------------------------------------------- -->
-<div class="p-grid p-justify-center">
-  <div class="p-col-12">
-    <p-dialog
-      header="Agregar Producto"
-      [modal]="true"
-      [(visible)]="agregar"
-      [style]="{ 'max-width': '25rem' }"
-    >
-      <div class="p-fluid">
-        <div class="p-field">
-          <label for="sku">SKU</label>
-          <input pInputText id="sku" class="p-inputtext" autocomplete="off" />
-        </div>
-        <div class="p-field">
-          <label for="nombre">Nombre</label>
-          <input
-            pInputText
-            id="nombre"
-            class="p-inputtext"
-            autocomplete="off"
-          />
-        </div>
-        <div class="p-field">
-          <label for="descripcion">Descripción</label>
-          <input
-            pInputTextarea
-            id="descripcion"
-            class="p-inputtext"
-            autocomplete="off"
-          />
-        </div>
-        <div class="p-field">
-          <label for="marca">Marca</label>
-          <input pInputText id="marca" class="p-inputtext" autocomplete="off" />
-        </div>
-        <div class="p-field">
-          <label for="color">Color</label>
-          <input pInputText id="color" class="p-inputtext" autocomplete="off" />
-        </div>
-        <div class="p-field">
-          <label for="tamaño">Tamaño</label>
-          <input
-            pInputText
-            id="tamaño"
-            class="p-inputtext"
-            autocomplete="off"
-          />
-        </div>
-        <div class="p-field">
-          <label for="material">Material</label>
-          <input
-            pInputText
-            id="material"
-            class="p-inputtext"
-            autocomplete="off"
-          />
-        </div>
-        <div class="p-field">
-          <label for="genero">Género</label>
-          <input
-            pInputText
-            id="genero"
-            class="p-inputtext"
-            autocomplete="off"
-          />
-        </div>
-        <div class="p-field">
-          <label for="grupoEdad">Grupo de Edad</label>
-          <input
-            pInputText
-            id="grupoEdad"
-            class="p-inputtext"
-            autocomplete="off"
-          />
-        </div>
-        <div class="p-field">
-          <label for="cantidad">Cantidad</label>
-          <input
-            pInputNumber
-            id="cantidad"
-            class="p-inputtext"
-            autocomplete="off"
-            mode="decimal"
-          />
-        </div>
-        <div class="p-field">
-          <label for="precio">Precio</label>
-          <input
-            pInputNumber
-            id="precio"
-            class="p-inputtext"
-            autocomplete="off"
-            mode="currency"
-            currency="USD"
-          />
-        </div>
-        <div class="p-field">
-          <label for="categoria">Categoría</label>
-          <input
-            pInputText
-            id="categoria"
-            class="p-inputtext"
-            autocomplete="off"
-          />
-        </div>
-      </div>
-    </p-dialog>
-  </div>
-</div>

@@ -1,4 +1,4 @@
-
+<!--
 <div class="container">
   <a>Marcas</a>
 </div>
@@ -15,8 +15,31 @@
     <img class="image-marcas"
       (click)="redirectTo('detail-categoria')"
       src="{{image}}"
-    
+
       alt="Image"
     />
   </ng-template>
+</p-carousel> -->
+
+<div class="container">
+  <a>Marcas</a>
+</div>
+
+<p-carousel
+  [value]="images"
+  [numVisible]="3"
+  [numScroll]="1"
+  [circular]="true"
+  [autoplayInterval]="5000"
+>
+<ng-template let-image pTemplate="item">
+      <div style="margin-left: 40px; padding: 10px; margin-bottom: 30px">
+      <img
+        class="image-marcas"
+        (click)="redirectTo('detail-categoria')"
+        src="{{ image }}"
+        alt="Image"
+      />
+    </div>
+    </ng-template>
 </p-carousel>

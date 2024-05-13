@@ -1,0 +1,302 @@
+<p-toast position="top-center"></p-toast>
+<div class="form-container">
+  <p-divider align="left" type="solid">
+    <b>Contacto</b>
+  </p-divider>
+  <div class="row">
+    <div class="form-field">
+      <label for="nombre">Nombre:</label>
+      <input
+        pInputText
+        type="text"
+        id="nombre"
+        placeholder="Juanito"
+        required
+        [(ngModel)]="nombre"
+      />
+    </div>
+    <div class="form-field">
+      <label for="apellido1">Apellido 1:</label>
+      <input
+        pInputText
+        type="text"
+        id="apellido1"
+        placeholder="Perez"
+        required
+        [(ngModel)]="apellido1"
+      />
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-field">
+      <label for="apellido2">Apellido 2:</label>
+      <input
+        pInputText
+        type="text"
+        id="apellido2"
+        placeholder="Hernandez"
+        required
+        [(ngModel)]="apellido2"
+      />
+    </div>
+    <div class="form-field">
+      <label for="correo">Correo:</label>
+      <input
+        pInputText
+        type="email"
+        id="correo"
+        placeholder="juanPerez@gmail.com"
+        required
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+        [(ngModel)]="correo"
+      />
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-field">
+      <label for="telefono">Teléfono:</label>
+
+      <input
+        id="disabled-input"
+        pTooltip="nos comunicaremos mediante este numero"
+        tooltipPosition="bottom"
+        pInputText
+        autocomplete="false"
+        type="tel"
+        pKeyFilter="int"
+        pattern="[0-9]*"
+        maxlength="10"
+        placeholder="123-456-7890"
+        [(ngModel)]="telefono"
+      />
+      <!-- <input pInputText pKeyFilter="int" type="tel" id="telefono" placeholder="1234567890" required pattern="[0-9]{10}" [(ngModel)]="telefono" /> -->
+    </div>
+  </div>
+  <p-divider align="left" type="solid">
+    <b>Orden</b>
+  </p-divider>
+  <div class="row">
+    <div class="form-field">
+      <label for="sabor">Sabor:</label>
+      <p-dropdown
+        class="p-inputtext-sm"
+        [options]="flavors"
+        [(ngModel)]="selectedFlavor"
+        optionLabel="name"
+        [showClear]="true"
+        placeholder="sabores"
+        (ngModelChange)="calcularPrecio(); calcularPersonas()"
+      ></p-dropdown>
+    </div>
+    <div class="form-field">
+      <label for="quantity">Cantidad:</label>
+      <p-dropdown
+        class="p-inputtext-sm"
+        [options]="kilosOptions"
+        [(ngModel)]="selectedQuantity"
+        placeholder="en kg"
+        (ngModelChange)="calcularPrecio(); calcularPersonas()"
+      ></p-dropdown>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-field" *ngIf="personasPorKilo !== undefined">
+      <label class="lab" for="personasPorKilo"
+        >Personas: {{ personasPorKilo }}</label
+      >
+    </div>
+    <div
+      class="form-field"
+      *ngIf="precioTotal !== undefined && precioTotal > 0"
+    >
+      <label class="lab" for="precioTotal"
+        >Precio Total: {{ precioTotal }}</label
+      >
+    </div>
+  </div>
+  <div class="form-field">
+    <!-- <div class="row"> -->
+    <p-radioButton
+      name="modo"
+      value="otrosabor"
+      [(ngModel)]="selectedModosabor"
+      inputId="modoOtro"
+      (ngModelChange)="modoChanged()"
+    ></p-radioButton>
+    <label for="modoOtro">Otro sabor</label>
+  </div>
+  <div
+    class="row"
+    *ngIf="selectedFlavor === undefined || selectedFlavor === null"
+  >
+    <div
+      *ngIf="selectedModosabor === 'otrosabor'"
+      class="form-field full-width"
+    >
+      <div class="card flex justify-content-center">
+        <span class="p-float-label">
+          <textarea
+            pTooltip="indicación sobre el sabor"
+            tooltipPosition="right"
+            class="textarea"
+            id="float-input"
+            rows="2"
+            style="width: 100%"
+            pInputTextarea
+            [(ngModel)]="saborpersonalizado"
+            placeholder="Ejemplo: alguna otra indicación sobre el sabor"
+          ></textarea>
+          <label for="float-input">Instrucciones especiales</label>
+        </span>
+      </div>
+    </div>
+  </div>
+  <p-divider align="left" type="solid">
+    <b>Modo</b>
+  </p-divider>
+  <div class="row2">
+    <div class="form-field-four" *ngFor="let modo of modoOptions">
+      <p-radioButton
+        name="modo"
+        [value]="modo"
+        [(ngModel)]="selectedModo"
+        [inputId]="'modo' + modo"
+        required
+      ></p-radioButton>
+      <label class="bel" [for]="'modo' + modo">{{ modo }}</label>
+      <i [ngClass]="getIconClass(modo)" style="font-size: 1.1rem"></i>
+    </div>
+  </div>
+  <div class="row" *ngIf="selectedModo === 'otro'">
+    <div class="form-field full-width">
+      <div class="card flex justify-content-center">
+        <span class="p-float-label">
+          <textarea
+            pTooltip="alguna figura"
+            tooltipPosition="right"
+            class="textarea"
+            id="float-input"
+            rows="2"
+            style="width: 100%"
+            pInputTextarea
+            [(ngModel)]="modoPersonalizado"
+            placeholder="Ejemplo: alguna figura o indicación sobre la base"
+          ></textarea>
+          <label for="float-input">Instrucciones especiales</label>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-field">
+      <label for="dia">Día - entrega:</label>
+      <input
+        type="date"
+        id="dia"
+        placeholder="Seleccionar fecha"
+        required
+        [(ngModel)]="dia"
+      />
+    </div>
+    <!-- <div class="form-field">
+      <label for="hora">Hora:</label>
+      <input
+        type="time"
+        id="hora"
+        min="09:00"
+        max="18:00"
+        required
+        [(ngModel)]="hora"
+      />
+    </div> -->
+    <div class="form-field">
+      <label for="hora">Hora:</label>
+      <input
+        type="time"
+        id="hora"
+        min="08:00"
+        max="20:00"
+        required
+        [(ngModel)]="hora"
+        (change)="validarHora()"
+      />
+    </div>
+
+  </div>
+  <p-divider align="left" type="solid">
+    <b>personaliza</b>
+  </p-divider>
+  <div class="row">
+    <!-- <div class="form-field"> -->
+      <!-- <label for="">tematica-color</label> -->
+      <!-- <p-colorPicker [(ngModel)]="color_personalizado"></p-colorPicker> -->
+      <div class="form-field">
+        <label for="tematicaColor">Tematica-Color:</label>
+        <p-colorPicker [(ngModel)]="color_personalizado" id="tematicaColor" styleClass="default-color"></p-colorPicker>
+      </div>
+
+
+    <!-- </div> -->
+    <!-- <div class="form-field">
+
+        <p-fileUpload
+          class="btn"
+          mode="basic"
+          chooseLabel="diseño"
+          name="demo[]"
+          url="https://www.primefaces.org/cdn/api/upload.php"
+          accept="image/*"
+
+        ></p-fileUpload>
+
+    </div> -->
+    <div class="form-field">
+      <p-fileUpload
+        class="btn"
+        mode="basic"
+        chooseLabel="diseño"
+        name="demo[]"
+        accept="image/*"
+        (onSelect)="handleFileInput($event)"
+      ></p-fileUpload>
+    </div>
+
+  </div>
+
+  <div class="card flex justify-content-center">
+    <span class="p-float-label">
+      <textarea
+        pTooltip="alguna figura"
+        tooltipPosition="right"
+        class="textarea"
+        id="float-input"
+        rows="4"
+        style="width: 100%"
+        pInputTextarea
+        [(ngModel)]="design_personalizado"
+        placeholder="Por ejemplo: describe la figura o forma del pastel, si prefieres rosas de crema o artificiales, alguna temática específica, favor de proporcionar detalles y adjuntar fotos del diseño deseado."
+      ></textarea>
+      <label for="float-input">Instrucciones diseño</label>
+    </span>
+  </div>
+  <!-- Campo para ingresar un mensaje personalizado en el pastel -->
+<div class="card flex justify-content-center">
+  <label for="mensajePersonalizado">Mensaje personalizado:</label>
+  <span class="p-float-label">
+     <textarea
+     pInputTextarea
+     class="textarea"
+    id="mensajePersonalizado"
+    rows="2"
+    style="width: 100%"
+    placeholder="Mensaje personalizado en el pastel"
+    [(ngModel)]="mensajePersonalizado"
+  ></textarea>
+  </span>
+</div>
+  <div class="btn">
+    <button class="btn-finish" (click)="enviarPedido()">Solicita
+    Pedido</button>
+  </div>
+
+</div>

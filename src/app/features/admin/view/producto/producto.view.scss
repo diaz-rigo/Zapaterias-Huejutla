@@ -1,6 +1,8 @@
+// Estilos para .container
 .container {
   margin-top: 20px;
-  padding: 0 10px; // Añade espacio a los lados para dispositivos móviles
+  // padding: 0 10px; // Añade espacio a los lados para dispositivos móviles
+
 }
 
 table {
@@ -29,32 +31,42 @@ tr:hover {
 }
 
 .btn-agregar {
-  background-color: #007bff;
-  color: white;
-  border: none;
+  background-color: #ffff;
+  color: rgb(49, 49, 206);
+  border: solid 1px  ;
   border-radius: 4px;
   padding: 10px 20px;
   cursor: pointer;
 }
-
-.btn {
-  padding: 8px 16px;
-  cursor: pointer;
+// Estilos para botones
+// Estilos para botones de edición y eliminación
+.btn-editar, .btn-eliminar {
   border: none;
-  border-radius: 4px;
-  text-decoration: none;
-  font-size: 14px;
-  transition: background-color 0.3s;
-}
+  border-radius: 40px;
+  background-color: transparent;
+  color: #28a745; // Verde por defecto para editar y rojo para eliminar
+  margin-right: 5px;
+  transition: background-color 0.3s, color 0.3s; // Transición suave para el cambio de color de fondo y texto
+  &:hover {
+    // border: 2px solid #00c403;
+    background-color: rgba(40, 167, 69, 0.1); // Verde claro para editar y rojo claro para eliminar en hover
+    color: #218838; // Verde oscuro para editar y rojo oscuro para eliminar en hover
+  }
 
-.btn-editar {
-  background-color: #28a745;
-  color: white;
 }
 
 .btn-eliminar {
-  background-color: #dc3545;
-  color: white;
+  color: #dc3545; // Color rojo por defecto para el botón eliminar
+  &:hover {
+    border: none;
+    background-color: rgba(220, 53, 69, 0.1); // Rojo claro en hover
+    color: #c82333; // Rojo oscuro en hover
+  }
+}
+
+// Estilos para el ícono dentro de los botones
+.btn-editar .pi, .btn-eliminar .pi {
+  margin-right: 5px;
 }
 
 // Media query para dispositivos móviles
@@ -68,15 +80,18 @@ tr:hover {
     padding: 6px; // Reducir el espacio entre las celdas en dispositivos móviles
   }
 }
-// Media query para dispositivos
+
+// Media query para dispositivos medianos
 @media only screen and (min-width: 1024px) and (max-width: 1439px) {
   .container {
-   
-    padding: 0 10px ;
-
+    padding: 0 10px;
   }
 
   th, td {
     padding: 2px !important; // Aumentar el espacio entre las celdas en dispositivos medianos
+  }
+
+  .dialog-web {
+    max-width: 40rem;
   }
 }

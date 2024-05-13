@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { MaterialModule } from '../material/material.module';
@@ -12,6 +12,7 @@ import { MaterialModule } from '../material/material.module';
     ProductFormComponent // Asegúrate de que ProductFormComponent esté declarado aquí
   ],
   imports: [
+    ReactiveFormsModule,
     MaterialModule,
     FormsModule // Importa FormsModule aquí
   ],

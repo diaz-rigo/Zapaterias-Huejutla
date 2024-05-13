@@ -1,0 +1,79 @@
+.row2 {
+  /* Adjust as needed for responsive layout */
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px; // Remove gutters within the row
+
+  .form-field2 {
+    flex: 1 1 auto; // Allow form-field to grow proportionally
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      cursor: pointer;
+
+      &:hover {
+        border-color: #999;
+      }
+    }
+
+    .image-preview-container {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 10px; // Adjust as needed
+
+      .image-preview {
+        margin: 5px; // Adjust as needed
+        position: relative; // Needed for button positioning
+
+        img {
+          width: 100px; /* Adjust image width */
+          height: auto;
+          object-fit: cover; /* Maintain aspect ratio */
+          border: 1px solid #ddd;
+          border-radius: 3px;
+        }
+
+        .remove-button {
+          position: absolute;
+          top: 5px;
+          right: 5px;
+          width: 20px;
+          height: 20px;
+          background-color: #ccc;
+          border: none;
+          border-radius: 50%;
+          cursor: pointer;
+          color: red;
+          font-size: 16px;
+          font-weight: bold;
+          text-align: center;
+          line-height: 20px; /* Center vertically */
+          opacity: 0.7; /* Semi-transparent initially */
+
+          &:hover {
+            opacity: 1; /* Full opacity on hover */
+          }
+        }
+      }
+    }
+
+    .error-message {
+      color: red;
+      font-size: 0.8rem;
+      margin-top: 5px;
+    }
+  }
+}

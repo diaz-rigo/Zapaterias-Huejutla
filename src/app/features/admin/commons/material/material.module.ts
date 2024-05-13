@@ -12,7 +12,15 @@ import { ChartModule } from 'primeng/chart';
 import { DialogModule } from 'primeng/dialog';
 import { TagModule } from 'primeng/tag';
 import { TableModule } from 'primeng/table';
+import { FileUploadModule } from 'primeng/fileupload';
+import { ToastModule } from 'primeng/toast';
+import { BadgeModule } from 'primeng/badge';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 const PRIME_COMPONENTS = [
+  ConfirmDialogModule,
+  BadgeModule,
+  ToastModule,
+  FileUploadModule,
   TableModule,
   InputTextModule,
   InputTextareaModule,
