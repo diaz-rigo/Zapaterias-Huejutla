@@ -33,6 +33,7 @@ export class ProductoView {
   getAllProducts(): void {
     this.productService.getAllProducts().subscribe(
       (response: IproductResponse[]) => {
+        console.log(response)
         this.productos = response
       },
       (error) => {

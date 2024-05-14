@@ -27,7 +27,7 @@ export class ProductService {
   }
     // Método para obtener todos los productos
     getAllProducts(): Observable<IproductResponse[]> {
-      return this.http.get<IproductResponse[]>(`${environment.api}/product/`);
+      return this.http.get<IproductResponse[]>(`${environment.api}/product`);
     }
 
 

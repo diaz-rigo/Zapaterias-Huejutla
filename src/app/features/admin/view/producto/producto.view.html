@@ -18,7 +18,7 @@
     <p-table [value]="productos" class="tabla-crud">
       <ng-template pTemplate="header">
         <tr>
-          <th>ID</th>
+          <th>Imagen</th>
           <th>Nombre</th>
           <th>Descripción</th>
           <th>Acciones</th>
@@ -26,7 +26,11 @@
       </ng-template>
       <ng-template pTemplate="body" let-producto>
         <tr>
-          <td>{{ producto._id }}</td>
+          <td>
+            <img [src]="producto.images[0]" alt="Imagen del producto" style="max-width: 100px; max-height: 100px;">
+
+            <!-- {{ producto._id }} -->
+          </td>
           <td>{{ producto.name }}</td>
           <td>{{ producto.description  }}</td>
           <td>
