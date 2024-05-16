@@ -128,7 +128,8 @@
       </li>
     </ul>
   </nav>
-  <span *ngIf="userRol != 'ADMIN'" class="pi pi-shopping-cart" pBadge value="2" severity="warning"></span>
+  <span *ngIf="userRol != 'ADMIN'" class="pi pi-shopping-cart" pBadge [value]="badge" severity="warning">
+  </span>
   <i class="pi pi-bars"
   *ngIf="isMobile && !showCart && userRol === 'ADMIN'"
   (click)="toggleMenuADMIN()"

@@ -1,35 +1,21 @@
-<div class="container">
-  <div class="contiene-Imagen">
-    <img class="imagen-principal"
-      src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712073242/images/pngegg_3_hgb2cw.png"
-      alt=""
-    />
-  </div>
+<app-home-content></app-home-content>
+<h2 class="title-Novedades">Novedades</h2>
 
-  <div class="animated-title">
-    <div class="text-top">
-      <div>
-        <span>Bienvenido a</span>
-       
-
-        <span>Zapaterias Huejutla</span>
-      </div>
+<p-carousel
+  [value]="originalProducts"
+  [numVisible]="4"
+  [numScroll]="4"
+  [circular]="true"
+  [responsiveOptions]="responsiveOptions"
+  [autoplayInterval]=""
+>
+  <ng-template let-product pTemplate="item">
+    <div class="prod">
+      <app-categoria-marca-list-products
+        [product]="product"
+      ></app-categoria-marca-list-products>
     </div>
-    <div class="text-bottom">
-      <div>
-        <img class="img-float"
-      
-    src="https://res.cloudinary.com/dkfaglomz/image/upload/v1712038934/public/snucbs5916vwdiksyfwx.png"
-          alt=""
-          srcset=""
-        />
-      </div>
-    </div>
-  </div>
-</div>
-<i class="pi pi-angle-down fadeout" style="font-size: 2rem"></i>
-<p-scrollTop></p-scrollTop>
+  </ng-template>
+</p-carousel>
 
-<app-categoria-marca-list-products></app-categoria-marca-list-products>
 <app-categoria-marca-carrucel></app-categoria-marca-carrucel>
-

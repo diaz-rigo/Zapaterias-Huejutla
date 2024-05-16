@@ -8,9 +8,11 @@ import { CategoriaMarcaCarrucelComponent } from './categoria-marca-carrucel/cate
 import { CategoriaMarcaListProductsComponent } from './categoria-marca-list-products/categoria-marca-list-products.component';
 import { CategoriaMarcaComponent } from './categoria-marca/categoria-marca.component';
 import { MaterialModule } from '../material/material.module';
+import { HomeContentComponent } from './home-content/home-content.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const COMPONENTES = [
-
+  HomeContentComponent,
   DetailImageComponent,
   CategoriaMarcaComponent,
   CategoriaMarcaListProductsComponent,
@@ -24,6 +26,6 @@ const COMPONENTES = [
 @NgModule({
   declarations: [...COMPONENTES],
   exports: [...COMPONENTES],
-  imports: [CommonModule,MaterialModule],
+  imports: [CommonModule,MaterialModule,ReactiveFormsModule],
 })
 export class PublicComponentsModule {}

@@ -1,41 +1,15 @@
+<div class="catalog" >
 
-<div class="container">
-  <h2 class="title-categorias">Categorías</h2>
-  <a>Novedades</a>
-  <div class="carousel">
-    <div class="card" (click)="redirectTo('detail')">
+  <div class="carousel" >
+    <div class="card"  (click)="goToDetail()">
       <img
-        (click)="redirectTo('detail')"
-        src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712073242/images/pngegg_3_hgb2cw.png"
+
+        [src]="product.images[0]"
         alt="Producto 4"
+        loading="lazy"
       />
-      <h2 style="font-size: 14px; color: black; margin-left: 5px">Zapato X</h2>
-      <h2 class="precio">$1,300</h2>
-    </div>
-    <div class="card" (click)="redirectTo('detail')">
-      <img
-        (click)="redirectTo('detail')"
-        src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712178819/productMeanZapateriaHuejutla/tenisDwaYn.png"
-        alt="Producto 4"
-      />
-      <h2 style="font-size: 14px; color: black; margin-left: 5px">Zapato Y</h2>
-      <h2   class="precio">$1,300</h2>
-    </div>
-    <div class="card" (click)="redirectTo('detail')">
-      <img
-        src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712178969/productMeanZapateriaHuejutla/kzk983odej3gjownguo0.png"
-        alt="Producto 4"
-      />
-      <h2 style="font-size: 14px; color: black; margin-left: 5px">Zapato Z</h2>
-      <h2  class="precio">$1,300</h2>
-    </div>
-    <div class="card" (click)="redirectTo('detail')">
-      <img
-        src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712179623/productMeanZapateriaHuejutla/wn5yz9hlyrqrnkqitgaz.png"
-        alt="Producto 4"
-      />
-      <h2 style="font-size: 14px; color: black; margin-left: 5px">Zapato W</h2>
-      <h2  class="precio">$1,300</h2>
+      <h2 style="font-size: 14px; color: black; margin-left: 5px">{{ product.name | slice:0:23 }}{{ product.name.length > 23 ? '...' : '' }}</h2>
+      <h2 class="precio">{{ product.price | currency }}</h2>
     </div>
   </div>
 </div>

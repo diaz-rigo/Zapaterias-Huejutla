@@ -39,4 +39,7 @@ export class ProductService {
     deleteProduct(productId: string): Observable<any> {
       return this.http.delete<any>(`${environment.api}/product/${productId}`);
     }
+    getById(id: string): Observable<IproductResponse> {
+      return this.http.get<IproductResponse>(`${environment.api}/product/${id}`);
+    }
 }

@@ -3,6 +3,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { Router } from '@angular/router'
 import { MenuItem } from 'primeng/api'
 import { SessionService } from '../../../service/session.service'
+import { CartService } from '../../../service/cart.service'
 
 @Component({
   selector: 'app-header',
@@ -42,6 +43,7 @@ export class HeaderComponent {
   userName: string | undefined
   userRol: string | undefined
   showUserName!: boolean
+  badge: number = 0;
   toggleSubmenu() {
     this.mostrarSubmenu = !this.mostrarSubmenu
   }
@@ -50,7 +52,10 @@ export class HeaderComponent {
   //   // redirige a la ruta especificada
   // }
 
-  constructor( private sessionService: SessionService,private router: Router) {
+  constructor(
+    private cartService: CartService,
+
+    private sessionService: SessionService,private router: Router) {
     this.checkIsMobile()
     window.addEventListener('scroll', () => {
       this.isScrolled = window.scrollY > 0
@@ -58,6 +63,9 @@ export class HeaderComponent {
     window.addEventListener('resize', () => {
       this.checkIsMobile()
     })
+    this.cartService.itemsInCart.subscribe((value) => {
+      this.badge = value;
+    });
   }
 
   ngOnInit() {

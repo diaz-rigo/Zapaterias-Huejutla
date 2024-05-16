@@ -1,43 +1,57 @@
 <div class="details-info">
+  <h1>
+    {{ productDetail?.name }}
+  </h1>
+  <div class="product-info">
+    <p class="slogan">{{ productDetail?.status }}!</p>
+    <p class="price">{{ productDetail?.price | currency : "" }}</p>
+  </div>
 
-
-    <h1>
-        Tenis runing Nike
-    </h1>
-    <div class="product-info">
-        <p class="slogan">¡Imparable!</p>
-        <p class="price">$549.90</p>
-    </div>
-
-<div class="size-and-quantity">
-    <label for="size-select">Talla:</label>
-    <select id="size-select" class="size-options">
-        <option value="22"> 22</option>
+  <form [formGroup]="formGroup">
+    <div class="size-and-quantity">
+      <label for="size-select">Talla:</label>
+      <select id="size-select" class="size-options">
+        <option value="22">22</option>
         <!-- Otras opciones de tallas -->
-    </select>
+      </select>
 
-    <label for="quantity-input">Cantidad:</label>
-    <input id="quantity-input" type="number" class="quantity" value="1" min="1" step="1">
-</div>
+      <label for="quantity-input">Cantidad:</label>
+      <input
+        id="quantity-input"
+        type="number"
+        formControlName="quantity"
+        [(ngModel)]="value1"
+        class="quantity"
+        value="1"
+        min="1"
+        step="1"
+      />
+    </div>
 
     <!-- Botones de acción -->
     <div class="action-buttons">
-        <button class="buy-button">Comprar</button>
-        <button class="add-to-bag-button">Agregar al carrito</button>
+      <button class="buy-button">Comprar</button>
+      <button class="add-to-bag-button" (click)="addItem()">
+        Agregar al carrito
+      </button>
     </div>
-    <!-- Calificación y opciones adicionales -->
-    <div class="additional-options">
-        <p class="rating">Calificación: <span class="rating-value">4.5</span>/5</p>
-        <!-- Otras opciones adicionales -->
-    </div>
-    <!-- Iconos de opciones de pago -->
-    <label for="pay-input">Formas de pago:</label>
-    <div class="payment-options">
+  </form>
 
-        <!-- Aquí puedes colocar iconos de opciones de pago -->
-        <img src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712237563/productMeanZapateriaHuejutla/imagenes/bvg33nkcec5i0h2xbmga.png" alt="Icono de opción de pago 1">
-        <!-- <img src="ruta_al_icono_2.png" alt="Icono de opción de pago 2"> -->
-        <!-- <img src="ruta_al_icono_3.png" alt="Icono de opción de pago 3"> -->
-        <!-- Agrega más imágenes según sea necesario -->
-    </div>
+  <!-- Calificación y opciones adicionales -->
+  <div class="additional-options">
+    <p class="rating">Calificación: <span class="rating-value">4.5</span>/5</p>
+    <!-- Otras opciones adicionales -->
+  </div>
+  <!-- Iconos de opciones de pago -->
+  <label for="pay-input">Formas de pago:</label>
+  <div class="payment-options">
+    <!-- Aquí puedes colocar iconos de opciones de pago -->
+    <img
+      src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712237563/productMeanZapateriaHuejutla/imagenes/bvg33nkcec5i0h2xbmga.png"
+      alt="Icono de opción de pago 1"
+    />
+    <!-- <img src="ruta_al_icono_2.png" alt="Icono de opción de pago 2"> -->
+    <!-- <img src="ruta_al_icono_3.png" alt="Icono de opción de pago 3"> -->
+    <!-- Agrega más imágenes según sea necesario -->
+  </div>
 </div>
