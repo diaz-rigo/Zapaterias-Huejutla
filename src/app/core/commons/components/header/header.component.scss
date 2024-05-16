@@ -14,8 +14,13 @@
 }
 
 .pi {
+  cursor: pointer;
   font-size: 1.2rem;
   margin-right: 8px;
+}
+.dialog {
+  opacity: 0; /* Inicialmente invisible */
+  transition: opacity 0.5s ease; /* Transición suave de 0.5 segundos */
 }
 
 .logo {

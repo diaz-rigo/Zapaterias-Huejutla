@@ -287,5 +287,13 @@ export class HeaderComponent {
     }
   }
 
+  visible: boolean = false;
 
+  position: string = 'top-right';
+
+  showDialog() {
+      this.position = 'top-right';
+      this.visible = true;
+
+  }
 }

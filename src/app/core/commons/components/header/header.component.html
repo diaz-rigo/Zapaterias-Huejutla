@@ -5,63 +5,108 @@
     <p>Bienvenido, {{ userName }}</p>
     <hr />
     <ul>
-      <li><a class="a" (click)="redirectToMobil('home')"><i class="pi pi-home"></i>Inicio </a></li>
-      <li><a class="a" (click)="logout()"> <i class="pi pi-sign-out"></i>Cerrar sesión </a></li>
+      <li>
+        <a class="a" (click)="redirectToMobil('home')"
+          ><i class="pi pi-home"></i>Inicio
+        </a>
+      </li>
+      <li>
+        <a class="a" (click)="logout()">
+          <i class="pi pi-sign-out"></i>Cerrar sesión
+        </a>
+      </li>
     </ul>
   </div>
   <div *ngIf="!showUserName">
     <h3>Menú</h3>
     <ul>
-      <li><a class="a" (click)="redirectToMobil('home')">Inicio <i class="pi pi-home"></i></a></li>
       <li>
-        <a class="a" (click)="redirectToMobil('login')"><i class="pi pi-user"></i> Iniciar sesión</a>
+        <a class="a" (click)="redirectToMobil('home')"
+          >Inicio <i class="pi pi-home"></i
+        ></a>
       </li>
       <li>
-        <a class="a" (click)="redirectToMobil('registrarme')"><i class="pi pi-user-plus"></i> Registrarme</a>
+        <a class="a" (click)="redirectToMobil('login')"
+          ><i class="pi pi-user"></i> Iniciar sesión</a
+        >
+      </li>
+      <li>
+        <a class="a" (click)="redirectToMobil('registrarme')"
+          ><i class="pi pi-user-plus"></i> Registrarme</a
+        >
       </li>
     </ul>
   </div>
   <hr />
   <h3>Opciones</h3>
   <ul>
-    <li><a routerLink="/ajustes"><i class="pi pi-cog"></i> Ajustes</a></li>
-    <li><a routerLink="/ayuda"><i class="pi pi-question-circle"></i> Ayuda</a></li>
-    <li><a routerLink="/salir"><i class="pi pi-power-off"></i> Salir</a></li>
+    <li>
+      <a routerLink="/ajustes"><i class="pi pi-cog"></i> Ajustes</a>
+    </li>
+    <li>
+      <a routerLink="/ayuda"><i class="pi pi-question-circle"></i> Ayuda</a>
+    </li>
+    <li>
+      <a routerLink="/salir"><i class="pi pi-power-off"></i> Salir</a>
+    </li>
   </ul>
 </p-sidebar>
 
 <!--*++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 <p-sidebar [(visible)]="admmenu" position="left">
   <div class="user-section">
-
     <!-- Mostrar mensaje de bienvenida y nombre de usuario si está disponible -->
     <p>Bienvenido, {{ userName }}</p>
-    <p-tag value=" {{ userRol }}"/>
+    <p-tag value=" {{ userRol }}" />
 
     <hr />
     <ul>
-      <li><a class="a"  (click)="redirectToAdmin('inicio')" ><i class="pi pi-home"></i>Inicio </a></li>
-      <li><a class="a" (click)="logout()"> <i class="pi pi-sign-out"></i>Cerrar sesión </a></li>
+      <li>
+        <a class="a" (click)="redirectToAdmin('inicio')"
+          ><i class="pi pi-home"></i>Inicio
+        </a>
+      </li>
+      <li>
+        <a class="a" (click)="logout()">
+          <i class="pi pi-sign-out"></i>Cerrar sesión
+        </a>
+      </li>
     </ul>
   </div>
   <hr />
   <h3>Administración</h3>
   <ul>
-    <li><a (click)="redirectToAdmin('productos')"><i class="pi pi-list"></i> Administrar Productos</a></li>
-    <li><a (click)="redirectToAdmin('usuarios')" ><i class="pi pi-users"></i> Administrar Usuarios</a></li>
-    <li><a (click)="redirectToAdmin('productos')"><i class="pi pi-chart-bar"></i> Reportes</a></li>
+    <li>
+      <a (click)="redirectToAdmin('productos')"
+        ><i class="pi pi-list"></i> Administrar Productos</a
+      >
+    </li>
+    <li>
+      <a (click)="redirectToAdmin('usuarios')"
+        ><i class="pi pi-users"></i> Administrar Usuarios</a
+      >
+    </li>
+    <li>
+      <a (click)="redirectToAdmin('productos')"
+        ><i class="pi pi-chart-bar"></i> Reportes</a
+      >
+    </li>
   </ul>
   <hr />
 
   <h3>Configuración</h3>
   <ul>
-    <li><a routerLink="/ajustes"><i class="pi pi-cog"></i> Ajustes</a></li>
-    <li><a routerLink="/ayuda"><i class="pi pi-question-circle"></i> Ayuda</a></li>
-    <li><a routerLink="/salir"><i class="pi pi-power-off"></i> Salir</a></li>
+    <li>
+      <a routerLink="/ajustes"><i class="pi pi-cog"></i> Ajustes</a>
+    </li>
+    <li>
+      <a routerLink="/ayuda"><i class="pi pi-question-circle"></i> Ayuda</a>
+    </li>
+    <li>
+      <a routerLink="/salir"><i class="pi pi-power-off"></i> Salir</a>
+    </li>
   </ul>
 </p-sidebar>
-
-
 
 <header class="header" [ngClass]="{ scrolled: isScrolled }">
   <div class="logo">
@@ -128,18 +173,40 @@
       </li>
     </ul>
   </nav>
-  <span *ngIf="userRol != 'ADMIN'" class="pi pi-shopping-cart" pBadge [value]="badge" severity="warning">
+  <span
+    *ngIf="userRol != 'ADMIN'"
+    class="pi pi-shopping-cart"
+    pBadge
+    [value]="badge"
+    severity="warning"
+    (mouseenter)="showDialog()"
+  >
+
+
+    <!-- <i class="pi pi-shopping-cart" (click)="toggleCart()"></i> -->
   </span>
-  <i class="pi pi-bars"
-  *ngIf="isMobile && !showCart && userRol === 'ADMIN'"
-  (click)="toggleMenuADMIN()"
->
-</i>
+  <i
+    class="pi pi-bars"
+    *ngIf="isMobile && !showCart && userRol === 'ADMIN'"
+    (click)="toggleMenuADMIN()"
+  >
+  </i>
 
-<i class="pi pi-bars"
-  *ngIf="isMobile && !showCart && userRol !== 'ADMIN'"
-  (click)="toggleMenu()"
->
-</i>
-
+  <i
+    class="pi pi-bars"
+    *ngIf="isMobile && !showCart && userRol !== 'ADMIN'"
+    (click)="toggleMenu()"
+  >
+  </i>
 </header>
+
+<p-dialog
+header="carrito de compra ( {{badge}} )"
+[modal]="true"
+[(visible)]="visible"
+
+[style]="{ width: '25rem' }"
+position="topright"
+>
+<span class="p-text-secondary block mb-5"> Update your information. </span>
+</p-dialog>

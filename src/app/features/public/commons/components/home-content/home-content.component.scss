@@ -1,5 +1,5 @@
 // .container {
-//   outline: 1px solid rgb(49, 20, 20);
+//   outline: 1px solid  rgb(49,20, 20);
 //   color: cadetblue;
 //   font-family: Alata, Helvetica, sans-serif;
 //   max-width: 1300px;
@@ -10,6 +10,14 @@
 //   margin: 20px auto;
 //   padding: 0 20px;
 // }
+
+// *{
+//     :host{
+
+//     outline: 1px solid  rgb(255, 57, 57);
+//   }
+// }
+
 .animated-title {
   width: 150vmin;
   // border: dashed #ff1500;

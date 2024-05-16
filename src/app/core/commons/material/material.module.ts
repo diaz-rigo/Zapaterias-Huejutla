@@ -6,7 +6,8 @@ import { SidebarModule } from 'primeng/sidebar';
 import { AnimateOnScrollModule } from 'primeng/animateonscroll';
 import { TreeModule } from 'primeng/tree';
 import { TagModule } from 'primeng/tag';
-const MATERIALS__ = [TagModule,TreeModule,MenubarModule,SidebarModule,AnimateOnScrollModule,BadgeModule]; // Agrega los componentes
+import { DialogModule } from 'primeng/dialog';
+const MATERIALS__ = [DialogModule,TagModule,TreeModule,MenubarModule,SidebarModule,AnimateOnScrollModule,BadgeModule]; // Agrega los componentes
 
 @NgModule({
   declarations: [],
