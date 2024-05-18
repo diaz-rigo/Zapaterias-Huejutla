@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-detail-image',
@@ -6,5 +6,26 @@ import { Component } from '@angular/core';
   styleUrl: './detail-image.component.scss'
 })
 export class DetailImageComponent {
+  @Input()
+  images!: string[];
+  srcMain!: string;
+
+
+
+
+  ngOnInit(): void {
+    if (this.images.length > 0) {
+      this.srcMain = this.images[0];
+    }
+
+  }
+  getImages(url: string): string {
+    return `${url}`; // Este es el método que debes definir en tu clase
+  }
+
+
+  toogleImg(url: string): void {
+    this.srcMain = this.getImages(url);
+  }
 
 }
