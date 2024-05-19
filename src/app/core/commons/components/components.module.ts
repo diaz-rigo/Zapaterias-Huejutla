@@ -5,12 +5,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MaterialModule } from '../material/material.module';
-const COMPONENTS = [HeaderComponent, FooterComponent]; // Agrega los componentes
+const COMPONENTS = [HeaderComponent, FooterComponent,]; // Agrega los componentes
 
 @NgModule({
-  declarations: [...COMPONENTS],
+  declarations: [...COMPONENTS, ],
   exports: [...COMPONENTS,BrowserAnimationsModule, ],
-  imports: [CommonModule, BrowserAnimationsModule,MaterialModule],
+  imports: [CommonModule, BrowserAnimationsModule,MaterialModule
+  ],
   providers: [],
 })
 export class CoreComponentsModule {}

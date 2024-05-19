@@ -4,12 +4,12 @@ import { ButtonModule } from 'primeng/button'
 import { CardModule } from 'primeng/card'
 import { CarouselModule } from 'primeng/carousel'
 import { TimelineModule } from 'primeng/timeline'
-
+import { BadgeModule } from 'primeng/badge';
 const PRIME_COMPONENTS = [
   CarouselModule,
   TimelineModule,
   ButtonModule,
-  CardModule,
+  CardModule,BadgeModule
 ]
 
 @NgModule({

@@ -4,7 +4,17 @@
   </h1>
   <div class="product-info">
     <p class="slogan">{{ productDetail?.status }}!</p>
-    <p class="price">{{ productDetail?.price | currency : "" }}</p>
+
+    <p class="price">
+      <span>
+        {{ productDetail?.price | currency : "" }}
+      </span>
+      <span  class="price2" *ngIf="previousPrice" style="text-decoration: line-through;">
+        {{ previousPrice | currency: '' }}
+      </span>
+    </p>
+    <p >
+    </p>
   </div>
 
   <form [formGroup]="formGroup">

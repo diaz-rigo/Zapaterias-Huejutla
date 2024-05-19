@@ -10,7 +10,7 @@ import { CoreCommonsModule } from './commons/commons.module';
     // DetaillProductComponent
   ],
   imports: [
-    CommonModule,CoreCommonsModule
+    CommonModule
   ]
 })
 export class CoreModule { }

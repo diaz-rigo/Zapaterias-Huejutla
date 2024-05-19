@@ -1,9 +1,11 @@
-import { Component, HostListener, ViewEncapsulation } from '@angular/core'
+import { Component, HostListener, Input, ViewEncapsulation } from '@angular/core'
 import { trigger, state, style, transition, animate } from '@angular/animations'
 import { Router } from '@angular/router'
 import { MenuItem } from 'primeng/api'
 import { SessionService } from '../../../service/session.service'
 import { CartService } from '../../../service/cart.service'
+import { StorageService } from '../../../service/storage.service'
+import { CartItem } from '../../../../shared/models/cart.model'
 
 @Component({
   selector: 'app-header',
@@ -44,6 +46,11 @@ export class HeaderComponent {
   userRol: string | undefined
   showUserName!: boolean
   badge: number = 0;
+  @Input() carData: CartItem[] = []; // Recibe los datos del carrito desde el componente padre
+  // @Input() product!: Product;
+  // visible: boolean = false;
+
+
   toggleSubmenu() {
     this.mostrarSubmenu = !this.mostrarSubmenu
   }
@@ -54,7 +61,7 @@ export class HeaderComponent {
 
   constructor(
     private cartService: CartService,
-
+    private storageService: StorageService,
     private sessionService: SessionService,private router: Router) {
     this.checkIsMobile()
     window.addEventListener('scroll', () => {
@@ -70,7 +77,18 @@ export class HeaderComponent {
 
   ngOnInit() {
     const userData = this.sessionService.getUserData()
+    this.cartService.itemsInCart.subscribe((value) => {
+      this.badge = value;
+    });
+        // Obtener los datos del carrito desde algún servicio o almacenamiento local
+        const carDataFromStorage = this.storageService.getCarrito();
 
+        // Asignar los datos del carrito al arreglo carData
+        if (carDataFromStorage) {
+          this.carData = carDataFromStorage;
+          this.badge = this.carData.length; // Actualizar el contador badge
+
+        }
     if (userData && userData.name) {
       this.userName = userData.name;
       this.userRol = userData.rol;

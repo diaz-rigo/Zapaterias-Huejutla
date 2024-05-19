@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../../admin/commons/service/product.service';
 import { ScrollServiceService } from '../../../../shared/services/scroll-service.service';
 import { ProductResponse } from '../../../admin/models/Product-detail.model';
-
+// import{CarritoFloatComponent}
 
 @Component({
   selector: 'app-detail',

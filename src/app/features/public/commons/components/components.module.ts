@@ -10,6 +10,7 @@ import { CategoriaMarcaComponent } from './categoria-marca/categoria-marca.compo
 import { MaterialModule } from '../material/material.module';
 import { HomeContentComponent } from './home-content/home-content.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CarritoFloatComponent } from './carrito-float/carrito-float.component';
 
 const COMPONENTES = [
   HomeContentComponent,
@@ -19,7 +20,7 @@ const COMPONENTES = [
   CategoriaMarcaCarrucelComponent,
   CategoriaDetalleComponent,
   CategoriaListaComponent,
-
+  CarritoFloatComponent,
   DetailInfoComponent,
 ];
 

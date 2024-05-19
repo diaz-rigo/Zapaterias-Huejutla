@@ -15,6 +15,8 @@ export class DetailInfoComponent {
   product!: ProductResponse
   formGroup!: FormGroup
   quantity!: FormControl
+  previousPrice: number | undefined;
+
   @Input() productDetail: ProductResponse | undefined
   constructor(
     private scrollService: ScrollServiceService,
@@ -30,8 +32,17 @@ export class DetailInfoComponent {
   ngOnInit(): void {
     this.scrollService.init()
     // this.scrollService.init();
-  }
 
+    // Calcula el precio anterior después de que el componente se inicialice
+    if (this.productDetail) {
+      this.calculatePreviousPrice();
+    }
+  }
+  calculatePreviousPrice() {
+    if (this.productDetail?.price !== undefined) {
+      this.previousPrice = this.productDetail.price * 1.20;
+    }
+  }
   addItem(): void {
     const value = this.formGroup.get('quantity')!.value
     const productId = this.productDetail!._id

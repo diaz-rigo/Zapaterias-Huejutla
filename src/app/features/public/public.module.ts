@@ -21,6 +21,9 @@ import { PasswordRecoveryComponent } from './view/password-recovery/password-rec
 import { CartComponent } from './view/cart/cart.component';
 import { BackButtonDirective } from './view/detail/back-button.directive';
 import { ProductosView } from './view/productos/productos.view';
+import { CoreCommonsModule } from '../../core/commons/commons.module';
+import { CoreComponentsModule } from '../../core/commons/components/components.module';
+import { CoreModule } from '../../core/core.module';
 
 
 
@@ -44,11 +47,11 @@ const VIEW_COMPONENTS = [
     ProductosView,
   ],
   imports: [FormsModule, ReactiveFormsModule  ,
-    CommonModule,
+
     RouterModule, ScrollTopModule,
     MaterialModule,
     PublicCommonsModule,
-    PublicRoutingModule,
-  ]
+    PublicRoutingModule,CommonModule
+ ]
 })
 export class PublicModule { }
