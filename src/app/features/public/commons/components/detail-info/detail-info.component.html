@@ -1,67 +1,61 @@
 <div class="details-info">
-  <h1>
-    {{ productDetail?.name }}
-  </h1>
+  <h1 class="product-name">{{ productDetail?.name }}</h1>
   <div class="product-info">
     <p class="slogan">{{ productDetail?.status }}!</p>
-
     <p class="price">
-      <span>
-        {{ productDetail?.price | currency : "" }}
-      </span>
-      <span  class="price2" *ngIf="previousPrice" style="text-decoration: line-through;">
-        {{ previousPrice | currency: '' }}
-      </span>
-    </p>
-    <p >
+      <span class="current-price">{{ productDetail?.price | currency: "" }}</span>
+      <span class="previous-price" *ngIf="previousPrice">{{ previousPrice | currency: "" }}</span>
     </p>
   </div>
 
   <form [formGroup]="formGroup">
     <div class="size-and-quantity">
       <label for="size-select">Talla:</label>
-      <select id="size-select" class="size-options">
-        <option value="22">22</option>
-        <!-- Otras opciones de tallas -->
-      </select>
 
-      <label for="quantity-input">Cantidad:</label>
-      <input
-        id="quantity-input"
-        type="number"
-        formControlName="quantity"
-        [(ngModel)]="value1"
-        class="quantity"
-        value="1"
-        min="1"
-        step="1"
-      />
-    </div>
+      <p-selectButton
+      [options]="productDetail?.sizes"
+      [(ngModel)]="selectedSize"
+      optionLabel="size"
 
-    <!-- Botones de acción -->
+
+    >
+      <ng-template let-size pTemplate="item" >
+        <span [ngClass]="{'out-of-stock': size.stock === 0}">
+          {{ size.size }}
+        </span>
+      </ng-template>
+    </p-selectButton>
+
+      </div>
+
+            <label for="quantity-input">Cantidad:</label>
+            <input
+              id="quantity-input"
+              type="number"
+              formControlName="quantity"
+              [(ngModel)]="value1"
+              class="quantity-input"
+              value="1"
+              min="1"
+              step="1"
+            />
+
     <div class="action-buttons">
-      <button class="buy-button">Comprar</button>
-      <button class="add-to-bag-button" (click)="addItem()">
-        Agregar al carrito
-      </button>
+      <button type="button" class="buy-button">Comprar</button>
+      <button type="button" class="add-to-bag-button" (click)="addItem()">Agregar al carrito</button>
     </div>
   </form>
 
-  <!-- Calificación y opciones adicionales -->
   <div class="additional-options">
     <p class="rating">Calificación: <span class="rating-value">4.5</span>/5</p>
-    <!-- Otras opciones adicionales -->
   </div>
-  <!-- Iconos de opciones de pago -->
-  <label for="pay-input">Formas de pago:</label>
+
   <div class="payment-options">
-    <!-- Aquí puedes colocar iconos de opciones de pago -->
+    <label for="pay-input">Formas de pago:</label>
     <img
       src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712237563/productMeanZapateriaHuejutla/imagenes/bvg33nkcec5i0h2xbmga.png"
       alt="Icono de opción de pago 1"
+      class="payment-icon"
     />
-    <!-- <img src="ruta_al_icono_2.png" alt="Icono de opción de pago 2"> -->
-    <!-- <img src="ruta_al_icono_3.png" alt="Icono de opción de pago 3"> -->
-    <!-- Agrega más imágenes según sea necesario -->
   </div>
 </div>

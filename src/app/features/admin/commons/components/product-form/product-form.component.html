@@ -292,8 +292,8 @@
       </div>
     </div>
    <!-- ****** {{{{{{{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}}}}}}} -->
-    <div class="form-field">
-      <label for="tags">Etiquetas:</label>
+   <div class="form-field">
+     <label for="tags">Etiquetas:</label>
       <input
         pInputText
         type="text"
@@ -323,20 +323,58 @@
           accept="image/*"
           multiple
           (change)="onFileSelected($event)"
-        />
-        <div class="image-preview-container">
-          <div class="image-preview" *ngFor="let image of fileNames; let i = index">
-            <img [src]="image.src" alt="Preview" />
-            <button class="remove-button" (click)="removeImage(i)">X</button>
+          />
+          <div class="image-preview-container">
+            <div class="image-preview" *ngFor="let image of fileNames; let i = index">
+              <img [src]="image.src" alt="Preview" />
+              <button class="remove-button" (click)="removeImage(i)">X</button>
+            </div>
+          </div>
+          <div *ngIf="productForm.get('images')?.invalid && productForm.get('images')?.touched" class="error-message">
+            Imágenes son requeridas
           </div>
         </div>
-        <div *ngIf="productForm.get('images')?.invalid && productForm.get('images')?.touched" class="error-message">
-          Imágenes son requeridas
+      </div>
+
+      <!-- ******& {{{{{{{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}}}}}}} -->
+      <div class="form-field">
+        <label for="sizes">Tallas y Stock:</label>
+        <div formArrayName="sizes">
+          <div *ngFor="let sizeControl of sizes.controls; let i = index" [formGroupName]="i">
+            <div class="row">
+              <div class="form-field">
+                <input
+                  pInputText
+                  type="text"
+                  placeholder="Tamaño"
+                  formControlName="size"
+                  required
+                />
+              </div>
+              <div class="form-field">
+                <input
+                  pInputText
+                  type="number"
+                  placeholder="Stock"
+                  formControlName="stock"
+                  required
+                />
+              </div>
+              <button type="button" (click)="removeSize(i)">Eliminar</button>
+            </div>
+          </div>
+        </div>
+        <button type="button" (click)="addSize()">Agregar Talla</button>
+        <div
+          *ngIf="
+            productForm.get('sizes')?.invalid &&
+            productForm.get('sizes')?.touched
+          "
+          class="error-message"
+        >
+          Debe haber al menos una talla con stock.
         </div>
       </div>
-    </div>
-
-
 
 
     <div class="btn">

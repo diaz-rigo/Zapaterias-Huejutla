@@ -16,8 +16,6 @@
 //   agregar: boolean = false
 //   productos: IproductResponse[] = []
 
-//   // productos: any[] = [] // Define la propiedad productos como un array vacío
-//   // isWebMode: any;
 //   isWebMode: boolean = window.innerWidth >= 768 // Define la condición inicial para el modo web
 //   ref: DynamicDialogRef | undefined
 
@@ -35,6 +33,7 @@
 //   getAllProducts(): void {
 //     this.productService.getAllProducts().subscribe(
 //       (response: IproductResponse[]) => {
+//         // console.log(response)
 //         this.productos = response
 //       },
 //       (error) => {
@@ -51,13 +50,20 @@
 //       this.router.navigate(['/admin', route]) // Navegación hacia otras páginas públicas
 //     }
 //   }
-
 //   createprod() {
+//     this.openProductDialog(false, null);
+//   }
+
+//   editprod(product: IproductResponse) { // Cambia 'any' por 'IproductResponse'
+//     this.openProductDialog(true, product);
+//   }
+//   private openProductDialog(isEditing: boolean, product: IproductResponse | null) { // Cambia 'any' por 'IproductResponse'
+//     // console.log(product)
 //     // this.sidebarVisible = false;
 //     const isMobile = window.innerWidth < 480
 
 //     this.ref = this.dialogService.open(ProductFormComponent, {
-//       header: 'nuevo producto', // Aquí defines el título de tu diálogo
+//       header: isEditing ? 'Editar Producto' : 'Nuevo Producto',
 //       height: isMobile ? 'auto' : 'auto',
 //       style: {
 //         'max-width': isMobile ? '110vw' : 'auto',
@@ -69,8 +75,10 @@
 //         '960px': '75vw',
 //         '640px': '100vw',
 //       },
-//       data: {},
+//       data: { product: product }, // Pasando el objeto product dentro de un objeto con la propiedad 'product'
+
 //     })
+
 //   }
 
 //   deleteProduct(productId: string): void {
@@ -87,6 +95,7 @@
 //     )
 //   }
 //   eliminar(event: Event, productId: string) {
+//     // console.log("oprimido a elim")
 //     this.confirmationService.confirm({
 //       target: event.target as EventTarget,
 //       message: '¿Estás seguro de que deseas eliminar este producto?',

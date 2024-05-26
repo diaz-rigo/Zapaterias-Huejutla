@@ -1,3 +1,5 @@
+import { Size } from "../../public/commons/components/detail-info/detail-info.component";
+
 export interface IproductResponse {
   _id: string;
   sku: string;
@@ -24,4 +26,6 @@ export interface IproductResponse {
   tags: string[]; // Array de etiquetas
   createdAt: string; // Fecha de creación en formato ISO8601
   updatedAt: string; // Fecha de actualización en formato ISO8601
+  sizes: Size[]; // Agrega este campo
+
 }

@@ -57,9 +57,7 @@ export class ProductoView {
   editprod(product: IproductResponse) { // Cambia 'any' por 'IproductResponse'
     this.openProductDialog(true, product);
   }
-  private openProductDialog(isEditing: boolean, product: IproductResponse | null) { // Cambia 'any' por 'IproductResponse'
-    // console.log(product)
-    // this.sidebarVisible = false;
+  private openProductDialog(isEditing: boolean, product: IproductResponse | null) { 
     const isMobile = window.innerWidth < 480
 
     this.ref = this.dialogService.open(ProductFormComponent, {

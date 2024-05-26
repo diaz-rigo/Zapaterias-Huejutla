@@ -1,14 +1,21 @@
-import { Component, Input } from '@angular/core'
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { ProductResponse } from '../../../../admin/models/Product-detail.model'
 import { FormControl, FormGroup } from '@angular/forms'
 import { CartService } from '../../../../../core/service/cart.service'
 import { CartItem } from '../../../../../shared/models/cart.model'
 import { ScrollServiceService } from '../../../../../shared/services/scroll-service.service'
+import { noop } from 'chart.js/dist/helpers/helpers.core';
 
+// product-detail.model.ts
+export interface Size {
+  size: string;
+  stock: number;
+}
 @Component({
   selector: 'app-detail-info',
   templateUrl: './detail-info.component.html',
   styleUrl: './detail-info.component.scss',
+  encapsulation: ViewEncapsulation.None
 })
 export class DetailInfoComponent {
   value1: number = 1
@@ -16,6 +23,8 @@ export class DetailInfoComponent {
   formGroup!: FormGroup
   quantity!: FormControl
   previousPrice: number | undefined;
+  selectedSize: Size | undefined;
+  isButtonDisabled: boolean = false;
 
   @Input() productDetail: ProductResponse | undefined
   constructor(
@@ -27,12 +36,14 @@ export class DetailInfoComponent {
       quantity: new FormControl(),
     })
   }
+  value: any;
 
 
   ngOnInit(): void {
     this.scrollService.init()
     // this.scrollService.init();
 
+    this.isButtonDisabled = this.productDetail?.sizes.some(size => size.stock === 0) || false;
     // Calcula el precio anterior después de que el componente se inicialice
     if (this.productDetail) {
       this.calculatePreviousPrice();

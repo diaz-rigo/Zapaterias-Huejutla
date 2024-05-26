@@ -9,7 +9,7 @@ import { CategoriaMarcaListProductsComponent } from './categoria-marca-list-prod
 import { CategoriaMarcaComponent } from './categoria-marca/categoria-marca.component';
 import { MaterialModule } from '../material/material.module';
 import { HomeContentComponent } from './home-content/home-content.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CarritoFloatComponent } from './carrito-float/carrito-float.component';
 
 const COMPONENTES = [
@@ -27,6 +27,6 @@ const COMPONENTES = [
 @NgModule({
   declarations: [...COMPONENTES],
   exports: [...COMPONENTES],
-  imports: [CommonModule,MaterialModule,ReactiveFormsModule],
+  imports: [CommonModule,MaterialModule,ReactiveFormsModule,FormsModule],
 })
 export class PublicComponentsModule {}
