@@ -1,0 +1,44 @@
+/* category-menu.component.css */
+.category-menu {
+    width: 250px;
+    border-right: 1px solid #e8e8e8;
+    padding: 15px;
+// display: none;
+    background: #ffffff;
+
+    margin-top: 80px;
+    margin-bottom: 500px;
+}
+
+.category {
+    margin-bottom: 20px;
+}
+
+.category h3 {
+    font-size: 15px;
+    font-weight: bold;
+    color: rgb(111, 110, 102);
+    margin-bottom: 10px;
+}
+
+.category ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: rgb(67, 67, 67);
+}
+
+.category ul li {
+    font-size: 12px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.category ul li:hover {
+    text-decoration: underline;
+}
+
+.show-more {
+    font-weight: bold;
+    color: #007bff;
+}
