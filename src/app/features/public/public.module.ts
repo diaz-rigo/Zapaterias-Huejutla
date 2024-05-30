@@ -21,6 +21,9 @@ import { PasswordRecoveryComponent } from './view/password-recovery/password-rec
 import { CartComponent } from './view/cart/cart.component';
 import { BackButtonDirective } from './view/detail/back-button.directive';
 import { ProductosView } from './view/productos/productos.view';
+import { SearchResultsView } from './view/search-results/search-results.view';
+import { HeaderCategoriaComponent } from '../../core/commons/components/header-categoria/header-categoria.component';
+import { ResultProductComponent } from './commons/components/result-product/result-product.component';
 
 
 
@@ -36,12 +39,13 @@ const VIEW_COMPONENTS = [
 
 @NgModule({
   declarations: [
-    PublicComponent,
+    PublicComponent,HeaderCategoriaComponent,
     ...VIEW_COMPONENTS,
     PasswordRecoveryComponent,
     CartComponent,
     BackButtonDirective,
     ProductosView,
+    SearchResultsView
   ],
   imports: [FormsModule, ReactiveFormsModule  ,
     CommonModule,

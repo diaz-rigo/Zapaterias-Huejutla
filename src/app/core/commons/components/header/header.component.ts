@@ -1,9 +1,10 @@
-import { Component, HostListener, ViewEncapsulation } from '@angular/core'
+import { Component, ElementRef, HostListener, ViewChild, ViewEncapsulation } from '@angular/core'
 import { trigger, state, style, transition, animate } from '@angular/animations'
 import { Router } from '@angular/router'
 import { MenuItem } from 'primeng/api'
 import { SessionService } from '../../../service/session.service'
 import { CartService } from '../../../service/cart.service'
+import { HeaderService } from '../../../service/header.service'
 
 @Component({
   selector: 'app-header',
@@ -28,6 +29,8 @@ import { CartService } from '../../../service/cart.service'
     ]),
   ],
 
+  
+
 })
 export class HeaderComponent {
   items: MenuItem[] | undefined
@@ -44,15 +47,31 @@ export class HeaderComponent {
   userRol: string | undefined
   showUserName!: boolean
   badge: number = 0;
+
+
+
+  showHeader: boolean = false;  // Variable para controlar si se encontraron resultados
+
+  query: string = '';  // Inicializar la variable query
+  
+  
   toggleSubmenu() {
     this.mostrarSubmenu = !this.mostrarSubmenu
   }
 
-  // redirectTo(ruta: string) {
-  //   // redirige a la ruta especificada
+  
+
+  // constructor(private router: Router) { }
+
+  // search(): void {
+  //   if (this.query) {
+  //     this.router.navigate(['/search', this.query]);
+  //   }
   // }
 
-  constructor(
+  // constructor(private headerService: HeaderService) { }
+
+  constructor(private headerService: HeaderService,
     private cartService: CartService,
 
     private sessionService: SessionService,private router: Router) {
@@ -66,7 +85,24 @@ export class HeaderComponent {
     this.cartService.itemsInCart.subscribe((value) => {
       this.badge = value;
     });
+  
+  
   }
+
+  @ViewChild('searchInput') searchInput!: ElementRef;  // Referencia al elemento input
+
+  // constructor(private router: Router) { }
+
+  search(): void {
+    const query = this.searchInput.nativeElement.value.trim();  // Obtener el valor del input y eliminar espacios en blanco
+    console.log("Hola mundo,estoy buscando", query);
+    if (query) {
+      console.log("Hola mundo,estoy  ", query);
+
+      this.router.navigate(['/public/search', query]);
+    }
+  }
+
 
   ngOnInit() {
     const userData = this.sessionService.getUserData()
@@ -214,6 +250,14 @@ export class HeaderComponent {
   }
 
   toggleSearchInput(): void {
+    this.showHeader = this.headerService.getShowHeader(); // Assuming it returns boolean
+    console.log("header=>", this.showHeader);
+
+    
+
+
+
+    
     this.showSearchInput = !this.showSearchInput
   }
 

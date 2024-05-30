@@ -10,6 +10,7 @@ import { CategoriaMarcaComponent } from './categoria-marca/categoria-marca.compo
 import { MaterialModule } from '../material/material.module';
 import { HomeContentComponent } from './home-content/home-content.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ResultProductComponent } from './result-product/result-product.component';
 
 const COMPONENTES = [
   HomeContentComponent,
@@ -20,7 +21,7 @@ const COMPONENTES = [
   CategoriaDetalleComponent,
   CategoriaListaComponent,
 
-  DetailInfoComponent,
+  DetailInfoComponent, ResultProductComponent
 ];
 
 @NgModule({
