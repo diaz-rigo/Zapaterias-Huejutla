@@ -12,8 +12,8 @@
     // border: dashed 3px #121826;
 
     // background: #00c28e;
-    // margin-left:   0px;  
-    // margin-right:   auto;  
+    // margin-left:   0px;
+    // margin-right:   auto;
 }
 
 .detail-info {
@@ -22,29 +22,10 @@
     margin-right: 100px;
 }
 
-// @media (max-width: 768px) {
-//     .container {
-//         flex-direction: column;
-//     }
+app-carrito-float{
 
-//     .detail-info {
-//         order: 1;
-//     }
-// }
-// a
-
-// .detail-img {
-//     margin-left: 10px;
-// }
-
-
-// .detail-info {
-//     // display: ruby;
-//     // position: absolute;
-
-//     // margin-right: 100px;
-// }
-
+  display: none;
+}
 @media (max-width: 768px) {
 
     .header {
@@ -55,14 +36,17 @@
         display: none;
 
     }
+    app-carrito-float{
 
+      display: flex;
+    }
     .container {
 
         position: relative;
         // padding: 0;
         // justify-content: space-between;
         margin-top: -25px;
-        // background: linear-gradient(90deg, #061a14 0%, #9c559d 100%); 
+        // background: linear-gradient(90deg, #061a14 0%, #9c559d 100%);
         background: rgba(255, 246, 235, 0.896);
 
         flex-direction: column;

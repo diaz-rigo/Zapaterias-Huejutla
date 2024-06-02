@@ -11,15 +11,14 @@
 //   templateUrl: './product-form.component.html',
 //   styleUrls: ['./product-form.component.scss', './file.scss'],
 // })
-// export class ProductFormComponent implements OnChanges {
-//   @Input() isEditing: boolean = false
+// export class ProductFormComponent {
+//   // @Input() isEditing: boolean = false
+//   isEditing: boolean = false
 //   @Input()
 //   product!: IproductResponse
 //   productForm: FormGroup
 //   fileNames: { src: string; file: File }[] = []
-//   // constructor(public ref: DynamicDialogRef, public config: DynamicDialogConfig) { }
-//   //
-
+//   idproducEDIT:string= ''
 //   constructor(
 //     public config: DynamicDialogConfig,
 //     private ProductoView: ProductoView,
@@ -28,29 +27,23 @@
 //     private dialogRef: DynamicDialogRef,
 //     private productService: ProductService,
 //   ) {
-//     // Verificar si config.data.product tiene datos
-//     // Inicializa this.productForm antes de llamar a initializeFormWithProductData()
-//     this.productForm = this.createProductForm()
 
-//     // Verifica si config.data.product tiene datos
+//     this.productForm = this.createProductForm()
 //     if (config.data && config.data.product) {
 //       console.log(config.data.product)
+//       this.isEditing = true
 //       this.initializeFormWithProductData(config.data.product)
 //     } else {
-//       console.error('No se han proporcionado datos del producto.')
+//       console.warn('No se han proporcionado datos del producto.')
 //       // Maneja el caso en el que no se proporcionen datos del producto.
 //     }
 //   }
-//   ngOnChanges(): void {
-//     // this.product = data.product;
-//     console.log(this.isEditing, this.product)
-//     if (this.isEditing && this.product) {
-//       this.initializeFormWithProductData(this.product)
-//     }
-//   }
+
 
 //   initializeFormWithProductData(product: IproductResponse): void {
 //     // console.log(product
+//     this.idproducEDIT = product._id;
+
 //     this.productForm.patchValue({
 //       sku: product.sku,
 //       name: product.name,
@@ -92,6 +85,10 @@
 //     })
 //   }
 
+//   EDITAREProducto() {
+//   console.log(this.isEditing)
+//   console.log(this.idproducEDIT)
+//   }
 //   agregarProducto() {
 //     if (this.productForm.valid) {
 //       const productData = this.productForm.value

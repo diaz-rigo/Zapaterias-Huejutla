@@ -1,0 +1,202 @@
+.slogan {
+    font-size: 18px;
+    color: #ff8c00;
+    margin-top: auto;
+}
+.price {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  // gap:  10px
+  // margin-left: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff0000;
+
+  margin-top: 10px;
+}
+.price2 {
+
+  // font-size: 24px;
+  // font-weight: bold;
+  color: #817b7b;
+
+  // margin-top: 10px;
+}
+
+
+.size-options select {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+.quantity input {
+
+    width: 40px;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.buy-button,
+.add-to-bag-button {
+    margin-top: 20px;
+    // flex: ;
+    // gap: 5px;
+    margin-left: 10px;
+    /* Margen a la izquierda */
+    // margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #ff0000;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.buy-button:hover,
+.add-to-bag-button:hover {
+    background-color: #cc0000;
+}
+
+.payment-options img {
+    width: 140px;
+    height: 40px;
+}
+
+.size-and-quantity {
+    display: flex;
+    align-items: center;
+}
+
+.size-options {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.size-options:focus {
+    outline: none;
+    border-color: #ff0000;
+    /* Cambia el color del borde al enfocar */
+}
+
+.quantity {
+    padding: 10px;
+    width: 60px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+
+.quantity:focus {
+    outline: none;
+    border-color: #ff0000;
+    /* Cambia el color del borde al enfocar */
+}
+
+.product-info {
+    display: flex;
+    flex-direction: row;
+    /* Por defecto, los elementos están en fila */
+    // flex-wrap: wrap;
+    /* Permite que los elementos se envuelvan si no caben en una sola fila */
+    // justify-content: space-between;
+    gap: 50px;
+}
+
+
+
+@media (max-width: 768px) {
+
+
+    .product-info {
+        display: flex;
+        // flex-direction: row;
+        /* Por defecto, los elementos están en fila */
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+
+    }
+
+    // @media (max-width: 767px) {
+    /* Cambiar a columnas en tamaños de pantalla de celular */
+    // }
+
+    /* Estilos para el eslogan */
+    .slogan {
+        margin-right: 10px;
+        /* Espacio entre el eslogan y el precio */
+    }
+
+    /* Estilos para el precio */
+    .price {
+        font-weight: bold;
+        /* Texto en negrita */
+    }
+
+
+    .details-info {
+        // border: dashed 3px #000000;
+        width: 0px;
+        padding: 20px;
+
+
+    }
+}
+
+
+div.details-info {
+    // border: dashed 3px #0051ff;
+    width: 350px;
+
+    >h1 {}
+
+    >p.slogan {}
+
+    >p.price {}
+
+    >div.size-and-quantity {
+        >label:nth-of-type(1) {}
+
+        >select#size-select {
+            >option {}
+        }
+
+        >label:nth-of-type(2) {}
+
+        >input#quantity-input {}
+    }
+
+    >div.action-buttons {
+        >button.buy-button {}
+
+        >button.add-to-bag-button {}
+    }
+
+    >div.additional-options {
+        >p.rating {
+            >span.rating-value {}
+        }
+    }
+
+    >label {}
+
+    >div.payment-options {
+        >img {}
+    }
+}

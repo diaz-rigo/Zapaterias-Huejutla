@@ -24,6 +24,9 @@ import { ProductosView } from './view/productos/productos.view';
 import { SearchResultsView } from './view/search-results/search-results.view';
 import { HeaderCategoriaComponent } from '../../core/commons/components/header-categoria/header-categoria.component';
 import { ResultProductComponent } from './commons/components/result-product/result-product.component';
+import { CoreCommonsModule } from '../../core/commons/commons.module';
+import { CoreComponentsModule } from '../../core/commons/components/components.module';
+import { CoreModule } from '../../core/core.module';
 
 
 
@@ -48,11 +51,11 @@ const VIEW_COMPONENTS = [
     SearchResultsView
   ],
   imports: [FormsModule, ReactiveFormsModule  ,
-    CommonModule,
+
     RouterModule, ScrollTopModule,
     MaterialModule,
     PublicCommonsModule,
-    PublicRoutingModule,
-  ]
+    PublicRoutingModule,CommonModule
+ ]
 })
 export class PublicModule { }

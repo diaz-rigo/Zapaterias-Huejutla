@@ -33,34 +33,34 @@
   transform: translate(-25%, -50%);
 }
 
-.animated-title>div {
+.animated-title > div {
   height: 50%;
-    // border: dashed #fb00ff;
+  // border: dashed #fb00ff;
 
   overflow: hidden;
   position: absolute;
   width: 100%;
 }
 
-.animated-title>div div {
+.animated-title > div div {
   font-size: 11vmin;
   padding: 2vmin 0;
   position: absolute;
 }
 
-.animated-title>div div span {
+.animated-title > div div span {
   display: block;
 }
 
-.animated-title>div.text-top {
-    // border: dashed #fb00ff;
+.animated-title > div.text-top {
+  // border: dashed #fb00ff;
 
   border-bottom: 1vmin solid #21556a;
   top: 0;
   width: 550px;
 }
 
-.animated-title>div.text-top div {
+.animated-title > div.text-top div {
   -webkit-animation: showTopText 1s;
   animation: showTopText 1s;
   -webkit-animation-delay: 0.5s;
@@ -72,17 +72,16 @@
   transform: translate(0, 100%);
 }
 
-.animated-title>div.text-top div span:first-child {
+.animated-title > div.text-top div span:first-child {
   color: #6cb33a;
 }
 
-.animated-title>div.text-bottom {
+.animated-title > div.text-bottom {
   // border: #c10000 dashed 3px;
   bottom: 0;
 }
 
-.animated-title>div.text-bottom div {
-
+.animated-title > div.text-bottom div {
   -webkit-animation: showBottomText 0.5s;
   animation: showBottomText 0.5s;
   -webkit-animation-delay: 1.75s;
@@ -91,12 +90,12 @@
   animation-fill-mode: forwards;
   top: 0;
 
-
   -webkit-transform: translate(0, -100%);
   transform: translate(0, -100%);
 }
-.animated-title>div.text-bottom div>img.img-float {
-  width: 100px; height: 100px;
+.animated-title > div.text-bottom div > img.img-float {
+  width: 100px;
+  height: 100px;
 }
 
 .text {
@@ -121,56 +120,41 @@
   }
 }
 
-
 .pi-angle-down {
   margin-top: 50px;
-display: flex;
-justify-content: center;
-align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   animation: flotante 2s infinite;
 }
 
-
-
-
 @media (max-width: 768px) {
 
+  .container{
+    border: hwb(58 0% 0% / 0) dashed 3px;
+    margin-top: 40px ;
+    height: auto;
+    margin-bottom: -25px;
+  }
+  .animated-title > div.text-bottom {
+    // border: #fff700 dashed 3px;
+    // height: 100px;
+    bottom: 0;
+  }
+  .animated-title > div.text-bottom div > img.img-float {
+    width: 80px;
+    height: 80px;
+  }
 
-
-//   .animated-title>div div span {
-//     // gap: 3px;
-//     // display: inline;
-//   }
-
-// .animated-title>div.text-top div span:first-child{
-//   // color: #8bb33a;
-//   // padding-right: 10px;
-// }
-
-
-
-.animated-title>div.text-bottom {
-  // border: #fff700 dashed 3px;
-  // height: 100px;
-  bottom: 0;
-}
-.animated-title>div.text-bottom div>img.img-float {
-  width: 80px; height: 80px;
-}
-
-
-.pi-angle-down {
-  display: flex;
-justify-content: center;
-align-items: center;
-  margin-top:-170px;
-
-}
-
+  .pi-angle-down {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -170px;
+  }
 
   .animated-title {
     transform: translate(-30%, -20%);
-
 
     // outline: 3px dashed rgb(0, 145, 177);
 
@@ -188,12 +172,12 @@ align-items: center;
     position: relative;
   }
 
-  .animated-title>div div {
+  .animated-title > div div {
     font-size: 8vw;
     /* Ajusta el tamaño de fuente para que sea proporcional al tamaño de la pantalla */
   }
 
-  .animated-title>div.text-top {
+  .animated-title > div.text-top {
     width: 90%;
     /* Ajusta el ancho para ocupar el 90% de la pantalla */
     max-width: 500px;
@@ -203,25 +187,21 @@ align-items: center;
   }
 }
 
-
-
-
-
 @keyframes flotante {
   0% {
-      transform: translateY(0px) scale(1.05);
+    transform: translateY(0px) scale(1.05);
   }
 
   50% {
-      transform: translateY(-10px);
-      filter: blur(0.4px);
-      // transform: scale(1.05);
+    transform: translateY(-10px);
+    filter: blur(0.4px);
+    // transform: scale(1.05);
 
-      drop-shadow: 0px 0px 5px rgba(173, 213, 219, 0.932);
-      /* Agrega la sombra al contenedor */
+    drop-shadow: 0px 0px 5px rgba(173, 213, 219, 0.932);
+    /* Agrega la sombra al contenedor */
   }
 
   100% {
-      transform: translateY(0px);
+    transform: translateY(0px);
   }
 }
