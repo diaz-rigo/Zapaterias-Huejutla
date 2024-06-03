@@ -29,7 +29,6 @@ import { CoreComponentsModule } from '../../core/commons/components/components.m
 import { CoreModule } from '../../core/core.module';
 
 
-
 const VIEW_COMPONENTS = [
   RegistroUsuarioView,
   DetailView,

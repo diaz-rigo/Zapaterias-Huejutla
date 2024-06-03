@@ -125,7 +125,7 @@
       alt="Logo"
     />
   </div>
-  <i
+  <i (keyup.enter)="search()"
     *ngIf="!showSearchInput"
     (click)="toggleSearchInput()"
     class="pi pi-search"
@@ -134,13 +134,17 @@
     class="p-inputgroup search-container"
     [ngClass]="{ 'hidden-input': !showSearchInput }"
   >
-    <i
+    <i  (keyup.enter)="search()"
       *ngIf="showSearchInput"
       (click)="toggleSearchInput()"
       class="pi pi-search"
     ></i>
-    <input *ngIf="showSearchInput" placeholder="Buscar..." />
+    <input  #searchInput (keyup.enter)="search()" *ngIf="showSearchInput" placeholder="Buscar..." />
   </div>
+
+
+
+
   <nav class="menu">
     <ul>
       <li><a class="a" (click)="redirectTo('home')">Inicio</a></li>

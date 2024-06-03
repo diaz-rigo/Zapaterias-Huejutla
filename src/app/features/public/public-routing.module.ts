@@ -9,6 +9,7 @@ import { AcercaEmpresaView } from './view/acerca-empresa/acerca-empresa.view';
 import { AccesoUsuarioView } from '../auth/view/acceso-usuario/acceso-usuario.view';
 import { NotFoundView } from './view/not-found/not-found.view';
 import { ProductosView } from './view/productos/productos.view';
+import { SearchResultsView } from './view/search-results/search-results.view';
 // import { AccesoUsuarioView } from '../auth/view/acceso-usuario/acceso-usuario.view';
 // import { AccesoUsuarioView } from '../auth copy/views/acceso-usuario/acceso-usuario.view';
 // import { AccesoUsuarioView } from '../auth/view/acceso-usuario/acceso-usuario.view';
@@ -52,6 +53,11 @@ const routes: Routes = [
         // path: 'detail/:id',
         path: 'acerca-empresa',
         component: AcercaEmpresaView,
+      },
+      {
+        // path: 'detail/:id',
+        path: 'search/:query',
+        component: SearchResultsView,
       },
       {
         title:"Productos",

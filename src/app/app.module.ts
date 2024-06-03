@@ -12,10 +12,11 @@ import { RouterModule } from '@angular/router';
 import { DetailInfoComponent } from './features/public/commons/components/detail-info/detail-info.component';
 import { AdminComponent } from './features/admin/admin.component';
 import { HttpClientModule } from '@angular/common/http';
-
+// FormsModule
 
 const IMPORTS_COMPONENTS = [CoreComponentsModule]; // Agrega los componentes
 import { NgxUiLoaderModule } from "ngx-ui-loader";
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import { NgxUiLoaderModule } from "ngx-ui-loader";
   ],
   imports: [
     ...IMPORTS_COMPONENTS,
-    BrowserModule,
+    BrowserModule, FormsModule,
     AppRoutingModule, CarouselModule,HttpClientModule,    NgxUiLoaderModule,
 
   ],
