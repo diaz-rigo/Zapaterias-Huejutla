@@ -125,7 +125,7 @@
       alt="Logo"
     />
   </div>
-  <i (keyup.enter)="search()"
+  <i
     *ngIf="!showSearchInput"
     (click)="toggleSearchInput()"
     class="pi pi-search"
@@ -134,7 +134,7 @@
     class="p-inputgroup search-container"
     [ngClass]="{ 'hidden-input': !showSearchInput }"
   >
-    <i  (keyup.enter)="search()"
+    <i
       *ngIf="showSearchInput"
       (click)="toggleSearchInput()"
       class="pi pi-search"

@@ -4,6 +4,7 @@
     // justify-content: space-between;
     // align-items: center;
     width: 150%;
+    margin-left:100px;
 
     // padding: 10px;
     // margin-left: 100px;
@@ -116,12 +117,28 @@
     transform: scale(2px);
 }
 
+.main-image {
+    margin-left: 70px;
+
+    width: 650px;
+    height: 650px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    // overflow: hidden;
+    border: dashed #ff0000;
+    position: relative;
+}
+
 .main-image img {
+    border: dashed #00a028;
 
 
-    width: 70%;
+    width: 90%;
 
     height: auto;
+    object-fit: cover;
     filter: drop-shadow(30px 10px 15px #a8a8a8);
     // border: 1px solid #dddddd79;dr
 
