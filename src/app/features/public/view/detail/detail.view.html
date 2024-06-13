@@ -1,29 +1,25 @@
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <style>
-   #back {
-          position: absolute;
-          top: 20px; /* Ajusta la posición vertical según sea necesario */
-          left: 20px; /* Ajusta la posición horizontal según sea necesario */
-          z-index: 999; /* Asegura que esté por encima de otros elementos */
-          background-color:transparent;
-          color: rgb(0, 0, 0);
-          border: none;
-          border-radius: 50%;
-          padding: 10px;
-          cursor: pointer;
-      }
+  #back {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 999;
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+  }
 </style>
-  <button appBackButton class="back" id="back">
-    <i   class="fas fa-arrow-left"></i>
-  </button>
+<button class="back" id="back" (click)="goBack()">
+  <i class="fas fa-arrow-left"></i>
+</button>
 
 <div class="container">
-<div class="detail-img" >
-  <app-detail-image [images]="(productDetail.images || [])"></app-detail-image>
-</div>
-<div class="detail-info">
-  <app-detail-info [productDetail]="productDetail"></app-detail-info>
-</div>
+  <div class="detail-info">
+    <app-detail-info [productDetail]="productDetail"></app-detail-info>
+  </div>
 </div>
 <app-carrito-float></app-carrito-float>

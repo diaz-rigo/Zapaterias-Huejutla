@@ -3,8 +3,8 @@ import { Router } from '@angular/router'
 import { ConfirmationService, MessageService } from 'primeng/api'
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog'
 import { ProductFormComponent } from '../../commons/components/product-form/product-form.component'
-import { IproductResponse } from '../../interfaces/Product.interface'
 import { ProductService } from '../../commons/service/product.service'
+import { IProduct } from '../../interfaces/Product.interface'
 @Component({
   selector: 'app-producto',
   templateUrl: './producto.view.html',
@@ -14,7 +14,7 @@ import { ProductService } from '../../commons/service/product.service'
 })
 export class ProductoView {
   agregar: boolean = false
-  productos: IproductResponse[] = []
+  productos: IProduct[] = []
 
   isWebMode: boolean = window.innerWidth >= 768 // Define la condición inicial para el modo web
   ref: DynamicDialogRef | undefined
@@ -32,8 +32,8 @@ export class ProductoView {
 
   getAllProducts(): void {
     this.productService.getAllProducts().subscribe(
-      (response: IproductResponse[]) => {
-        // console.log(response)
+      (response: IProduct[]) => {
+        console.log(response)
         this.productos = response
       },
       (error) => {
@@ -54,10 +54,10 @@ export class ProductoView {
     this.openProductDialog(false, null);
   }
 
-  editprod(product: IproductResponse) { // Cambia 'any' por 'IproductResponse'
+  editprod(product: IProduct) { // Cambia 'any' por 'IProduct'
     this.openProductDialog(true, product);
   }
-  private openProductDialog(isEditing: boolean, product: IproductResponse | null) { 
+  private openProductDialog(isEditing: boolean, product: IProduct | null) { 
     const isMobile = window.innerWidth < 480
 
     this.ref = this.dialogService.open(ProductFormComponent, {

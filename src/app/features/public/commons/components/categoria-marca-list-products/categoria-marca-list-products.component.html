@@ -1,15 +1,14 @@
-<div class="catalog" >
+<div class="catalog">
+  <div class="carousel">
+    <div class="card" (click)="goToDetail(product)">
+      <img [src]="firstVariant.images[0]" alt="Producto" loading="lazy" />
+      <h2 class="product-name">{{ product.name | slice: 0: 23 }}{{ product.name.length > 23 ? '...' : '' }}</h2>
 
-  <div class="carousel" >
-    <div class="card"  (click)="goToDetail()">
-      <img
+      <p class="price">{{ firstVariant.sizeStock[0].price | currency }}</p>
 
-        [src]="product.images[0]"
-        alt="Producto 4"
-        loading="lazy"
-      />
-      <h2 style="font-size: 14px; color: black; margin-left: 5px">{{ product.name | slice:0:23 }}{{ product.name.length > 23 ? '...' : '' }}</h2>
-      <h2 class="precio">{{ product.price | currency }}</h2>
+      <div class="textures">
+        <img *ngFor="let variant of product.variants" [src]="variant.texture" [alt]="variant.color" class="texture-thumbnail">
+      </div>
     </div>
   </div>
 </div>

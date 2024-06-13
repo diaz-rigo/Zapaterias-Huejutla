@@ -12,8 +12,8 @@
     (click)="createprod()"
     class="btn-agregar"
   ></button>
-  <p-toast></p-toast>
-  <p-confirmDialog></p-confirmDialog>
+  <p-toast />
+  <p-confirmDialog />
   <div class="container">
     <p-table [value]="productos" class="tabla-crud">
       <ng-template pTemplate="header">
@@ -27,10 +27,12 @@
       <ng-template pTemplate="body" let-producto>
         <tr>
           <td>
-            <img [src]="producto.variants[0].images[0] ? producto.variants[0].images[0] : 'defaultImg'" alt="Imagen del producto" style="max-width: 100px; max-height: 100px;">
+            <img [src]="producto.images[0] ? producto.images[0] : 'defaultImg'" alt="Imagen del producto" style="max-width: 100px; max-height: 100px;">
+            <!-- [src]="product.images[0] ? product.images[0] : 'defaultImg'" -->
+            <!-- {{ producto._id }} -->
           </td>
           <td>{{ producto.name }}</td>
-          <td>{{ producto.description }}</td>
+          <td>{{ producto.description  }}</td>
           <td>
             <button
               pButton
@@ -39,14 +41,14 @@
               class="btn-editar"
               (click)="editprod(producto)"
             ></button>
+
             <button
               pButton
               (click)="eliminar($event,producto._id)"
               type="button"
               icon="pi pi-trash"
               class="btn-eliminar"
-              severity="danger"
-              [outlined]="true"
+              severity="danger" [outlined]="true"
             ></button>
           </td>
         </tr>
@@ -54,3 +56,4 @@
     </p-table>
   </div>
 </main>
+

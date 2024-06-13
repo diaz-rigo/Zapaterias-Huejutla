@@ -1,0 +1,50 @@
+
+<div class="contenedor-productos-resultados">
+
+    <p class="confirmacion-result" *ngIf="resultadosEncontrados">Resultados de búsqueda para {{ query }}</p>
+    <div *ngIf="!resultadosEncontrados" class="div-res">
+
+
+        <p>No se encontraron resultados de búsqueda para "{{ query }}"</p>
+
+       
+        <h5>Porductos que te pueden interesar</h5>
+        <!-- Aquí mostrar los resultados de búsqueda si `resultadosEncontrados` es `true` -->
+    </div>
+
+<div class="result-search" *ngIf="!resultadosEncontrados">
+    <div class="catalog-container">
+        <div *ngFor="let product of allProducts" class="catalog">
+            <div class="carousel">
+                <div class="card">
+                    <!-- <img [src]="product.images[0]" alt="Producto 4" loading="lazy" /> -->
+                    <h2 style="font-size: 14px; color: black; margin-left: 5px">
+                        {{ product.name | slice: 0: 23 }}{{ product.name.length > 23 ? '...' : '' }}
+                    </h2>
+                    <p class="text-descriptio">{{ product.description }}</p>
+                    <!-- <h2 class="precio">{{ product.price | currency }}</h2> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="result-search" *ngIf="resultadosEncontrados">
+        <div *ngFor="let product of originalProducts">
+            <div class="catalog-result">
+
+                <div class="carousel">
+                    <div class="card">
+                        <!-- <div class="card" (click)="goToDetail()"> -->
+                        <!-- <img [src]="product.images[0]" alt="Producto 4" loading="lazy" /> -->
+                        <h2 style="font-size: 14px; color: black; margin-left: 5px">{{ product.name | slice:0:23 }}{{
+                            product.name.length > 23 ? '...' : '' }}</h2>
+                        <p class="text-descriptio">{{ product.description }}</p>
+                        <!-- <h2 class="precio">{{ product.price | currency }}</h2> -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

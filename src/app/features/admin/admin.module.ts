@@ -22,6 +22,7 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
 import { ComentariosView } from './view/comentarios/comentarios.view';
 import { PedidosView } from './view/pedidos/pedidos.view';
 import { adminComponentsModule } from './commons/components/components.module';
+import { AdminCommonsModule } from './commons/commons.module';
 
 
 const MATERIALS = [
@@ -47,7 +48,7 @@ const MATERIALS = [
   ],
   imports: [MATERIALS,
     CommonModule,
-    AdminRoutingModule, MaterialModule,adminComponentsModule
+    AdminRoutingModule, MaterialModule,adminComponentsModule,AdminCommonsModule
   ]
 })
 export class AdminModule { }

@@ -16,7 +16,9 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { ToastModule } from 'primeng/toast';
 import { BadgeModule } from 'primeng/badge';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { DividerModule } from 'primeng/divider';
 const PRIME_COMPONENTS = [
+  DividerModule,
   ConfirmDialogModule,
   BadgeModule,
   ToastModule,

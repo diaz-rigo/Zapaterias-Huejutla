@@ -1,37 +1,34 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { IproductResponse } from '../../../../admin/interfaces/Product.interface';
+import { IProduct } from '../../../../admin/interfaces/Product.interface';
 
 @Component({
   selector: 'app-categoria-marca-list-products',
   templateUrl: './categoria-marca-list-products.component.html',
-  styleUrl: './categoria-marca-list-products.component.scss',
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./categoria-marca-list-products.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class CategoriaMarcaListProductsComponent {
+  @Input()
+  product!: IProduct; // Asegúrate de inicializar el input product
 
-
-  @Input() product!: IproductResponse;
-
+  starsArray = Array(5).fill(0); // Array para las estrellas
 
   constructor(private router: Router) {}
 
   redirectTo(route: string): void {
-    // this.sidebarVisible = false;
-    console.log(route);
     this.router.navigate(['/public', route]); // Utiliza la navegación de Angular
   }
 
-  ngOnInit(): void {
-
-
-
+  goToDetail(product: IProduct): void {
+    this.router.navigateByUrl(`public/detail/${product._id}`); // Navega a la página de detalle del producto
   }
 
-  goToDetail(): void {
+  ngOnInit(): void {
+    console.log(this.product); // Asegúrate de que el producto se carga correctamente
+  }
 
-    // console.log(this.product.name)
-    // console.log(this.product._id)
-    this.router.navigateByUrl(`public/detail/${this.product._id}`);
+  get firstVariant() {
+    return this.product.variants[0]; // Obtén la primera variante del producto
   }
 }

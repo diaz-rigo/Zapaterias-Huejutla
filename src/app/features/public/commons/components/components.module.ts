@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DetailImageComponent } from './detail-image/detail-image.component';
+// import { DetailImageComponent } from './detail-image/detail-image.component';
 import { DetailInfoComponent } from './detail-info/detail-info.component';
 import { CategoriaListaComponent } from './categoria-lista/categoria-lista.component';
 import { CategoriaDetalleComponent } from './categoria-detalle/categoria-detalle.component';
@@ -12,16 +12,18 @@ import { HomeContentComponent } from './home-content/home-content.component';
 import { ResultProductComponent } from './result-product/result-product.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CarritoFloatComponent } from './carrito-float/carrito-float.component';
+import { AnunciosComponent } from './anuncios/anuncios.component';
+import { PostersComponent } from './posters/posters.component';
 
 const COMPONENTES = [
   HomeContentComponent,
-  DetailImageComponent,
+  AnunciosComponent,
   CategoriaMarcaComponent,
   CategoriaMarcaListProductsComponent,
   CategoriaMarcaCarrucelComponent,
   CategoriaDetalleComponent,
   CategoriaListaComponent,
-
+  PostersComponent,
   DetailInfoComponent, ResultProductComponent,
   CarritoFloatComponent,
   DetailInfoComponent,

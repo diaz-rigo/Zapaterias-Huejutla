@@ -1,61 +1,63 @@
-<div class="details-info">
-  <h1 class="product-name">{{ productDetail?.name }}</h1>
-  <div class="product-info">
-    <p class="slogan">{{ productDetail?.status }}!</p>
-    <p class="price">
-      <span class="current-price">{{ productDetail?.price | currency: "" }}</span>
-      <span class="previous-price" *ngIf="previousPrice">{{ previousPrice | currency: "" }}</span>
-    </p>
-  </div>
-
-  <form [formGroup]="formGroup">
-    <div class="size-and-quantity">
-      <label for="size-select">Talla:</label>
-
-      <p-selectButton
-      [options]="productDetail?.sizes"
-      [(ngModel)]="selectedSize"
-      optionLabel="size"
-
-
-    >
-      <ng-template let-size pTemplate="item" >
-        <span [ngClass]="{'out-of-stock': size.stock === 0}">
-          {{ size.size }}
-        </span>
-      </ng-template>
-    </p-selectButton>
-
-      </div>
-
-            <label for="quantity-input">Cantidad:</label>
-            <input
-              id="quantity-input"
-              type="number"
-              formControlName="quantity"
-              [(ngModel)]="value1"
-              class="quantity-input"
-              value="1"
-              min="1"
-              step="1"
-            />
-
-    <div class="action-buttons">
-      <button type="button" class="buy-button">Comprar</button>
-      <button type="button" class="add-to-bag-button" (click)="addItem()">Agregar al carrito</button>
+<div class="product-detail" *ngIf="productDetail">
+  <div class="product-images-sidebar">
+    <!-- Carrusel de imágenes de producto -->
+    <div class="product-image-thumbnail" *ngFor="let image of (productImages.length > 0 ? productImages : productDetail.variants[0].images); let i = index" (click)="setMainImage(image)">
+      <img [src]="image" alt="Producto" class="side-image" />
     </div>
-  </form>
-
-  <div class="additional-options">
-    <p class="rating">Calificación: <span class="rating-value">4.5</span>/5</p>
   </div>
+  <div class="product-main-image">
+    <div class="product-image" *ngIf="mainImage; else noImage">
+      <img [src]="mainImage" alt="Producto" />
+    </div>
+    <ng-template #noImage>
+      <div class="product-image">
+        <img [src]="productDetail.variants[0].images[0]" alt="Producto" />
+      </div>
+    </ng-template>
+  </div>
+  <div class="product-info">
+    <h1>{{ productDetail.name }}</h1>
+    <p class="price" *ngIf="selectedSize">
+      ${{ selectedSize.price }} MXN
+    </p>
+    <p class="price" *ngIf="!selectedSize && productDetail?.variants?.[selectedVariantIndex]?.sizeStock?.[0]">
+      ${{ productDetail.variants[selectedVariantIndex].sizeStock[0].price }} MXN
+    </p>
 
-  <div class="payment-options">
-    <label for="pay-input">Formas de pago:</label>
-    <img
-      src="https://res.cloudinary.com/dvvhnrvav/image/upload/v1712237563/productMeanZapateriaHuejutla/imagenes/bvg33nkcec5i0h2xbmga.png"
-      alt="Icono de opción de pago 1"
-      class="payment-icon"
-    />
+    <p class="description">{{ productDetail.description }}</p>
+    <div class="color-selection">
+      <h3>Color:</h3>
+      <div class="colors">
+        <div *ngFor="let variant of productDetail?.variants; let i = index"
+             [class.selected]="selectedVariantIndex === i"
+             (click)="selectVariant(i)"
+             class="color"
+             [ngStyle]="{ 'background-image': 'url(' + variant.texture + ')' }">
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="size-selection">
+      <!-- <p>Talla: {{ size.size }}</p> -->
+      <div class="sizes">
+        <div *ngFor="let size of (sizeOptions.length > 0 ? sizeOptions : productDetail.variants[0].sizeStock); let i = index"
+             [class.selected]="selectedSize?.size === size.size"
+             (click)="selectSize(size)"
+             class="size">
+          {{ size.size }}
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    <button class="add-to-cart" (click)="addItem()">Añadir al carrito</button>
+    <a href="#" class="add-to-wishlist">Añadir a la lista de deseos</a>
   </div>
 </div>

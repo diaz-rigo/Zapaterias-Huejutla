@@ -1,0 +1,48 @@
+{
+  "name": "Example Shoe",
+  "brand": "BrandName",
+  "category": "sneakers",
+  "material": "leather",
+  "description": "A stylish leather sneaker",
+
+  "variants": [
+    {
+      "color": "black",
+      "texture": "smooth",
+      "sizeStock": [
+        { "size": 40, "stock": 10, "price": 100 },
+        { "size": 41, "stock": 8, "price": 105 }
+      ],
+      "images": [
+        "http://example.com/image1.jpg",
+        "http://example.com/image2.jpg"
+      ]
+    },
+    {
+      "color": "white",
+      "texture": "rough",
+      "sizeStock": [
+        { "size": 39, "stock": 5, "price": 95 },
+        { "size": 40, "stock": 12, "price": 100 },
+        { "size": 42, "stock": 10, "price": 110 }
+      ],
+      "images": [
+        "http://example.com/image1.jpg",
+        "http://example.com/image2.jpg"
+      ]
+    },
+    {
+      "color": "blue",
+      "texture": "smooth",
+      "sizeStock": [
+        { "size": 38, "stock": 3, "price": 90 },
+        { "size": 39, "stock": 6, "price": 95 },
+        { "size": 40, "stock": 8, "price": 100 },
+        { "size": 41, "stock": 10, "price": 105 }
+      ],   "images": [
+        "http://example.com/image1.jpg",
+        "http://example.com/image2.jpg"
+      ]
+    }
+  ]
+}

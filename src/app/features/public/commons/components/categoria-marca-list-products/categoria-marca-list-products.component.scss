@@ -1,43 +1,44 @@
 .catalog {
-
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+  gap: 10px;
+  padding: 10px;
+}
+.card {
+  // padding: 25px;
   padding: 20px;
+}
 
-}
-.card{
-padding: 25px;
-}
-.carousel{
-// border: dashed #ff0000;
+.carousel {
+  // border: dashed #ff0000;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-margin-top: 40px;
-
+  margin-top: 40px;
 }
-.carousel:hover{
+.carousel:hover {
   box-shadow: 0 2px 10px rgba(172, 172, 172, 0.868);
 }
 
+.product-name {
+  font-size: 16px; /* Tamaño aumentado del nombre del producto */
+  margin-top: 10px; /* Espaciado adicional */
+}
 
-
-
-div.card>img:hover {
+div.card > img:hover {
   transform: scale(1.15);
   height: auto;
 }
 
-div.card>img {
-  width: 90%;
+div.card > img {
+  width: 100%;
 
   height: auto;
   margin-top: 20px;
 }
 
-div.card>img:hover {
+div.card > img:hover {
   transition: transform 0.3s ease;
   transform: scale(1.15);
 }
@@ -48,4 +49,17 @@ div.card>img:hover {
   margin-left: 5px;
 }
 
+/* En el archivo categoria-marca-list-products.component.scss */
+.textures {
+  display: flex;
+  gap: 5px;
+  margin-left: 5px;
+  margin-top: 10px;
+}
 
+.texture-thumbnail {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+}

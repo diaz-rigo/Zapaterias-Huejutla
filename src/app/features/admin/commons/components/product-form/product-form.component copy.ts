@@ -1,5 +1,5 @@
 // import { Component, Input, OnChanges, OnInit } from '@angular/core'
-// import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+// import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms'
 // import { Router } from '@angular/router'
 // import { ProductService } from '../../service/product.service'
 // import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog'
@@ -71,7 +71,7 @@
 //       description: ['', Validators.required],
 //       brand: ['', Validators.required],
 //       color: ['', Validators.required],
-//       size: ['', Validators.required],
+//       sizes: this.formBuilder.array([this.createSizeGroup()], Validators.required),
 //       material: ['', Validators.required],
 //       gender: ['', Validators.required],
 //       ageGroup: ['', Validators.required],
@@ -84,7 +84,24 @@
 //       images: [[], Validators.required], // Asegúrate de que este campo sea inicializado
 //     })
 //   }
+//   get sizes(): FormArray {
+//     return this.productForm.get('sizes') as FormArray;
+//   }
 
+//   createSizeGroup(): FormGroup {
+//     return this.formBuilder.group({
+//       size: ['', Validators.required],
+//       stock: [0, Validators.required]
+//     });
+//   }
+
+//   addSize(): void {
+//     this.sizes.push(this.createSizeGroup());
+//   }
+
+//   removeSize(index: number): void {
+//     this.sizes.removeAt(index);
+//   }
 //   EDITAREProducto() {
 //   console.log(this.isEditing)
 //   console.log(this.idproducEDIT)

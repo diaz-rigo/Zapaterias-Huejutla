@@ -1,5 +1,11 @@
-<app-home-content></app-home-content>
-<h2 class="title-Novedades">Novedades</h2>
+<div class="centered-container">
+  <app-home-content></app-home-content>
+  <p>Los más buscados</p>
+</div>
+
+
+  <h2 class="title-Novedades">Novedades</h2>
+
 
 <p-carousel
   [value]="originalProducts"
@@ -18,4 +24,16 @@
   </ng-template>
 </p-carousel>
 
+<h2 class="title-Novedades">Camina con estilo</h2>
+<div data-aos="flip-up">
+
+<div class="centered-container">
+  <p>
+    Entra e inspírate, reunimos una seleccion del mejor calzado para que pises
+    fuerte, camines cómodo y dejes tu huella.
+  </p>
+</div>
+</div>
+<app-anuncios></app-anuncios>
+<app-posters></app-posters>
 <app-categoria-marca-carrucel></app-categoria-marca-carrucel>

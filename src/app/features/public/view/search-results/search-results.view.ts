@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SearchService } from '../../../../shared/services/search-service.service';
-import { IproductResponse } from '../../../admin/interfaces/Product.interface';
 import { HeaderService } from '../../../../core/service/header.service';
 
 @Component({
