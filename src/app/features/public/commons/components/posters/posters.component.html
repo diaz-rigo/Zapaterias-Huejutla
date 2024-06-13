@@ -30,10 +30,9 @@
       </div>
     </div>
   </section>
-
-  <div data-aos="fade-up" data-aos-anchor-placement="center-center">
-    <section class="promo-section">
-      <div class="promo-image">
+  <div >
+    <section class="promo-section" (click)="clic()">
+      <div class="promo-image" data-aos="zoom-in-up">
         <img
           src="https://0201.nccdn.net/1_2/000/000/118/463/f3-960x718.jpg#RDAMDAID19393145"
           alt="Promoción"
@@ -45,12 +44,13 @@
           Aprovecha nuestras ofertas especiales y lleva los mejores modelos de
           calzado a precios increíbles.
         </p>
-        <button class="promo-button">Ver Promociones</button>
+        <button class="promo-button" (click)="clic()">Ver Promociones</button>
       </div>
     </section>
   </div>
 </div>
-<div data-aos="fade-up" data-aos-anchor-placement="center-center">
+<!-- <div data-aos="fade-left"> -->
+  <div data-aos="zoom-in">
   <section class="promo-section promo-section-alt">
     <div class="promo-content">
       <h2>¡Visite nuestras tiendas!</h2>

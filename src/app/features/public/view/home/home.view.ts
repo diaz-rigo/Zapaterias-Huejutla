@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core'
 import { Router } from '@angular/router'
 import { ProductService } from '../../../admin/commons/service/product.service'
 import { IProduct } from '../../../admin/interfaces/Product.interface'
-import * as AOS from 'aos'
+// import * as AOS from 'aos'
 @Component({
   selector: 'app-home',
   templateUrl: './home.view.html',
@@ -15,10 +15,10 @@ export class HomeView {
 
   images!: string[]
   constructor(private productService: ProductService, private router: Router) {}
-
+  
   ngOnInit() {
-    AOS.init()
-    window.addEventListener('load', AOS.refresh)
+    // AOS.init()
+    // window.addEventListener('load', AOS.refresh)
     this.responsiveOptions = [
       {
         breakpoint: '1199px',
