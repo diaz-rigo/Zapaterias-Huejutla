@@ -1,5 +1,6 @@
 
 export interface IVariant {
+  _id: string;
   images: string[];
   color: string;
   texture: string;

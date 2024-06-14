@@ -6,7 +6,9 @@ import { CarouselModule } from 'primeng/carousel'
 import { TimelineModule } from 'primeng/timeline'
 import { BadgeModule } from 'primeng/badge';
 import { SelectButtonModule } from 'primeng/selectbutton';
+import { ToastModule } from 'primeng/toast';
 const PRIME_COMPONENTS = [
+  ToastModule,
   SelectButtonModule,
   CarouselModule,
   TimelineModule,

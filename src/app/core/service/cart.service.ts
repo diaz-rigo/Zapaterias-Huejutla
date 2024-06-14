@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-// import { CartItem } from 'src/app/shared/models/cart.model';
 import { StorageService } from './storage.service';
 import { CartItem } from '../../shared/models/cart.model';
 import { TotalPriceService } from '../../shared/services/total-price.service';
-// import { TotalPriceService } from 'src/app/shared/services/total-price.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,109 +13,95 @@ export class CartService {
   quantity: number = 0;
   private cartItemsSubject = new BehaviorSubject<CartItem[]>([]);
   cartItems$ = this.cartItemsSubject.asObservable();
-  totalPrice$: BehaviorSubject<number> = new BehaviorSubject<number>(0); // Definir totalPrice$
+  totalPrice$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
   constructor(
-    private storegService: StorageService,
-    private totalPriceService: TotalPriceService // Inyectar el servicio de precio total
-  ) {}
+
+    private storageService: StorageService,
+    private totalPriceService: TotalPriceService
+  ) {
+    this.loadCart();
+  }
+
 
   updateCartItems(items: CartItem[]): void {
     this.cartItemsSubject.next(items);
   }
 
-  addItem(id: string, quantity: number): void {
-    this.cart = this.storegService.getCarrito();
+  add(cartItem: CartItem): void {
+    console.log('Adding to cart:', cartItem);
+    let isExist = false;
     this.cart.forEach((item) => {
-      if (item.id === id) {
-        item.cantidad = item.cantidad + quantity;
+      if (item.id === cartItem.id && item.variantId === cartItem.variantId && item.size === cartItem.size && item.color === cartItem.color) {
+        item.cantidad += cartItem.cantidad;
+        isExist = true;
       }
     });
-    this.sendQuantity();
-    this.updateTotalPrice(); // Actualizar el precio total al agregar un elemento al carrito
-    this.storegService.setCarrito(this.cart);
-  }
-
-  add(cartItem: CartItem): void {
-    let isExist = false;
-    this.cart = this.storegService.getCarrito();
-    if (this.cart && this.cart.length > 0) {
-      this.cart.forEach((item) => {
-        if (item.id === cartItem.id) {
-          item.cantidad = item.cantidad + 1;
-          isExist = true;
-        }
-      });
-      if (!isExist) {
-        this.cart.push(cartItem);
-      }
-    } else {
-      this.cart = [cartItem];
+    if (!isExist) {
+      this.cart.push(cartItem);
     }
     this.sendQuantity();
-    this.updateTotalPrice(); // Actualizar el precio total al agregar un elemento al carrito
-    this.storegService.setCarrito(this.cart);
+    this.updateTotalPrice();
+    this.storageService.setCarrito(this.cart);
+    this.updateCartItems(this.cart);
+
   }
 
   decre(cartItem: CartItem): void {
-    this.cart = this.storegService.getCarrito();
-    if (this.cart && this.cart.length > 0) {
-      this.cart.forEach((item, index) => {
-        if (item.id === cartItem.id && item.cantidad > 0) {
-          item.cantidad--; // Reduce la cantidad en 1
-        }
-      });
-    }
+    this.cart.forEach((item) => {
+      if (item.id === cartItem.id && item.variantId === cartItem.variantId && item.size === cartItem.size && item.color === cartItem.color && item.cantidad > 0) {
+        item.cantidad--;
+      }
+    });
     this.sendQuantity();
-    this.updateTotalPrice(); // Actualizar el precio total al decrementar la cantidad de un elemento
-    this.storegService.setCarrito(this.cart);
+    this.updateTotalPrice();
+    this.storageService.setCarrito(this.cart);
+    this.updateCartItems(this.cart);
+
   }
 
   remove(cartItem: CartItem): void {
-    this.cart = this.storegService.getCarrito();
-    if (this.cart && this.cart.length > 0) {
-      this.cart.forEach((item, index) => {
-        if (item.id === cartItem.id) {
-          this.cart.splice(index, 1); // Elimina el elemento del arreglo
-          return; // Termina el bucle forEach una vez que se elimina el elemento
-        }
-      });
-    }
+    this.cart = this.storageService.getCarrito();
+    this.cart = this.cart.filter(item => !(item.id === cartItem.id && item.variantId === cartItem.variantId && item.size === cartItem.size && item.color === cartItem.color));
     this.sendQuantity();
-    this.updateTotalPrice(); // Actualizar el precio total al eliminar un elemento del carrito
-    this.storegService.setCarrito(this.cart);
+    this.updateTotalPrice();
+    this.storageService.setCarrito(this.cart);
+    this.updateCartItems(this.cart);
+
   }
 
   private sendQuantity(): void {
-    this.quantity = 0;
-    this.cart.forEach((item) => {
-      this.quantity = this.quantity + item.cantidad;
-    });
+    this.quantity = this.cart.reduce((total, item) => total + item.cantidad, 0);
     this.itemsInCart.next(this.quantity);
   }
 
-  // Método para calcular el precio total y actualizar el servicio de precio total
   private updateTotalPrice(): void {
     const totalPrice = this.calculateTotalPrice();
     this.totalPriceService.updateTotalPrice(totalPrice);
   }
 
-  // Método para calcular el precio total del carrito
-  private calculateTotalPrice(): number {
+   calculateTotalPrice(): number {
     return this.cart.reduce((total, item) => total + item.precio * item.cantidad, 0);
   }
-  getCartItem(productId: string): CartItem | undefined {
-    return this.cart.find(item => item.id === productId);
+
+  getCartItem(productId: string, variantId: string, size: number, color: string): CartItem | undefined {
+    return this.cart.find(item => item.id === productId && item.variantId === variantId && item.size === size && item.color === color);
   }
 
-  updateQuantity(productId: string, newQuantity: number): void {
-    const cartItem = this.cart.find(item => item.id === productId);
+  updateQuantity(productId: string, variantId: string, size: number, color: string, newQuantity: number): void {
+    const cartItem = this.cart.find(item => item.id === productId && item.variantId === variantId && item.size === size && item.color === color);
     if (cartItem) {
       cartItem.cantidad = newQuantity;
       this.sendQuantity();
-      this.updateTotalPrice(); // Actualizar el precio total al actualizar la cantidad de un elemento
-      this.storegService.setCarrito(this.cart);
+      this.updateTotalPrice();
+      this.storageService.setCarrito(this.cart);
     }
   }
-  // Otros métodos del servicio...
+
+  private loadCart(): void {
+    this.cart = this.storageService.getCarrito() || [];
+    this.sendQuantity();
+    this.updateTotalPrice();
+  }
+
 }

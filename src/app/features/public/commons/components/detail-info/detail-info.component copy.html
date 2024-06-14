@@ -20,20 +20,14 @@
 
   <div class="product-main-image">
     <div class="product-image" *ngIf="mainImage; else noImage">
-      <img [src]="mainImage" alt="Producto" id="zoomed-img" />
+      <img [src]="mainImage" alt="Producto" />
     </div>
     <ng-template #noImage>
       <div class="product-image">
-        <div class="image-zoom-container">
-          <div class="zoomed-image">
-            <img [src]="productDetail.variants[0].images[0]" alt="Producto" id="zoomed-img" />
-          </div>
-        </div>
+        <img [src]="productDetail.variants[0].images[0]" alt="Producto" />
       </div>
     </ng-template>
   </div>
-
-
 
 
 

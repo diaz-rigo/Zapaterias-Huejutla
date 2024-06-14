@@ -210,6 +210,7 @@
 <!-- ************************************************ -->
 <!-- ************************************************ -->
 <!-- ************************************************ -->
+
 <p-dialog
   header="Carrito de compra ({{ badge }})"
   [modal]="true"
@@ -224,7 +225,7 @@
       <div *ngFor="let item of carData" class="cart-item cart-row">
         <img [src]="item.image" alt="{{ item.name }}" class="product-image2" />
         <div class="cart-column cart-item-details">
-          <span class="product-name cart-header">{{ item.name }} talla: <strong>{{ item.size }}</strong></span>
+          <span class="product-name cart-header">{{ item.name }}</span>
           <div class="price-and-delete">
             <span class="product-price">{{
               item.precio | currency : "MXN"
@@ -262,10 +263,10 @@
       <div class="cart-summary">
         <div class="total-price">Subtotal: ${{ getTotalPrice() }}MX</div>
       </div>
-      <div class="btn-container">
-        <button class="btn-finish">Finalizar Compra</button>
       </div>
-    </div>
+        <div class="btn" data-aos="zoom-in-left">
+          <button class="btn-finish">Finalizar Compra</button>
+        </div>
     <ng-template #emptyCart>
       <div class="empty-cart-message">Tu carrito está vacío.</div>
     </ng-template>

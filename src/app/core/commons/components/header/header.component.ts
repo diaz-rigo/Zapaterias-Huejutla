@@ -1,17 +1,30 @@
-import { Component, ElementRef, Input, HostListener, ViewChild, ViewEncapsulation } from '@angular/core'
+import {
+  Component,
+  ElementRef,
+  Input,
+  HostListener,
+  ViewChild,
+  ViewEncapsulation,
+} from '@angular/core'
 import { trigger, state, style, transition, animate } from '@angular/animations'
 import { Router } from '@angular/router'
-import { MenuItem } from 'primeng/api'
+import { ConfirmationService, MenuItem, MessageService } from 'primeng/api'
 import { SessionService } from '../../../service/session.service'
 import { CartService } from '../../../service/cart.service'
 import { HeaderService } from '../../../service/header.service'
 import { StorageService } from '../../../service/storage.service'
 import { CartItem } from '../../../../shared/models/cart.model'
+import { DialogService } from 'primeng/dynamicdialog'
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss', './buscar.scss','./sidebar.scss'],
+  styleUrls: [
+    './header.component.scss',
+    './buscar.scss',
+    './carrito.scss',
+    './sidebar.scss',
+  ],
   encapsulation: ViewEncapsulation.None,
   animations: [
     trigger('scrollAnimation', [
@@ -31,8 +44,7 @@ import { CartItem } from '../../../../shared/models/cart.model'
     ]),
   ],
 
-  
-
+  providers: [DialogService, ConfirmationService, MessageService],
 })
 export class HeaderComponent {
   items: MenuItem[] | undefined
@@ -48,40 +60,66 @@ export class HeaderComponent {
   userName: string | undefined
   userRol: string | undefined
   showUserName!: boolean
-  badge: number = 0;
+  badge: number = 0
 
+  totalAmount!: number
 
+  showHeader: boolean = false // Variable para controlar si se encontraron resultados
 
-  showHeader: boolean = false;  // Variable para controlar si se encontraron resultados
+  query: string = '' // Inicializar la variable query
 
-  query: string = '';  // Inicializar la variable query
-  
-  
-  @Input() carData: CartItem[] = []; // Recibe los datos del carrito desde el componente padre
+  @Input() carData: CartItem[] = [] // Recibe los datos del carrito desde el componente padre
   // @Input() product!: Product;
   // visible: boolean = false;
-
 
   toggleSubmenu() {
     this.mostrarSubmenu = !this.mostrarSubmenu
   }
 
-  
+  decrementQuantity(item: CartItem): void {
+    // Decrementa la cantidad del artículo en el carrito si es mayor que 1
+    if (item.cantidad > 1) {
+      item.cantidad--
+    }
 
-  // constructor(private router: Router) { }
+    // Luego, puedes llamar al servicio para actualizar el carrito, si es necesario
+    this.cartService.decre(item)
+  }
 
-  // search(): void {
-  //   if (this.query) {
-  //     this.router.navigate(['/search', this.query]);
-  //   }
-  // }
-
+  incrementQuantity(item: CartItem): void {
+    this.cartService.add(item)
+    item.cantidad++ // Incrementa la cantidad del artículo en el carrito
+  }
+  confirm2(event: Event, item: CartItem) {
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+      message: '¿Estás seguro de que quieres eliminar este elemento?',
+      icon: 'pi pi-info-circle',
+      acceptButtonStyleClass: 'p-button-danger p-button-sm',
+      accept: () => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Eliminado',
+          detail: `El producto "${item.name}" ha sido eliminado del carrito`,
+          life: 3000,
+        })
+        // console.log(item);
+        this.removeItem(item)
+      },
+      reject: () => {},
+    })
+  }
   // constructor(private headerService: HeaderService) { }
 
-  constructor(private headerService: HeaderService,
+  constructor(
+    private headerService: HeaderService,
     private cartService: CartService,
     private storageService: StorageService,
-    private sessionService: SessionService,private router: Router) {
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService,
+    private sessionService: SessionService,
+    private router: Router,
+  ) {
     this.checkIsMobile()
     window.addEventListener('scroll', () => {
       this.isScrolled = window.scrollY > 0
@@ -89,50 +127,84 @@ export class HeaderComponent {
     window.addEventListener('resize', () => {
       this.checkIsMobile()
     })
+
     this.cartService.itemsInCart.subscribe((value) => {
       this.badge = value;
     });
-  
-  
+
+    this.cartService.cartItems$.subscribe((items) => {
+      this.carData = items;
+      this.totalAmount = this.getTotalAmount();
+    });
+
+    this.cartService.totalPrice$.subscribe((totalPrice) => {
+      this.totalAmount = totalPrice;
+    });
+  }
+  getTotalAmount(): number {
+    return this.carData.reduce(
+      (total, item) => total + item.precio * item.cantidad,
+      0,
+    ) // Calcula el importe total del carrito
+  }
+  updateBadge(): void {
+    this.badge = this.cartService.quantity
   }
 
-  @ViewChild('searchInput') searchInput!: ElementRef;  // Referencia al elemento input
+  decrementItem(item: CartItem): void {
+    this.cartService.decre(item)
+  }
+
+  incrementItem(item: CartItem): void {
+    this.cartService.add(item)
+  }
+
+  removeItem(item: CartItem): void {
+    this.cartService.remove(item)
+  }
+
+  getTotalPrice(): number {
+    return this.cartService.calculateTotalPrice()
+  }
+  @ViewChild('searchInput') searchInput!: ElementRef // Referencia al elemento input
 
   // constructor(private router: Router) { }
 
   search(): void {
-    const query = this.searchInput.nativeElement.value.trim();  // Obtener el valor del input y eliminar espacios en blanco
-    console.log("Hola mundo,estoy buscando", query);
+    const query = this.searchInput.nativeElement.value.trim() // Obtener el valor del input y eliminar espacios en blanco
+    console.log('Hola mundo,estoy buscando', query)
     if (query) {
-      console.log("Hola mundo,estoy  ", query);
+      console.log('Hola mundo,estoy  ', query)
 
-      this.router.navigate(['/public/search', query]);
+      this.router.navigate(['/public/search', query])
     }
   }
 
-
   ngOnInit() {
     const userData = this.sessionService.getUserData()
+
     this.cartService.itemsInCart.subscribe((value) => {
-      this.badge = value;
+      this.badge = value
+    })
+    // Obtener los datos del carrito desde algún servicio o almacenamiento local
+    const carDataFromStorage = this.storageService.getCarrito()
+
+    // Asignar los datos del carrito al arreglo carData
+    if (carDataFromStorage) {
+      this.carData = carDataFromStorage
+      this.badge = this.carData.length // Actualizar el contador badge
+    }
+    this.cartService.totalPrice$.subscribe((totalPrice) => {
+      this.totalAmount = totalPrice;
     });
-        // Obtener los datos del carrito desde algún servicio o almacenamiento local
-        const carDataFromStorage = this.storageService.getCarrito();
-
-        // Asignar los datos del carrito al arreglo carData
-        if (carDataFromStorage) {
-          this.carData = carDataFromStorage;
-          this.badge = this.carData.length; // Actualizar el contador badge
-
-        }
     if (userData && userData.name) {
-      this.userName = userData.name;
-      this.userRol = userData.rol;
+      this.userName = userData.name
+      this.userRol = userData.rol
       console.log(userData)
 
-      this.showUserName = true;
+      this.showUserName = true
     } else {
-      this.showUserName = false;
+      this.showUserName = false
     }
     this.items = [
       {
@@ -268,14 +340,9 @@ export class HeaderComponent {
   }
 
   toggleSearchInput(): void {
-    this.showHeader = this.headerService.getShowHeader(); // Assuming it returns boolean
-    console.log("header=>", this.showHeader);
+    this.showHeader = this.headerService.getShowHeader() // Assuming it returns boolean
+    console.log('header=>', this.showHeader)
 
-    
-
-
-
-    
     this.showSearchInput = !this.showSearchInput
   }
 
@@ -286,7 +353,6 @@ export class HeaderComponent {
   }
   toggleMenuADMIN(): void {
     this.admmenu = !this.admmenu
-
   }
 
   checkIsMobile(): void {
@@ -294,7 +360,6 @@ export class HeaderComponent {
   }
 
   redirectTo(route: string): void {
-
     this.sidebarVisible2 = false
     this.admmenu = false
     // this.sidebarVisible2 = !this.sidebarVisible2
@@ -307,7 +372,6 @@ export class HeaderComponent {
   }
 
   redirectToMobil(route: string): void {
-
     this.sidebarVisible2 = !this.sidebarVisible2
     console.log(route)
     if (route === 'login') {
@@ -319,27 +383,26 @@ export class HeaderComponent {
 
   logout(): void {
     // Remover el token de sesión
-    this.sessionService.removeToken();
+    this.sessionService.removeToken()
 
     // Ocultar el mensaje de bienvenida y el nombre de usuario
-    this.showUserName = false;
+    this.showUserName = false
 
     // Reiniciar el estado del componente
-    this.ngOnInit();
+    this.ngOnInit()
 
     // Ocultar los menús laterales
-    this.sidebarVisible2 = false;
-    this.admmenu = false;
+    this.sidebarVisible2 = false
+    this.admmenu = false
 
     // Limpiar el rol del usuario
-    this.userRol = undefined;
+    this.userRol = undefined
 
     // Navegar a la página de inicio pública
-    this.router.navigate(['/public']);
+    this.router.navigate(['/public'])
   }
 
   redirectToAdmin(route: string): void {
-
     this.admmenu = !this.admmenu
     console.log(route)
     if (route === 'login') {
@@ -349,13 +412,12 @@ export class HeaderComponent {
     }
   }
 
-  visible: boolean = false;
+  visible: boolean = false
 
-  position: string = 'top-right';
+  position: string = 'top-right'
 
   showDialog() {
-      this.position = 'top-right';
-      this.visible = true;
-
+    this.position = 'top-right'
+    this.visible = true
   }
 }

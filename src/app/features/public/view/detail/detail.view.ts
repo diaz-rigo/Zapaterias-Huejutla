@@ -28,7 +28,7 @@ export class DetailView {
     this.idProduct = this.route.snapshot.params['id'];
     this.productService.getById(this.idProduct).subscribe((response: IProduct) => {
       this.productDetail = new ProductResponse(response);
-      console.log( this.productDetail )
+      // console.log( this.productDetail )
     });
     this.scrollService.init();
   }

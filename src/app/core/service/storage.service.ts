@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { CartItem } from '../../shared/models/cart.model';
-// import { CartItem } from 'src/app/shared/models/cart.model';
-// import { CartItem } from 'src/app/shared/models/cart.model';
 
 @Injectable({
   providedIn: 'root',
@@ -11,19 +9,21 @@ export class StorageService {
   private keyToken: string = 'token';
 
   constructor() {}
+
   setCarrito(cart: CartItem[]): void {
     localStorage.setItem(this.keyCart, JSON.stringify(cart));
   }
 
   getCarrito(): CartItem[] {
-    return JSON.parse(localStorage.getItem(this.keyCart)!) ///// verificar despues por  el "!" le puse para evitar el error
+    const carrito = localStorage.getItem(this.keyCart);
+    return carrito ? JSON.parse(carrito) : [];
   }
+
   setToken(token: string): void {
-    // debugger
     localStorage.setItem(this.keyToken, JSON.stringify(token));
   }
 
-  getToken(): string{
-    return localStorage.getItem(this.keyToken)! ///// verificar despues por  el "!" le puse para evitar el error
+  getToken(): string {
+    return localStorage.getItem(this.keyToken) || ''; // Devuelve cadena vacía si no hay token
   }
 }
