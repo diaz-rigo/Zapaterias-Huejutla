@@ -9,5 +9,8 @@ import { CoreComponentsModule } from './components/components.module';
     CoreComponentsModule
     // ...COMPONENTS
   ],
+  imports: [
+    CommonModule
+  ]
 })
 export class CoreCommonsModule {}

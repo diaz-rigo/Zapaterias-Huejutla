@@ -263,7 +263,7 @@
         <div class="total-price">Subtotal: ${{ getTotalPrice() }}MX</div>
       </div>
       <div class="btn-container">
-        <button class="btn-finish">Finalizar Compra</button>
+        <button class="btn-finish" (click)="finishPurchase()">Finalizar Compra</button>
       </div>
     </div>
     <ng-template #emptyCart>

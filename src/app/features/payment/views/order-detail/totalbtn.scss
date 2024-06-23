@@ -1,0 +1,127 @@
+/* Estilos para el pie de página */
+.total-section {
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #000000;
+  font-weight: bold;
+}
+.btn {
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+.btn-finish,
+.btn-continue-shopping {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  border: none;
+  cursor: pointer;
+  border: solid #000000 1px;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+.btn-finish {
+  background-color: #000000;
+  color: #ccc;
+}
+
+// pbutton {
+//   background-color: #000000;
+//   color: #ccc;
+// }
+
+.btn-continue-shopping {
+  background-color: transparent;
+  color: #000000;
+}
+
+.p-highlight {
+  background-origin: padding-box;
+  background-clip: padding-box;
+  // color: #060606;
+  background-color:  #00ba47;
+  opacity: 0.8; /* Reduce un poco la opacidad */
+  border: 0px solid  #00ba47;
+  border-radius: 10px; /* Añade bordes redondeados */
+  // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Agrega sombra */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Agrega sombra */
+}
+.formulario {
+  width: 100% auto;
+// margin-top: 40px;
+}
+.pInputTextarea  {
+  width: 100% auto;
+// margin-top: 40px;
+}
+.formula  {
+  width: 100% auto;
+// margin-top: 40px;
+}
+
+.p-breadcrumb
+{
+  cursor:pointer;
+  color: #000000;
+  border:none;
+  margin-top: 30px;
+}
+// .p-ripple  {
+//   width: 100% auto;
+
+// }
+// .p-button  button {
+//   width: 100% auto;
+
+// }
+// p-button  {
+//   width: 100% auto;
+
+// }
+// class="p-ripple p-element p-button p-component p-button-outlined"
+// class="p-ripple p-element p-button p-component p-button-warning p-button-outlined"
+.p-dropdown {
+  border-radius: 8px;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+
+
+
+.breadcrumb {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  background-color: #f7f7f7;
+  border-radius: 0.25rem;
+  display: flex;
+  font-size: 0.875rem;
+}
+
+.breadcrumb-item {
+  display: flex;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  content: "›";
+  margin: 0 0.5rem;
+}
+
+.breadcrumb-item a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+  color: #6c757d;
+}

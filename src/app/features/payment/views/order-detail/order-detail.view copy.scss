@@ -1,0 +1,90 @@
+// .container {
+//   display: flex;
+//   flex-wrap: wrap;
+//   margin-top: 130px;
+//   justify-content: space-between;
+// }
+
+// .table-container {
+//   width: 100%; /* El ancho de la tabla ocupará todo el espacio disponible */
+//   margin-bottom: 20px; /* Espacio entre la tabla y los detalles de pago */
+// }
+
+// .payment-details {
+//   width: 100%; /* Los detalles de pago ocuparán todo el ancho disponible */
+// }
+
+// .card {
+//   font-family: Arial, sans-serif;
+//   background-color: #fff;
+//   border-radius: 8px;
+//   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+//   padding: 20px;
+//   margin-bottom: 20px; /* Espacio entre cada tarjeta */
+// }
+
+// .product-image {
+//   width: 60px;
+//   height: 60px;
+//   margin-right: 10px;
+//   border-radius: 4px;
+// }
+
+// .product-quantity-controls {
+//   display: flex;
+//   align-items: center;
+// }
+
+// .btn-quantity {
+//   margin: 0 5px;
+//   border-radius: 50%;
+//   width: 30px;
+//   height: 30px;
+//   font-size: 18px;
+//   background-color: #007bff;
+//   color: #fff;
+//   border: none;
+// }
+
+// .summary {
+//   margin-top: 20px;
+//   font-style: italic;
+//   color: #666;
+// }
+
+// .btn-delete {
+//   color: #e80c0c;
+//   background-color: transparent;
+//   border: none;
+//   cursor: pointer;
+//   font-size: small;
+//   font-weight: bold;
+//   padding: 10px;
+//   margin: 0 0.2rem;
+//   width: 1rem;
+//   height: 1rem;
+// }
+
+// .product-price {
+//   color: #ff8009;
+//   font-size: 1rem;
+// }
+// @media screen and (max-width: 767px) {
+
+
+// }
+
+// @media screen and (min-width: 768px) {
+//   .container {
+//     justify-content: center;
+//   }
+
+//   .table-container {
+
+//     width: calc(60% - 30px); /* Ancho de la tabla menos el espacio entre la tabla y los detalles de pago */
+//     margin-right: 20px;
+//   }
+//   .payment-details {
+//     width: 30%; /* Los detalles de pago ocuparán el 30% del ancho disponible */
+//   }
+// }

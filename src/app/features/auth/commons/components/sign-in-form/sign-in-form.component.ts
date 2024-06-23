@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import Swal from 'sweetalert2'
+
 import {
   FormBuilder,
   FormGroup,
@@ -14,11 +14,14 @@ import { StorageService } from '../../../../../core/service/storage.service';
 import { SessionService } from '../../../../../core/service/session.service';
 import { ERol } from '../../../../../shared/constants/rol.enum';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { DialogService } from 'primeng/dynamicdialog';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-sign-in-form',
   templateUrl: './sign-in-form.component.html',
   styleUrls: ['./sign-in-form.component.scss'],
+  providers: [DialogService, ConfirmationService, MessageService],
   encapsulation: ViewEncapsulation.None,
 })
 export class SignInFormComponent implements OnInit {
@@ -34,6 +37,8 @@ export class SignInFormComponent implements OnInit {
     private fb: FormBuilder,
     private storageService: StorageService,
     private sessionService: SessionService,
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService,
   ) {
     this.formLogin = this.fb.group({
       email: ['', Validators.required],
@@ -52,12 +57,18 @@ export class SignInFormComponent implements OnInit {
       .pipe(
         catchError((error: HttpErrorResponse) => {
           this.errorMessage = error.error.message || 'Error en la solicitud';
-          Swal.fire({
-            title: 'Error!',
-            text: this.errorMessage,
-            icon: 'error',
-            confirmButtonText: 'Ok'
-          });
+          // Swal.fire({
+          //   title: 'Error!',
+          //   text: this.errorMessage,
+          //   icon: 'error',
+          //   confirmButtonText: 'Ok'
+          // });
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Eliminado',
+            detail: this.errorMessage,
+            life: 3000,
+          })
           return throwError(this.errorMessage);
         }),
         finalize(() => {

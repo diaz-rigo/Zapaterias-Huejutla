@@ -1,0 +1,129 @@
+.form-container {
+  max-width: 800px; /* Ajusta según tu necesidad */
+  margin: auto;
+  padding: 20px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  width: 48%; /* Ajusta para que dos campos entren en una fila */
+
+}
+
+.form-field.full-width {
+  width: 100%;
+}
+input[type="text"],
+input[type="time"],
+input[type="email"],
+input[type="tel"],
+input[type="date"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+
+label {
+  font-weight: bold;
+}
+b,
+.p-divide,
+.lab {
+  color: #ffa500; /* Color del texto */
+  // font-weight: bold;
+}
+
+.bel{
+  font-size: 0.9rem;
+  // color: #ffa500;
+}
+
+
+
+.row2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.form-field-four {
+  flex: 0 0 calc(20% - 5px); /* 25% - margen entre elementos */
+  margin-bottom: 10px; /* Espacio entre filas */
+}
+
+/* Ajusta el tamaño de los íconos */
+.pi {
+  font-size: 1.5rem;
+}
+
+
+
+.btn {
+  padding: 0.5rem; /* Reducir el padding */
+  text-align: center;
+  font-size: 0.9rem; /* Reducir el tamaño del texto */
+  font-weight: bold; /* Negrita */
+}
+// class="p-ripple p-element p-button p-component p-fileupload-choose"
+.p-fileupload-choose {
+  background-color: #ff6112;
+  border: 2px solid transparent; /* Añadir un borde transparente para la animación */
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px; /* Radio de borde */
+  overflow: hidden; /* Ocultar cualquier contenido que se desborde */
+  position: relative; /* Añadir posición relativa para el efecto de subrayado */
+}
+.btn-finish {
+  background-color: #ff6112;
+  border: 2px solid transparent; /* Añadir un borde transparente para la animación */
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px; /* Radio de borde */
+  overflow: hidden; /* Ocultar cualquier contenido que se desborde */
+  position: relative; /* Añadir posición relativa para el efecto de subrayado */
+}
+
+.btn-finish:hover {
+  text-decoration: none; /* Eliminar subrayado del texto en hover */
+}
+
+.btn-finish:hover::after {
+  content: ''; /* Añadir un pseudo-elemento después del botón */
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px; /* Altura del subrayado */
+  background-color: #ffffff; /* Color del subrayado */
+  transform: scaleX(0); /* Iniciar sin ancho */
+  transition: transform 0.3s ease-in-out; /* Añadir transición para un efecto suave */
+}
+
+.btn-finish:hover::after {
+  transform: scaleX(1); /* Ampliar el subrayado al ancho completo */
+}
+.default-color {
+  background-color: #FFFFFF; /* Cambia #FFFFFF por el color deseado */
+}

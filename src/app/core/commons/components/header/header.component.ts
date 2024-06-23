@@ -420,4 +420,28 @@ export class HeaderComponent {
     this.position = 'top-right'
     this.visible = true
   }
+
+
+
+
+  // ****//// && carrito
+
+  finishPurchase(): void {
+    this.visible = false;
+    const carDataFromStorage = this.storageService.getCarrito();
+
+    // Asignar los datos del carrito al arreglo carData
+    if (carDataFromStorage) {
+      this.carData = carDataFromStorage;
+    }
+
+    console.log('Datos del carrito:', this.carData);
+
+    // debugger
+    // this.router.navigate(['/public'])
+    this.router.navigate(['/payment/order-detail']);
+
+    // Lógica para finalizar la compra
+  }
+
 }

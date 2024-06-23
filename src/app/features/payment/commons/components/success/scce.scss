@@ -1,0 +1,67 @@
+
+.owner {
+  text-align: center;
+  margin-top: 20px;
+
+  h2 {
+    font-size: 1.5rem;
+    color: #fff;
+  }
+
+  .contact-owner {
+    background-color: #ff5733;
+    border: none;
+    color: #fff;
+    font-size: 1.25rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 20px;
+    animation: colorChangeAnimation 3s infinite alternate;
+
+    &:hover {
+      background-color: #ff3d15;
+      transform: scale(1.05);
+    }
+  }
+}
+
+.cursor {
+  position: fixed;
+  width: 0px;
+  height: 0px;
+  box-shadow: 0px 9px 30px 8px #c0c369;
+  border-radius: 100%;
+  pointer-events: none;
+  transition: transform 20s ease;
+  z-index: 9999;
+}
+
+// Styles for mobile devices
+@media (max-width: 600px) {
+  .text-content {
+    h1.bienve {
+      font-size: 2rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+
+    .contact-owner {
+      font-size: 1rem;
+      padding: 8px 16px;
+    }
+  }
+
+  .error-numbers {
+    flex-direction: row;
+    align-items: center;
+
+    .error-number {
+      font-size: 6rem;
+      margin-bottom: 10px;
+    }
+  }
+}

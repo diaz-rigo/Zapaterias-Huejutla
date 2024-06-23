@@ -1,5 +1,4 @@
-// import { AuthModule } from './../auth/auth.module';
-// import { AccesoUsuarioView } from '../auth/acceso-usuario___/acceso-usuario.view';
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';

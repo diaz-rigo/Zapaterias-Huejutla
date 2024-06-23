@@ -3,19 +3,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { NotFoundView } from './features/public/view/not-found/not-found.view';
 
 const routes: Routes = [
-  
+
   {
     path: '',
     redirectTo: 'public',
     pathMatch: 'full',
   },
-  
+
   {
     path: 'detailsP',
     loadChildren: () =>
       import('./features/public/public.module').then((m) => m.PublicModule),
   },
-  
+
   {
     path: 'public',
     loadChildren: () =>
@@ -32,10 +32,17 @@ const routes: Routes = [
       import('./features/auth/auth.module').then((m) => m.AuthModule),
   },
   {
+    path: 'payment',
+    // canActivate:[isAuthenticatedGuard],
+    loadChildren: () =>
+      import('./features/payment/payment.module').then((m) => m.PaymentModule),
+  },
+  {
     title:"404",
     path: 'not-found',
     component: NotFoundView,
   },
+
 
 ];
 

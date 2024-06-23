@@ -1,0 +1,363 @@
+<div class="card">
+  <!-- TabView con dos pestañas -->
+  <p-tabView [(activeIndex)]="activeIndex">
+    <!-- TODO: 1: Carrito de Compras -->
+    <p-tabPanel>
+      <div class="container">
+        <div class="table-container">
+          <div class="card">
+            <!-- Tabla para mostrar los artículos en el carrito -->
+            <p-table [value]="carData" [tableStyle]="{'min-width': '20rem'}">
+              <!-- Template para el encabezado de la tabla -->
+              <ng-template pTemplate="header">
+                <tr>
+                  <th style="width: 20%">Artículo</th>
+                </tr>
+              </ng-template>
+              <!-- Template para el cuerpo de la tabla -->
+              <!-- <ng-template pTemplate="body" let-item> -->
+              <ng-template pTemplate="body" let-item let-i="index">
+                <tr>
+                  <td>
+                    <!-- Imagen del producto -->
+                    <img
+                      [src]="item.image[0] ? item.image[0] : 'defaultImg'"
+                      alt="Producto"
+                      class="product-image"
+                    />
+                    <!-- Nombre del producto -->
+                    <span>{{ item.name }}</span>
+                    <!-- Precio del producto -->
+                    <span class="product-price"
+                      >{{ item.precio | currency }}</span
+                    >
+
+                    <!-- Controles de cantidad del producto -->
+                    <div class="product-quantity-controls">
+                      <button
+                        pButton
+                        type="button"
+                        icon="pi pi-plus"
+                        class="btn-quantity"
+                        (click)="incrementQuantity(item)"
+                      ></button>
+                      <span class="product-quantity">{{ item.cantidad }}</span>
+                      <button
+                        pButton
+                        type="button"
+                        icon="pi pi-minus"
+                        class="btn-quantity"
+                        (click)="decrementQuantity(item)"
+                        [disabled]="item.cantidad === 1"
+                      ></button>
+
+                      <!-- Botón para eliminar el producto del carrito -->
+                      <p-toast position="top-center"></p-toast>
+                      <p-confirmPopup></p-confirmPopup>
+
+                      <button
+                        pButton
+                        type="button"
+                        icon="pi pi-trash"
+                        class="btn-delete"
+                        (click)="confirm2($event, item)"
+                      ></button>
+                    </div>
+                    <input
+                      type="hidden"
+                      [value]="item.id"
+                      formControlName="productId{{ i }}"
+                    />
+                    <div class="textare">
+                      <span class="p-float-label">
+                        <textarea
+                          rows="2"
+                          cols="20"
+                          pInputTextarea
+                          formControlName="specialInstructions{{ i }}"
+                        ></textarea>
+                        <label>Instrucciones Especiales</label>
+                      </span>
+                    </div>
+                 
+
+                  
+                  </td>
+                </tr>
+              </ng-template>
+
+              <!-- Template para resumen -->
+              <ng-template pTemplate="summary">
+                <div class="flex align-items-center justify-content-between">
+                  En total hay {{carData ? carData.length : 0 }} artículos en el
+                  carrito.
+                </div>
+              </ng-template>
+            </p-table>
+
+            <!-- Sección para mostrar el total -->
+            <div class="total-section">
+              <span class="total-label">Total:</span>
+              <span class="total-amount"
+                >{{ getTotalAmount() | currency }}</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Detalles de pago y entrega -->
+        <div class="payment-details">
+          <div class="<div" class="card flex justify-content-center gap-3">
+            <label for="cantidadInput"
+              >Los impuestos y gastos de envío se calculan en la pantalla de
+              pagos.</label
+            >
+            <!-- Opciones de entrega: Recoger en tienda o Envío -->
+            <div class="flex align-items-center">
+              <p-radioButton
+                name="deliveryOption"
+                value="inStore"
+                label="Recoger en tienda"
+                [(ngModel)]="deliveryOption"
+                inputId="inStoreOption"
+                (onClick)="toggleAccordion('inStore')"
+              ></p-radioButton>
+            </div>
+            <div class="flex align-items-center">
+              <p-radioButton
+                name="deliveryOption"
+                value="shipping"
+                label="Envío"
+                [(ngModel)]="deliveryOption"
+                inputId="shippingOption"
+                (onClick)="toggleAccordion('shipping')"
+              ></p-radioButton>
+            </div>
+
+            <!-- Detalles específicos de entrega según la opción seleccionada -->
+            <p-accordion [activeIndex]="activeAccordionIndex">
+              <!-- Panel para "En tienda" -->
+              <p-accordionTab header="En tienda" icon="pi pi-shopping-cart">
+                <p-selectButton
+                  class="selecbtn"
+                  [options]="stateOptions"
+                  [(ngModel)]="value"
+                  optionLabel="label"
+                  optionValue="value"
+                ></p-selectButton>
+                <div class="flex-auto" *ngIf="value === 'on'">
+                  <label for="icondisplay" class="font-bold block mb-2">
+                    Selecciona Fecha y Hora para Recoger
+                  </label>
+                  <p-calendar
+                    [dateFormat]="'yy-mm-dd'"
+                    [(ngModel)]="date"
+                    [showTime]="true"
+                    [showSeconds]="true"
+                  ></p-calendar>
+                </div>
+              </p-accordionTab>
+              <!-- Panel para "Envío" -->
+              <p-accordionTab header="Envío" icon="pi pi-send">
+                <div class="flex-auto">
+                  <label for="icondisplay" class="font-bold block mb-2">
+                    Selecciona Fecha y Hora para Recoger
+                  </label>
+                  <p-calendar
+                    [disabled]="calendarioAv"
+                    [dateFormat]="'yy-mm-dd'"
+                    [(ngModel)]="date"
+                    [showTime]="true"
+                    [showSeconds]="true"
+                  ></p-calendar>
+                </div>
+              </p-accordionTab>
+            </p-accordion>
+
+            <!-- Botones para regresar al inicio o continuar con el pago -->
+            <div class="btn">
+              <button class="btn-finish" (click)="redirectTo('home')">
+                Regresar al Inicio
+              </button>
+              <button
+                class="btn-continue-shopping"
+                (click)="continueToPayment()"
+              >
+                Continuar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </p-tabPanel>
+
+    <!-- TODO: 2: Detalles del Pedido -->
+    <p-tabPanel>
+      <form (ngSubmit)="submitForm()" [formGroup]="paymentForm">
+        <div class="container">
+          <div class="table-container">
+            <div class="card">
+              <div class="total-section">
+                <span class="total-label"
+                  >total Neto mas envio {{ getDeliveryOptionLabel() }}:</span
+                >
+                <ng-container *ngIf="getDeliveryOptionLabel() === 'Envío'">
+                  <span class="total-amount"
+                    >{{getTotalAmount() }}+200 = {{ getTotalAmount() + 200 |
+                    currency }}</span
+                  >
+                </ng-container>
+                <ng-container *ngIf="getDeliveryOptionLabel() === 'En tienda'">
+                  <span class="total-amount"
+                    >{{getTotalAmount()}} + 0 ={{ getTotalAmount() | currency
+                    }}</span
+                  >
+                </ng-container>
+              </div>
+
+              <div class="form-group">
+                <p-table
+                  [value]="carData"
+                  [tableStyle]="{'min-width': '20rem'}"
+                >
+                  <!-- Template para el encabezado de la tabla -->
+                  <ng-template pTemplate="header">
+                    <tr>
+                      <th style="width: 20%">Artículo</th>
+                    </tr>
+                    <div
+                      class="flex align-items-center justify-content-between"
+                    >
+                      En total hay {{carData ? carData.length : 0 }} artículos
+                      en el carrito.
+                    </div>
+                  </ng-template>
+                  <ng-template pTemplate="summary">
+                    <div class="card flex justify-content-center">
+                      <!-- <div class="flex flex-column gap-2"> -->
+                      <label style="color: rgb(246, 88, 20)" for="Entrega"
+                        >Tipo de Entrega {{getDeliveryOptionLabel()}}</label
+                      >
+
+                      <label style="color: brown">
+                        Fecha Seleccionada: {{ date }}
+                      </label>
+                    </div>
+                  </ng-template>
+                </p-table>
+              </div>
+            </div>
+          </div>
+          <!-- <form (ngSubmit)="submitForm()" [formGroup]="paymentForm"> -->
+          <!-- ?formulario? -->
+          <div class="card flex justify-content-center">
+            <p-card header="Datos cliente">
+              <input
+                pInputText
+                type="hidden"
+                formControlName="Entrega"
+                value="{{getDeliveryOptionLabel()}}"
+              />
+              <input
+                pInputText
+                type="hidden"
+                formControlName="date"
+                value="{{ date }}"
+              />
+
+              <input
+                pInputText
+                type="hidden"
+                formControlName="totalneto"
+                [value]="getTotalNetoValue()"
+              />
+
+              <div class="card flex" style="margin: 1cap">
+                <span class="p-float-label">
+                  <input pInputText id="username" formControlName="name" />
+                  <label>Username</label>
+                </span>
+              </div>
+              <div class="card flex">
+                <span class="p-float-label">
+                  <input
+                    type="text"
+                    pInputText
+                    id="paternalLastname"
+                    formControlName="maternalLastname"
+                  />
+
+                  <label for="maternalLastname">Apellido Materno</label>
+                </span>
+              </div>
+              <div class="card flex">
+                <span class="p-float-label">
+                  <input
+                    type="text"
+                    pInputText
+                    id="paternalLastname"
+                    formControlName="paternalLastname"
+                  />
+
+                  <label for="paternalLastname">Apellido Paterno</label>
+                </span>
+              </div>
+              <div class="card flex email-input" style="margin: 1cap">
+                <span class="p-float-label">
+                  <input
+                    pInputText
+                    type="email"
+                    formControlName="email"
+                    placeholder="EJ:juanPerez@gmail.com"
+                  />
+
+                  <label>Email</label>
+                  <span class="p-input-icon-right">
+                    <!-- <mat-icon>email</mat-icon> -->
+                    <i class="pi pi-envelope"></i>
+                  </span>
+                </span>
+              </div>
+              <div class="card flex" style="margin: 1cap">
+                <span class="p-float-label">
+                  <input
+                    pInputText
+                    autocomplete="false"
+                    type="tel"
+                    pKeyFilter="int"
+                    pattern="[0-9]*"
+                    maxlength="10"
+                    placeholder="123-456-7890"
+                    formControlName="phone"
+                  />
+                  <!-- <input pInputText pKeyFilter="int" placeholder="Integers" [(ngModel)]="value" /> -->
+                  <label for="phone">Teléfono</label>
+                </span>
+              </div>
+              <button class="next-button" (click)="submitForm()">
+                Registrarse
+              </button>
+
+              <!-- ?formulario? -->
+            </p-card>
+          </div>
+
+          <div class="payment-details">
+            <div class="card flex justify-content-center gap-3">
+              <!-- Campo para mostrar el tipo de entrega seleccionado -->
+
+              <div class="btn">
+                <button class="btn-finish" (click)="activeIndex = 0">
+                  Regresar
+                </button>
+                <button class="btn-continue-shopping" (click)="activeIndex = 1">
+                  Continuar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </p-tabPanel>
+  </p-tabView>
+</div>
