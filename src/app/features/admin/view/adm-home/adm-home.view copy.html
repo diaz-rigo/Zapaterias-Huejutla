@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/primeicons/4.1.0/primeicons.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            display: flex;
+            height: 100vh;
+        }
+
+        .main-container {
+            display: flex;
+            width: 100%;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #ffffff;
+            color: #1d2d3a;
+            box-shadow: 0 0 3px #d5d5d5;
+            border-right: solid 1.5px #c0c3c4;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: width 0.3s;
+        }
+
+        .sidebar-content {
+            width: 100%;
+        }
+
+        .avatar-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .sidebar-nav {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+        }
+
+        .sidebar-item {
+            margin-bottom: 10px;
+        }
+
+        .sidebar-link {
+            text-decoration: none;
+            color: #414e62;
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .sidebar-link:hover {
+            background-color: #e0e0e0;
+            color: #6366f1;
+        }
+
+        .sidebar-icon {
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        .sidebar-heading {
+            font-size: 16px;
+            color: #4a4a4a;
+            margin: 20px 0;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sidebar-add-link {
+            text-decoration: none;
+            color: #28b6b1;
+            font-size: 20px;
+        }
+
+        .sidebar-add-link:hover {
+            color: #1a9b8c;
+        }
+
+        .router-outlet {
+            flex: 1;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="sidebar">
+            <div class="sidebar-content">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-item">
+                        <div class="avatar-container">
+                            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" styleClass="avatar" size="xlarge" shape="circle"></p-avatar>
+                        </div>
+                    </li>
+                    <li class="sidebar-item">
+                        <a (click)="redirectToAdmin('inicio')" class="sidebar-link">
+                            <i class="pi pi-home sidebar-icon"></i> Inicio
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a (click)="redirectToAdmin('productos')" class="sidebar-link">
+                            <i class="pi pi-shopping-cart sidebar-icon"></i> Productos
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a (click)="redirectToAdmin('usuarios')" class="sidebar-link">
+                            <i class="pi pi-users sidebar-icon"></i> Usuarios
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link">
+                            <i class="pi pi-chart-bar sidebar-icon"></i> Reports
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" (click)="redirectToAdmin('comentarios')">
+                            <i class="pi pi-comments sidebar-icon"></i> Comentarios
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" (click)="redirectToAdmin('pedidos')">
+                            <i class="pi pi-folder sidebar-icon"></i> Pedidos
+                        </a>
+                    </li>
+                </ul>
+
+                <h6 class="sidebar-heading">
+                    <span>Saved reports</span>
+                    <a class="sidebar-add-link" href="#" aria-label="Add a new report">
+                        <i class="pi pi-plus-circle sidebar-icon"></i>
+                    </a>
+                </h6>
+                <ul class="sidebar-nav">
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="#">
+                            <i class="pi pi-calendar sidebar-icon"></i> Current month
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="#">
+                            <i class="pi pi-clock sidebar-icon"></i> Last quarter
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="#">
+                            <i class="pi pi-calendar-times sidebar-icon"></i> Year-end sale
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="router-outlet">
+      <router-outlet></router-outlet>
+        </div>
+    </div>
+</body>
+</html>

@@ -3,7 +3,7 @@
   [formGroup]="productForm"
   (ngSubmit)="isEditing ? EDITARProducto() : agregarProducto()"
   enctype="multipart/form-data"
->
+> <p-toast></p-toast>
   <div class="row">
     <div class="form-field">
       <label for="nombre">Nombre:</label>
@@ -26,14 +26,24 @@
     </div>
     <div class="form-field">
       <label for="brand">Marca:</label>
-      <input
-        pInputText
-        type="text"
-        id="brand"
-        formControlName="brand"
-        placeholder="Marca del producto"
-        required
-      />
+      <select pInputText id="brand" formControlName="brand" required>
+        <option value="" disabled selected>Seleccione la marca</option>
+        <option value="Nike">Nike</option>
+        <option value="Adidas">Adidas</option>
+        <option value="Puma">Puma</option>
+        <option value="Reebok">Reebok</option>
+        <option value="Under Armour">Under Armour</option>
+        <option value="New Balance">New Balance</option>
+        <option value="Converse">Converse</option>
+        <option value="Vans">Vans</option>
+        <option value="Clarks">Clarks</option>
+        <option value="Skechers">Skechers</option>
+        <option value="Flexi">Flexi</option>
+        <option value="Pirma">Pirma</option>
+        <option value="Reyme">Reyme</option>
+        <option value="Coqueta">Coqueta</option>
+        <!-- Agrega más opciones según sea necesario -->
+      </select>
       <div
         *ngIf="
           productForm.get('brand')?.invalid && productForm.get('brand')?.touched
@@ -67,14 +77,20 @@
     </div>
     <div class="form-field">
       <label for="category">Categoría:</label>
-      <input
-        pInputText
-        type="text"
-        id="category"
-        formControlName="category"
-        placeholder="Categoría del producto"
-        required
-      />
+
+      <select pInputText id="category" formControlName="category" required>
+        <option value="" disabled selected>Seleccione la categoría</option>
+        <option value="Zapatos deportivos">Zapatos deportivos</option>
+        <option value="Zapatos casuales">Zapatos casuales</option>
+        <option value="Zapatos formales">Zapatos formales</option>
+        <option value="Botas">Botas</option>
+        <option value="Sandalias">Sandalias</option>
+        <option value="Zapatillas">Zapatillas</option>
+        <option value="Mocasines">Mocasines</option>
+        <option value="Zapatos de vestir">Zapatos de vestir</option>
+
+        <!-- Agrega más opciones según sea necesario -->
+      </select>
       <div
         *ngIf="
           productForm.get('category')?.invalid &&

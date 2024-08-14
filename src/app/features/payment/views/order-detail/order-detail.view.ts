@@ -71,7 +71,7 @@ export class OrderDetailView implements OnInit {
   home: MenuItem | undefined;
   stateOptions: any[] = [
     {
-      label: 'Avenida Profr. Toribio Reyes 5, Huejutla, Hidalgo, Mexico',
+      label: 'Nuevo Leon 5, Huejutla, Mexico',
       value: 'on',
     },
   ];
@@ -343,7 +343,7 @@ export class OrderDetailView implements OnInit {
     const deliveryOption = this.getDeliveryOptionLabel();
     let totalAmount = this.getTotalAmount();
     if (deliveryOption === 'Envío') {
-      totalAmount += 200;
+      totalAmount += 80;
     }
     return totalAmount;
   }
@@ -378,7 +378,7 @@ export class OrderDetailView implements OnInit {
   getTotalNetoValue(): string {
     const totalAmount = this.getTotalAmount();
     if (this.getDeliveryOptionLabel() === 'Envío') {
-      return (totalAmount + 200).toFixed(2);
+      return (totalAmount + 80).toFixed(2);
     } else {
       return totalAmount.toFixed(2);
     }
@@ -418,8 +418,8 @@ export class OrderDetailView implements OnInit {
     );
   }
 
-  deliveryOption: string = 'inStore';
-  activeAccordionIndex: number = 0;
+  deliveryOption: string = 'shipping';
+  activeAccordionIndex: number = 1;
 
   toggleAccordion(option: string): void {
     if (option === 'inStore') {
@@ -512,35 +512,35 @@ export class OrderDetailView implements OnInit {
       0
     );
 
-    // console.log(this.deliveryOption, totalKilos);
-    if (this.deliveryOption === 'shipping' && totalKilos < 4) {
-      this.calendarioAv = true;
-      this.messageService.add({
-        severity: 'error',
-        summary: 'Error',
-        detail: 'Para el envío, la cantidad de kilos debe ser mayor a 4.',
-      });
-      this.activeIndex = 0;
-      this.router.navigate(['/payment/order-detail'], {
-        queryParams: {
-          deliveryOption: this.deliveryOption,
-          // Usar 'N/A' si no hay fecha formateada
-        },
-      });
-      return; // No necesitas el return aquí si deseas continuar con la lógica después de la validación.
-    }
+    // // console.log(this.deliveryOption, totalKilos);
+    // if (this.deliveryOption === 'shipping' && totalKilos < 4) {
+    //   this.calendarioAv = true;
+    //   this.messageService.add({
+    //     severity: 'error',
+    //     summary: 'Error',
+    //     detail: 'Para el envío, la cantidad de kilos debe ser mayor a 4.',
+    //   });
+    //   this.activeIndex = 0;
+    //   this.router.navigate(['/payment/order-detail'], {
+    //     queryParams: {
+    //       deliveryOption: this.deliveryOption,
+    //       // Usar 'N/A' si no hay fecha formateada
+    //     },
+    //   });
+    //   return; // No necesitas el return aquí si deseas continuar con la lógica después de la validación.
+    // }
 
-    // console.log(this.date, totalKilos);
+    console.log("aqui paso",this.date, totalKilos);
     // console.log(!this.deliveryOption || !this.date || this.date.length === 0);
-    if (!this.deliveryOption || !this.date || this.date.length === 0) {
-      this.calendarioAv = false;
-      this.messageService.add({
-        severity: 'error',
-        summary: 'Error',
-        detail: 'Falta seleccionar la fecha.',
-      });
-      return;
-    }
+    // if (!this.deliveryOption || !this.date || this.date.length === 0) {
+    //   this.calendarioAv = false;
+    //   this.messageService.add({
+    //     severity: 'error',
+    //     summary: 'Error',
+    //     detail: 'Falta seleccionar la fecha.',
+    //   });
+    //   return;
+    // }
     this.dateselect = this.date;
 
     if (this.dateselect && this.dateselect.length > 0) {
@@ -564,8 +564,9 @@ export class OrderDetailView implements OnInit {
     });
     // }
   }
-
+  mostrar_direccion_form : boolean =false
   confirm3() {
+    this.mostrar_direccion_form=true
     this.position = 'bottom';
     this.confirmationService.confirm({
       message: 'Deseas Confirmar tus datos ?',

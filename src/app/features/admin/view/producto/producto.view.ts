@@ -5,35 +5,58 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog'
 import { ProductFormComponent } from '../../commons/components/product-form/product-form.component'
 import { ProductService } from '../../commons/service/product.service'
 import { IProduct } from '../../interfaces/Product.interface'
+import { FormBuilder, FormGroup } from '@angular/forms'
+import { debounceTime, distinctUntilChanged } from 'rxjs'
+
+
 @Component({
   selector: 'app-producto',
   templateUrl: './producto.view.html',
   styleUrl: './producto.view.scss',
-  encapsulation: ViewEncapsulation.None,
   providers: [DialogService, ConfirmationService, MessageService],
 })
 export class ProductoView {
   agregar: boolean = false
   productos: IProduct[] = []
-
+  searchForm: FormGroup;
   isWebMode: boolean = window.innerWidth >= 768 // Define la condición inicial para el modo web
   ref: DynamicDialogRef | undefined
-
+  isMobile: boolean = window.innerWidth < 768; // Inicializar basado en el tamaño de la ventana
+  pageSizeOptions: number[] = [3, 10, 25];
+  pageIndex: number = 0;
+  pageSize: number = 3;
+  totalProducts: number = 0;
+    // New properties
+    displayVariantModal: boolean = false;
+    selectedVariants: any[] = [];
   constructor(
     private confirmationService: ConfirmationService,
     private messageService: MessageService,
     private productService: ProductService,
     private dialogService: DialogService,
-    private router: Router,
-  ) {}
+    private router: Router,    private fb: FormBuilder,
+
+  ) {
+    this.searchForm = this.fb.group({
+      query: [''],
+    });
+
+    this.searchForm.valueChanges
+      .pipe(debounceTime(300), distinctUntilChanged())
+      .subscribe(() => {
+        // this.pageIndex = 0;
+        // this.searchProducts();
+      });
+  }
   ngOnInit(): void {
+   
     this.getAllProducts()
   }
 
   getAllProducts(): void {
     this.productService.getAllProducts().subscribe(
       (response: IProduct[]) => {
-        console.log(response)
+        // console.log(response)
         this.productos = response
       },
       (error) => {
@@ -57,7 +80,7 @@ export class ProductoView {
   editprod(product: IProduct) { // Cambia 'any' por 'IProduct'
     this.openProductDialog(true, product);
   }
-  private openProductDialog(isEditing: boolean, product: IProduct | null) { 
+  private openProductDialog(isEditing: boolean, product: IProduct | null) {
     const isMobile = window.innerWidth < 480
 
     this.ref = this.dialogService.open(ProductFormComponent, {
@@ -121,5 +144,18 @@ export class ProductoView {
       },
     });
   }
-
+  
+  onPageChange(event: any): void {
+    this.pageIndex = event.first / event.rows;  // Calcula pageIndex
+    this.pageSize = event.rows;  // Asigna pageSize
+    this.getAllProducts();
+  }
+  showVariantDetails(variants: any[]) {
+    // You can use a modal or dropdown to display these details.
+    console.log("Variant Details:", variants);
+    // For example, open a modal with the variant details.
+    this.selectedVariants = variants;
+    this.displayVariantModal = true; // Assuming you have a modal bound to this variable.
+  }
+  
 }

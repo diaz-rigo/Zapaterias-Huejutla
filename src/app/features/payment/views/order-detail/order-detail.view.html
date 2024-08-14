@@ -94,12 +94,22 @@
 
         <!-- Detalles de pago y entrega -->
         <div class="payment-details">
-          <div class="<div" class="card flex justify-content-center gap-3">
+          <div class="div" class="card flex justify-content-center gap-3">
             <label for="cantidadInput"
               >Los impuestos y gastos de envío se calculan en la pantalla de
               pagos.</label
             >
             <!-- Opciones de entrega: Recoger en tienda o Envío -->
+            <div class="flex align-items-center">
+              <p-radioButton
+                name="deliveryOption"
+                value="shipping"
+                label="Envío a Domicilio:"
+                [(ngModel)]="deliveryOption"
+                inputId="shippingOption"
+                (onClick)="toggleAccordion('shipping')"
+              ></p-radioButton>
+            </div>
             <div class="flex align-items-center">
               <p-radioButton
                 name="deliveryOption"
@@ -110,16 +120,7 @@
                 (onClick)="toggleAccordion('inStore')"
               ></p-radioButton>
             </div>
-            <div class="flex align-items-center">
-              <p-radioButton
-                name="deliveryOption"
-                value="shipping"
-                label="Envío"
-                [(ngModel)]="deliveryOption"
-                inputId="shippingOption"
-                (onClick)="toggleAccordion('shipping')"
-              ></p-radioButton>
-            </div>
+
 
             <!-- Detalles específicos de entrega según la opción seleccionada -->
             <p-accordion [activeIndex]="activeAccordionIndex">
@@ -136,27 +137,27 @@
                   <label for="icondisplay" class="font-bold block mb-2">
                     Selecciona Fecha y Hora para Recoger
                   </label>
-                  <p-calendar
+                  <!-- <p-calendar
                     [dateFormat]="'yy-mm-dd'"
                     [(ngModel)]="date"
                     [showTime]="true"
                     [showSeconds]="true"
-                  ></p-calendar>
+                  ></p-calendar> -->
                 </div>
               </p-accordionTab>
               <!-- Panel para "Envío" -->
               <p-accordionTab header="Envío" icon="pi pi-send">
                 <div class="flex-auto">
                   <label for="icondisplay" class="font-bold block mb-2">
-                    Selecciona Fecha y Hora para Recoger
+                    mas $80 precio por envio
                   </label>
-                  <p-calendar
+                  <!-- <p-calendar
                     [disabled]="calendarioAv"
                     [dateFormat]="'yy-mm-dd'"
                     [(ngModel)]="date"
                     [showTime]="true"
                     [showSeconds]="true"
-                  ></p-calendar>
+                  ></p-calendar> -->
                 </div>
               </p-accordionTab>
             </p-accordion>
@@ -191,7 +192,7 @@
               >
               <ng-container *ngIf="getDeliveryOptionLabel() === 'Envío'">
                 <span class="total-amount"
-                  >{{getTotalAmount() }}+200 = {{ getTotalAmount() + 200 |
+                  >{{getTotalAmount() }}+80 = {{ getTotalAmount() + 80 |
                   currency }}</span
                 >
               </ng-container>
@@ -367,7 +368,7 @@
           </form>
         </div>
 
-        <p-card header="Direccion" *ngIf="getDeliveryOptionLabel() === 'Envío'">
+        <p-card header="Direccion" *ngIf="getDeliveryOptionLabel() === 'Envío' && mostrar_direccion_form">
           <div class="card flex justify-content-center">
             <p-dropdown
               [options]="municipios"
@@ -386,6 +387,7 @@
               placeholder="Select a colonia"
             ></p-dropdown>
           </div>
+          
         </p-card>
 
         <div *ngIf="inputsDisable" class="card flex justify-content-center">
@@ -452,7 +454,7 @@
 
               <ng-container *ngIf="getDeliveryOptionLabel() === 'Envío'">
                 <span class="total-amount">
-                  {{ getTotalAmount() + 200 | currency }}</span
+                  {{ getTotalAmount() + 80 | currency }}</span
                 >
               </ng-container>
               <ng-container *ngIf="getDeliveryOptionLabel() === 'En tienda'">

@@ -1,125 +1,262 @@
+<div class="sidenav">
+  <div class="logo">
+    <span class="logo-text">Administrador</span>
+  </div>
+  <ul class="nav flex-column">
+    <li>
+      <a
+        tabindex="0"
+        (click)="redirectToAdmin('inicio');setActiveLink($event)"
+        class="nav-link"
+      >
+        <i class="pi pi-home"></i>
+        <span class="link-text">Inicio</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a
+        tabindex="0"
+        class="nav-link"
+        [class.open]="openSubmenu === 'clientes-submenu'"
+        (click)="toggleSubmenu('clientes-submenu');setActiveLink($event)"
+      >
+        <i class="pi pi-users"></i>
+        <span class="link-text">Productos</span>
+        <i
+          class="pi pi-chevron-down submenu-toggle"
+          [class.open]="openSubmenu === 'clientes-submenu'"
+        ></i>
+      </a>
+      <ul
+        *ngIf="openSubmenu === 'clientes-submenu'"
+        class="submenu"
+        id="clientes-submenu"
+      >
+        <li>
+          <a
+            tabindex="0"
+            (click)="redirectToAdmin('productos');setActiveLink($event)"
+            class="nav-link"
+            >Listar Productos</a
+          >
+        </li>
+      </ul>
+    </li>
 
-  <!-- <title>Dashboard Template · Bootstrap</title> -->
-<!--
-  <link rel="canonical" href="https://v5.getbootstrap.com/docs/5.0/examples/dashboard/">
+    <li class="nav-item">
+      <a
+        tabindex="0"
+        class="nav-link"
+        [class.open]="openSubmenu === 'roles-empleado-submenu'"
+        (click)="toggleSubmenu('roles-empleado-submenu');setActiveLink($event)"
+      >
+        <i class="pi pi-cog"></i>
+        <span class="link-text">Roles y Empleados</span>
+        <i
+          class="pi pi-chevron-down submenu-toggle"
+          [class.open]="openSubmenu === 'roles-empleado-submenu'"
+        ></i>
+      </a>
+      <ul
+        *ngIf="openSubmenu === 'roles-empleado-submenu'"
+        class="submenu"
+        id="roles-empleado-submenu"
+      >
+        <li>
+          <a
+            tabindex="0"
+            (click)="redirectToAdmin('lista-repartidores');setActiveLink($event)"
+            class="nav-link"
+            >Listar roles</a
+          >
+        </li>
+        <li>
+          <a
+            tabindex="0"
+            (click)="redirectToAdmin('agregar-repartidor');setActiveLink($event)"
+            class="nav-link"
+            >Agregar Empleado</a
+          >
+        </li>
+        <li>
+          <a
+            tabindex="0"
+            (click)="redirectToAdmin('agregar-repartidor');setActiveLink($event)"
+            class="nav-link"
+            >Listar Empleado</a
+          >
+        </li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a
+        tabindex="0"
+        class="nav-link"
+        [class.open]="openSubmenu === 'repartidores-submenu'"
+        (click)="toggleSubmenu('repartidores-submenu');setActiveLink($event)"
+      >
+        <i class="pi pi-truck"></i>
+        <span class="link-text">Repartidores</span>
+        <i
+          class="pi pi-chevron-down submenu-toggle"
+          [class.open]="openSubmenu === 'repartidores-submenu'"
+        ></i>
+      </a>
+      <ul
+        *ngIf="openSubmenu === 'repartidores-submenu'"
+        class="submenu"
+        id="repartidores-submenu"
+      >
+        <li>
+          <a
+            tabindex="0"
+            (click)="redirectToAdmin('lista-repartidores');setActiveLink($event)"
+            class="nav-link"
+            >Listar repartidores</a
+          >
+        </li>
+        <li>
+          <a
+            tabindex="0"
+            (click)="redirectToAdmin('agregar-repartidor');setActiveLink($event)"
+            class="nav-link"
+            >Agregar repartidores</a
+          >
+        </li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a
+        tabindex="0"
+        class="nav-link"
+        [class.open]="openSubmenu === 'vehiculo-submenu'"
+        (click)="toggleSubmenu('vehiculo-submenu');setActiveLink($event)"
+      >
+        <i class="pi pi-car"></i>
+        <span class="link-text">Vehículos</span>
+        <i
+          class="pi pi-chevron-down submenu-toggle"
+          [class.open]="openSubmenu === 'vehiculo-submenu'"
+        ></i>
+      </a>
+      <ul
+        *ngIf="openSubmenu === 'vehiculo-submenu'"
+        class="submenu"
+        id="vehiculo-submenu"
+      >
+        <li>
+          <a
+            tabindex="0"
+            (click)="redirectToAdmin('lista-vehiculo');setActiveLink($event)"
+            class="nav-link"
+            >Listar Vehículos</a
+          >
+        </li>
+        <li>
+          <a
+            tabindex="0"
+            (click)="redirectToAdmin('agregar-vehiculo');setActiveLink($event)"
+            class="nav-link"
+            >Agregar Vehículo</a
+          >
+        </li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a
+        tabindex="0"
+        class="nav-link"
+        [class.open]="openSubmenu === 'rutas-submenu'"
+        (click)="toggleSubmenu('rutas-submenu')"
+      >
+        <i class="pi pi-route"></i>
+        <span class="link-text">Rutas</span>
+        <i
+          class="pi pi-chevron-down submenu-toggle"
+          [class.open]="openSubmenu === 'rutas-submenu'"
+        ></i>
+      </a>
+      <ul
+        *ngIf="openSubmenu === 'rutas-submenu'"
+        class="submenu"
+        id="rutas-submenu"
+      >
+        <li>
+          <a
+            tabindex="0"
+            (click)="redirectToAdmin('lista-rutas');setActiveLink($event)"
+            class="nav-link"
+            >Listar ruta</a
+          >
+        </li>
+        <li>
+          <a
+            tabindex="0"
+            (click)="redirectToAdmin('agregar-ruta');setActiveLink($event)"
+            class="nav-link"
+            >Agregar ruta</a
+          >
+        </li>
+        <li>
+          <a
+            tabindex="0"
+            (click)="redirectToAdmin('asignar-clientes-ruta');setActiveLink($event)"
+            class="nav-link"
+            >Asignar clientes a ruta</a
+          >
+        </li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a
+        tabindex="0"
+        (click)="redirectToAdmin('notificaciones');setActiveLink($event)"
+        class="nav-link"
+      >
+        <i class="pi pi-bell"></i>
+        <span class="link-text">Notificaciones</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a
+        tabindex="0"
+        (click)="redirectToAdmin('miPerfil');setActiveLink($event)"
+        class="nav-link"
+      >
+        <i class="pi pi-user"></i>
+        <span class="link-text">Mi perfil</span>
+      </a>
+    </li>
+  </ul>
+  <p-button
+    label="Cerrar sesión"
+    icon="pi pi-sign-out"
+    [outlined]="true"
+    severity="success"
+  />
+  
+</div>
 
 
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
-    integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
-    integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
-    crossorigin="anonymous"></script> -->
-
-  <!-- <style>
-
-  </style> -->
-
-
-
-  <div class="container-fluid">
-    <div class="row">
-      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-        <div class="position-sticky pt-3">
-          <ul class="nav flex-column">
-            <li class="nav-item">
-            <div class="card1">
-              <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" styleClass="mr-2" size="xlarge"
-                shape="circle"></p-avatar>
-              <!-- <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/asiyajavayant.png" styleClass="mr-2"
-                size="large" shape="circle"></p-avatar>
-              <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/onyamalimba.png" styleClass="mr-2"
-                shape="circle"></p-avatar> -->
-            </div>
-            </li>
-            <li class="nav-item">
-              <a  (click)="redirectToAdmin('inicio')"  class="nav-link" >
-                <span data-feather="file"></span>
-                Inicio
-              </a>
-            </li>
-            <li class="nav-item">
-              <a (click)="redirectToAdmin('productos')" class="nav-link">
-                <span data-feather="shopping-cart"></span>
-                Productos
-              </a>
-            </li>
-            <li class="nav-item">
-              <a   (click)="redirectToAdmin('usuarios')"  class="nav-link" >
-                <span data-feather="users"></span>
-                Usuarios
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" >
-                <span data-feather="bar-chart-2"></span>
-                Reports
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" (click)="redirectToAdmin('comentarios')">
-                <span data-feather="file-text"></span>
-                Comentarios
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link"  (click)="redirectToAdmin('pedidos')">
-                <span data-feather="layers"></span>
-                Pedidos
-              </a>
-            </li>
-          </ul>
-
-          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-            <span>Saved reports</span>
-            <a class="link-secondary" href="#" aria-label="Add a new report">
-              <span data-feather="plus-circle"></span>
-            </a>
-          </h6>
-          <ul class="nav flex-column mb-2">
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="file-text"></span>
-                Current month
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="file-text"></span>
-                Last quarter
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="file-text"></span>
-                Year-end sale
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
-
-
-
-<router-outlet></router-outlet>
-
+<div class="floating-header">
+  <div class="admin-info">
+    <span class="date">{{fechaTexto}}</span>
+    <div class="calendar-container">
+      <button type="date" class="round-button">
+        <i class="pi pi-calendar"></i>
+      </button>
     </div>
   </div>
+  <button class="notification-button">
+    <i class="pi pi-bell"></i>
+  </button>
+</div>
 
-<!--
-  <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-DBjhmceckmzwrnMMrjI7BvG2FmRuxQVaTfFYHgfnrdfqMhxKt445b7j3KBQLolRl"
-    crossorigin="anonymous"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.24.1/feather.min.js"
-    integrity="sha384-EbSscX4STvYAC/DxHse8z5gEDaNiKAIGW+EpfzYTfQrgIlHywXXrM9SUIZ0BlyfF"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
-    integrity="sha384-i+dHPTzZw7YVZOx9lbH5l6lP74sLRtMtwN2XjVqjf3uAGAREAF4LMIUDTWEVs4LI"
-    crossorigin="anonymous"></script>
-  <script src="dashboard.js"></script> -->
+<div class="content">
+  <router-outlet></router-outlet>
+</div>

@@ -1,162 +1,169 @@
+/* Estilo del contenedor principal */
 .container {
-
-  margin-top: 100px;
-  max-width: 400px;
-  margin-bottom: 50px;
   display: flex;
-  /* Utiliza flexbox para manejar el diseño */
   justify-content: center;
-}
-
-
-
-
-
-.login-container {
-  width: 40%;
-  background-color: #fff;
+  align-items: center;
   padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 3px 10px rgba(69, 69, 69, 0.345);
+  background-color: #ffffff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  max-width: 400px;
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
+/* Estilo del contenedor de login */
+.login-container {
+  width: 100%;
+}
 
-
-h2 {
+/* Estilo del título */
+.login-container h2 {
   text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 600;
 }
 
+/* Estilo de los grupos de formulario */
 .form-group {
   margin-bottom: 15px;
 }
 
-label {
+/* Estilo de las etiquetas */
+.form-group label {
   display: block;
-  color: rgb(23, 145, 104);
-  font-weight: bold;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: #555;
 }
 
-input {
+/* Estilo de los campos de entrada */
+.form-group input {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+  outline: none;
+  transition: border-color 0.3s;
 }
 
+.form-group input:focus {
+  border-color: #a6c0fe;
+}
+
+/* Estilo del botón de login */
 button[type="submit"] {
   width: 100%;
   padding: 10px;
-  background-color: #168b6f;
-  border: none;
+  background-color: #5675be; /* Color pastel para el botón */
   color: #fff;
+  border: none;
   border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  margin-bottom: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-button:hover {
-  background-color: #a8b3bd;
+button[type="submit"]:hover {
+  background-color: #879cf8; /* Color pastel más oscuro al hacer hover */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* Estilo del separador */
 .separator {
   text-align: center;
-  margin: 15px 0;
+  margin: 10px 0;
+  font-size: 14px;
+  color: #aaa;
+  position: relative;
 }
 
+.separator::before,
+.separator::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background-color: #ddd;
+}
+
+.separator::before {
+  left: 0;
+}
+
+.separator::after {
+  right: 0;
+}
+
+/* Estilo de los botones sociales */
 .social-buttons {
   display: flex;
   justify-content: space-between;
-}
-
-.facebook,
-.google {
-  width: 48%;
-  background-color: #3b5998;
-}
-
-.google {
-  background-color: #db4437;
+  margin-bottom: 20px;
 }
 
 .social-buttons button {
+  width: 48%;
   padding: 10px;
   border: none;
-  color: #fff;
   border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.social-buttons button:hover {
-  filter: brightness(0.8);
+.social-buttons button i {
+  margin-right: 8px;
 }
 
-p {
+/* Estilo botón de Facebook */
+.social-buttons .facebook {
+  background-color: #3c507e; /* Color pastel para Facebook */
+  color: #fff;
+}
+
+.social-buttons .facebook:hover {
+  background-color: #4a61ac; /* Color pastel más oscuro al hacer hover */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilo botón de Google */
+.social-buttons .google {
+  background-color: #a45853; /* Color pastel para Google */
+  color: #fff;
+}
+
+.social-buttons .google:hover {
+  background-color: #f58a84; /* Color pastel más oscuro al hacer hover */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilo de los enlaces */
+.login-container p {
   text-align: center;
-  margin-top: 15px;
+  color: #555;
+  font-size: 14px;
 }
 
-a {
-  color: #007bff;
+.login-container p a {
+  color: #a6c0fe;
   text-decoration: none;
 }
 
-a:hover {
+.login-container p a:hover {
   text-decoration: underline;
-}
-
-
-
-
-/* Media query para pantallas más pequeñas */
-@media screen and (max-width: 768px) {
-
-  /* Reducir aún más el ancho del contenedor en pantallas pequeñas */
-  .footer {
-    display: none;
-
-  }
-
-  div.container {
-
-    >div.login-container {
-      width: 100%;
-
-      >h2 {}
-
-      >form {
-        >div.form-group:nth-of-type(1) {
-          >label {}
-
-          >input#email {}
-        }
-
-        >div.form-group:nth-of-type(2) {
-          >label {}
-
-          >input#password {}
-        }
-
-        >button {}
-      }
-
-      >div.separator {}
-
-      >div.social-buttons {
-        >button.facebook {
-          >i.fab.fa-facebook-f {}
-        }
-
-        >button.google {
-          >i.fab.fa-google {}
-        }
-      }
-
-      >p:nth-of-type(1) {
-        >a {}
-      }
-
-      >p:nth-of-type(2) {
-        >a {}
-      }
-    }
-  }
 }

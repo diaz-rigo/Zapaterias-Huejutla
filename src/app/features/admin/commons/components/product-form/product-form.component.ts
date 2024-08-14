@@ -1,10 +1,12 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core'
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ProductService } from '../../service/product.service'
-import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog'
+import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog'
 import { ProductoView } from '../../../view/producto/producto.view'
 import { IProduct } from '../../../interfaces/Product.interface'
 import { Router } from '@angular/router'
+import { NgxUiLoaderService } from 'ngx-ui-loader'
+import { ConfirmationService, MessageService } from 'primeng/api'
 interface ImageUrls {
   images: string[] // Define el tipo de la propiedad 'images'
 }
@@ -12,6 +14,8 @@ interface ImageUrls {
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.scss', './file.scss'],
+  providers: [DialogService, ConfirmationService, MessageService],
+
 })
 export class ProductFormComponent implements OnInit {
   isEditing: boolean = false
@@ -21,10 +25,10 @@ export class ProductFormComponent implements OnInit {
 
   fileNames: {
     [key: number]: {
-      images: { src: string; file: File }[]
-      texture: { src: string; file: File } | null
+      images: { src: string; file: File | null }[];
+      texture: { src: string; file: File | null } | null;
     }
-  } = {}
+  } = {};
 
   idproducEDIT: string = ''
 
@@ -36,7 +40,12 @@ export class ProductFormComponent implements OnInit {
     private dialogRef: DynamicDialogRef,
     private productService: ProductService,
     private cdr: ChangeDetectorRef, // Add ChangeDetectorRef
-  ) {}
+     private ngxService: NgxUiLoaderService,    private messageService: MessageService,  
+
+  ) {
+    this.product = this.config.data.product; // Obtener el producto de los datos del diálogo
+
+  }
 
   ngOnInit(): void {
     this.productForm = this.createProductForm()
@@ -48,36 +57,44 @@ export class ProductFormComponent implements OnInit {
     }
   }
 
-  initializeFormWithProductData(product: IProduct): void {
-    this.idproducEDIT = product._id
-    this.productForm.patchValue({
-      name: product.name,
-      description: product.description,
-      brand: product.brand,
-      material: product.material,
-      category: product.category,
-    })
+initializeFormWithProductData(product: IProduct): void {
+  this.idproducEDIT = product._id;
+  this.productForm.patchValue({
+    name: product.name,
+    description: product.description,
+    brand: product.brand,
+    material: product.material,
+    category: product.category,
+  });
 
-    this.variants.clear()
-    product.variants.forEach((variant, i) => {
-      const variantForm = this.createVariant()
-      variantForm.patchValue({
-        color: variant.color,
-        texture: variant.texture,
-      })
+  this.variants.clear();
+  product.variants.forEach((variant, i) => {
+    const variantForm = this.createVariant();
+    variantForm.patchValue({
+      color: variant.color,
+      texture: variant.texture,
+    });
 
-      const sizeStockArray = variantForm.get('sizeStock') as FormArray
-      variant.sizeStock.forEach((sizeStock) => {
-        const sizeStockGroup = this.createSizeStock()
-        sizeStockGroup.patchValue(sizeStock)
-        sizeStockArray.push(sizeStockGroup)
-      })
+    const sizeStockArray = variantForm.get('sizeStock') as FormArray;
+    variant.sizeStock.forEach((sizeStock) => {
+      const sizeStockGroup = this.createSizeStock();
+      sizeStockGroup.patchValue(sizeStock);
+      sizeStockArray.push(sizeStockGroup);
+    });
 
-      this.variants.push(variantForm)
-      this.fileNames[i] = { images: [], texture: null } // Initialize fileNames
-    })
-  }
+    this.variants.push(variantForm);
 
+    // Inicializar imágenes y texturas
+    this.fileNames[i] = {
+      images: variant.images.map((image) => ({ src: image, file: null })), // No hay 'file' en la interfaz IVariant
+      texture: variant.texture ? { src: variant.texture, file: null } : null, // Asumiendo que 'texture' es solo un string
+    };
+
+    // Asignar las imágenes y textura al formulario
+    variantForm.get('images')?.setValue(this.fileNames[i].images.map(img => img.src));
+    variantForm.get('texture')?.setValue(this.fileNames[i].texture?.src || '');
+  });
+}
   createProductForm(): FormGroup {
     return this.formBuilder.group({
       name: ['', Validators.required],
@@ -133,31 +150,77 @@ export class ProductFormComponent implements OnInit {
       .get('sizeStock') as FormArray
     sizeStockArray.removeAt(sizeStockIndex)
   }
-
   EDITARProducto() {
     if (this.productForm.valid) {
-      const productData = this.productForm.value
-      this.productService
-        .updateProduct(this.idproducEDIT, productData)
-        .subscribe(
-          (response) => {
-            console.log('Producto actualizado:', response)
-            this.dialogRef.close()
-            this.productoView.getAllProducts()
-          },
-          (error) => {
-            console.error('Error al actualizar el producto:', error)
-          },
-        )
+        const productData: IProduct = this.productForm.value;  // Asegurarse de que productData siga la interfaz IProduct
+        const category = productData.category;
+        this.ngxService.start();
+
+        const existingImages = this.product.variants.map(variant => variant.images) || [];
+        const imageFiles: File[] = this.variants.controls.flatMap((variantControl, i) =>
+          this.fileNames[i].images.map(img => img.file).filter((file): file is File => file !== null)
+      );
+
+
+        if (imageFiles.length > 0) {
+            this.productService.uploadImages( imageFiles).subscribe(
+                (imageData: string[] | { images: string[] }) => {
+                    imageData = Array.isArray(imageData) ? imageData : imageData.images;
+
+                    productData.variants.forEach((variant, i) => {
+                      const imageUrls = Array.isArray(imageData) ? imageData.splice(0, this.fileNames[i].images.length) : (imageData as any).images.splice(0, this.fileNames[i].images.length);
+                      variant.images = [...(existingImages[i] || []), ...imageUrls];
+                  });
+
+
+                    this.updateProduct(productData);
+                },
+                (error) => {
+                    this.ngxService.stop();
+                    console.error('Error subiendo imágenes', error);
+                }
+            );
+        } else {
+            productData.variants.forEach((variant, i) => {
+                variant.images = existingImages[i] || [];
+            });
+
+            this.updateProduct(productData);
+        }
     } else {
-      console.error('Formulario no válido.')
+        console.error('Formulario no válido.');
     }
-  }
+}
+
+ 
+updateProduct(productData: any) {
+  console.log("-----<<<<<>>>",productData)
+  this.productService.updateProduct(this.idproducEDIT, productData).subscribe(
+    (response) => {
+      this.ngxService.stop();
+      this.dialogRef.close();
+      this.productoView.getAllProducts()
+      this.messageService.add({
+        severity: 'info',
+        summary: 'Confirmado',
+        detail: 'Producto actualizado exitosamente',
+      });
+    },
+    (error) => {
+      this.ngxService.stop();
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Rechazado',
+        detail: 'Error al actualizar el producto'+error,
+      });
+    }
+  );
+}
   agregarProducto() {
     if (this.productForm.valid) {
       const imageFiles: File[] = []
       const textureFiles: File[] = []
-
+      this.ngxService.start()
       // Recopilar archivos de imágenes y texturas para cada variante
       this.variants.controls.forEach((variantControl) => {
         const imagesControl = variantControl.get('images')
@@ -192,6 +255,7 @@ export class ProductFormComponent implements OnInit {
                   // Crear el producto con las URLs asignadas
                   const productData = this.getFilteredProductData()
                   this.createProductWithUrls(productData)
+                  this.ngxService.stop()
                 },
                 (error) => {
                   console.error('Error al subir texturas:', error)
@@ -201,6 +265,8 @@ export class ProductFormComponent implements OnInit {
               // Si no hay archivos de textura, crear producto con las URLs de las imágenes
               const productData = this.getFilteredProductData()
               console.log(productData)
+              this.ngxService.stop()
+
               this.createProductWithUrls(productData)
             }
           },
@@ -212,6 +278,7 @@ export class ProductFormComponent implements OnInit {
         console.error('No se encontraron imágenes para subir.')
       }
     } else {
+      this.ngxService.stop()
       console.error('Formulario no válido.')
     }
   }
@@ -259,7 +326,10 @@ export class ProductFormComponent implements OnInit {
       (error) => {
         console.error('Error al crear el producto:', error)
       },
+      
     )
+    this.ngxService.stop()
+
   }
 
   onFileSelected(event: any, variantIndex: number, field: string): void {
@@ -316,7 +386,10 @@ export class ProductFormComponent implements OnInit {
         .at(variantIndex)
         .get('images')
         ?.setValue(
-          this.fileNames[variantIndex].images.map((image) => image.file.name),
+          // this.fileNames[variantIndex].images.map((image) => image.file.name),
+          this.fileNames[variantIndex].images.map((image) => image.file?.name),
+
+
         )
     } else if (field === 'texture') {
       this.fileNames[variantIndex].texture = null
@@ -339,6 +412,5 @@ export class ProductFormComponent implements OnInit {
     this.productForm.markAsDirty()
     this.productForm.updateValueAndValidity()
   }
-  // Dentro del método getFilteredProductData()
-  // Dentro del método getFilteredProductData()
+
 }

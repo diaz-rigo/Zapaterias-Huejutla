@@ -23,6 +23,7 @@ import { ComentariosView } from './view/comentarios/comentarios.view';
 import { PedidosView } from './view/pedidos/pedidos.view';
 import { adminComponentsModule } from './commons/components/components.module';
 import { AdminCommonsModule } from './commons/commons.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 const MATERIALS = [
@@ -47,7 +48,8 @@ const MATERIALS = [
     PedidosView
   ],
   imports: [MATERIALS,
-    CommonModule,
+    CommonModule,    ReactiveFormsModule,
+
     AdminRoutingModule, MaterialModule,adminComponentsModule,AdminCommonsModule
   ]
 })
