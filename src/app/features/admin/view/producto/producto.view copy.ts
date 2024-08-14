@@ -3,21 +3,32 @@
 // import { ConfirmationService, MessageService } from 'primeng/api'
 // import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog'
 // import { ProductFormComponent } from '../../commons/components/product-form/product-form.component'
-// import { IproductResponse } from '../../interfaces/Product.interface'
 // import { ProductService } from '../../commons/service/product.service'
+// import { IProduct } from '../../interfaces/Product.interface'
+// import { FormBuilder, FormGroup } from '@angular/forms'
+// import { debounceTime, distinctUntilChanged } from 'rxjs'
+
 // @Component({
 //   selector: 'app-producto',
 //   templateUrl: './producto.view.html',
-//   styleUrl: './producto.view.scss',
-//   encapsulation: ViewEncapsulation.None,
+//   styleUrls: ['./producto.view.scss'],
 //   providers: [DialogService, ConfirmationService, MessageService],
 // })
 // export class ProductoView {
 //   agregar: boolean = false
-//   productos: IproductResponse[] = []
-
+//   productos: IProduct[] = []
+//   searchForm: FormGroup;
 //   isWebMode: boolean = window.innerWidth >= 768 // Define la condición inicial para el modo web
 //   ref: DynamicDialogRef | undefined
+//   isMobile: boolean = window.innerWidth < 768; // Inicializar basado en el tamaño de la ventana
+//   pageSizeOptions: number[] = [3, 10, 25];
+//   pageIndex: number = 0;
+//   pageSize: number = 3;
+//   totalProducts: number = 0;
+//   // New properties
+//   displayVariantModal: boolean = false;
+//   selectedVariants: any[] = [];
+//   filters: any = {}; // Agregar una propiedad para los filtros
 
 //   constructor(
 //     private confirmationService: ConfirmationService,
@@ -25,42 +36,68 @@
 //     private productService: ProductService,
 //     private dialogService: DialogService,
 //     private router: Router,
-//   ) {}
-//   ngOnInit(): void {
-//     this.getAllProducts()
+//     private fb: FormBuilder,
+//   ) {
+//     this.searchForm = this.fb.group({
+//       query: [''],
+//     });
+
+//     this.searchForm.valueChanges
+//       .pipe(debounceTime(300), distinctUntilChanged())
+//       .subscribe(() => {
+//         this.pageIndex = 0;
+//         this.searchProducts();
+//       });
 //   }
 
-//   getAllProducts(): void {
-//     this.productService.getAllProducts().subscribe(
-//       (response: IproductResponse[]) => {
-//         // console.log(response)
-//         this.productos = response
-//       },
-//       (error) => {
-//         console.error('Error al obtener los productos:', error)
-//       },
-//     )
+//   ngOnInit(): void {
+//     this.loadProducts();
 //   }
+
+//   searchProducts(): void {
+//     // this.pageIndex = 0;
+//     this.loadProducts();
+//   }
+
+// loadProducts(): void {
+//   const skip = this.pageIndex * this.pageSize;
+//   const limit = this.pageSize;
+
+//   const filters = {
+//     name: this.searchForm.value.query,
+//     // Otros campos de filtrado que recolectes de la vista
+//     priceMin: this.searchForm.value.priceMin,
+//     priceMax: this.searchForm.value.priceMax,
+//     category: this.searchForm.value.category,
+//     maker: this.searchForm.value.maker,
+//   };
+
+//   this.productService
+//     .getProductsPaginated(skip, limit, filters)
+//     .subscribe((data: IProduct[]) => {
+//       this.productos = data;
+//     });
+// }
+
 //   redirectToAdmin(route: string): void {
-//     // this.sidebarVisible2 = !this.sidebarVisible2
-//     console.log(route)
+//     console.log(route);
 //     if (route === 'login') {
-//       this.router.navigate(['/auth/login']) // Navegación hacia la página de inicio de sesión
+//       this.router.navigate(['/auth/login']); // Navegación hacia la página de inicio de sesión
 //     } else {
-//       this.router.navigate(['/admin', route]) // Navegación hacia otras páginas públicas
+//       this.router.navigate(['/admin', route]); // Navegación hacia otras páginas públicas
 //     }
 //   }
+
 //   createprod() {
 //     this.openProductDialog(false, null);
 //   }
 
-//   editprod(product: IproductResponse) { // Cambia 'any' por 'IproductResponse'
+//   editprod(product: IProduct) {
 //     this.openProductDialog(true, product);
 //   }
-//   private openProductDialog(isEditing: boolean, product: IproductResponse | null) { // Cambia 'any' por 'IproductResponse'
-//     // console.log(product)
-//     // this.sidebarVisible = false;
-//     const isMobile = window.innerWidth < 480
+
+//   private openProductDialog(isEditing: boolean, product: IProduct | null) {
+//     const isMobile = window.innerWidth < 480;
 
 //     this.ref = this.dialogService.open(ProductFormComponent, {
 //       header: isEditing ? 'Editar Producto' : 'Nuevo Producto',
@@ -76,9 +113,7 @@
 //         '640px': '100vw',
 //       },
 //       data: { product: product }, // Pasando el objeto product dentro de un objeto con la propiedad 'product'
-
-//     })
-
+//     });
 //   }
 
 //   deleteProduct(productId: string): void {
@@ -87,15 +122,15 @@
 //         // Eliminación exitosa, actualiza la lista de productos
 //         this.productos = this.productos.filter(
 //           (producto) => producto._id !== productId,
-//         )
+//         );
 //       },
 //       (error) => {
-//         console.error('Error al eliminar el producto:', error)
+//         console.error('Error al eliminar el producto:', error);
 //       },
-//     )
+//     );
 //   }
+
 //   eliminar(event: Event, productId: string) {
-//     // console.log("oprimido a elim")
 //     this.confirmationService.confirm({
 //       target: event.target as EventTarget,
 //       message: '¿Estás seguro de que deseas eliminar este producto?',
@@ -124,4 +159,17 @@
 //     });
 //   }
 
+
+//   onPageChange(event: any): void {
+//     this.pageIndex = event.first / event.rows;  // Calcula pageIndex
+//     this.pageSize = event.rows;  // Asigna pageSize
+//     this.loadProducts();
+//   }
+
+
+//   showVariantDetails(variants: any[]) {
+//     console.log("Variant Details:", variants);
+//     this.selectedVariants = variants;
+//     this.displayVariantModal = true; // Assuming you have a modal bound to this variable.
+//   }
 // }

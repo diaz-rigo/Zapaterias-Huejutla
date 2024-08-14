@@ -8,50 +8,19 @@ import { Router } from '@angular/router';
   styleUrls: [
     "../../admin.component.scss",
     "./adm-home.view.scss",
+    "./menu.scss",
   ],
   encapsulation: ViewEncapsulation.None
 })
 export class AdmHomeView {
-  fechaTexto!: string;
   // activeLink: string = '';
   openSubmenu: string | null = null;
   activeLink: HTMLElement | null = null;
   constructor(private router: Router) {}
 
   ngOnInit() {
-    this.fechaTexto = this.obtenerFechaTexto();
   }
 
-  obtenerFechaTexto() {
-    let diasSemana = [
-      "Domingo",
-      "Lunes",
-      "Martes",
-      "Miércoles",
-      "Jueves",
-      "Viernes",
-      "Sábado",
-    ];
-    let meses = [
-      "Enero",
-      "Febrero",
-      "Marzo",
-      "Abril",
-      "Mayo",
-      "Junio",
-      "Julio",
-      "Agosto",
-      "Septiembre",
-      "Octubre",
-      "Noviembre",
-      "Diciembre",
-    ];
-    let fecha = new Date();
-    let diaSemana = diasSemana[fecha.getDay()];
-    let mes = meses[fecha.getMonth()];
-    let año = fecha.getFullYear();
-    return `${diaSemana} / ${mes} / ${año}`;
-  }
 
   redirectToAdmin(route: string): void {
     console.log(route);

@@ -1,0 +1,71 @@
+/* Ocultar la barra lateral en pantallas pequeñas */
+@media (max-width: 767.98px) {
+  .sidenav {
+    display: none; /* Ocultar la barra lateral */
+  }
+
+  .sidebar-toggle {
+    display: block; /* Mostrar botón de menú */
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #1d2d3a;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 100;
+  }
+
+  .sidebar-toggle i {
+    font-size: 24px;
+  }
+
+  .sidebar-open {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 0 3px #d5d5d5;
+    padding: 20px;
+    transition: transform 0.3s ease;
+    transform: translateX(-100%);
+    z-index: 99;
+  }
+
+  .sidebar-open.active {
+    transform: translateX(0); /* Mostrar barra lateral cuando está activa */
+  }
+
+  .content {
+    margin-left: 0; /* Ajustar margen del contenido cuando la barra lateral está oculta */
+  }
+
+  .floating-header {
+    padding: 0 10px; /* Ajustar el padding del encabezado flotante */
+  }
+}
+
+/* Estilos generales para pantallas más grandes */
+@media (min-width: 768px) {
+  .sidenav {
+    display: flex; /* Mostrar la barra lateral en pantallas grandes */
+  }
+
+  .sidebar-toggle {
+    display: none; /* Ocultar botón de menú en pantallas grandes */
+  }
+
+  // .content {
+  //   margin-left: 250px; /* Ajustar margen del contenido cuando la barra lateral está visible */
+  // }
+}
+
+/* Estilos adicionales para el botón de menú */
+.sidebar-toggle {
+  display: none; /* Inicialmente oculto, solo visible en móviles */
+  font-size: 24px;
+}

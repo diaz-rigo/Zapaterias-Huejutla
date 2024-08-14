@@ -9,7 +9,6 @@
 
 .view-title {
   text-align: center;
-  // justify-content: center;
   font-size: 2rem;
   margin-bottom: 20px;
 }
@@ -18,12 +17,7 @@
   margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
-}
-
-.create-button {
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: flex-end;
+  gap: 10px;
 }
 
 .table-container {
@@ -38,26 +32,7 @@
   width: 50px;
   height: 50px;
   object-fit: cover;
-}
-
-.active {
-  color: green;
-  font-weight: bold;
-}
-
-.deactive {
-  color: red;
-  font-weight: bold;
-}
-
-.actions-cell {
-  display: flex;
-  gap: 10px;
-}
-
-.edit-button,
-.delete-button {
-  margin-right: 5px;
+  border-radius: 5px;
 }
 
 .card-container {
@@ -99,6 +74,12 @@
   margin-top: 10px;
 }
 
+.variant-texture {
+  max-width: 100px;
+  max-height: 100px;
+  border-radius: 5px;
+}
+
 /* Media Queries for responsiveness */
 @media (max-width: 768px) {
   .form {
@@ -108,5 +89,13 @@
 
   .create-button {
     align-self: flex-end;
+  }
+
+  .table-container {
+    display: none;
+  }
+
+  .card-container {
+    grid-template-columns: 1fr;
   }
 }

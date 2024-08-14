@@ -61,6 +61,7 @@ export class HeaderComponent {
   userRol: string | undefined
   showUserName!: boolean
   badge: number = 0
+  fechaTexto!: string;
 
   totalAmount!: number
 
@@ -182,6 +183,7 @@ export class HeaderComponent {
 
   ngOnInit() {
     const userData = this.sessionService.getUserData()
+    this.fechaTexto = this.obtenerFechaTexto();
 
     this.cartService.itemsInCart.subscribe((value) => {
       this.badge = value
@@ -330,9 +332,37 @@ export class HeaderComponent {
       },
     ]
   }
-  // ngOnInit(): void {
-  //   const userData = this.sessionService.getUserData()
-  // }
+
+  obtenerFechaTexto() {
+    let diasSemana = [
+      "Domingo",
+      "Lunes",
+      "Martes",
+      "Miércoles",
+      "Jueves",
+      "Viernes",
+      "Sábado",
+    ];
+    let meses = [
+      "Enero",
+      "Febrero",
+      "Marzo",
+      "Abril",
+      "Mayo",
+      "Junio",
+      "Julio",
+      "Agosto",
+      "Septiembre",
+      "Octubre",
+      "Noviembre",
+      "Diciembre",
+    ];
+    let fecha = new Date();
+    let diaSemana = diasSemana[fecha.getDay()];
+    let mes = meses[fecha.getMonth()];
+    let año = fecha.getFullYear();
+    return `${diaSemana} / ${mes} / ${año}`;
+  }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {

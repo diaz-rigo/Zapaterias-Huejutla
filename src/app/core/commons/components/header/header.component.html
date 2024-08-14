@@ -16,6 +16,19 @@
         </a>
       </li>
     </ul>
+    <!-- <div class="floating-header">
+      <div class="admin-info">
+        <span class="date">{{ fechaTexto }}</span>
+        <div class="calendar-container">
+          <button type="date" class="round-button">
+            <i class="pi pi-calendar"></i>
+          </button>
+        </div>
+      </div>
+      <button class="notification-button">
+        <i class="pi pi-bell"></i>
+      </button>
+    </div> -->
   </div>
   <div *ngIf="!showUserName">
     <h3>Menú</h3>
@@ -58,7 +71,7 @@
     <!-- Mostrar mensaje de bienvenida y nombre de usuario si está disponible -->
     <p>Bienvenido, {{ userName }}</p>
     <p-tag value=" {{ userRol }}" />
-
+    <span class="date">{{ fechaTexto }}</span>
     <hr />
     <ul>
       <li>
@@ -72,6 +85,20 @@
         </a>
       </li>
     </ul>
+
+    <!-- <div class="floating-header">
+      <div class="admin-info">
+        <span class="date">{{ fechaTexto }}</span>
+        <div class="calendar-container">
+          <button type="date" class="round-button">
+            <i class="pi pi-calendar"></i>
+          </button>
+        </div>
+      </div>
+      <button class="notification-button">
+        <i class="pi pi-bell"></i>
+      </button>
+    </div> -->
   </div>
   <hr />
   <h3>Administración</h3>
@@ -224,7 +251,9 @@
       <div *ngFor="let item of carData" class="cart-item cart-row">
         <img [src]="item.image" alt="{{ item.name }}" class="product-image2" />
         <div class="cart-column cart-item-details">
-          <span class="product-name cart-header">{{ item.name }} talla: <strong>{{ item.size }}</strong></span>
+          <span class="product-name cart-header"
+            >{{ item.name }} talla: <strong>{{ item.size }}</strong></span
+          >
           <div class="price-and-delete">
             <span class="product-price">{{
               item.precio | currency : "MXN"
@@ -237,7 +266,9 @@
               >
                 +
               </button> -->
-              <span class="product-quantity">cantidad {{ item.cantidad }} </span>
+              <span class="product-quantity"
+                >cantidad {{ item.cantidad }}
+              </span>
               <!-- <button
                 type="button"
                 class="btn-quantity btn-decrement"
@@ -263,7 +294,9 @@
         <div class="total-price">Subtotal: ${{ getTotalPrice() }}MX</div>
       </div>
       <div class="btn-container">
-        <button class="btn-finish" (click)="finishPurchase()">Finalizar Compra</button>
+        <button class="btn-finish" (click)="finishPurchase()">
+          Finalizar Compra
+        </button>
       </div>
     </div>
     <ng-template #emptyCart>

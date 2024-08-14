@@ -199,7 +199,7 @@ updateProduct(productData: any) {
     (response) => {
       this.ngxService.stop();
       this.dialogRef.close();
-      this.productoView.getAllProducts()
+      this.productoView.loadProducts()
       this.messageService.add({
         severity: 'info',
         summary: 'Confirmado',
@@ -321,7 +321,7 @@ updateProduct(productData: any) {
         console.log('Producto creado exitosamente:', response)
         this.router.navigate(['/admin/productos'])
         this.dialogRef.close()
-        this.productoView.getAllProducts()
+        this.productoView.loadProducts()
       },
       (error) => {
         console.error('Error al crear el producto:', error)

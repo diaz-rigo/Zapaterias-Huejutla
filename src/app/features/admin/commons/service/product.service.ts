@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from './../../../../../environments/environment';
@@ -9,7 +9,27 @@ import { IProduct } from '../../interfaces/Product.interface';
 })
 export class ProductService {
   constructor(private http: HttpClient) {}
+// Método para obtener productos paginados con filtros
 
+
+getProductsPaginated(
+  page: number,
+  limit: number,
+  filters: any,
+): Observable<IProduct[]> {
+  const skip = page * limit // Modificado para evitar problemas de paginación
+  const requestPayload = {
+    page,
+    limit,
+    filters,
+    sortOrder: 'DESC', // Cambiado a DESC para orden descendente
+  }
+
+  return this.http.post<IProduct[]>(
+    `${environment.api}/product/page/${limit}/${skip}`,
+    requestPayload,
+  )
+}
   // Método para crear un nuevo producto
   createProduct(product: any): Observable<any> {
     return this.http.post<any>(`${environment.api}/product`, product);
@@ -23,7 +43,7 @@ export class ProductService {
 
     return this.http.post<string[]>(`${environment.api}/product/upload-images`, formData);
   }
-  
+
   // Método para subir texturas
   uploadTexture(textures: File[]): Observable<string[]> {
     const formData = new FormData();

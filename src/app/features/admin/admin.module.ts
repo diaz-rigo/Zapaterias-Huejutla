@@ -25,9 +25,11 @@ import { adminComponentsModule } from './commons/components/components.module';
 import { AdminCommonsModule } from './commons/commons.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
+import { InputTextModule } from 'primeng/inputtext';
 const MATERIALS = [
-  AvatarModule, AvatarGroupModule
+  AvatarModule, AvatarGroupModule,IconFieldModule,InputIconModule,InputTextModule
 ]
 // import { AdmDashboardView } from './adm-dashboard/adm-dashboard.view';
 @NgModule({

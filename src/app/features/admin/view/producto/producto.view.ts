@@ -8,11 +8,10 @@ import { IProduct } from '../../interfaces/Product.interface'
 import { FormBuilder, FormGroup } from '@angular/forms'
 import { debounceTime, distinctUntilChanged } from 'rxjs'
 
-
 @Component({
   selector: 'app-producto',
   templateUrl: './producto.view.html',
-  styleUrl: './producto.view.scss',
+  styleUrls: ['./producto.view.scss','./menu.scss',],
   providers: [DialogService, ConfirmationService, MessageService],
 })
 export class ProductoView {
@@ -26,16 +25,18 @@ export class ProductoView {
   pageIndex: number = 0;
   pageSize: number = 3;
   totalProducts: number = 0;
-    // New properties
-    displayVariantModal: boolean = false;
-    selectedVariants: any[] = [];
+  // New properties
+  displayVariantModal: boolean = false;
+  selectedVariants: any[] = [];
+  filters: any = {}; // Agregar una propiedad para los filtros
+
   constructor(
     private confirmationService: ConfirmationService,
     private messageService: MessageService,
     private productService: ProductService,
     private dialogService: DialogService,
-    private router: Router,    private fb: FormBuilder,
-
+    private router: Router,
+    private fb: FormBuilder,
   ) {
     this.searchForm = this.fb.group({
       query: [''],
@@ -44,44 +45,59 @@ export class ProductoView {
     this.searchForm.valueChanges
       .pipe(debounceTime(300), distinctUntilChanged())
       .subscribe(() => {
-        // this.pageIndex = 0;
-        // this.searchProducts();
+        this.pageIndex = 0;
+        this.searchProducts();
       });
   }
+
   ngOnInit(): void {
-   
-    this.getAllProducts()
+    this.loadProducts();
   }
 
-  getAllProducts(): void {
-    this.productService.getAllProducts().subscribe(
-      (response: IProduct[]) => {
-        // console.log(response)
-        this.productos = response
-      },
-      (error) => {
-        console.error('Error al obtener los productos:', error)
-      },
-    )
+  searchProducts(): void {
+    // this.pageIndex = 0;
+    this.loadProducts();
   }
+
+loadProducts(): void {
+  const skip = this.pageIndex * this.pageSize;
+  const limit = this.pageSize;
+
+  const filters = {
+    name: this.searchForm.value.query,
+    // Otros campos de filtrado que recolectes de la vista
+    priceMin: this.searchForm.value.priceMin,
+    priceMax: this.searchForm.value.priceMax,
+    category: this.searchForm.value.category,
+    maker: this.searchForm.value.maker,
+  };
+
+  this.productService
+    .getProductsPaginated(skip, limit, filters)
+    .subscribe((data: IProduct[]) => {
+      this.productos = data;
+    });
+}
+
   redirectToAdmin(route: string): void {
-    // this.sidebarVisible2 = !this.sidebarVisible2
-    console.log(route)
+    console.log(route);
     if (route === 'login') {
-      this.router.navigate(['/auth/login']) // Navegación hacia la página de inicio de sesión
+      this.router.navigate(['/auth/login']); // Navegación hacia la página de inicio de sesión
     } else {
-      this.router.navigate(['/admin', route]) // Navegación hacia otras páginas públicas
+      this.router.navigate(['/admin', route]); // Navegación hacia otras páginas públicas
     }
   }
+
   createprod() {
     this.openProductDialog(false, null);
   }
 
-  editprod(product: IProduct) { // Cambia 'any' por 'IProduct'
+  editprod(product: IProduct) {
     this.openProductDialog(true, product);
   }
+
   private openProductDialog(isEditing: boolean, product: IProduct | null) {
-    const isMobile = window.innerWidth < 480
+    const isMobile = window.innerWidth < 480;
 
     this.ref = this.dialogService.open(ProductFormComponent, {
       header: isEditing ? 'Editar Producto' : 'Nuevo Producto',
@@ -97,9 +113,7 @@ export class ProductoView {
         '640px': '100vw',
       },
       data: { product: product }, // Pasando el objeto product dentro de un objeto con la propiedad 'product'
-
-    })
-
+    });
   }
 
   deleteProduct(productId: string): void {
@@ -108,15 +122,15 @@ export class ProductoView {
         // Eliminación exitosa, actualiza la lista de productos
         this.productos = this.productos.filter(
           (producto) => producto._id !== productId,
-        )
+        );
       },
       (error) => {
-        console.error('Error al eliminar el producto:', error)
+        console.error('Error al eliminar el producto:', error);
       },
-    )
+    );
   }
+
   eliminar(event: Event, productId: string) {
-    // console.log("oprimido a elim")
     this.confirmationService.confirm({
       target: event.target as EventTarget,
       message: '¿Estás seguro de que deseas eliminar este producto?',
@@ -144,18 +158,18 @@ export class ProductoView {
       },
     });
   }
-  
+
+
   onPageChange(event: any): void {
     this.pageIndex = event.first / event.rows;  // Calcula pageIndex
     this.pageSize = event.rows;  // Asigna pageSize
-    this.getAllProducts();
+    this.loadProducts();
   }
+
+
   showVariantDetails(variants: any[]) {
-    // You can use a modal or dropdown to display these details.
     console.log("Variant Details:", variants);
-    // For example, open a modal with the variant details.
     this.selectedVariants = variants;
     this.displayVariantModal = true; // Assuming you have a modal bound to this variable.
   }
-  
 }

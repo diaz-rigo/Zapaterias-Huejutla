@@ -3,7 +3,16 @@
     <h1 class="view-title">Productos</h1>
 
     <form [formGroup]="searchForm" class="form">
-      <input pInputText placeholder="Buscar" formControlName="query" />
+      <!-- <input pInputText placeholder="Buscar" formControlName="query" /> -->
+      <p-iconField iconPosition="left">
+        <p-inputIcon styleClass="pi pi-search" />
+        <input
+          type="text"
+          pInputText
+          placeholder="Buscar"
+          formControlName="query"
+        />
+      </p-iconField>
       <p-button
         [outlined]="true"
         type="button"
@@ -15,19 +24,9 @@
     </form>
 
     <!-- Table for larger screens -->
-    <!-- Table for larger screens -->
     <div class="table-container" *ngIf="!isMobile">
-      <p-table
-        [value]="productos"
-        [paginator]="true"
-        [rows]="10"
-        [rowsPerPageOptions]="[10, 20, 50]"
-        [totalRecords]="totalProducts"
-        (onPage)="onPageChange($event)"
-        class="p-table"
-        styleClass="p-datatable-gridlines"
-        severity="warning"
-      >
+
+    <p-table [value]="productos" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10, 20, 50]" [totalRecords]="totalProducts" (onPage)="onPageChange($event)" class="p-table"  styleClass="p-datatable-gridlines"  severity="warning">
         <ng-template pTemplate="header">
           <tr>
             <th pSortableColumn="image">
@@ -42,13 +41,9 @@
               <i class="pi pi-palette"></i> Variantes
               <p-sortIcon field="variants"></p-sortIcon>
             </th>
-            <!-- <th pSortableColumn="variantCount">
-              <i class="pi pi-list"></i> Cantidad de Variantes
-              <p-sortIcon field="variantCount"></p-sortIcon>
-            </th> -->
+
             <th pSortableColumn="price">
-              <i class="pi pi-dollar"></i> Precio
-              <p-sortIcon field="price"></p-sortIcon>
+              <i class="pi pi-dollar"></i> Precio <p-sortIcon field="price"></p-sortIcon>
             </th>
             <th>Acciones</th>
           </tr>
@@ -59,39 +54,43 @@
               <img
                 [src]="producto.variants[0].images[0] ? producto.variants[0].images[0] : 'defaultImg'"
                 alt="Imagen del producto"
-                style="max-width: 100px; max-height: 100px"
+                class="product-image"
               />
             </td>
             <td>{{ producto.name }}</td>
             <td>
-   
-              <p-button 
-           
-          icon="pi pi-eye"
-          label="Variantes" 
-
-          badge="{{producto.variants.length}}" 
-              badgeClass="p-badge-contrast" 
-              outlined="true" (click)="showVariantDetails(producto.variants)"/>
+              <p-button
+                icon="pi pi-eye"
+                label="Variantes"
+                badge="{{producto.variants.length}}"
+                badgeClass="p-badge-contrast"
+                outlined="true"
+                (click)="showVariantDetails(producto.variants)"
+              />
             </td>
-            <td>{{ producto.variants[0].sizeStock[0].price | currency }}</td>
+            <td>{{ producto.variants[0].sizeStock[0].price}}</td>
             <td>
-              <button
+              <!-- <button
                 pButton
                 type="button"
                 icon="pi pi-pencil"
                 class="custom-btn custom-btn-primary"
                 (click)="editprod(producto)"
-              ></button>
-              <button
-                pButton
+              ></button> -->
+              <p-button
+                (click)="editprod(producto)"
+                icon="pi pi-pencil"
+                [rounded]="true"
+                [text]="true"
+                severity="info"
+              />
+              <p-button
                 (click)="eliminar($event, producto._id)"
-                type="button"
                 icon="pi pi-trash"
-                class="custom-btn custom-btn-danger"
+                [rounded]="true"
+                [text]="true"
                 severity="danger"
-                [outlined]="true"
-              ></button>
+              />
             </td>
           </tr>
         </ng-template>
@@ -117,18 +116,19 @@
           </p>
           <div class="actions">
             <p-button
-              type="button"
-              icon="pi pi-pencil"
-              class="edit-button"
               (click)="editprod(product)"
-              [outlined]="true"
-            ></p-button>
+              icon="pi pi-pencil"
+              [rounded]="true"
+              [text]="true"
+              severity="info"
+            />
             <p-button
-              type="button"
+              (click)="eliminar($event, product._id)"
               icon="pi pi-trash"
-              class="delete-button"
-              [outlined]="true"
-            ></p-button>
+              [rounded]="true"
+              [text]="true"
+              severity="danger"
+            />
           </div>
         </div>
       </div>
@@ -136,22 +136,33 @@
   </div>
 </div>
 
-
-<p-dialog header="Detalles de Variantes" [(visible)]="displayVariantModal" [modal]="true" [style]="{width: '50vw'}">
+<p-dialog
+  header="Detalles de Variantes"
+  [(visible)]="displayVariantModal"
+  [modal]="true"
+  [style]="{width: '50vw'}"
+>
   <div *ngFor="let variant of selectedVariants">
     <p><b>Color:</b> {{ variant.color }}</p>
     <p><b>Textura:</b></p>
-    <img [src]="variant.texture" alt="Textura del producto" style="max-width: 100px; max-height: 100px;"/>
+    <img
+      [src]="variant.texture"
+      alt="Textura del producto"
+      class="variant-texture"
+    />
     <ul>
       <li *ngFor="let sizeStock of variant.sizeStock">
-        <b>Talla:</b> {{ sizeStock.size }},
-        <b>Stock:</b> {{ sizeStock.stock }},
+        <b>Talla:</b> {{ sizeStock.size }}, <b>Stock:</b> {{ sizeStock.stock }},
         <b>Precio:</b> {{ sizeStock.price | currency }}
       </li>
     </ul>
   </div>
   <p-footer>
-    <p-button label="Cerrar" icon="pi pi-times" (click)="displayVariantModal=false"></p-button>
+    <p-button
+      label="Cerrar"
+      icon="pi pi-times"
+      (click)="displayVariantModal=false"
+    ></p-button>
   </p-footer>
 </p-dialog>
 <p-toast></p-toast>
