@@ -116,45 +116,93 @@
 
 //   EDITARProducto() {
 //     if (this.productForm.valid) {
-//         const productData: IProduct = this.productForm.value;  // Asegurarse de que productData siga la interfaz IProduct
-//         const category = productData.category;
+//         const productData: IProduct = this.productForm.value;
 //         this.ngxService.start();
 
-//         const existingImages = this.product.variants.map(variant => variant.images) || [];
 //         const imageFiles: File[] = this.variants.controls.flatMap((variantControl, i) =>
-//           this.fileNames[i].images.map(img => img.file).filter((file): file is File => file !== null)
-//       );
+//             this.fileNames[i].images.map(img => img.file).filter((file): file is File => file !== null)
+//         );
 
+//         const textureFiles: File[] = this.variants.controls
+//             .map((variantControl, i) => this.fileNames[i].texture?.file)
+//             .filter((file): file is File => file !== null);
 
-//         if (imageFiles.length > 0) {
-//             this.productService.uploadImages( imageFiles).subscribe(
-//                 (imageData: string[] | { images: string[] }) => {
-//                     imageData = Array.isArray(imageData) ? imageData : imageData.images;
+//         if (imageFiles.length > 0 || textureFiles.length > 0) {
+//             const uploadTasks: Promise<any>[] = [];
 
-//                     productData.variants.forEach((variant, i) => {
-//                       const imageUrls = Array.isArray(imageData) ? imageData.splice(0, this.fileNames[i].images.length) : (imageData as any).images.splice(0, this.fileNames[i].images.length);
-//                       variant.images = [...(existingImages[i] || []), ...imageUrls];
-//                   });
+//             if (imageFiles.length > 0) {
+//                 uploadTasks.push(
+//                     this.productService.uploadImages(imageFiles).toPromise()
+//                 );
+//             }
+//             // Subir texturas si hay archivos de textura
+//             if (textureFiles.length > 0) {
+//               this.productService.uploadTexture(textureFiles).subscribe(
+//                 (textureData: string[] | { textures: string[] }) => {
+//                   textureData = Array.isArray(textureData)
+//                     ? textureData
+//                     : textureData.textures
+//                   this.assignUrlsToVariants(textureData, 'texture')
+//                   console.log(textureData)
 
-
-//                     this.updateProduct(productData);
+//                   // Crear el producto con las URLs asignadas
+//                   const productData = this.getFilteredProductData()
+//                   this.updateProduct(productData);
+//                   this.ngxService.stop()
 //                 },
 //                 (error) => {
-//                     this.ngxService.stop();
-//                     console.error('Error subiendo imágenes', error);
-//                 }
-//             );
-//         } else {
-//             productData.variants.forEach((variant, i) => {
-//                 variant.images = existingImages[i] || [];
-//             });
+//                   console.error('Error al subir texturas:', error)
+//                 },
+//               )
+//             } else {
+//               // Si no hay archivos de textura, crear producto con las URLs de las imágenes
+//               const productData = this.getFilteredProductData()
+//               console.log(productData)
+//               this.ngxService.stop()
 
+//               this.updateProduct(productData);
+//             }
+
+//             Promise.all(uploadTasks).then((results) => {
+//               const imageData = Array.isArray(results[0]) ? results[0] : [];
+//               const textureData = results.length > 1 && Array.isArray(results[1]) ? results[1] : [];
+          
+//               productData.variants.forEach((variant, i) => {
+//                   if (imageData.length > 0) {
+//                       const imageUrls = imageData.splice(0, this.fileNames[i].images.length);
+//                       variant.images = [...(variant.images || []), ...imageUrls];
+//                   }
+          
+//                   if (textureData.length > 0) {
+//                       variant.texture = textureData.shift();
+//                   }
+//               });
+          
+//               this.updateProduct(productData);
+//           }).catch((error) => {
+//               this.ngxService.stop();
+//               console.error('Error al subir imágenes/texturas', error);
+//               this.messageService.add({
+//                   severity: 'error',
+//                   summary: 'Error de Subida',
+//                   detail: 'Error al subir imágenes o texturas. Por favor intente de nuevo.'
+//               });
+//           });
+          
+//         } else {
 //             this.updateProduct(productData);
 //         }
 //     } else {
 //         console.error('Formulario no válido.');
+//         this.messageService.add({
+//             severity: 'error',
+//             summary: 'Formulario Inválido',
+//             detail: 'Por favor complete todos los campos requeridos.'
+//         });
 //     }
 // }
+
+
 
  
 // updateProduct(productData: any) {
@@ -363,7 +411,7 @@
 //   }
 
 
-  
+
 //   isValidFileType(file: File): boolean {
 //     const allowedMimeTypes: string[] = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
 //     return allowedMimeTypes.includes(file.type);

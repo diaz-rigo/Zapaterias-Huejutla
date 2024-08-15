@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core'
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ProductService } from '../../service/product.service'
 import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog'
 import { ProductoView } from '../../../view/producto/producto.view'
@@ -56,45 +56,52 @@ export class ProductFormComponent implements OnInit {
       console.warn('No se han proporcionado datos del producto.')
     }
   }
-
-initializeFormWithProductData(product: IProduct): void {
-  this.idproducEDIT = product._id;
-  this.productForm.patchValue({
-    name: product.name,
-    description: product.description,
-    brand: product.brand,
-    material: product.material,
-    category: product.category,
-  });
-
-  this.variants.clear();
-  product.variants.forEach((variant, i) => {
-    const variantForm = this.createVariant();
-    variantForm.patchValue({
-      color: variant.color,
-      texture: variant.texture,
+  initializeFormWithProductData(product: IProduct): void {
+    this.idproducEDIT = product._id;
+    this.productForm.patchValue({
+      name: product.name,
+      description: product.description,
+      brand: product.brand,
+      material: product.material,
+      category: product.category,
     });
-
-    const sizeStockArray = variantForm.get('sizeStock') as FormArray;
-    variant.sizeStock.forEach((sizeStock) => {
-      const sizeStockGroup = this.createSizeStock();
-      sizeStockGroup.patchValue(sizeStock);
-      sizeStockArray.push(sizeStockGroup);
+  
+    this.variants.clear(); // Limpia cualquier variante previamente añadida
+  
+    product.variants.forEach((variant, i) => {
+      const variantForm = this.createVariant();
+  
+      // Remover la línea que agrega un sizeStock por defecto
+      variantForm.patchValue({
+        color: variant.color,
+        texture: variant.texture,
+        // No añadir un sizeStock por defecto
+      });
+  
+      const sizeStockArray = variantForm.get('sizeStock') as FormArray;
+      sizeStockArray.clear(); // Limpia el array para asegurar que no se dupliquen los datos
+  
+      // Rellenar el array con los datos del producto
+      variant.sizeStock.forEach((sizeStock) => {
+        const sizeStockGroup = this.createSizeStock();
+        sizeStockGroup.patchValue(sizeStock);
+        sizeStockArray.push(sizeStockGroup);
+      });
+  
+      this.variants.push(variantForm);
+  
+      // Inicializar imágenes y texturas
+      this.fileNames[i] = {
+        images: variant.images.map((image) => ({ src: image, file: null })), 
+        texture: variant.texture ? { src: variant.texture, file: null } : null, 
+      };
+  
+      variantForm.get('images')?.setValue(this.fileNames[i].images.map(img => img.src));
+      variantForm.get('texture')?.setValue(this.fileNames[i].texture?.src || '');
     });
+  }
+  
 
-    this.variants.push(variantForm);
-
-    // Inicializar imágenes y texturas
-    this.fileNames[i] = {
-      images: variant.images.map((image) => ({ src: image, file: null })), // No hay 'file' en la interfaz IVariant
-      texture: variant.texture ? { src: variant.texture, file: null } : null, // Asumiendo que 'texture' es solo un string
-    };
-
-    // Asignar las imágenes y textura al formulario
-    variantForm.get('images')?.setValue(this.fileNames[i].images.map(img => img.src));
-    variantForm.get('texture')?.setValue(this.fileNames[i].texture?.src || '');
-  });
-}
   createProductForm(): FormGroup {
     return this.formBuilder.group({
       name: ['', Validators.required],
@@ -106,116 +113,103 @@ initializeFormWithProductData(product: IProduct): void {
     })
   }
 
-  get variants(): FormArray {
-    return this.productForm.get('variants') as FormArray
-  }
 
-  createVariant(): FormGroup {
-    return this.formBuilder.group({
-      images: [null, Validators.required],
-      color: ['', Validators.required],
-      texture: ['', Validators.required],
-      sizeStock: this.formBuilder.array([this.createSizeStock()]),
-    })
-  }
-
-  createSizeStock(): FormGroup {
-    return this.formBuilder.group({
-      size: [0, Validators.required],
-      stock: [0, Validators.required],
-      price: [0, Validators.required],
-    })
-  }
-  addVariant() {
-    const variantIndex = this.variants.length
-    this.variants.push(this.createVariant())
-    this.fileNames[variantIndex] = { images: [], texture: null } // Initialize fileNames
-    this.productForm.markAsDirty()
-    this.productForm.updateValueAndValidity()
-    this.cdr.detectChanges() // Trigger change detection
-  }
-
-  addSizeStock(variantIndex: number) {
-    const sizeStockArray = this.variants
-      .at(variantIndex)
-      .get('sizeStock') as FormArray
-    sizeStockArray.push(this.createSizeStock())
-    this.productForm.markAsDirty()
-    this.productForm.updateValueAndValidity()
-    this.cdr.detectChanges() // Trigger change detection
-  }
-  removeSizeStock(variantIndex: number, sizeStockIndex: number): void {
-    const sizeStockArray = this.variants
-      .at(variantIndex)
-      .get('sizeStock') as FormArray
-    sizeStockArray.removeAt(sizeStockIndex)
-  }
   EDITARProducto() {
     if (this.productForm.valid) {
-        const productData: IProduct = this.productForm.value;  // Asegurarse de que productData siga la interfaz IProduct
-        const category = productData.category;
+        const productData: IProduct = this.productForm.value;
         this.ngxService.start();
 
-        const existingImages = this.product.variants.map(variant => variant.images) || [];
         const imageFiles: File[] = this.variants.controls.flatMap((variantControl, i) =>
-          this.fileNames[i].images.map(img => img.file).filter((file): file is File => file !== null)
-      );
+            this.fileNames[i].images.map(img => img.file).filter((file): file is File => file !== null)
+        );
 
+        const textureFiles: File[] = this.variants.controls
+            .map((variantControl, i) => this.fileNames[i].texture?.file)
+            .filter((file): file is File => file !== null);
 
-        if (imageFiles.length > 0) {
-            this.productService.uploadImages( imageFiles).subscribe(
-                (imageData: string[] | { images: string[] }) => {
-                    imageData = Array.isArray(imageData) ? imageData : imageData.images;
+        if (imageFiles.length > 0 || textureFiles.length > 0) {
+            const uploadTasks: Promise<any>[] = [];
 
-                    productData.variants.forEach((variant, i) => {
-                      const imageUrls = Array.isArray(imageData) ? imageData.splice(0, this.fileNames[i].images.length) : (imageData as any).images.splice(0, this.fileNames[i].images.length);
-                      variant.images = [...(existingImages[i] || []), ...imageUrls];
-                  });
+            if (imageFiles.length > 0) {
+                uploadTasks.push(
+                    this.productService.uploadImages(imageFiles).toPromise()
+                );
+            }
+            // Subir texturas si hay archivos de textura
+            if (textureFiles.length > 0) {
+              this.productService.uploadTexture(textureFiles).subscribe(
+                (textureData: string[] | { textures: string[] }) => {
+                  textureData = Array.isArray(textureData)
+                    ? textureData
+                    : textureData.textures
+                  this.assignUrlsToVariants(textureData, 'texture')
+                  console.log(textureData)
 
-
-                    this.updateProduct(productData);
+                  // Crear el producto con las URLs asignadas
+                  const productData = this.getFilteredProductData()
+                  this.updateProduct(productData);
+                  this.ngxService.stop()
                 },
                 (error) => {
-                    this.ngxService.stop();
-                    console.error('Error subiendo imágenes', error);
-                }
-            );
-        } else {
-            productData.variants.forEach((variant, i) => {
-                variant.images = existingImages[i] || [];
-            });
+                  console.error('Error al subir texturas:', error)
+                },
+              )
+            } else {
+              // Si no hay archivos de textura, crear producto con las URLs de las imágenes
+              const productData = this.getFilteredProductData()
+              console.log(productData)
+              this.ngxService.stop()
 
+              this.updateProduct(productData);
+            }
+
+     
+          
+        } else {
             this.updateProduct(productData);
         }
     } else {
         console.error('Formulario no válido.');
+        this.messageService.add({
+            severity: 'error',
+            summary: 'Formulario Inválido',
+            detail: 'Por favor complete todos los campos requeridos.'
+        });
     }
 }
 
+
+
  
 updateProduct(productData: any) {
-  console.log("-----<<<<<>>>",productData)
+  // console.log("-----<<<<<>>>", productData);
   this.productService.updateProduct(this.idproducEDIT, productData).subscribe(
     (response) => {
       this.ngxService.stop();
-      this.dialogRef.close();
-      this.productoView.loadProducts()
       this.messageService.add({
         severity: 'info',
         summary: 'Confirmado',
         detail: 'Producto actualizado exitosamente',
       });
+
+      setTimeout(() => {
+        this.dialogRef.close();
+        this.productoView.loadProducts();
+      }, 2000);  // Retraso opcional para asegurar que el mensaje se muestre antes de cerrar el modal
     },
     (error) => {
       this.ngxService.stop();
+      alert(error);
+      console.log(error);
       this.messageService.add({
         severity: 'error',
         summary: 'Rechazado',
-        detail: 'Error al actualizar el producto'+error,
+        detail: 'Error al actualizar el producto: ' + error,
       });
     }
   );
 }
+
   agregarProducto() {
     if (this.productForm.valid) {
       const imageFiles: File[] = []
@@ -396,21 +390,71 @@ updateProduct(productData: any) {
       this.variants.at(variantIndex).get('texture')?.setValue('')
     }
   }
+
+
+
   isValidFileType(file: File): boolean {
-    const allowedMimeTypes: string[] = ['image/jpeg', 'image/png', 'image/gif']
-    return allowedMimeTypes.includes(file.type)
+    const allowedMimeTypes: string[] = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+    return allowedMimeTypes.includes(file.type);
   }
+  
+// ???????  /////////////////////////////////////////////////////////////////
 
   getSizeStockControls(variantIndex: number): FormArray {
     return this.variants.at(variantIndex).get('sizeStock') as FormArray
   }
-  getSizeStockArray(variant: any): FormArray {
-    return variant.get('sizeStock') as FormArray
+
+  getSizeStockArray(variant: AbstractControl): FormArray {
+    return variant.get('sizeStock') as FormArray;
   }
+  
   removeVariant(index: number): void {
     this.variants.removeAt(index)
     this.productForm.markAsDirty()
     this.productForm.updateValueAndValidity()
   }
+  get variants(): FormArray {
+    return this.productForm.get('variants') as FormArray
+  }
 
+  createVariant(): FormGroup {
+    return this.formBuilder.group({
+      images: [null, Validators.required],
+      color: ['', Validators.required],
+      texture: ['', Validators.required],
+      sizeStock: this.formBuilder.array([this.createSizeStock()]),
+    })
+  }
+
+  createSizeStock(): FormGroup {
+    return this.formBuilder.group({
+      size: [0, Validators.required],
+      stock: [0, Validators.required],
+      price: [0, Validators.required],
+    })
+  }
+  addVariant() {
+    const variantIndex = this.variants.length
+    this.variants.push(this.createVariant())
+    this.fileNames[variantIndex] = { images: [], texture: null } // Initialize fileNames
+    this.productForm.markAsDirty()
+    this.productForm.updateValueAndValidity()
+    this.cdr.detectChanges() // Trigger change detection
+  }
+
+  addSizeStock(variantIndex: number) {
+    const sizeStockArray = this.variants
+      .at(variantIndex)
+      .get('sizeStock') as FormArray
+    sizeStockArray.push(this.createSizeStock())
+    this.productForm.markAsDirty()
+    this.productForm.updateValueAndValidity()
+    this.cdr.detectChanges() // Trigger change detection
+  }
+  removeSizeStock(variantIndex: number, sizeStockIndex: number): void {
+    const sizeStockArray = this.variants
+      .at(variantIndex)
+      .get('sizeStock') as FormArray
+    sizeStockArray.removeAt(sizeStockIndex)
+  }
 }
