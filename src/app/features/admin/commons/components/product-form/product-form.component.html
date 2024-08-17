@@ -223,6 +223,7 @@
                   formControlName="stock"
                   placeholder="Stock"
                   required
+                  min="1"
                 />
                 <div
                   *ngIf="
@@ -231,9 +232,10 @@
                   "
                   class="error-message"
                 >
-                  Stock es requerido
+                  Stock debe ser mayor que 0
                 </div>
               </div>
+              
               <div class="form-field">
                 <label for="price">Precio:</label>
                 <input
