@@ -17,7 +17,7 @@ const routes: Routes = [
         component: OrderDetailView,
       },
       {
-        path: 'pay-success',
+        path: 'order-success',
         component: paysuccess,
       }
     ],

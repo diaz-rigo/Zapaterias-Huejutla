@@ -47,7 +47,10 @@ interface Link {
 @Component({
   selector: 'app-order-detail',
   templateUrl: './order-detail.view.html',
-  styleUrls: ['./order-detail.view.scss', './totalbtn.scss'],
+  styleUrls: [
+    './dialogo.scss',
+    './order-detail.view.scss',
+    './totalbtn.scss'],
   encapsulation: ViewEncapsulation.None,
   providers: [ConfirmationService, MessageService],
 })
@@ -58,11 +61,11 @@ export class OrderDetailView implements OnInit {
   dateselect: Date[] | undefined;
   activeIndex: number = 0;
   i: number = 0;
-  municipios: City[] | undefined;
-  localidades: City[] | undefined;
+  // municipios: City[] | undefined;
+  // localidades: City[] | undefined;
 
   selectedCity: City | undefined;
-  selectedLocal: City | undefined;
+  // selectedLocal: City | undefined;
 
   selectedDate: Date | undefined;
   items: MenuItem[] | undefined;
@@ -77,6 +80,7 @@ export class OrderDetailView implements OnInit {
   ];
   value: string = 'off';
   instrucion: string = '';
+  especificacion: string = '';
 
   showInStoreAccordion = false;
   showShippingAccordion = false;
@@ -94,6 +98,18 @@ export class OrderDetailView implements OnInit {
 
   // createForm: FormGroup;
   municipio: any[] | undefined;
+  municipios = [
+    { name: 'HUEJUTLA', code: 'HU' },
+    { name: 'JALTOCAN', code: 'JAL' },
+    { name: 'ATLAPEXCO', code: 'ATLA' },
+    { name: 'HUAUTLA', code: 'HUA' },
+    { name: 'SAN FELIPE', code: 'SF' }
+  ];
+  localidades: string[] = [];
+  selectedMunicipio: City | undefined;
+  selectedLocal: City | undefined;
+
+
   // breadcrumbItems = [
   //   { label: 'Inicio', url: '#' },
   //   { label: 'sign-up', url: '/signup' },
@@ -102,6 +118,7 @@ export class OrderDetailView implements OnInit {
 
   // constructor(private purchaseDataService: PurchaseDataService) { }
   values: string[] | null = null;
+  resumen: boolean = false;
 
   onChanges(values: string[]): void {
     console.log(values, this.values);
@@ -110,6 +127,16 @@ export class OrderDetailView implements OnInit {
 
   // constructor(private confirmationService: confirmationService, private messageService: MessageService) {}
   // constructor(private http: HttpClient) {}
+  purchaseData: any = {
+    productos: [],
+    totalneto: 0,
+    tipoEntrega: '',
+    direccion: {
+      municipio: '',
+      localidad: '',
+      especificacion: ''
+    }
+  };
 
   constructor(
     private http: HttpClient,
@@ -151,7 +178,7 @@ export class OrderDetailView implements OnInit {
 
     if (carDataFromStorage) {
       this.carData = carDataFromStorage;
-      console.log(this.carData)
+      // console.log(this.carData)
     }
     this.getTotalAmount();
 
@@ -173,20 +200,41 @@ export class OrderDetailView implements OnInit {
 
     this.home = { icon: 'pi pi-home', routerLink: '/' };
 
-    this.municipios = [
-      { name: 'HUEJUTLA', code: 'HU' },
-      { name: 'JALTOCAN', code: 'JAL' },
-      { name: 'ATLAPEXCO', code: 'ATLA' },
-    ];
-    this.localidades = [
-      { name: 'Parque del poblamiento', code: 'HU' },
-      { name: 'tecoluco', code: 'JAL' },
-    ];
-
     this.cartService.totalPrice$.subscribe((totalPrice: number) => {
       this.totalAmount = totalPrice;
     });
   }
+  onMunicipioChange() {
+    let fileName = '';
+    // console.log('Municipio seleccionado:', this.selectedMunicipio);
+
+    switch (this.selectedMunicipio?.code) {
+      case 'HU':
+        fileName = 'colonias_localidades_huejutla.json';
+        break;
+      case 'JAL':
+        fileName = 'colonias_localidades_jaltocan.json';
+        break;
+      case 'ATLA':
+        fileName = 'colonias_localidades_atlapexco.json';
+        break;
+      case 'HUA':
+        fileName = 'colonias_localidades_huautla.json';
+        break;
+      case 'SF':
+        fileName = 'colonias_localidades_san_felipe.json';
+        break;
+    }
+
+    if (fileName) {
+      this.http.get(`assets/data/${fileName}`).subscribe((data: any) => {
+        // console.log('Datos recibidos:', data);
+        this.localidades = data.response.colonia || [];
+        // console.log('Localidades:', this.localidades);
+      });
+    }
+  }
+
   getDateFromStorage(): Date | null {
     // Obtener la fecha del almacenamiento
     const dateString = localStorage.getItem('date');
@@ -205,7 +253,39 @@ export class OrderDetailView implements OnInit {
 
     return null;
   }
+  confirm4() {
+    this.resumen = true;
+    const formData = this.paymentForm.value;
+    this.inputsDisable = true;
 
+
+    // Obtener los datos de la dirección seleccionada
+    const datosDireccion = {
+      municipio: this.selectedMunicipio?.name || '',
+      localidad: this.selectedLocal|| '',
+      especificacion: this.especificacion || '', // Asumiendo que `especificacion` contiene detalles adicionales de la dirección
+    };
+
+    // Construir el objeto de datos de compra
+    this.purchaseData = {
+
+      totalneto: this.getTotalNetoValue(),
+      tipoEntrega: this.getDeliveryOptionLabel(),
+      dateselect: this.dateselect,
+      productos: this.carData,
+      datoscliente: formData,
+      direccion: datosDireccion, // Incluir los datos de dirección en la compra
+      success_url: 'https://zapaterias-huejutla.vercel.app/payment/order-success',
+    };
+
+    this.compraService.savePurchaseData(this.purchaseData);
+
+    // Puedes guardar los datos de la compra en el almacenamiento local si es necesario
+    const purchaseDataString = JSON.stringify(this.purchaseData);
+
+    localStorage.setItem('purchaseData', purchaseDataString);
+    // console.log("compra----", purchaseDataString);
+  }
   getFormDataFromStorage() {
     const formData = localStorage.getItem('formData');
     if (formData) {
@@ -215,6 +295,7 @@ export class OrderDetailView implements OnInit {
   }
 
   submitForm2() {
+    // console.log(this.paymentForm.value)
     if (this.paymentForm.valid) {
       this.messageService.add({
         severity: 'info',
@@ -223,22 +304,7 @@ export class OrderDetailView implements OnInit {
       });
     }
     if (this.paymentForm.valid) {
-      const formData = this.paymentForm.value;
-      this.inputsDisable = true;
       this.formviww = false;
-      // console.log(this.inputsDisable);
-      const purchaseData = {
-        totalneto: this.getTotalNetoValue(),
-        tipoEntrega: this.getDeliveryOptionLabel(),
-        dateselect: this.dateselect,
-        productos: this.carData,
-        datoscliente: formData,
-        instrucion: this.instrucion,
-        success_url: 'https://austins.vercel.app/payment/order-success',
-      };
-      // console.log(purchaseData);
-      this.compraService.savePurchaseData(purchaseData);
-
       this.activeIndex = 1;
 
       this.router.navigate(['/payment/order-detail'], {
@@ -257,13 +323,15 @@ export class OrderDetailView implements OnInit {
       // El formulario es inválido, puedes mostrar mensajes de error o realizar otras acciones.
     }
   }
+
+
   selectPaymentMethod(paymentMethod: string): void {
     const purchaseDataString = localStorage.getItem('purchaseData');
     // console.log(purchaseDataString);
 
     if (purchaseDataString) {
       const purchaseData = JSON.parse(purchaseDataString);
-
+      console.log(purchaseData)
       switch (paymentMethod) {
         case 'tarjeta':
           // Llamar al servicio específico para el pago con tarjeta
@@ -451,19 +519,15 @@ export class OrderDetailView implements OnInit {
   removeItem(item: CartItem): void {
     this.carData = this.carData.slice();
     // console.log(this.carData.length)
-
     const index = this.carData.indexOf(item);
     if (index !== -1) {
       this.carData.splice(index, 1);
     }
     this.carData = this.carData.slice();
-
     console.log(this.carData.length==0)
     if(this.carData.length==0){
 
         this.router.navigate(['/portal/home']); // Utiliza la navegación de Angular
-
-
     }
     this.cartService.remove(item);
 
@@ -482,7 +546,6 @@ export class OrderDetailView implements OnInit {
     if (totalKilos > 4) {
       this.calendarioAv = false;
     }
-    // console.log(totalKilos)
   }
 
   decrementQuantity(item: CartItem): void {
@@ -495,7 +558,6 @@ export class OrderDetailView implements OnInit {
       if (totalKilos < 4) {
         this.calendarioAv = true;
       }
-      // console.log(totalKilos)
     }
 
     this.cartService.decre(item);
@@ -511,55 +573,19 @@ export class OrderDetailView implements OnInit {
       (total, item) => total + item.cantidad,
       0
     );
-
-    // // console.log(this.deliveryOption, totalKilos);
-    // if (this.deliveryOption === 'shipping' && totalKilos < 4) {
-    //   this.calendarioAv = true;
-    //   this.messageService.add({
-    //     severity: 'error',
-    //     summary: 'Error',
-    //     detail: 'Para el envío, la cantidad de kilos debe ser mayor a 4.',
-    //   });
-    //   this.activeIndex = 0;
-    //   this.router.navigate(['/payment/order-detail'], {
-    //     queryParams: {
-    //       deliveryOption: this.deliveryOption,
-    //       // Usar 'N/A' si no hay fecha formateada
-    //     },
-    //   });
-    //   return; // No necesitas el return aquí si deseas continuar con la lógica después de la validación.
-    // }
-
     console.log("aqui paso",this.date, totalKilos);
-    // console.log(!this.deliveryOption || !this.date || this.date.length === 0);
-    // if (!this.deliveryOption || !this.date || this.date.length === 0) {
-    //   this.calendarioAv = false;
-    //   this.messageService.add({
-    //     severity: 'error',
-    //     summary: 'Error',
-    //     detail: 'Falta seleccionar la fecha.',
-    //   });
-    //   return;
-    // }
+
     this.dateselect = this.date;
 
     if (this.dateselect && this.dateselect.length > 0) {
       const selectedDate = this.dateselect[0];
       this.setDateToAllFields(selectedDate);
     }
-    // const purchaseData = {
-    //   totalneto:this.getTotalNetoValue(),
-    //   tipoEntrega:this.getDeliveryOptionLabel(),
-    //   dateselect: this.dateselect,
-    // };
-    // this.compraService.savePurchaseData(purchaseData);
 
-    // if (totalKilos > 4 && this.deliveryOption != 'shipping') {
     this.activeIndex = 1;
     this.router.navigate(['/payment/order-detail'], {
       queryParams: {
         deliveryOption: this.deliveryOption,
-        // Usar 'N/A' si no hay fecha formateada
       },
     });
     // }
@@ -596,24 +622,18 @@ export class OrderDetailView implements OnInit {
       const emailControl = this.paymentForm.get('email');
       if (emailControl) {
         const email = emailControl.value;
-
-        // Realizar solicitud a la API para validar el correo electrónico
         this.http
           .get<any>(`https://www.disify.com/api/email/${email}`)
           .subscribe(
             (response) => {
-              // Manejar la respuesta de la API aquí
-              // console.log(response);
+
               if (response.format) {
                 console.log('El formato del correo electrónico es válido.');
-
-                // Aquí podrías realizar acciones adicionales si el formato es válido
               } else {
                 console.error(
                   'El formato del correo electrónico no es válido.'
                 );
 
-                // Aquí podrías mostrar un mensaje de error al usuario indicando que el formato del correo electrónico no es válido
               }
 
             },

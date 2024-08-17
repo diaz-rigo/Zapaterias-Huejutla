@@ -7,7 +7,6 @@ import { environment } from '../../../../../environments/environment';
   providedIn: 'root'
 })
 export class StripeService {
-  // http://localhost:3000/stripe/create-checkout-session
   constructor(private http: HttpClient) { }
 
   createCheckoutSession(body: any): Observable<any> {

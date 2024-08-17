@@ -25,8 +25,9 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { TableModule } from 'primeng/table';
 import { AccordionModule } from 'primeng/accordion';
-
+import { DialogModule } from 'primeng/dialog';
 const PRIMENG_MODULES = [
+  DialogModule,
   ToastModule,
   StepsModule,
   BreadcrumbModule,

@@ -9,7 +9,7 @@
   }
 
   .contact-owner {
-    background-color: #ff5733;
+    background-color: #3a33ff;
     border: none;
     color: #fff;
     font-size: 1.25rem;
@@ -21,7 +21,7 @@
     animation: colorChangeAnimation 3s infinite alternate;
 
     &:hover {
-      background-color: #ff3d15;
+      background-color: #15ff30;
       transform: scale(1.05);
     }
   }
