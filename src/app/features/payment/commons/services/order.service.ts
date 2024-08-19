@@ -14,6 +14,9 @@ export class OrderService {
   updatePurchaseStatus(token: string): Observable<any> {
     return this.http.post(`${environment.api}/purchase/update-purchase-status`, { token });
   }
- 
+
+  getPurchase(): Observable<any> {
+    return this.http.get<any>(`${environment.api}/purchase`);
+  }
 
 }

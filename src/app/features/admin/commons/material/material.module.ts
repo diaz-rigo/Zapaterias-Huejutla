@@ -17,7 +17,9 @@ import { ToastModule } from 'primeng/toast';
 import { BadgeModule } from 'primeng/badge';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DividerModule } from 'primeng/divider';
+import { DataViewModule } from 'primeng/dataview';
 const PRIME_COMPONENTS = [
+  DataViewModule,
   DividerModule,
   ConfirmDialogModule,
   BadgeModule,

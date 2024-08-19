@@ -206,7 +206,6 @@ export class OrderDetailView implements OnInit {
   }
   onMunicipioChange() {
     let fileName = '';
-    // console.log('Municipio seleccionado:', this.selectedMunicipio);
 
     switch (this.selectedMunicipio?.code) {
       case 'HU':

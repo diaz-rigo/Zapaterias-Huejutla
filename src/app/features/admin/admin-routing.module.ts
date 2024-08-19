@@ -6,8 +6,9 @@ import { ProductoView } from './view/producto/producto.view';
 import { InicioView } from './view/inicio/inicio.view';
 import { UsuarioView } from './view/usuario/usuario.view';
 import { ComentariosView } from './view/comentarios/comentarios.view';
-import { PedidosView } from './view/pedidos/pedidos.view';
+// import { PedidosView } from './view/pedidos/pedidos.view';
 import { ProductFormComponent } from './commons/components/product-form/product-form.component';
+import { OrdersView } from './view/orders/orders.view';
 
 const routes: Routes = [
   {
@@ -42,15 +43,15 @@ const routes: Routes = [
         path: 'comentarios',
         component: ComentariosView,
       },
-      {
-        // path: 'detail/:id',
-        path: 'pedidos',
-        component: PedidosView,
-      },
+
       {
         // path: 'detail/:id',
         path: 'agregar',
         component: ProductFormComponent,
+      },
+      {
+        path: 'order',
+        component: OrdersView,
       },
       // {
       //   // path: 'detail/:id',
