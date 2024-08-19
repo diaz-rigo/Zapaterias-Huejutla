@@ -28,6 +28,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
+import { OrdersView } from './view/orders/orders.view';
 const MATERIALS = [
   AvatarModule, AvatarGroupModule,IconFieldModule,InputIconModule,InputTextModule
 ]
@@ -47,7 +48,8 @@ const MATERIALS = [
     TablaUsuarioComponent,
     UsuarioView,
     ComentariosView,
-    PedidosView
+    PedidosView,
+    OrdersView
   ],
   imports: [MATERIALS,
     CommonModule,    ReactiveFormsModule,
