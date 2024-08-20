@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CarritoFloatComponent } from './carrito-float/carrito-float.component';
 import { AnunciosComponent } from './anuncios/anuncios.component';
 import { PostersComponent } from './posters/posters.component';
+import { SkeletonModule } from 'primeng/skeleton';
 
 const COMPONENTES = [
   HomeContentComponent,
@@ -32,6 +33,6 @@ const COMPONENTES = [
 @NgModule({
   declarations: [...COMPONENTES],
   exports: [...COMPONENTES],
-  imports: [CommonModule,MaterialModule,ReactiveFormsModule,FormsModule],
+  imports: [CommonModule,SkeletonModule,MaterialModule,ReactiveFormsModule,FormsModule],
 })
 export class PublicComponentsModule {}

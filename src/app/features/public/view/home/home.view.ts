@@ -10,12 +10,12 @@ import { IProduct } from '../../../admin/interfaces/Product.interface'
 })
 export class HomeView {
   originalProducts: IProduct[] = [] // Mantén una copia original de todos los productos
-
+skeletonItems = Array(5).fill(0); // Simula 5 skeletons
   responsiveOptions: any[] | undefined
 
   images!: string[]
   constructor(private productService: ProductService, private router: Router) {}
-  
+
   ngOnInit() {
     // AOS.init()
     // window.addEventListener('load', AOS.refresh)
@@ -51,4 +51,5 @@ export class HomeView {
     console.log(route)
     this.router.navigate(['/public', route])
   }
+  
 }

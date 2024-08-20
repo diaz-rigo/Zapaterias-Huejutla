@@ -26,7 +26,7 @@ import { ResultProductComponent } from './commons/components/result-product/resu
 import { CoreCommonsModule } from '../../core/commons/commons.module';
 import { CoreComponentsModule } from '../../core/commons/components/components.module';
 import { CoreModule } from '../../core/core.module';
-
+import { SkeletonModule } from 'primeng/skeleton';
 
 const VIEW_COMPONENTS = [
   RegistroUsuarioView,
@@ -48,7 +48,7 @@ const VIEW_COMPONENTS = [
     ProductosView,
     SearchResultsView
   ],
-  imports: [FormsModule, ReactiveFormsModule  ,
+  imports: [FormsModule, ReactiveFormsModule  ,SkeletonModule,
 
     RouterModule, ScrollTopModule,
     MaterialModule,

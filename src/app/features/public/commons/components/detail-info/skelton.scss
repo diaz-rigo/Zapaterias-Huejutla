@@ -1,0 +1,45 @@
+// .product-detail {
+//   display: flex;
+//   gap: 2rem;
+//   /* Space between sidebar and main content */
+// }
+
+// .product-images-sidebar {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 1rem;
+//   /* Space between each thumbnail */
+// }
+
+
+.thumbnail-skeleton {
+  margin-bottom: 1rem;
+  /* Space between each skeleton thumbnail */
+}
+
+.product-main-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-info {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  /* Space between skeleton elements in the info section */
+}
+
+.skeleton-main-image,
+.skeleton-title,
+.skeleton-price,
+.skeleton-description,
+.skeleton-color-selection,
+.skeleton-size-selection,
+.skeleton-button {
+  border-radius: 0.5rem;
+}
+
+/* Additional styling for spacing, alignment, or any custom design */

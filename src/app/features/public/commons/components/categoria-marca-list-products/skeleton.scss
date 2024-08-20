@@ -1,0 +1,61 @@
+/* catalog.component.scss */
+.catalog {
+  .carousel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 300px;
+    padding: 16px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .skeleton-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .skeleton-card {
+    width: 100%;
+    max-width: 300px;
+    padding: 16px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .skeleton-text {
+    height: 20px;
+    margin: 8px 0;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+  }
+
+  .skeleton-title {
+    width: 70%;
+  }
+
+  .skeleton-price {
+    width: 50%;
+  }
+
+  .skeleton-texture {
+    display: flex;
+    gap: 8px;
+  }
+
+  .skeleton-thumbnail {
+    width: 40px;
+    height: 40px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+  }
+}

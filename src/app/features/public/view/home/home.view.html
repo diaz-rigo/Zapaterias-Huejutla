@@ -9,22 +9,36 @@
 
 <!-- <div style="border:dashed #620606;"> -->
 
-<p-carousel
-  [value]="originalProducts"
-  [numVisible]="4"
-  [numScroll]="4"
-  [circular]="true"
-  [responsiveOptions]="responsiveOptions"
-  [autoplayInterval]=""
->
+<!-- catalog.component.html -->
+<p-carousel *ngIf="originalProducts && originalProducts.length > 0; else loadingSkeleton" [value]="originalProducts"
+  [numVisible]="4" [numScroll]="4" [circular]="true" [responsiveOptions]="responsiveOptions" [autoplayInterval]="3000">
   <ng-template let-product pTemplate="item">
     <div class="prod">
-      <app-categoria-marca-list-products
-        [product]="product"
-      ></app-categoria-marca-list-products>
+      <app-categoria-marca-list-products [product]="product"></app-categoria-marca-list-products>
     </div>
   </ng-template>
 </p-carousel>
+
+<ng-template #loadingSkeleton>
+  <p-carousel [value]="skeletonItems" [numVisible]="4" [numScroll]="4" [circular]="true"
+    [responsiveOptions]="responsiveOptions" [autoplayInterval]="3000">
+    <ng-template pTemplate="item">
+      <div class="prod">
+        <div class="card">
+          <!-- Skeleton for the image with top and bottom margin -->
+          <p-skeleton width="300px" height="180px" [ngStyle]="{ 'margin-top': '10px', 'margin-bottom': '10px' }">
+          </p-skeleton>
+
+          <!-- Skeleton for the text with top and bottom margin -->
+          <p-skeleton width="10rem" [ngStyle]="{ 'margin-top': '10px', 'margin-bottom': '10px' }"></p-skeleton>
+          <p-skeleton width="5rem" [ngStyle]="{ 'margin-top': '10px', 'margin-bottom': '10px' }"></p-skeleton>
+          <p-skeleton width="17rem" [ngStyle]="{ 'margin-top': '10px', 'margin-bottom': '10px' }"></p-skeleton>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+</ng-template>
+
 <!-- </div> -->
 
 <h2 class="title-Novedades">Camina con estilo</h2>

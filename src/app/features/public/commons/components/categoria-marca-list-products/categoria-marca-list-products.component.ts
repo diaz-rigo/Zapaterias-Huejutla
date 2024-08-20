@@ -32,3 +32,4 @@ export class CategoriaMarcaListProductsComponent {
     return this.product.variants[0]; // Obtén la primera variante del producto
   }
 }
+

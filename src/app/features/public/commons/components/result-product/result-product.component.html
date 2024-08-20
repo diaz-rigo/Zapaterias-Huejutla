@@ -1,39 +1,39 @@
 <div class="contenedor-productos-resultados">
   <p class="confirmacion-result" *ngIf="resultadosEncontrados">Resultados de búsqueda para {{ query }}</p>
   <div *ngIf="!resultadosEncontrados" class="div-res">
-      <p>No se encontraron resultados de búsqueda para "{{ query }}"</p>
-      <h5>Productos que te pueden interesar</h5>
+    <p>No se encontraron resultados de búsqueda para "{{ query }}"</p>
+    <h5>Productos que te pueden interesar</h5>
   </div>
 
   <div class="result-search" *ngIf="!resultadosEncontrados">
-      <div class="catalog-container">
-          <div *ngFor="let product of allProducts" class="catalog">
-              <div class="carousel">
-                  <div class="card">
-                      <img (click)="goToDetail(product)" [src]="product.variants[0].images[0]" alt="Producto" loading="lazy" />
-                      <h2 style="font-size: 14px; color: black; margin-left: 5px">
-                          {{ product.name | slice: 0: 23 }}{{ product.name.length > 23 ? '...' : '' }}
-                      </h2>
-                      <p class="text-descriptio">{{ product.description }}</p>
-                  </div>
-              </div>
+    <div class="catalog-container">
+      <div *ngFor="let product of allProducts" class="catalog">
+        <div class="carousel">
+          <div class="card">
+            <img (click)="goToDetail(product)" [src]="product.variants[0].images[0]" alt="Producto" loading="lazy" />
+            <h2 style="font-size: 14px; color: black; margin-left: 5px">
+              {{ product.name | slice: 0: 23 }}{{ product.name.length > 23 ? '...' : '' }}
+            </h2>
+            <p class="text-descriptio">{{ product.description }}</p>
           </div>
+        </div>
       </div>
+    </div>
   </div>
 
   <div class="result-search" *ngIf="resultadosEncontrados">
-      <div *ngFor="let product of originalProducts">
-          <div class="catalog-result">
-              <div class="carousel">
-                  <div class="card">
-                      <img (click)="goToDetail(product)" [src]="product.variants[0].images[0]" alt="Producto" loading="lazy" />
-                      <h2 style="font-size: 14px; color: black; margin-left: 5px">
-                          {{ product.name | slice: 0: 23 }}{{ product.name.length > 23 ? '...' : '' }}
-                      </h2>
-                      <p class="text-descriptio">{{ product.description }}</p>
-                  </div>
-              </div>
+    <div class="catalog-container">
+      <div *ngFor="let product of originalProducts" class="catalog">
+        <div class="carousel">
+          <div class="card">
+            <img (click)="goToDetail(product)" [src]="product.variants[0].images[0]" alt="Producto" loading="lazy" />
+            <h2 style="font-size: 14px; color: black; margin-left: 5px">
+              {{ product.name | slice: 0: 23 }}{{ product.name.length > 23 ? '...' : '' }}
+            </h2>
+            <p class="text-descriptio">{{ product.description }}</p>
           </div>
+        </div>
       </div>
+    </div>
   </div>
 </div>

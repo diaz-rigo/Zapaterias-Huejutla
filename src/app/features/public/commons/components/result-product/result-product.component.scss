@@ -1,12 +1,12 @@
  .contenedor-productos-resultados {
-     //  background-color: #f1efef;
-     height: 100%;
-     margin-left: 20%;
-     //  display: flex;
+   //  background-color: #f1efef;
+   height: 100%;
+   //  margin-left: 20%;
+   //  display: flex;
 
-     font-family: Arial, sans-serif;
-     margin-top: -100%;
-
+   font-family: Arial, sans-serif;
+   //  margin-top: -100%;}
+   border: dashed #aeff00;
  }
 
 
@@ -18,39 +18,40 @@
  @import url(https://fonts.googleapis.com/css2?family=Proza+Libre:wght@100;200;300;400;500;600;800&display=swap);
 
  .confirmacion-result {
-     margin-top: -750px;
-     color: #3468a3;
-     font-weight: bold;
-     /* transform:move ; */
+   //  margin-top: -750px;
+   color: #3468a3;
+   font-weight: bold;
+   /* transform:move ; */
+   border: dashed #f6ff00;
 
-     /* body { */
-     font-family: 'Proza Libre', sans-serif;
-     /* }; */
-     margin-left: 20px;
-     /* position: static; */
+   /* body { */
+   font-family: 'Proza Libre', sans-serif;
+   /* }; */
+   margin-left: 20px;
+   /* position: static; */
  }
 
  .div-res {
-
-     margin-top: 18%;
-     /* margin-top: 5%; */
-     margin-bottom: 20%;
-     //  max-width: 600px;
-     padding: 20px;
-     justify-content: center;
-     align-items: center;
-     border-radius: 2px;
+   border: dashed #ff1100;
+   //  margin-top: 18%;
+   /* margin-top: 5%; */
+   //  margin-bottom: 20%;
+   //  max-width: 600px;
+   padding: 20px;
+   justify-content: center;
+   align-items: center;
+   border-radius: 2px;
  }
 
  .div-res p {
-     font-size: 20px;
-     font-weight: bold;
-     color: #535151;
+   font-size: 20px;
+   font-weight: bold;
+   color: #535151;
  }
 
 
  .text-descriptio {
-     text-align: left;
+   text-align: left;
  }
 
 
@@ -58,138 +59,140 @@
 
 
  .catalog {
-
-     display: grid;
-     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-     gap: 10px;
-     margin-left: auto;
-     padding: 10px;
-    //  flex: 1 1 calc(25% - 16px);
-     /* Four columns, adjust the subtraction value to match the gap */
-    //  box-sizing: border-box;
+   border: dashed #ff1100;
+   display: grid;
+   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+   gap: 10px;
+   margin-left: auto;
+   padding: 10px;
+   //  flex: 1 1 calc(25% - 16px);
+   /* Four columns, adjust the subtraction value to match the gap */
+   //  box-sizing: border-box;
 
  }
 
 
  .result-search {
-     margin-top: 10%;
-     /* margin-top: 5%; */
-     margin-bottom: 20%;
+   border: dashed #00b7ff;
+   //  margin-top: 10%;
+   /* margin-top: 5%; */
+   //  margin-bottom: 20%;
 
-     //  border: dashed rgb(47, 255, 0);
+   //  border: dashed rgb(47, 255, 0);
 
-     flex: 1 1 auto;
-     gap: 15px;
-     display: flex;
-     // border: dashed #56d800;
-     flex-direction: row;
+   flex: 1 1 auto;
+   gap: 15px;
+   display: flex;
+   // border: dashed #56d800;
+   flex-direction: row;
  }
 
  .card {
-     //  border: dashed red;
-     max-width: 280px;
-     font-size: 16px;
-     font-weight: 300;
-     padding: 20px;
-     background-color: #fafafa;
+   //  border: dashed red;
+   max-width: 280px;
+   font-size: 16px;
+   font-weight: 300;
+   padding: 20px;
+   background-color: #fafafa;
  }
 
  .carousel {
-     //  border: dashed rgb(255, 162, 0);
+   //  border: dashed rgb(255, 162, 0);
 
-     box-shadow: 0 0 5px rgba(225, 225, 225, 0.938);
-     //  border: dashed dodgerblue;
+   box-shadow: 0 0 5px rgba(225, 225, 225, 0.938);
+   //  border: dashed dodgerblue;
 
-     // max-width: 280px;
-     color: rgb(62, 62, 62);
+   // max-width: 280px;
+   color: rgb(62, 62, 62);
 
-     border-radius: 5px;
-     overflow: hidden;
+   border-radius: 5px;
+   overflow: hidden;
  }
 
  .carousel:hover {
 
-     //  transform: scale(1.20);
-     box-shadow: 0 0 10px rgba(200, 200, 200, 0.842);
+   //  transform: scale(1.20);
+   box-shadow: 0 0 10px rgba(200, 200, 200, 0.842);
 
-     // max-width: 280px;
-     background-color: #fff;
+   // max-width: 280px;
+   background-color: #fff;
 
-     border-radius: 8px;
-     overflow: hidden;
+   border-radius: 8px;
+   overflow: hidden;
  }
 
 
 
 
  div.card>img:hover {
-     width: 100%;
-     transform: scale(1.15);
-     height: auto;
+   width: 100%;
+   transform: scale(1.15);
+   height: auto;
  }
 
  div.card>img {
-     width: 100%;
+   width: 100%;
 
-     height: auto;
-     margin-top: 20px;
+   height: auto;
+   margin-top: 20px;
  }
 
  div.card>img:hover {
-     transition: transform 0.3s ease;
-     transform: scale(1.15);
+   transition: transform 0.3s ease;
+   transform: scale(1.15);
  }
 
  .precio {
-     color: red;
-     font-weight: bold;
-     font-size: 15px;
-     margin-left: 5px;
+   color: red;
+   font-weight: bold;
+   font-size: 15px;
+   margin-left: 5px;
  }
 
 
 
  .catalog-container {
-     //  display: flex;
-      flex-wrap: wrap;
-    //  text-align: center;
-     //  gap: 10px;
-     /* Adjust gap between cards as needed */
+   //  display: flex;
+   flex-wrap: wrap;
+   //  text-align: center;
+   //  gap: 10px;
+   /* Adjust gap between cards as needed */
  }
 
- 
+
 
 
  .catalog {
-     display: inline-block;
-     width: calc(25% - 16px);
-     /* Four columns with a 16px gap */
-     margin: 8px;
-     /* Half of the gap on each side */
-     box-sizing: border-box;
-     vertical-align: top;
+  border: dashed;
+   display: inline-block;
+  flex: 5 5 calc(25% - 16px);
+   /* Four columns with a 16px gap */
+   margin: 8px;
+   /* Half of the gap on each side */
+   box-sizing: border-box;
+   vertical-align: top;
  }
 
  /* Opt
- 
+
 /* Optional: Add media queries for responsiveness */
  @media (max-width: 1200px) {
+   .catalog-container {
+     grid-template-columns: repeat(3, 1fr);
+     /* Three columns */
+   }
+
+   @media (max-width: 768px) {
      .catalog-container {
-         grid-template-columns: repeat(3, 1fr);
-         /* Three columns */
+       grid-template-columns: repeat(2, 1fr);
+       /* Two columns */
      }
 
-     @media (max-width: 768px) {
-         .catalog-container {
-             grid-template-columns: repeat(2, 1fr);
-             /* Two columns */
-         }
-
-         @media (max-width: 480px) {
-             .catalog-container {
-                 grid-template-columns: 1fr;
-                 /* One column */
-             }
-         }
+     @media (max-width: 480px) {
+       .catalog-container {
+         grid-template-columns: 1fr;
+         /* One column */
+       }
      }
+   }
  }

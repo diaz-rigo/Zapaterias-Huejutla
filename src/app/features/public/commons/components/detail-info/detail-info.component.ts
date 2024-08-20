@@ -14,7 +14,7 @@ import { HeaderComponent } from '../../../../../core/commons/components/header/h
 @Component({
   selector: 'app-detail-info',
   templateUrl: './detail-info.component.html',
-  styleUrls: ['./detail-info.component.scss', './zoom.scss'],
+  styleUrls: ['./detail-info.component.scss', './zoom.scss','./skelton.scss'],
   providers: [
     DialogService,
     ConfirmationService,
