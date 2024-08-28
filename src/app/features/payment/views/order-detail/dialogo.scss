@@ -1,0 +1,104 @@
+/* Estilo para el diálogo */
+.dialog-container {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Encabezado del diálogo */
+.dialog-header {
+  background-color: #f0f8ff; /* Alice Blue */
+  border-bottom: 1px solid #e0e0e0; /* Light Grey */
+  padding: 16px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+/* Texto secundario en el diálogo */
+.dialog-subtitle {
+  color: #a0a0a0; /* Light Grey */
+}
+
+/* Elemento del producto */
+.product-card {
+  border: 1px solid #e0e0e0; /* Light Grey */
+  border-radius: 8px;
+  padding: 12px;
+  background-color: #ffffff; /* White */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Imagen del producto */
+.product-image {
+  border-radius: 4px;
+}
+
+/* Nombre del producto */
+.product-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333333; /* Darker Grey */
+}
+
+/* Resumen de la compra */
+.purchase-summary {
+  border-top: 1px solid #e0e0e0; /* Light Grey */
+  padding: 12px 0;
+}
+
+.purchase-summary h4 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333333; /* Darker Grey */
+}
+
+.purchase-summary p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #666666; /* Medium Grey */
+}
+
+/* Botones */
+.button-base {
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.button-secondary {
+  background-color: #b0bec5; /* Light Blue Grey */
+  color: #ffffff; /* White */
+}
+
+.button-secondary:hover {
+  background-color: #90a4ae; /* Blue Grey */
+}
+
+.button-primary {
+  background-color: #64b5f6; /* Light Blue */
+  color: #ffffff; /* White */
+}
+
+.button-primary:hover {
+  background-color: #42a5f5; /* Medium Blue */
+}
+
+/* Flexbox para el contenedor de botones */
+.flex-container {
+  display: flex;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.spacing-2 {
+  gap: 8px;
+}
+
+.margin-top-4 {
+  margin-top: 16px;
+}

@@ -1,0 +1,37 @@
+<div *ngFor="let purchase of purchases" class="purchase-item">
+  <div class="purchase-header">
+    <h3 class="section-title">Código de Pedido: {{ purchase.codigoPedido }}</h3>
+    <p>Estado del Envío: <span class="shipping-status">{{ purchase.estadoEnvio }}</span></p>
+  </div>
+
+  <div class="section">
+    <h4>Cliente</h4>
+    <p class="client-name">
+      {{ purchase.datoscliente.name }} {{ purchase.datoscliente.paternalLastname }} {{ purchase.datoscliente.maternalLastname }}
+    </p>
+    <p>Teléfono: <span class="client-info">{{ purchase.datoscliente.phone }}</span></p>
+    <p>Email: <span class="client-info">{{ purchase.datoscliente.email }}</span></p>
+  </div>
+
+  <div class="section">
+    <h4>Dirección de Envío</h4>
+    <p><span class="address-info">{{ purchase.direccion.municipio }}, {{ purchase.direccion.localidad }}</span></p>
+    <p><span class="address-detail">{{ purchase.direccion.especificacion }}</span></p>
+  </div>
+
+  <div class="section products-section">
+    <h4>Productos</h4>
+    <div *ngFor="let producto of purchase.productos" class="product-item">
+      <img [src]="producto.image" alt="{{ producto.name }}" class="product-image">
+      <div class="product-details">
+        <p class="product-name">{{ producto.name }} - {{ producto.size }}</p>
+        <p>Precio: <span class="product-price">{{ producto.precio }} MXN</span></p>
+        <p>Cantidad: <span class="product-quantity">{{ producto.cantidad }}</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p>Actualización Reciente: <span class="recent-update">{{ purchase.actualizacionReciente | date: 'short' }}</span></p>
+  </div>
+</div>

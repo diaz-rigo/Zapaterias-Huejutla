@@ -5,9 +5,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MaterialModule } from '../material/material.module';
+import { ListOrdersComponent } from './list-orders/list-orders.component';
 const COMPONENTS = [HeaderComponent, FooterComponent]; // Agrega los componentes
 @NgModule({
-  declarations: [...COMPONENTS, ],
+  declarations: [...COMPONENTS, ListOrdersComponent, ],
   exports: [...COMPONENTS,BrowserAnimationsModule, ],
   imports: [CommonModule, BrowserAnimationsModule,MaterialModule
   ],

@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-image: url("https://static.wixstatic.com/media/64de7c_bd452d768bdf43498f0e94694ddc7040~mv2.jpg");
+  background-image: url('https://res.cloudinary.com/dvvhnrvav/image/upload/v1713995742/productMeanZapateriaHuejutla/imagenes/cqtibe2gpqa0oeo8c1hu.jpg');
   background-size: cover;
   background-position: center;
   text-align: center;
@@ -24,6 +24,8 @@
     filter: blur(5px);
   }
 }
+
+
 a{
   text-decoration: none;
   // color: #a54c2c;
@@ -32,7 +34,7 @@ a{
 
 @keyframes backgroundAnimation {
   0%, 30% {
-    background-image: url("https://static.wixstatic.com/media/64de7c_bd452d768bdf43498f0e94694ddc7040~mv2.jpg");
+    background-image: url('https://res.cloudinary.com/dvvhnrvav/image/upload/v1713995742/productMeanZapateriaHuejutla/imagenes/cqtibe2gpqa0oeo8c1hu.jpg');
   }
 }
 

@@ -12,7 +12,7 @@ import { DefaultImgModule } from '../../../shared/pipes/default-img/default-img.
 @NgModule({
   exports: [
 
-    adminComponentsModule,DefaultImgModule
+    DefaultImgModule
     // ...COMPONENTS
   ],
 })

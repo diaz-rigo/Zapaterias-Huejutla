@@ -1,0 +1,39 @@
+{
+    "error": false,
+    "code_error": 0,
+    "error_message": null,
+    "response": {
+        "colonia": [
+            "Jaltocán Centro",
+            "La Capilla",
+            "Tlalnepantla",
+            "Mirador",
+            "Toltitla",
+            "El Palmar",
+            "Chalahuitzintla",
+            "El Rosario",
+            "Pahuatitla",
+            "Amaxac I",
+            "El Chote",
+            "Petacotita",
+            "Amaxac II",
+            "Tepexicuicuil",
+            "Nuevo Rosario",
+            "Revolución Mexicana",
+            "Chiconcoac",
+            "Aguacatitla",
+            "Vinazco",
+            "La Lima",
+            "Cuatecomaco",
+            "Huichapa",
+            "Matachilillo",
+            "Potrero Zactipán",
+            "Cuatzatzas",
+            "Tzinancatitla",
+            "Octatitla",
+            "Ahuayo",
+            "La Ilusión",
+            "Anacleto Ramos"
+        ]
+    }
+}
